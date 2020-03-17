@@ -1,4 +1,5 @@
 window.onload = function()
 {
-    loadMap();
+    //localization('list');
+    localization('marker');
 };

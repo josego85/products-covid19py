@@ -1,19 +1,26 @@
-var map = null;
+var v_feature = null;
+var v_marcador_evento = null;
 
-function loadMap()
-{
-    // Paraguay.
-    var lon = -57.6309129;
-	var lat = -25.2961407;
-    var zoom = 6;
+// Class Map.
+
+// Constructor Map.
+function Map(p_type, p_coordinates, p_zoom) {
+	// Attributes.
+    this.type = p_type;
+    this.coordinates = p_coordinates;
+    this.zoom = p_zoom;
+
+    var lng = p_coordinates['lng'];
+    var lat = p_coordinates['lat'];
     var minZoom = 6;
     var maxZoom = 18;
-    
+
     map = new L.map('map-container',
     {
-        center: [lat, lon],
+        center: [lat, lng],
         minZoom: minZoom,
-        zoom: zoom,
+        maxZoom: maxZoom,
+        zoom: p_zoom,
         scrollWheelZoom: false,
         fullscreenControl: true,
         fullscreenControlOptions:
@@ -21,7 +28,7 @@ function loadMap()
             position: 'topleft'
         }
     });
-
+    
     // Do not repeat the map.
     map.setMaxBounds([[-90, -180], [90, 180]]);
 
@@ -34,19 +41,23 @@ function loadMap()
 		attribution: 'Data \u00a9 <a href="http://www.openstreetmap.org/copyright">' +
           'OpenStreetMap Contributors </a> Tiles \u00a9 HOT'
 	}).addTo(map);
+    
+    this.map = map;
+}
 
-	var layer_departament;
-	$.getJSON("assets/data/Departamentos.geojson", function(data_departament){
-		layer_departament = L.geoJson(data_departament).addTo(map);
-		layer_departament.setStyle({
-			fillColor: '#aaaa00',
-			"color": "#b1b100",
-			"weight": 2,
-			"opacity": 0.65
-		}) 
-	});
+/////////////////////////
+// Methods
+/////////////////////////
 
-    var urlIcon = L.Icon.Default.imagePath = "assets/img/";
+//
+Map.prototype.get_vendors = function() {
+	var map = this.map;
+	
+	this.geojsonLayer = new L.GeoJSON();
+    v_geojsonLayer = this.geojsonLayer;
+
+	var v_geo_json_url = HOSTNAME + "api/vendors";
+	var urlIcon = L.Icon.Default.imagePath = "assets/img/";
     var leafIcon = L.Icon.extend(
     {
         options:
@@ -62,7 +73,7 @@ function loadMap()
     });
     
     var layer_vendors;
-    $.getJSON("http://api-products-covid19py/api/vendors", function(data_vendors)
+    $.getJSON(v_geo_json_url, function(data_vendors)
     {
         layer_vendors = L.geoJson(data_vendors,
         {
@@ -84,8 +95,74 @@ function loadMap()
         cluster_markers.addLayer(layer_vendors);
         map.addLayer(cluster_markers);
     });
-}
+};
 
+// Map.prototype.filtrar_eventos = function(){
+// 	// Obtener atributos de la clase.
+// 	var v_mapa = this.mapa;
+// 	//v_geojsonLayer = this.geojsonLayer;
+	
+// 	// Obtiene la referencia del cluster marcadores.
+// 	var v_cluster_marcadores = this.cluster_marcadores;
+	
+//     var v_date_timepicker_desde = document.getElementById("date_timepicker_desde");
+//     var v_date_timepicker_hasta = document.getElementById("date_timepicker_hasta");
+
+
+//     // Elminar los valores antiguos.
+//     v_cluster_marcadores.clearLayers();
+    
+//     $.getJSON(HOSTNAME + 'eventos/filtrarEventos?date_timepicker_desde=' + v_date_timepicker_desde.value
+//     		+ '&date_timepicker_hasta=' + v_date_timepicker_hasta.value, function(p_data) {
+//     	v_geojsonLayer = L.geoJson(p_data, {
+//     		onEachFeature: onEachFeature
+//     	});
+    	
+//     	v_cluster_marcadores.addLayer(v_geojsonLayer); 				// Agrega al Cluster group.
+//     	v_mapa.addLayer(v_cluster_marcadores);						// Agrega al mapa.
+//     });
+// }
+
+// Map.prototype.marcar = function(p_lat1, p_lng1, p_lat2, p_lng2, p_tipo_osm){
+// 	// Obtener atributos de la clase.
+// 	var v_mapa = this.mapa;
+	
+// 	var v_loc1 = new L.LatLng(p_lat1, p_lng1);
+//     var v_loc2 = new L.LatLng(p_lat2, p_lng2);
+//     var v_bounds = new L.LatLngBounds(v_loc1, v_loc2);
+    
+	
+//     //console.log("el tipo osm: ", p_tipo_osm);
+    
+//     if(v_feature){
+//     	v_mapa.removeLayer(v_feature);
+//     }
+//     if(p_tipo_osm == "node") {
+// 	    //feature = L.circle( loc1, 25, {color: 'green', fill: false}).addTo(v_mapa);
+// 	    v_mapa.fitBounds(v_bounds);
+// 	    v_mapa.setZoom(18);
+//     }else{
+//          var v_loc3 = new L.LatLng(p_lat1, p_lng2);
+//          var v_loc4 = new L.LatLng(p_lat2, p_lng1);
+
+//          v_feature = L.polyline( [v_loc1, v_loc4, v_loc2, v_loc3, v_loc1], {
+// 		     color: 'red'
+// 	     }).addTo(v_mapa);	
+// 	     v_mapa.fitBounds(v_bounds);
+//     }
+//     v_marcador_evento = new L.marker(v_loc1, {
+// 		id: 'evento', 
+// 	    draggable:'true'
+// 	});
+//     v_mapa.addLayer(v_marcador_evento);
+// }
+
+
+/////////////////////////
+// Internal functions.
+/////////////////////////
+
+//
 // To capitalize.
 const capitalize = (s) => {
     if (typeof s !== 'string')

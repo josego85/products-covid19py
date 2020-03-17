@@ -22,30 +22,15 @@
     <script src="assets/js/libs/leaflet/plugins/Leaflet.markercluster/leaflet.markercluster.js" type="text/javascript" charset="utf-8"></script>
     <script src="assets/js/libs/jquery/jquery-3.4.1.min.js" type="text/javascript" charset="utf-8"></script>
     <script src="assets/js/libs/bootstrap-4.4.1-dist/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="assets/js/Constants.js" type="text/javascript" charset="utf-8"></script>
+    <script src="assets/js/Utilities.js" type="text/javascript" charset="utf-8"></script>
     <script src="assets/js/onLoadScripts.js" type="text/javascript" charset="utf-8"></script>
-    <script src="assets/js/mapOSM.js" type="text/javascript" charset="utf-8"></script>
+    <script src="assets/js/Map.js" type="text/javascript" charset="utf-8"></script>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-        <div class="container">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Inicio
-                        <span class="sr-only">(current)</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#map">Mapa</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <!-- Menu -->
+    <?php include "menu.php"; ?>
+    
     <!-- Jumbotron Header -->
     <header class="jumbotron my-4">
         <h1 class="display-3">Productos para el consumo contra el COVID19 - Paraguay!</h1>
@@ -62,24 +47,7 @@
     </div>
 
     </br>
-    </br>
-    
     <!-- Footer -->
-    <footer class="py-5 bg-dark">
-        <div class="container">
-            <p class="m-0 text-center text-white">Copyright &copy; Proyectos Beta 2020</p>
-            <p class="m-0 text-center text-white"><a href="https://github.com/josego85/products_covid19py" target="_blank">Git Hub</a></p>
-        </div>
-        <!-- /.container -->
-        <!-- Global site tag (gtag.js) - Google Analytics -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-0YZGC18DPE"></script>
-        <!-- <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-
-            gtag('config', 'G-0YZGC18DPE');
-        </script> -->
-    </footer>
+    <?php include "footer.php"; ?>
 </body>
 </html>
