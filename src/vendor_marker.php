@@ -40,7 +40,7 @@
     </header>
     
     <div class="container">
-        <form role="form" action="eventos/agregarEvento" method='post'>
+        <form role="form" action="http://api-products-covid19py/api/vendor" method='post'>
         <div class="form-group">
                 <label>Mail
                     <span>(*)</span>
@@ -59,7 +59,7 @@
                 </label>
                 <input class="form-control" type="text" placeholder="Ingrese aqu&iacute; el apellido del vendedor" name="vendor_last_name" value="" id="vendor_last_name" size="25" />
             </div>
-            <div class="form-group">
+            <!-- <div class="form-group">
                 <label>Latitud
                     <span>*</span>
                 </label>
@@ -70,7 +70,7 @@
                     <span>*</span>
                 </label>
                 <input class="form-control" type="text" name="evento_longitud" id="evento_longitud" value="" placeholder="click en el Mapa"/>
-            </div>
+            </div> -->
             <input class="btn btn-primary" type="submit" name="submit" value="Enviar" />
        </form>
     </div>
