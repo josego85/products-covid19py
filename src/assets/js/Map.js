@@ -183,7 +183,7 @@ function onEachFeature(p_feature, p_layer)
         {
             var value = p_feature.properties[propertie];
 
-            if(value != null && value.trim() !== "")
+            if(value && (value != null || value.trim() !== ""))
             {
                 if (propertie === 'website')
                 {
@@ -197,6 +197,22 @@ function onEachFeature(p_feature, p_layer)
                     {
                         v_popupString += '<b>' + capitalize(propertie) + '</b>: ' + value + '<br />';
                     }
+                }
+                else if (propertie === 'productos')
+                {
+                    var product_name;
+                    var product_type;
+                    var product = '<ul>';
+
+                    for (var index in value)
+                    {
+                        product_name = value[index]['product_name'];
+                        product_type = value[index]['product_type'];
+                        product += '<li>' + capitalize(product_name) + ' (' + product_type + ')</li>';
+                       
+                    }
+                    product += '</ul>';
+                    v_popupString += '<b>' + capitalize(propertie) + '</b>: ' + product + '<br />';
                 }
                 else
                 {
