@@ -80,7 +80,6 @@ Map.prototype.get_vendors = function() {
             onEachFeature: onEachFeature,
             pointToLayer: function(feature, latlng)
             {
-                var sex = feature.properties.sex;
                 var icon = iconVendor;
 
                 return L.marker(latlng,

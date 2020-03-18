@@ -2,36 +2,30 @@ var map = null;
 var action = null;
 
 /**
- * GeoLocalizacion por html5.
+ * Method localization by html5.
  * @method localization
+ * @param p_action
  * @returns void
  */
 function localization(p_action){
 	action = p_action;
 	
-	/**
-	 * OBS:
-	 * - Iceweasel 27.0.1 en Debian Wheezy NO funciona la GeoLocalizacion del html5.
-	 * - Mozilla Firefox en Windows si funciona la GeoLocaclizacion del html5.
-	 */
-    // if (navigator.geolocation)
-    // {
-    //     navigator.geolocation.getCurrentPosition(getCoordinates, errores,
-    //     {
-   	//  		enableHighAccuracy: true, 
-   	//  		maximumAge: 30000, 
-   	//  		timeout: 27000
-   	//  	});
-    // }
-    // else
-    // {
-    // 	defaultPosition();
-    // }
-    defaultPosition();
+    if (navigator.geolocation)
+    {
+        navigator.geolocation.getCurrentPosition(getCoordinates, errors, {
+			enableHighAccuracy: true,
+			timeout: 2000,
+			maximumAge: 0
+		});
+    }
+    else
+    {
+    	defaultPosition();
+    }
 }
 
 /**
- * Metodo que obtiene las coordenadas actuales por medio de la geolocalizacion.
+ * Method that obtains the current coordinates by means of geolocation.
  * @method getCoordinates
  * @param p_position
  * @returns void
@@ -39,22 +33,22 @@ function localization(p_action){
 function getCoordinates (p_position)
 {
     var coordinates = new Array();
-    
-    coordinates['lng']  = p_position.coords.lng;;
-	coordinates['lat'] = p_position.coords.lat;;
-    
-    load_map(coordinates);
+    coordinates['lng']  = p_position.coords.longitude;
+	coordinates['lat'] = p_position.coords.latitude;
+	
+	var zoom = 12;
+
+    load_map(coordinates, zoom);
 }
 
 /**
- * Metodo errores, sea el codigo de error que salga, va a cargar por defecto coordenadas (latitud y longitud) de USA.
- * @method errores
+ * Method errors, be the error code that comes out, will default to load coordinates (latitude and longitude).
+ * @method errors
  * @param error
  * @returns void
  */
-function errores (error)
+function errors (error)
 {
-	/*
 	switch(error.code){
     	case error.PERMISSION_DENIED:
     		alert("User denied the request for Geolocation.");
@@ -69,12 +63,11 @@ function errores (error)
     		alert("An unknown error occurred.");
     		break;
     }
-    */
     defaultPosition();
 }	
 
 /**
- * Metodo que posiciona por defecto Asuncion - Paraguay.
+ * Method that positions Asuncion - Paraguay by default.
  * @method defaultPosition
  * @returns void
  */ 
@@ -83,25 +76,32 @@ function defaultPosition ()
     // Asuncion - Paraguay.
     var lng = -57.6309129;
 	var lat = -25.2961407;
-    var coordinates = new Array();
+	var coordinates = new Array();
+	var zoom = 6;
    
     coordinates['lng']  = lng;
     coordinates['lat'] = lat;
     
-	load_map(coordinates);
+	load_map(coordinates, zoom);
 }
 
-//
-function load_map (p_coordinates)
+/**
+ * Method that loads the map.
+ * @method load_map
+ * @param p_coordinates
+ * @param p_zoom
+ * @returns void
+ */
+function load_map (p_coordinates, p_zoom)
 {
     switch (action)
     {
 	    case 'marker':
-	    	map = new Map('', p_coordinates, 6);
+	    	map = new Map('', p_coordinates, p_zoom);
             break;
         case 'list':
         case 'default':
-            map = new Map('', p_coordinates, 6);
+            map = new Map('', p_coordinates, p_zoom);
             map.get_vendors();
             break;
 	}
