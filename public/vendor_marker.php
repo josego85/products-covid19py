@@ -41,23 +41,52 @@
     
     <div class="container">
         <form role="form" action="http://api-products-covid19py/api/vendor" method='post'>
-        <div class="form-group">
+            <div class="form-group">
                 <label>Mail
                     <span>(*)</span>
                 </label>
-                <input class="form-control" type="text" placeholder="Ingrese aqu&iacute; tu mail" name="user_email" value="" id="user_email" size="25" />
+                <input class="form-control" type="text" placeholder="Ingrese aqu&iacute; tu mail" value="" name="user_email" size="25" />
             </div>
             <div class="form-group">
                 <label>Nombre
                     <span>(opcional)</span>
                 </label>
-                <input class="form-control" type="text" placeholder="Ingrese aqu&iacute; el nombre del vendedor" name="vendor_name" value="" id="vendor_name" size="25" />
+                <input class="form-control" type="text" placeholder="Ingrese aqu&iacute; el nombre del vendedor" name="vendor_name" value="" size="25" />
             </div>
             <div class="form-group">
                 <label>Apellido
                     <span>(opcional)</span>
                 </label>
-                <input class="form-control" type="text" placeholder="Ingrese aqu&iacute; el apellido del vendedor" name="vendor_last_name" value="" id="vendor_last_name" size="25" />
+                <input class="form-control" type="text" placeholder="Ingrese aqu&iacute; el apellido del vendedor" name="vendor_last_name" value="" size="25" />
+            </div>
+            <div class="form-group">
+                <label>Productos</label>
+                <div class="row-fluid">
+                    <div class="span3">
+                        <label><input type="checkbox" name="gel_alcohol" value="gel_alcohol"> Gel a base de alcohol</label>
+                    </div>
+                    <div class="span3">
+                        <label><input type="checkbox" name="alcohol_rectificado" value="alcohol_rectificado"> Alcohol rectificado</label>
+                    </div>
+                    <div class="span3">
+                        <label><input type="checkbox" name="hipoclorito_sodio" value="hipoclorito_sodio"> Lavandina (hipoclorito de sodio)</label>
+                    </div>
+                    <div class="span3">
+                        <label><input type="checkbox" name="tapaboca" value="tapaboca"> Tapaboca</label>
+                    </div>
+                    <div class="span3">
+                        <label><input type="checkbox" name="papel" value="papel"> Papel</label>
+                    </div>
+                    <div class="span3">
+                        <label><input type="checkbox" name="toalla" value="toalla"> Toalla</label>
+                    </div>
+                    <div class="span3">
+                        <label><input type="checkbox" name="jabon_coco" value="jabon_coco"> Jab&oacute;n de coco</label>
+                    </div>
+                    <div class="span3">
+                        <label><input type="checkbox" name="guantes" value="guantes"> Guantes</label>
+                    </div>
+                </div>
             </div>
             <div>
                 <div id="map">

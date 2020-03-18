@@ -36,7 +36,7 @@ function getCoordinates (p_position)
     coordinates['lng']  = p_position.coords.longitude;
 	coordinates['lat'] = p_position.coords.latitude;
 	
-	var zoom = 17;
+	var zoom = 6;
 
     load_map(coordinates, zoom);
 }
