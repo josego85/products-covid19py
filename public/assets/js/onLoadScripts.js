@@ -1,5 +1,6 @@
 window.onload = function()
 {
-    localization('list');
-    //localization('marker');
+    var action = document.getElementById("loadMap").getAttribute("data-name");
+
+    localization(action);
 };

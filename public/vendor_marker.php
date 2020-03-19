@@ -24,7 +24,7 @@
     <script src="assets/js/libs/bootstrap-4.4.1-dist/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
     <script src="assets/js/Constants.js" type="text/javascript" charset="utf-8"></script>
     <script src="assets/js/Utilities.js" type="text/javascript" charset="utf-8"></script>
-    <script src="assets/js/onLoadScripts.js" type="text/javascript" charset="utf-8"></script>
+    <script id="loadMap" data-name="marker" src="assets/js/onLoadScripts.js" type="text/javascript" charset="utf-8"></script>
     <script src="assets/js/Map.js" type="text/javascript" charset="utf-8"></script>
 </head>
 <body>
