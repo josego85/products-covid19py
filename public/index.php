@@ -1,7 +1,7 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <link rel="SHORTCUT ICON" href="resources/img/favicon.ico">
+    <link rel="SHORTCUT ICON" href="assets/img/favicon.ico">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -33,21 +33,24 @@
     
     <!-- Jumbotron Header -->
     <header class="jumbotron my-4">
-        <h1 class="display-3">Productos para el consumo contra el COVID19 - Paraguay!</h1>
+        <h2 class="display-5">Productos para el consumo contra el COVID19 - Paraguay!</h2>
         <p class="lead">
-            Sitio para ubicar vendedores que venden productos COVID19 del Paraguay.
+            Sitio para ubicar vendedores que venden productos COVID19 en el terrirorio paraguyao y poder
+            contactarlos.
             <!-- <br/>
             Si quieres darte de alta haz click en este formulario. -->
         </p>
     </header>
-    
+
+    <?php include "searcher.php"; ?>
+
     <div id="map">
         <div class="title-section">Mapa</div>
         <div id='map-container' style="height: 600px; border: 1px solid #AAA;"></divdiv>
     </div>
 
     </br>
-    <!-- Footer -->
+
     <?php include "footer.php"; ?>
 </body>
 </html>
