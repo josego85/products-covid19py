@@ -1,5 +1,6 @@
 // var v_feature = null;
 // var v_marcador_evento = null;
+var cluster_markers = null;
 
 // Class Map.
 
@@ -53,7 +54,6 @@ Map.prototype.get_vendors = function() {
 	var map = this.map;
 	
 	this.geojsonLayer = new L.GeoJSON();
-    v_geojsonLayer = this.geojsonLayer;
 
 	var v_geo_json_url = HOSTNAME + "api/vendors";
 	var urlIcon = L.Icon.Default.imagePath = "assets/img/";
@@ -89,37 +89,40 @@ Map.prototype.get_vendors = function() {
 			}
         });
         // Add makers cluster.
-        var cluster_markers = L.markerClusterGroup();
+        //var cluster_markers = L.markerClusterGroup();
+        cluster_markers = L.markerClusterGroup();
         cluster_markers.addLayer(layer_vendors);
         map.addLayer(cluster_markers);
     });
 };
 
-// Map.prototype.filtrar_eventos = function(){
-// 	// Obtener atributos de la clase.
-// 	var v_mapa = this.mapa;
-// 	//v_geojsonLayer = this.geojsonLayer;
-	
-// 	// Obtiene la referencia del cluster marcadores.
-// 	var v_cluster_marcadores = this.cluster_marcadores;
-	
-//     var v_date_timepicker_desde = document.getElementById("date_timepicker_desde");
-//     var v_date_timepicker_hasta = document.getElementById("date_timepicker_hasta");
-
-
-//     // Elminar los valores antiguos.
-//     v_cluster_marcadores.clearLayers();
+Map.prototype.products_filter = function (p_products_filter)
+{
+    var map = this.map;
+    var product;
+    var product_array = [];
+    var index;
+    for (index in p_products_filter)
+    {
+        product = p_products_filter[index].value;
+        product_array.push(product);
+    }
     
-//     $.getJSON(HOSTNAME + 'eventos/filtrarEventos?date_timepicker_desde=' + v_date_timepicker_desde.value
-//     		+ '&date_timepicker_hasta=' + v_date_timepicker_hasta.value, function(p_data) {
-//     	v_geojsonLayer = L.geoJson(p_data, {
-//     		onEachFeature: onEachFeature
-//     	});
-    	
-//     	v_cluster_marcadores.addLayer(v_geojsonLayer); 				// Agrega al Cluster group.
-//     	v_mapa.addLayer(v_cluster_marcadores);						// Agrega al mapa.
-//     });
-// }
+    // Search cluster_markers
+
+    cluster_markers.clearLayers();
+
+    var products = JSON.stringify(product_array);
+    var url = HOSTNAME + "api/vendors?products=" + products;
+
+    $.getJSON(url, function(p_data) {
+    	var geojsonLayer = L.geoJson(p_data, {
+    		onEachFeature: onEachFeature
+        });
+        cluster_markers.addLayer(geojsonLayer);
+        map.addLayer(cluster_markers);	
+    });
+}
 
 // Map.prototype.marcar = function(p_lat1, p_lng1, p_lat2, p_lng2, p_tipo_osm){
 // 	// Obtener atributos de la clase.
@@ -253,4 +256,9 @@ function onEachFeature(p_feature, p_layer)
         v_popupString += '</div>';
         p_layer.bindPopup(v_popupString);
     }
+
+    // function getLayer ()
+    // {
+
+    // }
 }

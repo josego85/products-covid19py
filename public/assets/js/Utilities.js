@@ -107,10 +107,12 @@ function load_map (p_coordinates, p_zoom)
 	}
 }
 
-// //
-// function filtrar(){
-// 	v_mapa.filtrar_eventos();
-// }
+//
+function products_filter ()
+{
+    var products_filter = $("[name='form_searcher']").serializeArray()
+    map.products_filter(products_filter);
+}
 
 // //
 // function direccion_buscador() {
