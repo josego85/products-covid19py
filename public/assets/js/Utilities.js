@@ -32,11 +32,11 @@ function localization(p_action){
  */
 function getCoordinates (p_position)
 {
-    var coordinates = new Array();
+    let coordinates = new Array();
     coordinates['lng']  = p_position.coords.longitude;
 	coordinates['lat'] = p_position.coords.latitude;
 	
-	var zoom = 6;
+	let zoom = 6;
 
     load_map(coordinates, zoom);
 }
@@ -73,10 +73,10 @@ function errors (error)
  */ 
 function defaultPosition ()
 {
-    var lng = DEFAULT_LNG;
-	var lat = DEFAULT_LAT;
-	var coordinates = new Array();
-	var zoom = 6;
+    let lng = DEFAULT_LNG;
+	let lat = DEFAULT_LAT;
+	let coordinates = new Array();
+	let zoom = 6;
    
     coordinates['lng']  = lng;
     coordinates['lat'] = lat;
@@ -97,7 +97,7 @@ function load_map (p_coordinates, p_zoom)
     {
 	    case 'marker':
 			map = new Map(p_coordinates, p_zoom);
-			map.marker_point(p_zoom);
+            map.marker_point(p_zoom);
             break;
         case 'list':
         case 'default':
@@ -110,7 +110,7 @@ function load_map (p_coordinates, p_zoom)
 //
 function products_filter ()
 {
-    var products_filter = $("[name='form_searcher']").serializeArray()
+    let products_filter = $("[name='form_searcher']").serializeArray()
     map.products_filter(products_filter);
 }
 

@@ -9,15 +9,16 @@
 
 <link rel="stylesheet" href="assets/js/libs/leaflet/leaflet.css" charset="utf-8" />
 <link rel="stylesheet" href="assets/js/libs/leaflet/plugins/Leaflet.fullscreen/leaflet.fullscreen.css" charset="utf-8" />
-<link rel="stylesheet" href="assets/js/libs/leaflet/plugins/Leaflet.markercluster/MarkerCluster.css" />
-<link rel="stylesheet" href="assets/js/libs/leaflet/plugins/Leaflet.markercluster/MarkerCluster.Default.css" />
+<link rel="stylesheet" href="assets/js/libs/leaflet/plugins/Leaflet.markercluster/MarkerCluster.css" charset="utf-8" />
+<link rel="stylesheet" href="assets/js/libs/leaflet/plugins/Leaflet.markercluster/MarkerCluster.Default.css" charset="utf-8" />
+<link rel="stylesheet" href="assets/js/libs/leaflet/plugins/Leaflet-control-geocoder/Control.Geocoder.css" />
 <link rel="stylesheet" href="assets/js/libs//bootstrap-4.4.1-dist/css/bootstrap.min.css" media="screen" charset="utf-8" />
 <link rel="stylesheet" href="assets/css/styles.css" charset="utf-8" />
 
-<script src="assets/js/libs/leaflet/leaflet.js" type="text/javascript" charset="utf-8"></script>
+<script src="assets/js/libs/leaflet/leaflet.js" type="text/javascript" ></script>
 <script src="assets/js/libs/leaflet/plugins/Leaflet.fullscreen/Leaflet.fullscreen.min.js" type="text/javascript" charset="utf-8"></script>
-<script src="assets/js/libs/leaflet/plugins/Tile.Stamen/tile.stamen.js" type="text/javascript" charset="utf-8"></script>
 <script src="assets/js/libs/leaflet/plugins/Leaflet.markercluster/leaflet.markercluster.js" type="text/javascript" charset="utf-8"></script>
+<script src="assets/js/libs/leaflet/plugins/Leaflet-control-geocoder/Control.Geocoder.js"></script>
 <script src="assets/js/libs/jquery/jquery-3.4.1.min.js" type="text/javascript" charset="utf-8"></script>
 <script src="assets/js/libs/bootstrap-4.4.1-dist/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
 <script src="assets/js/Constants.js" type="text/javascript" charset="utf-8"></script>

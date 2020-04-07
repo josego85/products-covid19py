@@ -1,5 +1,4 @@
-// var v_feature = null;
-// var v_marcador_evento = null;
+var marker_point = null;
 var cluster_markers = null;
 
 // Class Map.
@@ -10,10 +9,10 @@ function Map (p_coordinates, p_zoom) {
     this.coordinates = p_coordinates;
     this.zoom = p_zoom;
 
-    var lng = p_coordinates['lng'];
-    var lat = p_coordinates['lat'];
-    var minZoom = 6;
-    var maxZoom = 20;
+    let lng = p_coordinates['lng'];
+    let lat = p_coordinates['lat'];
+    let minZoom = 6;
+    let maxZoom = 20;
 
     map = new L.map('map-container',
     {
@@ -33,7 +32,7 @@ function Map (p_coordinates, p_zoom) {
     //map.setMaxBounds([[-90, -180], [90, 180]]);
 
     // Humanitarian Style.
-	var url = 'https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png';
+	let url = 'https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png';
     L.tileLayer(url,
     {
         minZoom: minZoom,
@@ -51,13 +50,13 @@ function Map (p_coordinates, p_zoom) {
 
 //
 Map.prototype.get_vendors = function() {
-	var map = this.map;
+	let map = this.map;
 	
 	this.geojsonLayer = new L.GeoJSON();
 
-	var v_geo_json_url = HOSTNAME + "api/vendors";
-	var urlIcon = L.Icon.Default.imagePath = "assets/img/";
-    var leafIcon = L.Icon.extend(
+	let v_geo_json_url = HOSTNAME + "api/vendors";
+	let urlIcon = L.Icon.Default.imagePath = "assets/img/";
+    let leafIcon = L.Icon.extend(
     {
         options:
         {
@@ -66,12 +65,13 @@ Map.prototype.get_vendors = function() {
             popupAnchor: [-16, -28]
         }
     });
-    var iconVendor = new leafIcon(
+    let iconVendor = new leafIcon(
     {
         iconUrl: urlIcon + 'vendor_32.png'
     });
     
-    var layer_vendors;
+    let layer_vendors;
+
     $.getJSON(v_geo_json_url, function(data_vendors)
     {
         layer_vendors = L.geoJson(data_vendors,
@@ -98,10 +98,10 @@ Map.prototype.get_vendors = function() {
 
 Map.prototype.products_filter = function (p_products_filter)
 {
-    var map = this.map;
-    var product;
-    var product_array = [];
-    var index;
+    let map = this.map;
+    let product;
+    let product_array = [];
+    let index;
 
     for (index in p_products_filter)
     {
@@ -113,11 +113,11 @@ Map.prototype.products_filter = function (p_products_filter)
 
     cluster_markers.clearLayers();
 
-    var products = JSON.stringify(product_array);
-    var url = HOSTNAME + "api/vendors?products=" + products;
+    let products = JSON.stringify(product_array);
+    let url = HOSTNAME + "api/vendors?products=" + products;
 
     $.getJSON(url, function(p_data) {
-    	var geojsonLayer = L.geoJson(p_data, {
+    	let geojsonLayer = L.geoJson(p_data, {
     		onEachFeature: onEachFeature
         });
         cluster_markers.addLayer(geojsonLayer);
@@ -161,11 +161,11 @@ Map.prototype.products_filter = function (p_products_filter)
 
 Map.prototype.marker_point = function(p_zoom)
 {
-    var map = this.map;
-    var marker_point = null;
+    let map = this.map;
+    marker_point = null;
 
-    var lng = DEFAULT_LNG;
-    var lat = DEFAULT_LAT;
+    let lng = DEFAULT_LNG;
+    let lat = DEFAULT_LAT;
 	
     marker_point = new L.marker([lat,lng], {
 		id: 'vendor', 
@@ -175,11 +175,11 @@ Map.prototype.marker_point = function(p_zoom)
     map.setView([lat, lng], p_zoom);
 
     marker_point.on("dragend", function(e) {
-        var marker = e.target;
-        var position = marker.getLatLng();
-        var lat = position.lat;
-        var lng = position.lng;
-        var lat_lng = new L.LatLng(lat, lng);
+        let marker = e.target;
+        let position = marker.getLatLng();
+        let lat = position.lat;
+        let lng = position.lng;
+        let lat_lng = new L.LatLng(lat, lng);
 
         marker.setLatLng(lat_lng,
         {
@@ -190,6 +190,8 @@ Map.prototype.marker_point = function(p_zoom)
         document.getElementById('vendor_lat').value = lat;
         document.getElementById('vendor_lng').value = lng;
     });
+
+    addSearcher(map);
 }
 
 /////////////////////////
@@ -211,11 +213,12 @@ function onEachFeature(p_feature, p_layer)
 {
     if (p_feature.properties)
     {
-        var v_popupString = '<div class="popup">';
+        let v_popupString = '<div class="popup">';
+        let propertie;
 
-        for (var propertie in p_feature.properties)
+        for (propertie in p_feature.properties)
         {
-            var value = p_feature.properties[propertie];
+            let value = p_feature.properties[propertie];
 
             if(value && (value != null || value.trim() !== ""))
             {
@@ -234,11 +237,12 @@ function onEachFeature(p_feature, p_layer)
                 }
                 else if (propertie === 'productos')
                 {
-                    var product_name;
-                    var product_type;
-                    var product = '<ul>';
+                    let product_name;
+                    let product_type;
+                    let product = '<ul>';
+                    let index;
 
-                    for (var index in value)
+                    for (index in value)
                     {
                         product_name = value[index]['product_name'];
                         product_type = value[index]['product_type'];
@@ -257,35 +261,32 @@ function onEachFeature(p_feature, p_layer)
         v_popupString += '</div>';
         p_layer.bindPopup(v_popupString);
     }
+}
 
-    function addSearcher ()
+function addSearcher (map)
+{
+    let geocoder_options =
     {
-        var geocoder_options = {
-            geocodingQueryParams: {
-                countrycodes: 'PY'
-            }
-        };
-        var geocoder = L.Control.Geocoder.nominatim(geocoder_options);
-        var control_geocoder = L.Control.geocoder(
+        geocodingQueryParams:
         {
-            defaultMarkGeocode: false,
-            position: 'topleft',
-            query: 'Pilar',
-            placeholder: 'Buscar ...',
-            geocoder: geocoder
-        })
-        .on('markgeocode', function (e)
-        {
-            var center = e.geocode.center;
-    
-            marcador.setLatLng(center);
-            map.setView(center, 18);
-        })
-        .addTo(map); 
-    }
+            countrycodes: 'PY'
+        }
+    };
+    let geocoder = L.Control.Geocoder.nominatim(geocoder_options);
+    let control_geocoder = L.Control.geocoder(
+    {
+        defaultMarkGeocode: false,
+        position: 'topleft',
+        query: 'Pilar',
+        placeholder: 'Buscar ...',
+        geocoder: geocoder
+    })
+    .on('markgeocode', function (e)
+    {
+        var center = e.geocode.center;
 
-    // function getLayer ()
-    // {
-
-    // }
+        marker_point.setLatLng(center);
+        map.setView(center, 18);
+    })
+    .addTo(map); 
 }
