@@ -102,6 +102,7 @@ Map.prototype.products_filter = function (p_products_filter)
     var product;
     var product_array = [];
     var index;
+
     for (index in p_products_filter)
     {
         product = p_products_filter[index].value;
@@ -241,7 +242,7 @@ function onEachFeature(p_feature, p_layer)
                     {
                         product_name = value[index]['product_name'];
                         product_type = value[index]['product_type'];
-                        product += '<li>' + capitalize(product_name) + ' (' + product_type + ')</li>';
+                        product += '<li>' + capitalize(product_name) + '</li>';
                        
                     }
                     product += '</ul>';
@@ -255,6 +256,32 @@ function onEachFeature(p_feature, p_layer)
         }
         v_popupString += '</div>';
         p_layer.bindPopup(v_popupString);
+    }
+
+    function addSearcher ()
+    {
+        var geocoder_options = {
+            geocodingQueryParams: {
+                countrycodes: 'PY'
+            }
+        };
+        var geocoder = L.Control.Geocoder.nominatim(geocoder_options);
+        var control_geocoder = L.Control.geocoder(
+        {
+            defaultMarkGeocode: false,
+            position: 'topleft',
+            query: 'Pilar',
+            placeholder: 'Buscar ...',
+            geocoder: geocoder
+        })
+        .on('markgeocode', function (e)
+        {
+            var center = e.geocode.center;
+    
+            marcador.setLatLng(center);
+            map.setView(center, 18);
+        })
+        .addTo(map); 
     }
 
     // function getLayer ()

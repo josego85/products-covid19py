@@ -11,9 +11,9 @@
     
     <!-- Jumbotron Header -->
     <header class="jumbotron my-4">
-        <h2 class="display-5">Dar de alta productos</h2>
+        <h2 class="display-5">Dar de alta productos de la cuarentena 2020</h2>
         <p class="lead">
-            Completa los datos para dar de alta
+            Completa los datos para dar de alta.
         </p>
     </header>
     
@@ -21,7 +21,7 @@
         <form role="form" action="http://api-products-covid19py/api/vendor" method='post'>
             <div class="form-group">
                 <label>Mail
-                    <span>(*)</span>
+                    <span>(opcional)</span>
                 </label>
                 <input class="form-control" type="text" placeholder="Ingrese aqu&iacute; tu mail" value="" name="user_email" size="25" />
             </div>

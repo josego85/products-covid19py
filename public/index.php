@@ -6,20 +6,10 @@
     ?>
 </head>
 <body>
-    <!-- Menu -->
     <?php include "menu.php"; ?>
-    
-    <!-- Jumbotron Header -->
-    <header class="jumbotron my-4">
-        <h2 class="display-5">Productos para el consumo contra el COVID19 - Paraguay!</h2>
-        <p class="lead">
-            Sitio para ubicar vendedores que venden productos COVID19 en el terrirorio paraguyao y poder
-            contactarlos.
-            <!-- <br/>
-            Si quieres darte de alta haz click en este formulario. -->
-        </p>
-    </header>
 
+    <?php include "main_menu.php"; ?>
+    
     <?php include "searcher.php"; ?>
 
     <div id="map">
