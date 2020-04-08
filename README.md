@@ -8,9 +8,8 @@ Tecnologías utilizadas:
 - JavaScript (Leaflet, JQuery, Boostrap)
 - CSS
 - HTML
-- Datos OSM
+- Datos OSM (Nominatim como buscador)
 
 Todo list:
-- Buscador.
 - Formulario de carga.
 - Versión móvil para Android.
