@@ -27,7 +27,7 @@
                 e.preventDefault();
                 $.ajax(
                 {
-                    url: "http://api-products-covid19py/api/vendor",
+                    url: "api/vendor",
                     type: 'POST',
                     data: $('#form').serialize(),
                     success: function (data, text)
