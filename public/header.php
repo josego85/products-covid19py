@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="assets/js/libs/leaflet/plugins/Leaflet.fullscreen/leaflet.fullscreen.css" charset="utf-8" />
 <link rel="stylesheet" href="assets/js/libs/leaflet/plugins/Leaflet.markercluster/MarkerCluster.css" charset="utf-8" />
 <link rel="stylesheet" href="assets/js/libs/leaflet/plugins/Leaflet.markercluster/MarkerCluster.Default.css" charset="utf-8" />
-<link rel="stylesheet" href="assets/js/libs/leaflet/plugins/Leaflet-control-geocoder/Control.Geocoder.css" charset="utf-8" />
+<link rel="stylesheet" href="assets/js/libs/leaflet/plugins/Leaflet-control-geocoder/Control.Geocoder.min.css" charset="utf-8" />
 <link rel="stylesheet" href="assets/js/libs//bootstrap-4.4.1-dist/css/bootstrap.min.css" media="screen" charset="utf-8" />
 <link rel="stylesheet" href="assets/css/styles.css" charset="utf-8" />
 
