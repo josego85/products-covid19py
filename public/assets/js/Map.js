@@ -41,6 +41,13 @@ function Map (p_coordinates, p_zoom) {
           'OpenStreetMap Contributors </a> Tiles \u00a9 HOT'
 	}).addTo(map);
     
+    // let location = L.control.locate(
+    // {
+    //     strings: {
+    //         title: "Estoy aqu&iacute;"
+    //     }
+    // }).addTo(map);
+
     this.map = map;
 }
 
@@ -269,7 +276,8 @@ function addSearcher (map)
     {
         geocodingQueryParams:
         {
-            countrycodes: 'PY'
+            countrycodes: 'PY',
+            limit: 3
         }
     };
     let geocoder = L.Control.Geocoder.nominatim(geocoder_options);

@@ -34,7 +34,7 @@ function getCoordinates (p_position)
 {
     let coordinates = new Array();
     coordinates['lng']  = p_position.coords.longitude;
-	coordinates['lat'] = p_position.coords.latitude;
+	coordinates['lat'] = p_position.coords.latitude + 1.65;     // Add 1.65 to center Paraguay.
 	
 	let zoom = 6;
 

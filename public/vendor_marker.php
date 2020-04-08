@@ -20,10 +20,10 @@
     <div class="container">
         <form role="form" action="http://api-products-covid19py/api/vendor" method='post'>
             <div class="form-group">
-                <label>Mail
+                <label>Email
                     <span>(opcional)</span>
                 </label>
-                <input class="form-control" type="text" placeholder="Ingrese aqu&iacute; tu mail" value="" name="user_email" size="25" />
+                <input class="form-control" type="text" placeholder="Ingrese aqu&iacute; tu email" value="" name="user_email" size="25" />
             </div>
             <div class="form-group">
                 <label>Nombre

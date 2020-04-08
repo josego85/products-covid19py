@@ -14,7 +14,7 @@
 
     <div id="map">
         <div class="title-section">Mapa</div>
-        <div id='map-container' style="height: 600px; border: 1px solid #AAA;"></divdiv>
+        <div id='map-container' style="height: 450px; border: 1px solid #AAA;"></divdiv>
     </div>
 
     </br>
