@@ -13,29 +13,75 @@
     <header class="jumbotron my-4">
         <h2 class="display-5">Dar de alta productos de la cuarentena 2020</h2>
         <p class="lead">
-            Completa los datos para dar de alta.
+            Completa los datos del vendedor para aparecer en el sitio.
         </p>
     </header>
+
+    <script>
+        $(function ()
+        {
+            $('#form').on('submit', function(e)
+            {
+                e.preventDefault();
+                $.ajax(
+                {
+                    url: "http://api-products-covid19py/api/vendor",
+                    type: 'POST', 
+                    data: $('#form').serialize(),
+                    success: function (data, text)
+                    {
+                        let response = JSON.parse(data);
+                        let status = response.status;
+                        let result = data.result;
+
+                        if (status)
+                        {
+                            $('#form').trigger("reset");
+
+                            let success_alert = '<div class="alert alert-success" id="success-alert">' +
+                            '<strong>Vendedor guardado!!!</strong>' +
+                            '</div>';
+                            let go_alert = 'Ya te encontras en el mapa. Ir al <a href=" ' + HOSTNAME + '">mapa</a>';
+                            let msg = success_alert + go_alert;
+
+                            $("#msg").html(msg);
+                        }
+                        else if (!result)
+                        {
+                            let errors = response.errors;
+                            let msg = '<div class="alert alert-danger" id="success-alert">' +
+                            '<strong>Errores: </strong>';
+                            let index;
+                            for (index in errors)
+                            {
+                                msg += '</br>' + errors[index];
+                            }
+                            msg += '</div>';
+                            $("#msg").html(msg);
+                        }
+                    },
+                    error: function (request, status, error)
+                    {
+                        alert(request.responseText);
+                    }
+                });
+            });
+        });
+    </script>
     
     <div class="container">
-        <form role="form" action="http://api-products-covid19py/api/vendor" method='post'>
+        <form id="form" role="form" method='post'>
             <div class="form-group">
                 <label>Email
                     <span>(opcional)</span>
                 </label>
-                <input class="form-control" type="text" placeholder="Ingrese aqu&iacute; tu email" value="" name="user_email" size="25" />
+                <input class="form-control" type="text" placeholder="Ingrese aqu&iacute; el email del vendedor" value="" name="user_email" size="25" />
             </div>
             <div class="form-group">
-                <label>Nombre
+                <label>Nombre y apellido
                     <span>(opcional)</span>
                 </label>
-                <input class="form-control" type="text" placeholder="Ingrese aqu&iacute; el nombre del vendedor" name="vendor_name" value="" size="25" />
-            </div>
-            <div class="form-group">
-                <label>Apellido
-                    <span>(opcional)</span>
-                </label>
-                <input class="form-control" type="text" placeholder="Ingrese aqu&iacute; el apellido del vendedor" name="vendor_last_name" value="" size="25" />
+                <input class="form-control" type="text" placeholder="Ingrese aqu&iacute; el nombre y apellido del vendedor" name="vendor_full_name" value="" size="25" />
             </div>
             <div class="form-group">
                 <label>Productos</label>
@@ -54,6 +100,8 @@
             </div>
             <input class="btn btn-primary" type="submit" name="submit" value="Enviar" />
        </form>
+       <div id="msg">
+       </div>
     </div>
     
     <div>

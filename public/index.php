@@ -8,7 +8,9 @@
 <body>
     <?php include "menu.php"; ?>
 
-    <?php include "main_menu.php"; ?>
+    <?php
+        include "main_menu.php";
+    ?>
     
     <?php include "searcher.php"; ?>
 
