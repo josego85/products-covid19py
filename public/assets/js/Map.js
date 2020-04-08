@@ -40,13 +40,6 @@ function Map (p_coordinates, p_zoom) {
 		attribution: 'Data \u00a9 <a href="http://www.openstreetmap.org/copyright">' +
           'OpenStreetMap Contributors </a> Tiles \u00a9 HOT'
 	}).addTo(map);
-    
-    // let location = L.control.locate(
-    // {
-    //     strings: {
-    //         title: "Estoy aqu&iacute;"
-    //     }
-    // }).addTo(map);
 
     this.map = map;
 }
