@@ -125,45 +125,9 @@ Map.prototype.products_filter = function (p_products_filter)
     });
 }
 
-// Map.prototype.marcar = function(p_lat1, p_lng1, p_lat2, p_lng2, p_tipo_osm){
-// 	// Obtener atributos de la clase.
-// 	var v_mapa = this.mapa;
-	
-// 	var v_loc1 = new L.LatLng(p_lat1, p_lng1);
-//     var v_loc2 = new L.LatLng(p_lat2, p_lng2);
-//     var v_bounds = new L.LatLngBounds(v_loc1, v_loc2);
-    
-	
-//     //console.log("el tipo osm: ", p_tipo_osm);
-    
-//     if(v_feature){
-//     	v_mapa.removeLayer(v_feature);
-//     }
-//     if(p_tipo_osm == "node") {
-// 	    //feature = L.circle( loc1, 25, {color: 'green', fill: false}).addTo(v_mapa);
-// 	    v_mapa.fitBounds(v_bounds);
-// 	    v_mapa.setZoom(18);
-//     }else{
-//          var v_loc3 = new L.LatLng(p_lat1, p_lng2);
-//          var v_loc4 = new L.LatLng(p_lat2, p_lng1);
-
-//          v_feature = L.polyline( [v_loc1, v_loc4, v_loc2, v_loc3, v_loc1], {
-// 		     color: 'red'
-// 	     }).addTo(v_mapa);	
-// 	     v_mapa.fitBounds(v_bounds);
-//     }
-//     v_marcador_evento = new L.marker(v_loc1, {
-// 		id: 'evento', 
-// 	    draggable:'true'
-// 	});
-//     v_mapa.addLayer(v_marcador_evento);
-// }
-
 Map.prototype.marker_point = function(p_zoom)
 {
     let map = this.map;
-    marker_point = null;
-
     let lng = DEFAULT_LNG;
     let lat = DEFAULT_LAT;
 	
@@ -274,7 +238,7 @@ function addSearcher (map)
         }
     };
     let geocoder = L.Control.Geocoder.nominatim(geocoder_options);
-    let control_geocoder = L.Control.geocoder(
+    L.Control.geocoder(
     {
         defaultMarkGeocode: false,
         position: 'topleft',
