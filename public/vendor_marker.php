@@ -14,6 +14,8 @@
         <h2 class="display-5">Dar de alta productos de la cuarentena 2020</h2>
         <p class="lead">
             Completa los datos del vendedor para aparecer en el sitio.
+            </br>
+            En caso de no encontrarse su producto, contactarse a <strong>productospy@gmail.com</strong>
         </p>
     </header>
 
@@ -82,6 +84,12 @@
                     <span>(opcional)</span>
                 </label>
                 <input class="form-control" type="text" placeholder="Ingrese aqu&iacute; el nombre y apellido del vendedor" name="user_full_name" value="" size="25" />
+            </div>
+            <div class="form-group">
+                <label>N&uacute;mero de contacto
+                    <span>(opcional)</span>
+                </label>
+                <input class="form-control" type="text" placeholder="Ingrese aqu&iacute; el n&uacute;mero de contacto del vendedor" name="user_phone" value="" size="25" />
             </div>
             <div class="form-group">
                 <label>Productos</label>
