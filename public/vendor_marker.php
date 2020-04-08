@@ -26,7 +26,7 @@
                 $.ajax(
                 {
                     url: "http://api-products-covid19py/api/vendor",
-                    type: 'POST', 
+                    type: 'POST',
                     data: $('#form').serialize(),
                     success: function (data, text)
                     {
@@ -50,7 +50,7 @@
                         {
                             let errors = response.errors;
                             let msg = '<div class="alert alert-danger" id="success-alert">' +
-                            '<strong>Errores: </strong>';
+                              '<strong>Errores: </strong>';
                             let index;
                             for (index in errors)
                             {
@@ -81,7 +81,7 @@
                 <label>Nombre y apellido
                     <span>(opcional)</span>
                 </label>
-                <input class="form-control" type="text" placeholder="Ingrese aqu&iacute; el nombre y apellido del vendedor" name="vendor_full_name" value="" size="25" />
+                <input class="form-control" type="text" placeholder="Ingrese aqu&iacute; el nombre y apellido del vendedor" name="user_full_name" value="" size="25" />
             </div>
             <div class="form-group">
                 <label>Productos</label>
@@ -93,10 +93,10 @@
                 </div>
             </div>
             <div class="form-group">
-                <input class="form-control" type="hidden" name="vendor_lat" id="vendor_lat" value="" placeholder="click en el mapa"/>
+                <input class="form-control" type="hidden" name="user_lat" id="user_lat" value="" placeholder="click en el mapa"/>
             </div>
             <div class="form-group">
-                <input class="form-control" type="hidden" name="vendor_lng" id="vendor_lng" value="" placeholder="click en el mapa"/>
+                <input class="form-control" type="hidden" name="user_lng" id="user_lng" value="" placeholder="click en el mapa"/>
             </div>
             <input class="btn btn-primary" type="submit" name="submit" value="Enviar" />
        </form>

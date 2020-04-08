@@ -88,8 +88,6 @@ Map.prototype.get_vendors = function() {
                 });
 			}
         });
-        // Add makers cluster.
-        //var cluster_markers = L.markerClusterGroup();
         cluster_markers = L.markerClusterGroup();
         cluster_markers.addLayer(layer_vendors);
         map.addLayer(cluster_markers);
@@ -151,8 +149,8 @@ Map.prototype.marker_point = function(p_zoom)
         });
         map.panTo(lat_lng);
 
-        document.getElementById('vendor_lat').value = lat;
-        document.getElementById('vendor_lng').value = lng;
+        document.getElementById('user_lat').value = lat;
+        document.getElementById('user_lng').value = lng;
     });
 
     addSearcher(map);

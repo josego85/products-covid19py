@@ -1,45 +1,22 @@
 <div class="row">
     <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
         <label>
-            <input type="checkbox" name="products" value="frutas" <?php echo $checked; ?>> Frutas
+            <input type="checkbox" name="products[]" value="frutas" <?php echo $checked; ?>> Frutas
         </label>
     </div>
     <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
         <label>
-            <input type="checkbox" name="products" value="verduras" <?php echo $checked; ?>> Verduras
+            <input type="checkbox" name="products[]" value="verduras" <?php echo $checked; ?>> Verduras
         </label>
     </div>
     <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
         <label>
-            <input type="checkbox" name="products" value="agua" <?php echo $checked; ?>> Agua
+            <input type="checkbox" name="products[]" value="agua" <?php echo $checked; ?>> Agua
         </label>
     </div>
     <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
         <label>
-            <input type="checkbox" name="products" value="tapabocas" <?php echo $checked; ?>> Tapabocas
-        </label>
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-        <label>
-            <input type="checkbox" name="products" value="gel_alcohol" <?php echo $checked; ?>> Gel a base de alcohol
-        </label>
-    </div>
-    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-        <label>
-            <input type="checkbox" name="products" value="alcohol_rectificado" <?php echo $checked; ?>> Alcohol rectificado
-        </label>
-    </div>
-    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-        <label>
-            <input type="checkbox" name="products" value="jabon_coco" <?php echo $checked; ?>> Jab&oacute;n de coco
-        </label>
-    </div>
-    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-        <label>
-            <input type="checkbox" name="products" value="guantes" <?php echo $checked; ?>> Guantes
+            <input type="checkbox" name="products[]" value="tapabocas" <?php echo $checked; ?>> Tapabocas
         </label>
     </div>
 </div>
@@ -47,17 +24,40 @@
 <div class="row">
     <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
         <label>
-            <input type="checkbox" name="products" value="papel" <?php echo $checked; ?>> Papel
+            <input type="checkbox" name="products[]" value="gel_alcohol" <?php echo $checked; ?>> Gel a base de alcohol
         </label>
     </div>
     <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
         <label>
-            <input type="checkbox" name="products" value="toalla" <?php echo $checked; ?>> Toalla
+            <input type="checkbox" name="products[]" value="alcohol_rectificado" <?php echo $checked; ?>> Alcohol rectificado
         </label>
     </div>
     <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
         <label>
-            <input type="checkbox" name="products" value="hipoclorito_sodio" <?php echo $checked; ?>> Lavandina (hipoclorito de sodio)
+            <input type="checkbox" name="products[]" value="jabon_coco" <?php echo $checked; ?>> Jab&oacute;n de coco
+        </label>
+    </div>
+    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+        <label>
+            <input type="checkbox" name="products[]" value="guantes" <?php echo $checked; ?>> Guantes
+        </label>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+        <label>
+            <input type="checkbox" name="products[]" value="papel" <?php echo $checked; ?>> Papel
+        </label>
+    </div>
+    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+        <label>
+            <input type="checkbox" name="products[]" value="toalla" <?php echo $checked; ?>> Toalla
+        </label>
+    </div>
+    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+        <label>
+            <input type="checkbox" name="products[]" value="hipoclorito_sodio" <?php echo $checked; ?>> Lavandina (hipoclorito de sodio)
         </label>
     </div>
 </div>
