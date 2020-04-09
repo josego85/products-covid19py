@@ -15,7 +15,7 @@
         <p class="lead">
             Completa los datos del vendedor para aparecer en el sitio.
             </br>
-            En caso de no encontrarse su producto, contactarse a <strong>productospy@gmail.com</strong>
+            En caso de no encontrarse su producto, contactarse a <strong>productospy.org@gmail.com</strong>
         </p>
     </header>
 
