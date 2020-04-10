@@ -1,8 +1,8 @@
 <header class="jumbotron my-4">
     <h2 class="display-5">Productos para la cuarentena 2020 - Paraguay!</h2>
     <p class="lead">
-        La cuarentena en Paraguay est&aacute; teniendo desbastecimientos de algunos productos (alcohol en gel, tapabocas,
-        frutas, etc) como tambi&eacute;n no sabemos qui&eacute;nes son las que venden y donde poder contactarnos.
+        La cuarentena en Paraguay est&aacute; teniendo desabastecimientos de algunos productos (alcohol en gel, tapabocas, 
+        etc) como tambi&eacute;n no sabemos qui&eacute;nes son los que venden y como poder contactarlos.
         </br>
         El sitio reune a todos los vendedores que ofrecen productos para la cuarentena en el territorio paraguayo y 
         poder contactarlos. 
