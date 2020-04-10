@@ -12,6 +12,6 @@
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
 
-        gtag('config', '');
+        gtag('config', GOOGLE_ANALYTICS_CODE);
     </script>
 </footer>

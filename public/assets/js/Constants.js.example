@@ -1,5 +1,6 @@
 var HOSTNAME = 'https://productos.org/';
 var HOSTNAME_API = HOSTNAME + 'api/';
+var GOOGLE_ANALYTICS_CODE = '';
 
 // Asuncion - Paraguay.
 var DEFAULT_LNG = -57.623807;
