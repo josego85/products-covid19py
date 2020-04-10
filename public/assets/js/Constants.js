@@ -1,5 +1,5 @@
-var HOSTNAME = "http://localhost/products-covid19py/public/";
-var HOSTNAME_API = "http://api-products-covid19py/";
+var HOSTNAME = 'http://localhost/products-covid19py/public/';
+var HOSTNAME_API = HOSTNAME + 'api/';
 
 // Asuncion - Paraguay.
 var DEFAULT_LNG = -57.623807;

@@ -1,5 +1,5 @@
-var HOSTNAME = "https://productos.org/";
-var HOSTNAME_API = "https://productos.org/";
+var HOSTNAME = 'https://productos.org/';
+var HOSTNAME_API = HOSTNAME + 'api/';
 
 // Asuncion - Paraguay.
 var DEFAULT_LNG = -57.623807;

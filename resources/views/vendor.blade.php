@@ -29,7 +29,7 @@
                 e.preventDefault();
                 $.ajax(
                 {
-                    url: HOSTNAME_API + "api/vendor",
+                    url: HOSTNAME_API + "vendor",
                     type: 'POST',
                     data: $('#form').serialize(),
                     success: function (data, text)

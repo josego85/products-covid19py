@@ -54,7 +54,7 @@ Map.prototype.get_vendors = function() {
 	
 	this.geojsonLayer = new L.GeoJSON();
 
-	let v_geo_json_url = HOSTNAME_API + "api/vendors";
+	let v_geo_json_url = HOSTNAME_API + "vendors";
 	let urlIcon = L.Icon.Default.imagePath = "assets/img/";
     let leafIcon = L.Icon.extend(
     {
@@ -112,7 +112,7 @@ Map.prototype.products_filter = function (p_products_filter)
     cluster_markers.clearLayers();
 
     let products = JSON.stringify(product_array);
-    let url = HOSTNAME_API + "api/vendors?products=" + products;
+    let url = HOSTNAME_API + "vendors?products=" + products;
 
     $.getJSON(url, function(p_data) {
     	let geojsonLayer = L.geoJson(p_data, {
