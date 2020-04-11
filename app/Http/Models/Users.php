@@ -26,7 +26,11 @@ class Users
             $query->join('products_users as p_u', 'p_u.user_id', '=' ,'u.user_id')
               ->join('products as p', 'p.product_id', '=' ,'p_u.product_id')
               ->whereIn('p.product_id', $filter_products)
-              ->groupBy('u.user_id');
+              ->groupBy('u.user_id')
+              ->groupBy('u.user_full_name')
+              ->groupBy('u.user_phone')
+              ->groupBy('u.user_lng')
+              ->groupBy('u.user_lat');
         }
           
         $result = $query->get();
