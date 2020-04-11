@@ -208,6 +208,16 @@ function onEachFeature (p_feature, p_layer)
                         v_popupString += '<b>' + capitalize(propertie) + '</b>: ' + value + '<br />';
                     }
                 }
+                if (propertie === 'contacto')
+                {
+                    let description = capitalize(propertie);
+                    description = (check_cellphone_number(value))? (description + ' WA') : description;
+
+                    value = convert_link_wa(value);
+
+                    v_popupString += '<b>' + description + '</b>: '  +
+                      value + '<br />';
+                }
                 else if (propertie === 'productos')
                 {
                     let product_name;
@@ -307,7 +317,7 @@ function generate_table (p_data)
     [
         '#',
         'Nombre',
-        'Contacto',
+        'Contacto WA',
         'Productos'
     ];
     let index_header;
@@ -330,7 +340,7 @@ function generate_table (p_data)
         var cell = row.insertCell(-1);
         cell.innerHTML = table[i].nombre;
         var cell = row.insertCell(-1);
-        cell.innerHTML = table[i].contacto;
+        cell.innerHTML = convert_link_wa(table[i].contacto);
         var cell = row.insertCell(-1);
 
         let index_tmp;
@@ -347,4 +357,28 @@ function generate_table (p_data)
     let dvTable = document.getElementById("table_vendors_without_geo");
     dvTable.innerHTML = "";
     dvTable.appendChild(table_html);
+}
+
+function check_cellphone_number (p_phone_number)
+{
+    let cellphone_number = p_phone_number;
+    let first_character = cellphone_number.substr(0, 1);
+    let length_number = cellphone_number.length;
+
+    if (first_character == 0 && length_number == 10)
+    {
+        return true;
+    }
+    return false;
+}
+
+function convert_link_wa (p_phone_number)
+{
+    if (check_cellphone_number(p_phone_number))
+    {
+        let wa_number = p_phone_number.substr(1);
+        wa_number = '<a href="https://wa.me/595' + wa_number + '" target="_blank">' + p_phone_number + '<a>';
+        return wa_number;
+    }
+    return p_phone_number;
 }
