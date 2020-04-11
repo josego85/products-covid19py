@@ -20,6 +20,10 @@
                     publicada como tambi&eacute;n del mal uso de la informaci&oacute;n.
                 </li>
                 <li>
+                    El sitio reune a todos los vendedores que ofrecen productos para la cuarentena en el territorio paraguayo 
+                    para poder contactarlos. No se responsabiliza de estafas, etc; solo facilita el contacto.
+                </li>
+                <li>
                     El contenido y los datos del sitio web est&aacute;n distribuidos bajo la 
                     <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" target="_blank">Licencia Creative Commons 
                     Atribución-NoComercial-CompartirIgual 4.0 Internacional</a> y el c&oacute;digo fuente bajo dominio p&uacute;blico.
