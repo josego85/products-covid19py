@@ -40,7 +40,6 @@
 
         checkbox.on('click', function()
         {
-            console.log("Entro111");
             if($(this).is(':checked'))
             {
                 chShipBlock.show();
