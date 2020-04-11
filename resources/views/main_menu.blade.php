@@ -12,8 +12,7 @@
         </div>
     @endif
     <p class="lead">
-        El sitio reune a todos los vendedores que ofrecen productos para la cuarentena en el territorio paraguayo y 
-        poder contactarlos. 
+        El sitio reune a todos los vendedores que ofrecen productos y poder contactarlos. 
         <br/>
         Leer <a href="{{ url('disclamer') }}">t&eacute;rminos de uso</a>
         </br>
