@@ -21,12 +21,6 @@
     </header>
 
     <script>
-        function showHide ()
-        { 
-            var oimageDiv = document.getElementById('searchingimageDiv');
-            oimageDiv.style.display = (oimageDiv.style.display === 'none')? 'inline' : 'none'; 
-        } 
-
         $(function ()
         {
             $('#form').on('submit', function(e)
@@ -131,10 +125,7 @@
             <div class="form-group">
                 <input class="form-control" type="hidden" name="user_lng" id="user_lng" value="" placeholder="click en el mapa"/>
             </div>
-            <div id="searchingimageDiv" style="display:none">
-                <img id="searchingimage1" src="{{ URL::to('/assets/img/loading.gif') }}" alt="" />
-            </div>
-            <input class="btn btn-primary btn-lg btn-block" type="submit" name="submit" value="Crear vendedor" onclick="showHide()" />
+            <input class="btn btn-primary btn-lg btn-block" type="submit" name="submit" value="Crear vendedor" />
         </form>
        <div id="msg">
        </div>
