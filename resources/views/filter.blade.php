@@ -23,9 +23,12 @@
                     <span class="label label-default" style="font-size:22px;">Productos</span>
                 </label>
                 @include('products', $data)
+
+                <button class="btn btn-primary" type="button" onclick="products_filter();">
+                    Filtrar
+                </button>
             </div>
         </div>
-        <button class="btn btn-primary" type="button" onclick="products_filter();">Filtrar</button>
         <div id="resultado"></div>
     </form>
 </div>
