@@ -1,4 +1,4 @@
-var HOSTNAME = 'https://productos.org/';
+var HOSTNAME = 'https://productospy.org/';
 var HOSTNAME_API = HOSTNAME + 'api/';
 var GOOGLE_ANALYTICS_CODE = '';
 

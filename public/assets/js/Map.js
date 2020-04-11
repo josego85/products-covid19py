@@ -20,7 +20,7 @@ function Map (p_coordinates, p_zoom) {
         minZoom: minZoom,
         maxZoom: maxZoom,
         zoom: p_zoom,
-        scrollWheelZoom: false,
+        //scrollWheelZoom: false,
         fullscreenControl: true,
         fullscreenControlOptions:
         {
@@ -153,7 +153,7 @@ Map.prototype.marker_point = function(p_zoom)
         document.getElementById('user_lng').value = lng;
     });
 
-    addSearcher(map);
+    //addSearcher(map);
 }
 
 /////////////////////////
