@@ -22,7 +22,7 @@
                 <li>
                     El contenido y los datos del sitio web est&aacute;n distribuidos bajo la 
                     <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" target="_blank">Licencia Creative Commons 
-                    Atribución-NoComercial-CompartirIgual 4.0 Internacional</a> y el c&oacute;digo fuente bajo la licencia BSD.
+                    Atribución-NoComercial-CompartirIgual 4.0 Internacional</a> y el c&oacute;digo fuente bajo dominio p&uacute;blico.
                 </li>
                 <li>
                     En caso de que el usuario no est&eacute; de acuerdo con las condiciones de uso, no podr&aacute; acceder a sitio 
