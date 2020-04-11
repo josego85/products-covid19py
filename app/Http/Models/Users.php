@@ -20,6 +20,7 @@ class Users
 
         $query = DB::table('users as u')
           ->select(array( DB::raw($expression_raw)));
+        $query->where('u.user_state', 'active'); 
 
         if (isset($filter_products))
         {
