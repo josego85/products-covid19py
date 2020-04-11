@@ -4,7 +4,10 @@
         <div class="alert alert-success" role="alert">
             <h4 class="alert-heading">Vendedor guardado!</h4>
             <p>
-                Ya te encontr&aacute;s en el mapa.
+                Vas a aparecer en la parte de vendendores con 
+                ubicaci&oacute;n si marcaste en el mapa, o si no
+                vas a aparecer en la parte de vendedores sin 
+                ubicaci&oacute;n.
             </p>
         </div>
     @endif

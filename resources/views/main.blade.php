@@ -20,9 +20,12 @@
         <div id='map-container' class="map-container-vendors" style="height: 450px; border: 1px solid #AAA;"></div>
     </div>
     </br>
-    <div>
+    <div class="container">
         <div class="title-section">Vendedores sin ubicaci&oacute;n</div>
-        Listado
+        <div class="table-responsive">
+            <div id="table_vendors_without_geo">
+            </div>
+        </div>
     </div>
     </br>
     @include('footer')

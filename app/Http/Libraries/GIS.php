@@ -15,8 +15,8 @@ namespace App\Libraries
                     'geometry' => array(
                         'type' => 'Point', 
                         'coordinates' => array(
-                            (float)$value->user_lng,
-                            (float)$value->user_lat
+                            ($value->user_lng)? (float)$value->user_lng : null,
+                            ($value->user_lat)? (float)$value->user_lat : null,
                         )
                     ),
                     'properties' => array(

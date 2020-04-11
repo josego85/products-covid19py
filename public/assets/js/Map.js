@@ -74,9 +74,9 @@ Map.prototype.get_vendors = function()
     
     let layer_vendors;
 
-    $.getJSON(v_geo_json_url, function(data_vendors)
+    $.getJSON(v_geo_json_url, function(p_data)
     {
-        layer_vendors = L.geoJson(data_vendors,
+        layer_vendors = L.geoJson(p_data,
         {
             onEachFeature: onEachFeature,
             pointToLayer: function(feature, latlng)
@@ -93,6 +93,8 @@ Map.prototype.get_vendors = function()
         cluster_markers = L.markerClusterGroup();
         cluster_markers.addLayer(layer_vendors);
         map.addLayer(cluster_markers);
+
+        generate_table (p_data);
     });
 };
 
@@ -114,12 +116,16 @@ Map.prototype.products_filter = function (p_products_filter)
     let products = JSON.stringify(product_array);
     let url = HOSTNAME_API + "vendors?products=" + products;
 
-    $.getJSON(url, function(p_data) {
-    	let geojsonLayer = L.geoJson(p_data, {
+    $.getJSON(url, function(p_data)
+    {
+        let geojsonLayer = L.geoJson(p_data,
+        {
     		onEachFeature: onEachFeature
         });
         cluster_markers.addLayer(geojsonLayer);
-        map.addLayer(cluster_markers);	
+        map.addLayer(cluster_markers);
+
+        generate_table (p_data);
     });
 }
 
@@ -157,14 +163,6 @@ Map.prototype.marker_point = function (p_zoom)
     });
 
     //addSearcher(map);
-}
-
-function clean_marker ()
-{
-    if (marker_point)
-    {
-        marker_point.remove();
-    }
 }
 
 
@@ -265,4 +263,88 @@ function addSearcher (map)
         map.setView(center, 18);
     })
     .addTo(map); 
+}
+
+function clean_marker ()
+{
+    if (marker_point)
+    {
+        marker_point.remove();
+    }
+}
+
+function generate_table (p_data)
+{
+    let features = p_data.features;
+    let index, propertie, coordinates, lat, lng;
+    let table = [];
+    let count = 0;
+
+    for (index in features)
+    {
+        coordinates = features[index].geometry.coordinates;
+        lat = coordinates[0];
+        lng = coordinates[1];
+
+        if (lat == null || lng == null)
+        {
+            propertie = features[index].properties;
+
+            table.push(
+            {
+                numero: ++count,
+                nombre: propertie.nombre,
+                contacto: propertie.contacto,
+                productos: propertie.productos
+            })  
+        }
+    }
+    let table_html = document.createElement("table");
+    table_html.setAttribute('class', 'table')
+
+    let row = table_html.insertRow(-1);
+    let array_header =
+    [
+        '#',
+        'Nombre',
+        'Contacto',
+        'Productos'
+    ];
+    let index_header;
+    let propertie_header;
+    for (index_header in array_header)
+    {
+        propertie_header = array_header[index_header];
+        var headerCell = document.createElement("th");
+        headerCell.innerHTML = propertie_header;
+        row.appendChild(headerCell);
+    }
+
+    let i;
+    for (i = 0; i < table.length; i++)
+    {
+        row = table_html.insertRow(-1);
+
+        var cell = row.insertCell(-1);
+        cell.innerHTML = table[i].numero;
+        var cell = row.insertCell(-1);
+        cell.innerHTML = table[i].nombre;
+        var cell = row.insertCell(-1);
+        cell.innerHTML = table[i].contacto;
+        var cell = row.insertCell(-1);
+
+        let index_tmp;
+        let products = table[i].productos;
+        let product = '';
+        
+        for (index_tmp in products)
+        {
+            product += products[index_tmp].product_name + ', ';
+        }
+        product = product.substr(0, product.length - 2);
+        cell.innerHTML = product;
+    }
+    let dvTable = document.getElementById("table_vendors_without_geo");
+    dvTable.innerHTML = "";
+    dvTable.appendChild(table_html);
 }
