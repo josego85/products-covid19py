@@ -4,15 +4,16 @@ var cluster_markers = null;
 // Class Map.
 
 // Constructor Map.
-function Map (p_coordinates, p_zoom) {
+function Map (p_coordinates, p_zoom)
+{
 	// Attributes.
     this.coordinates = p_coordinates;
     this.zoom = p_zoom;
 
     let lng = p_coordinates['lng'];
     let lat = p_coordinates['lat'];
-    let minZoom = 6;
-    let maxZoom = 20;
+    let minZoom = DEFAULT_MIN_ZOOM_MAP;
+    let maxZoom = DEFAULT_MAX_ZOOM_MAP;
 
     map = new L.map('map-container',
     {
@@ -49,7 +50,8 @@ function Map (p_coordinates, p_zoom) {
 /////////////////////////
 
 //
-Map.prototype.get_vendors = function() {
+Map.prototype.get_vendors = function()
+{
 	let map = this.map;
 	
 	this.geojsonLayer = new L.GeoJSON();
@@ -106,8 +108,6 @@ Map.prototype.products_filter = function (p_products_filter)
         product = p_products_filter[index].value;
         product_array.push(product);
     }
-    
-    // Search cluster_markers
 
     cluster_markers.clearLayers();
 
@@ -123,13 +123,16 @@ Map.prototype.products_filter = function (p_products_filter)
     });
 }
 
-Map.prototype.marker_point = function(p_zoom)
+Map.prototype.marker_point = function (p_zoom)
 {
     let map = this.map;
     let lng = DEFAULT_LNG;
     let lat = DEFAULT_LAT;
+
+    clean_marker();
 	
-    marker_point = new L.marker([lat,lng], {
+    marker_point = new L.marker([lat,lng],
+    {
 		id: 'vendor', 
 	    draggable: 'true'
 	});
@@ -156,13 +159,23 @@ Map.prototype.marker_point = function(p_zoom)
     //addSearcher(map);
 }
 
+function clean_marker ()
+{
+    if (marker_point)
+    {
+        marker_point.remove();
+    }
+}
+
+
 /////////////////////////
 // Internal functions.
 /////////////////////////
 
 //
 // To capitalize.
-const capitalize = (s) => {
+const capitalize = (s) =>
+{
     if (typeof s !== 'string')
     {
         return '';
@@ -171,7 +184,7 @@ const capitalize = (s) => {
 }
 
 // Show information in a popup.
-function onEachFeature(p_feature, p_layer)
+function onEachFeature (p_feature, p_layer)
 {
     if (p_feature.properties)
     {

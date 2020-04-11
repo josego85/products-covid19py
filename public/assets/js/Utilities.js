@@ -36,7 +36,7 @@ function getCoordinates (p_position)
     coordinates['lng']  = p_position.coords.longitude;
 	coordinates['lat'] = p_position.coords.latitude + 1.65;     // Add 1.65 to center Paraguay.
 	
-	let zoom = 6;
+	let zoom = DEFAULT_ZOOM_MAP;
 
     load_map(coordinates, zoom);
 }
@@ -76,7 +76,7 @@ function defaultPosition ()
     let lng = DEFAULT_LNG;
 	let lat = DEFAULT_LAT;
 	let coordinates = new Array();
-	let zoom = 6;
+	let zoom = DEFAULT_ZOOM_MAP;
    
     coordinates['lng']  = lng;
     coordinates['lat'] = lat;
@@ -97,7 +97,6 @@ function load_map (p_coordinates, p_zoom)
     {
 	    case 'marker':
 			map = new Map(p_coordinates, p_zoom);
-            map.marker_point(p_zoom);
             break;
         case 'list':
         case 'default':
@@ -112,6 +111,13 @@ function products_filter ()
 {
     let products_filter = $("[name='form_searcher']").serializeArray()
     map.products_filter(products_filter);
+}
+
+function marker_point_map (p_e, p_zoom)
+{
+    p_e = p_e || window.event;
+    p_e.preventDefault();
+    map.marker_point(p_zoom);
 }
 
 // //

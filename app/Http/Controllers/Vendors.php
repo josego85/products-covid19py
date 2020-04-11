@@ -54,13 +54,15 @@ class Vendors extends Controller
 
     public function postVendor(Request $request)
     {
-        // @todo validation
         $validador = Validator::make($request->all(),
         [            
             'user_email' => 'email|nullable',
             'user_phone' => 'required',
-            'user_lng' => 'required',
-            'user_lat' => 'required'
+            "products" => "required|array|min:1"
+        ],
+        [
+            'user_phone.required' => 'El contacto es obligatorio.',
+            'products.required' => 'Tiene que agregar por lo menos 1 producto.'
         ]);
         if ($validador->fails())
         {
@@ -72,8 +74,6 @@ class Vendors extends Controller
             ),
             JSON_PRETTY_PRINT);
         }
-
-        // todo required products.
 
         $user_email = $this->securityCleanCode($request->input("user_email"));
         $user_full_name = $this->securityCleanCode($request->input("user_full_name"));
@@ -92,8 +92,8 @@ class Vendors extends Controller
                 'user_email' => $user_email,
                 'user_registration' => $this->getDateHour(),
                 'user_phone' => $user_phone,
-                'user_lng' => $user_lng,
-                'user_lat' => $user_lat
+                'user_lng' => ($user_lng)? $user_lng : null,
+                'user_lat' => ($user_lat)? $user_lat : null
             ];
             $user_id = $user->setUser($data_user);
             $user->setRoleUser(2, $user_id);
@@ -113,7 +113,7 @@ class Vendors extends Controller
                 }
             }
             DB::commit();
-            $msg = 'Save vendor';
+            $msg = 'Vendedor guardado.';
         }
         catch (\Exception $e)
         {

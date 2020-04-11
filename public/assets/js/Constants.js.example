@@ -2,6 +2,11 @@ var HOSTNAME = 'https://productospy.org/';
 var HOSTNAME_API = HOSTNAME + 'api/';
 var GOOGLE_ANALYTICS_CODE = '';
 
+// Map.
+var DEFAULT_ZOOM_MAP = 6;
+var DEFAULT_MIN_ZOOM_MAP = 6;
+var DEFAULT_MAX_ZOOM_MAP = 20;
+
 // Asuncion - Paraguay.
 var DEFAULT_LNG = -57.623807;
 var DEFAULT_LAT = -23.299114;

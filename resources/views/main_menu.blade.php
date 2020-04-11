@@ -1,5 +1,11 @@
 <header class="jumbotron my-4">
     <h2 class="display-5">Productos para la cuarentena 2020 - Paraguay!</h2>
+    @if( request()->get('guardado') === 'ok' )
+        <div class="alert alert-success" id="success-alert">
+            <strong>Vendedor guardado!!!</strong>
+            Ya te encontr&aacute;s en el mapa.
+        </div>
+    @endif
     <p class="lead">
         La cuarentena en Paraguay est&aacute; teniendo desabastecimientos de algunos productos (alcohol en gel, tapabocas, 
         etc) como tambi&eacute;n no sabemos qui&eacute;nes son los que venden y como poder contactarlos.
