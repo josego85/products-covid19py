@@ -14,9 +14,10 @@
     <header class="jumbotron my-4">
         <h2 class="display-5">Registrarse como vendedor</h2>
         <p class="lead">
-            Completa los datos del vendedor con los productos para aparecer en ProductosPY.
+            Completa tus datos como vendedor con los productos para aparecer en ProductosPY.
             </br>
-            En caso de no encontrarse su producto, contactarse a <strong>productospy.org@gmail.com</strong>
+            Cualquier consulta a <strong>productospy.org@gmail.com</strong> o 
+            <a href="https://twitter.com/productospy" target="_blank">@productospy</a>
         </p>
     </header>
 
