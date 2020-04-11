@@ -16,8 +16,7 @@
         <p class="lead">
             Completa tus datos como vendedor con los productos para aparecer en ProductosPY.
             </br>
-            Cualquier consulta a <strong>productospy.org@gmail.com</strong> o a
-            <a href="https://twitter.com/productospy" target="_blank">@productospy</a>
+            Cualquier consulta a <strong>productospy.org@gmail.com</strong>
         </p>
     </header>
 
