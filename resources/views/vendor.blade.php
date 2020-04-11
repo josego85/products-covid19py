@@ -125,7 +125,7 @@
             <div class="form-group">
                 <input class="form-control" type="hidden" name="user_lng" id="user_lng" value="" placeholder="click en el mapa"/>
             </div>
-            <input class="btn btn-primary btn-lg btn-block" type="submit" name="submit" value="Crear vendedor" />
+            <input class="btn btn-primary btn-lg btn-block" type="submit" name="submit" value="Registrar vendedor" />
         </form>
        <div id="msg">
        </div>
