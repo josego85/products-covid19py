@@ -43,9 +43,9 @@
                             $('#form').trigger("reset");
 
                             let success_alert = '<div class="alert alert-success" id="success-alert">' +
-                            '<strong>Vendedor guardado!!!</strong>' +
-                            '</div>';
-                            let go_alert = 'Ya te encontras en el mapa. Ir al <a href=" ' + HOSTNAME + '">mapa</a>';
+                              '<strong>Vendedor guardado!!!</strong>' +
+                              '</div>';
+                            let go_alert = 'Ya te encontr&aacute;s en el mapa. Ir al <a href=" ' + HOSTNAME + '">mapa</a>';
                             let msg = success_alert + go_alert;
 
                             $("#msg").html(msg);
@@ -53,8 +53,8 @@
                         else if (!result)
                         {
                             let errors = response.errors;
-                            let msg = '<div class="alert alert-danger" id="success-alert">' +
-                              '<strong>Errores: </strong>';
+                            let msg = '<div class="alert alert-warning" id="success-alert">' +
+                              '<strong>Aviso: </strong>';
                             let index;
                             for (index in errors)
                             {
@@ -89,7 +89,7 @@
             </div>
             <div class="form-group">
                 <label>N&uacute;mero de contacto
-                    <span>(opcional)</span>
+                    <span>(*)</span>
                 </label>
                 <input class="form-control" type="text" placeholder="Ingrese aqu&iacute; el n&uacute;mero de contacto del vendedor" name="user_phone" value="" size="25" />
             </div>

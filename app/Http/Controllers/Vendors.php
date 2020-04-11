@@ -55,8 +55,10 @@ class Vendors extends Controller
     public function postVendor(Request $request)
     {
         // @todo validation
-        $validador = Validator::make($request->all(),[
+        $validador = Validator::make($request->all(),
+        [            
             'user_email' => 'email|nullable',
+            'user_phone' => 'required',
             'user_lng' => 'required',
             'user_lat' => 'required'
         ]);
