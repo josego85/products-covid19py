@@ -86,7 +86,7 @@ Map.prototype.get_vendors = function()
                 return L.marker(latlng,
                 {
                     title: feature.properties.nombre, 
-                    icon: icon
+                    //icon: icon
                 });
 			}
         });

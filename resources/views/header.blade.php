@@ -1,14 +1,14 @@
 <meta charset="utf-8" />
 <link rel="SHORTCUT ICON" href="assets/img/favicon.ico">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="author" content="">
 
 <title>Ubicaci&oacute;n de productos para el consumo contra el COVID19 - Paraguay</title>
 
 <link rel="stylesheet" href="assets/js/libs/leaflet/leaflet.css" charset="utf-8" />
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" charset="utf-8" />
 <link rel="stylesheet" href="assets/js/libs/leaflet/plugins/Leaflet.fullscreen/leaflet.fullscreen.css" charset="utf-8" />
 <link rel="stylesheet" href="assets/js/libs/leaflet/plugins/Leaflet.markercluster/MarkerCluster.css" charset="utf-8" />
 <link rel="stylesheet" href="assets/js/libs/leaflet/plugins/Leaflet.markercluster/MarkerCluster.Default.css" charset="utf-8" />
