@@ -12,7 +12,7 @@
     @include('menu')
     
     <header class="jumbotron my-4">
-        <h2 class="display-5">Dar de alta vendedor</h2>
+        <h2 class="display-5">Registrarse como vendedor</h2>
         <p class="lead">
             Completa los datos del vendedor con los productos para aparecer en ProductosPY.
             </br>

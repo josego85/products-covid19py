@@ -11,7 +11,7 @@
                     </a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="{{ url('vendor') }}">Cargar vendedor
+                    <a class="nav-link" href="{{ url('vendor') }}">Registrar vendedor
                     <span class="sr-only">(current)</span>
                     </a>
                 </li>

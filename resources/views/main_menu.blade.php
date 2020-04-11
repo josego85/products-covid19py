@@ -12,10 +12,10 @@
         </div>
     @endif
     <p class="lead">
-        El sitio reune a todos los vendedores que ofrecen productos y poder contactarlos. 
+        El sitio re&uacute;ne a vendedores que ofrecen productos para poder contactarlos.
         <br/>
         Leer <a href="{{ url('disclamer') }}">t&eacute;rminos de uso</a>
         </br>
-        Si quieres darte de alta haz click <a href="{{ url('vendor') }}" >aqu&iacute;</a>. 
+        Registrarse como vendedor <a href="{{ url('vendor') }}" >aqu&iacute;</a>. 
     </p>
 </header>
