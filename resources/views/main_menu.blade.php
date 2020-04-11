@@ -16,6 +16,6 @@
         <br/>
         Leer <a href="{{ url('disclamer') }}">t&eacute;rminos de uso</a>
         </br>
-        Si quieres darte de alta haz click en <a href="{{ url('vendor') }}" >este</a> formulario. 
+        Si quieres darte de alta haz click <a href="{{ url('vendor') }}" >aqu&iacute;</a>. 
     </p>
 </header>
