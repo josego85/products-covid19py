@@ -9,11 +9,13 @@
     @include('header', $data)
 </head>
 <body>
+    
+
     @include('menu')
 
     @include('main_menu')
 
-    @include('searcher')
+    @include('filter')
 
     <div id="map">
         <div class="title-section">Vendedores con ubicaci&oacute;n</div>
@@ -29,5 +31,27 @@
     </div>
     </br>
     @include('footer')
+
+    <script>
+        let checkbox = $('#changeShip'),
+          chShipBlock = $('#changeShipInputs');
+
+        chShipBlock.hide();
+
+        checkbox.on('click', function()
+        {
+            console.log("Entro111");
+            if($(this).is(':checked'))
+            {
+                chShipBlock.show();
+                chShipBlock.find('input').attr('required', true);
+            }
+            else 
+            {
+                chShipBlock.hide();
+                chShipBlock.find('input').attr('required', false);
+            }
+        });
+    </script>
 </body>
 </html>
