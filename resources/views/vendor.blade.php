@@ -85,7 +85,7 @@
                     <span class="label label-default" style="font-size:22px;">N&uacute;mero de contacto</span>
                     <span>(*)</span>
                 </label>
-                <input class="form-control" type="text" placeholder="Ingrese aqu&iacute; el n&uacute;mero de contacto del vendedor" name="user_phone" value="" size="25" />
+                <input class="form-control" type="text" onkeypress="return event.charCode >= 48 && event.charCode <= 57" minlength="6" maxlength="10" placeholder="Ingrese aqu&iacute; el n&uacute;mero de contacto del vendedor" name="user_phone" value="" required />
             </div>
             <div class="form-group">
                 <label>
