@@ -1,4 +1,5 @@
-<header class="jumbotron my-4">
+<header class="jumbotron my-4 bg-warning">
+    </br>
     <h2 class="display-5">Productos para la cuarentena 2020 - Paraguay!</h2>
     @if( request()->get('guardado') === 'ok' )
         <div class="alert alert-success" role="alert">

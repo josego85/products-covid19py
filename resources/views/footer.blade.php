@@ -1,4 +1,4 @@
-<footer class="py-5 bg-dark">
+<footer class="py-5 bg-info">
     <div class="container">
         <p class="m-0 text-center text-white"><a href="{{ url('disclamer') }}">T&eacute;rminos de uso</a></p>
         <p class="m-0 text-center text-white">Copyright &copy; Proyectos Beta 2020</p>

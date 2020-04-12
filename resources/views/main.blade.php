@@ -10,7 +10,6 @@
 </head>
 <body>
     
-
     @include('menu')
 
     @include('main_menu')

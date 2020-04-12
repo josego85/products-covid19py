@@ -11,7 +11,8 @@
 <body>
     @include('menu')
     
-    <header class="jumbotron my-4">
+    <header class="jumbotron my-4 bg-warning">
+        </br>
         <h2 class="display-5">Registrarse como vendedor</h2>
         <p class="lead">
             Completa tus datos como vendedor con los productos para aparecer en ProductosPY.
