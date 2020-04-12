@@ -15,8 +15,8 @@
     <p class="lead">
         El sitio re&uacute;ne a vendedores que ofrecen productos para poder contactarlos.
         <br/>
-        Leer <a href="{{ url('disclamer') }}">t&eacute;rminos de uso</a>
+        Leer <a href="{{ url('disclamer') }}"><strong>t&eacute;rminos de uso</strong></a>
         </br>
-        Registrarse como vendedor <a href="{{ url('vendor') }}" >aqu&iacute;</a>. 
+        Registrarse como vendedor <a href="{{ url('vendor') }}"><strong>aqu&iacute;</strong></a>. 
     </p>
 </header>

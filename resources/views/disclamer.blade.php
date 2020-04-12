@@ -12,6 +12,7 @@
     @include('menu')
 
     <header class="jumbotron my-4">
+        </br>
         <h2 class="display-5">T&eacute;rminos de uso</h2>
         <p class="lead">
             <ol>
@@ -30,7 +31,7 @@
                 </li>
                 <li>
                     En caso de que el usuario no est&eacute; de acuerdo con las condiciones de uso, no podr&aacute; acceder a sitio 
-                    web de ProductosPY.
+                    web de productospy.
                 </li>
             </ol>
         </p>

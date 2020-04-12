@@ -15,7 +15,7 @@
         </br>
         <h2 class="display-5">Registrarse como vendedor</h2>
         <p class="lead">
-            Completa tus datos como vendedor con los productos para aparecer en ProductosPY.
+            Completa tus datos como vendedor con los productos para aparecer en productospy.
             </br>
             Cualquier consulta a <strong>productospy.org@gmail.com</strong>
         </p>

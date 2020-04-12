@@ -19,17 +19,17 @@ Todo list:
 
 
 Pasos:
+
 sudo git https://github.com/josego85/api-products-covid19py.git /var/www/html/api-products-covid19py.proyectosbeta.net
-sudo chown -R proyectosbeta:www-data api-products-covid19py
-cd api-products-covid19py
+sudo chown -R proyectosbeta:www-data products-covid19py
+cd products-covid19py
 composer install
 composer update
-sudo chmod -R 775 storage
-sudo chown -R proyectosbeta:www-data storage
-sudo chmod -R 775 bootstrap/cache
+sudo chown www-data:www-data storage -R 
 
 
 Base de datos:
+
 mysql -u root -p
 CREATE DATABASE products_covid19 CHARACTER SET utf8 COLLATE utf8_general_ci;
 exit
@@ -38,8 +38,3 @@ mysql -u root -p
 GRANT ALL PRIVILEGES ON products_covid19.* TO covid19@'localhost' IDENTIFIED BY 'xxxxxxxxxxxxx';
 FLUSH PRIVILEGES;
 exit
-
-
-Routes:
-- Method get: http://api-products-covid19py.proyectosbeta.net/api/vendors
-- Method post: http://api-products-covid19py.proyectosbeta.net/api/vendor
