@@ -23,9 +23,25 @@
     <script>
         $(function ()
         {
+            const lockModal = $("#lock-modal");
+            const loadingCircle = $("#loading-circle");
+            const form = $("form");
+
             $('#form').on('submit', function(e)
             {
                 e.preventDefault();
+
+                // Lock down the form.
+                lockModal.css("display", "block");
+                loadingCircle.css("display", "block");
+
+                setTimeout(function ()
+                {
+                    // Re-enable the form.
+                    lockModal.css("display", "none");
+                    loadingCircle.css("display", "none");
+                }, 3000);
+
                 $.ajax(
                 {
                     url: HOSTNAME_API + "vendor",
@@ -126,6 +142,8 @@
                 <input class="form-control" type="hidden" name="user_lng" id="user_lng" value="" placeholder="click en el mapa"/>
             </div>
             <input class="btn btn-primary btn-lg btn-block" type="submit" name="submit" value="Registrar vendedor" />
+            <div id="lock-modal"></div>
+            <div id="loading-circle"></div>
         </form>
        <div id="msg">
        </div>
