@@ -10,6 +10,7 @@ Tecnologías utilizadas:
 - JavaScript (Leaflet, JQuery, Boostrap)
 - CSS
 - HTML
+- PHP 7.4 (Laravel 6)
 - Datos OSM (Nominatim como buscador)
 
 
