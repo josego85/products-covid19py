@@ -57,7 +57,7 @@ class Vendors extends Controller
         $validador = Validator::make($request->all(),
         [            
             'user_email' => 'email|nullable',
-            'user_phone' => 'required',
+            'user_phone' => 'required|numeric',
             "products" => "required|array|min:1"
         ],
         [

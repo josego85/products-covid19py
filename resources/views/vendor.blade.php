@@ -83,7 +83,7 @@
             <div class="form-group">
                 <label>
                     <span class="label label-default" style="font-size:22px;">N&uacute;mero de contacto</span>
-                    <span>(*)</span>
+                    <span>(Ejemplo: 0981999999 o 021999999 o 999999) (*)</span>
                 </label>
                 <input class="form-control" type="text" onkeypress="return event.charCode >= 48 && event.charCode <= 57" minlength="6" maxlength="10" placeholder="Ingrese aqu&iacute; el n&uacute;mero de contacto del vendedor" name="user_phone" value="" required />
             </div>
