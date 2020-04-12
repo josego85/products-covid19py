@@ -296,8 +296,8 @@ function generate_table (p_data)
         lat = coordinates[0];
         lng = coordinates[1];
 
-        if (lat == null || lng == null)
-        {
+        // if (lat == null || lng == null)
+        // {
             propertie = features[index].properties;
 
             table.push(
@@ -307,7 +307,7 @@ function generate_table (p_data)
                 contacto: propertie.contacto,
                 productos: propertie.productos
             })  
-        }
+        // }
     }
     let table_html = document.createElement("table");
     table_html.setAttribute('class', 'table')

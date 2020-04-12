@@ -7,8 +7,7 @@
             <p>
                 Vas a aparecer en la parte de vendendores con 
                 ubicaci&oacute;n si marcaste en el mapa, o si no
-                vas a aparecer en la parte de vendedores sin 
-                ubicaci&oacute;n.
+                vas a aparecer en la parte de todos los vendedores.
             </p>
         </div>
     @endif

@@ -22,7 +22,7 @@
     </div>
     </br>
     <div class="container">
-        <div class="title-section">Vendedores sin ubicaci&oacute;n</div>
+        <div class="title-section">Todos los vendedores</div>
         <div class="table-responsive">
             <div id="table_vendors_without_geo">
             </div>
