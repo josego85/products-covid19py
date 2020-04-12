@@ -57,6 +57,11 @@
     </div>
     <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
         <label>
+            <input type="checkbox" name="products[]" value="cocido_quemado" {{ $checked ?? '' }}> Cocido quemado
+        </label>
+    </div>
+    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+        <label>
             <input type="checkbox" name="products[]" value="hipoclorito_sodio" {{ $checked ?? '' }}> Lavandina (hipoclorito de sodio)
         </label>
     </div>
