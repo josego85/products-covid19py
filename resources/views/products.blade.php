@@ -62,6 +62,13 @@
     </div>
     <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
         <label>
+            <input type="checkbox" name="products[]" value="canasta_basica" {{ $checked ?? '' }}> Canasta b&aacute;sica
+        </label>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+        <label>
             <input type="checkbox" name="products[]" value="hipoclorito_sodio" {{ $checked ?? '' }}> Lavandina (hipoclorito de sodio)
         </label>
     </div>
