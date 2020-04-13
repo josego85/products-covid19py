@@ -92,10 +92,10 @@
             </div>
             <div class="form-group">
                 <label>
-                    <span class="label label-default" style="font-size:22px;">Nombre y apellido</span>
+                    <span class="label label-default" style="font-size:22px;">Nombre y apellido o Emprendimiento</span>
                     <span>(opcional)</span>
                 </label>
-                <input class="form-control" type="text" placeholder="Ingrese aqu&iacute; el nombre y apellido del vendedor" name="user_full_name" value="" size="25" />
+                <input class="form-control" type="text" placeholder="Ingrese aqu&iacute; el nombre y apellido del vendedor o nombre de tu emprendimiento" name="user_full_name" value="" size="25" />
             </div>
             <div class="form-group">
                 <label>
