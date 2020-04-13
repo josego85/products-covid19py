@@ -15,8 +15,7 @@ Tecnologías utilizadas:
 
 
 Todo list:
-- Mejoras en la lista de Vendedores sin ubicación.
-- Versión móvil para Android.
+- Mejoras en la lista de vendedores sin ubicación.
 
 
 Pasos:
