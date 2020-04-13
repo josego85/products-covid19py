@@ -6,7 +6,7 @@ Levantar en sitio en cualquier server (Apache, etc.)
 [Sitio] (https://productospy.org/)
 
 
-Tecnologías utilizadas:
+## Tecnologías utilizadas:
 - JavaScript (Leaflet, JQuery, Boostrap)
 - CSS
 - HTML
@@ -14,10 +14,10 @@ Tecnologías utilizadas:
 - Datos OSM (Nominatim como buscador)
 
 
-Todo list:
+## Todo list:
 - Mejoras en la lista de vendedores sin ubicación.
 
-Contribuir
+## Contribuir
 
     Crear fork.
     Crear un feature branch: git checkout -b nueva-feature
@@ -25,7 +25,7 @@ Contribuir
     Push el branch: git push origin nueva-feature
     Enviar un pull request.
 
-Pasos:
+## Pasos:
 
 ```
 sudo git https://github.com/josego85/api-products-covid19py.git /var/www/html/products-covid19py
@@ -37,7 +37,7 @@ sudo chown www-data:www-data storage -R
 ```
 
 
-Base de datos:
+## Base de datos:
 
 ```
 mysql -u root -p
