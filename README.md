@@ -19,11 +19,11 @@ Levantar en sitio en cualquier server (Apache, etc.)
 
 ## Contribuir
 
-    Crear fork.
-    Crear un feature branch: git checkout -b nueva-feature
-    Comitear tus cambios: git commit -am 'Añadir alguna feature'
-    Push el branch: git push origin nueva-feature
-    Enviar un pull request.
+- Crear fork.
+- Crear un feature branch: git checkout -b nueva-feature
+- Comitear tus cambios: git commit -am 'Añadir alguna feature'
+- Push el branch: git push origin nueva-feature
+- Enviar un pull request.
 
 ## Pasos:
 
