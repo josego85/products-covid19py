@@ -17,6 +17,13 @@ Tecnologías utilizadas:
 Todo list:
 - Mejoras en la lista de vendedores sin ubicación.
 
+Contribuir
+
+    Crear fork.
+    Crear un feature branch: git checkout -b nueva-feature
+    Comitear tus cambios: git commit -am 'Añadir alguna feature'
+    Push el branch: git push origin nueva-feature
+    Enviar un pull request.
 
 Pasos:
 
