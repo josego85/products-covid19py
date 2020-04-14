@@ -7,12 +7,14 @@ var action = null;
  * @param p_action
  * @returns void
  */
-function localization(p_action){
+function localization (p_action)
+{
 	action = p_action;
 	
     if (navigator.geolocation)
     {
-        navigator.geolocation.getCurrentPosition(getCoordinates, errors, {
+        navigator.geolocation.getCurrentPosition(getCoordinates, errors,
+        {
 			enableHighAccuracy: true,
 			timeout: 2000,
 			maximumAge: 0
@@ -34,7 +36,7 @@ function getCoordinates (p_position)
 {
     let coordinates = new Array();
     coordinates['lng']  = p_position.coords.longitude;
-	coordinates['lat'] = p_position.coords.latitude + 1.65;     // Add 1.65 to center Paraguay.
+	coordinates['lat'] = p_position.coords.latitude;//+ 1.65;     // Add 1.65 to center Paraguay.
 	
 	let zoom = DEFAULT_ZOOM_MAP;
 

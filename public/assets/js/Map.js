@@ -86,7 +86,7 @@ Map.prototype.get_vendors = function()
                 return L.marker(latlng,
                 {
                     title: feature.properties.nombre, 
-                    //icon: icon
+                    icon: icon
                 });
 			}
         });
@@ -132,16 +132,20 @@ Map.prototype.products_filter = function (p_products_filter)
 Map.prototype.marker_point = function (p_zoom)
 {
     let map = this.map;
-    let lng = DEFAULT_LNG;
-    let lat = DEFAULT_LAT;
+    let options = map.options;
+    let coordinates = options.center;
+    let lng = coordinates[1];
+    let lat = coordinates[0];
 
     clean_marker();
 	
     marker_point = new L.marker([lat,lng],
     {
 		id: 'vendor', 
-	    draggable: 'true'
-	});
+        draggable: 'true',
+        title: 'Mi ubicación'
+    });
+    marker_point.bindPopup('Mi ubicación').openPopup();
     map.addLayer(marker_point);
     map.setView([lat, lng], p_zoom);
 
