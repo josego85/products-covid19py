@@ -27,27 +27,27 @@ Levantar en sitio en cualquier server (Apache, etc.)
 
 ## Pasos:
 
-```
-sudo git https://github.com/josego85/api-products-covid19py.git /var/www/html/products-covid19py
-sudo chown -R proyectosbeta:www-data products-covid19py
-cd products-covid19py
-composer install
-composer update
-sudo chown www-data:www-data storage -R
+```sh
+	git clone https://github.com/josego85/products-covid19py.git
+	sudo chown -R www-data:www-data ./products-covid19py
+	cd products-covid19py
+	composer install 
+	composer update
+	cp .env.example .env
+	php artisan serve 
 ```
 
 
 ## Base de datos:
 
-```
-mysql -u root -p
-CREATE DATABASE products_covid19 CHARACTER SET utf8 COLLATE utf8_general_ci;
-exit
-mysql -u root -p products_covid19 < ~/products_covid19.sql
-mysql -u root -p
-GRANT ALL PRIVILEGES ON products_covid19.* TO covid19@'localhost' IDENTIFIED BY 'xxxxxxxxxxxxx';
-FLUSH PRIVILEGES;
-exit
+```sh
+	mysql -u root -p
+	CREATE DATABASE products_covid19 CHARACTER SET utf8 COLLATE utf8_general_ci;
+	exit
+	mysql -u tu_usuario -p products_covid19 < ~/products_covid19.sql
+	GRANT ALL PRIVILEGES ON products_covid19.* TO tu_usuario@'localhost' IDENTIFIED BY 'xxxxxxxxxxxxx';
+	FLUSH PRIVILEGES;
+	exit
 ```
 
 ## Todo list:
