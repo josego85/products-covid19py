@@ -53,20 +53,21 @@ function getCoordinates (p_position)
  */
 function errors (error)
 {
-	// switch(error.code){
-    // 	case error.PERMISSION_DENIED:
-    // 		alert("User denied the request for Geolocation.");
-    // 		break;
-    // 	case error.POSITION_UNAVAILABLE:
-    // 		alert("Location information is unavailable.");
-    // 		break;
-    // 	case error.TIMEOUT:
-    // 		alert("The request to get user location timed out.");
-    // 		break;
-    // 	case error.UNKNOWN_ERROR:
-    // 		alert("An unknown error occurred.");
-    // 		break;
-    // }
+    switch (error.code)
+    {
+    	case error.PERMISSION_DENIED:
+    		console.log("User denied the request for Geolocation.");
+    		break;
+    	case error.POSITION_UNAVAILABLE:
+    		console.log("Location information is unavailable.");
+    		break;
+    	case error.TIMEOUT:
+    		console.log("The request to get user location timed out.");
+    		break;
+    	case error.UNKNOWN_ERROR:
+    		console.log("An unknown error occurred.");
+    		break;
+    }
     defaultPosition();
 }	
 
