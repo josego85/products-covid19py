@@ -4,14 +4,17 @@ var cluster_markers = null;
 // Class Map.
 
 // Constructor Map.
-function Map (p_coordinates, p_zoom)
+function Map (p_coordinates, p_zoom, p_action)
 {
 	// Attributes.
     this.coordinates = p_coordinates;
     this.zoom = p_zoom;
 
     let lng = p_coordinates['lng'];
-    let lat = p_coordinates['lat'];
+
+    // Add 1.65 to center Paraguay;
+    let lat = (action === 'list')? p_coordinates['lat'] + 1.65 : p_coordinates['lat'];  
+    
     let minZoom = DEFAULT_MIN_ZOOM_MAP;
     let maxZoom = DEFAULT_MAX_ZOOM_MAP;
 

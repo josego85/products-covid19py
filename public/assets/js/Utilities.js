@@ -1,5 +1,6 @@
 var map = null;
 var action = null;
+var gps_active = false;
 
 /**
  * Method localization by html5.
@@ -36,9 +37,10 @@ function getCoordinates (p_position)
 {
     let coordinates = new Array();
     coordinates['lng']  = p_position.coords.longitude;
-	coordinates['lat'] = p_position.coords.latitude;//+ 1.65;     // Add 1.65 to center Paraguay.
+	coordinates['lat'] = p_position.coords.latitude;
 	
-	let zoom = DEFAULT_ZOOM_MAP;
+    let zoom = DEFAULT_ZOOM_MAP;
+    gps_active = true;
 
     load_map(coordinates, zoom);
 }
@@ -98,11 +100,11 @@ function load_map (p_coordinates, p_zoom)
     switch (action)
     {
 	    case 'marker':
-			map = new Map(p_coordinates, p_zoom);
+			map = new Map(p_coordinates, p_zoom, action);
             break;
         case 'list':
         case 'default':
-            map = new Map(p_coordinates, p_zoom);
+            map = new Map(p_coordinates, p_zoom, action);
             map.get_vendors();
             break;
 	}

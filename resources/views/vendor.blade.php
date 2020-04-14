@@ -129,7 +129,7 @@
                             Si no moves el marcador no va a poder registrarte como vendedor. Tu ubicaci&oacute;n es obligatoria!
                         </p>
                     </div>
-                    <button type="button" class="btn btn-success btn-lg btn-block" onclick="marker_point_map(event, DEFAULT_ZOOM_MAP)">Marcar ubicaci&oacute;n</button>
+                    <button type="button" class="btn btn-success btn-lg btn-block" onclick="marker_point_map(event,  ((gps_active)? DEFAULT_ZOOM_MARKER : DEFAULT_ZOOM_MAP))">Marcar ubicaci&oacute;n</button>
                 </label>
                 </br>
                 <div id="map">
