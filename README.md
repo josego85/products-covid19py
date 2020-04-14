@@ -3,19 +3,19 @@ Sitio para ver productos que se venden para el uso contra el virus COVID19.
 
 
 Levantar en sitio en cualquier server (Apache, etc.)
-[Sitio] (https://productospy.org/)
+
+[Ir a productospy.org](https://productospy.org/)
 
 
-## Tecnologías utilizadas:
+## Tecnologías utilizadas (Toolkit):
 - JavaScript (Leaflet, JQuery, Boostrap)
 - CSS
 - HTML
-- PHP 7.4 (Laravel 6)
+- [PHP 7.4 (Laravel 6)](https://laravel.com/docs)
+- [Composer](https://getcomposer.org/download/)
 - Datos OSM (Nominatim como buscador)
 
 
-## Todo list:
-- Mejoras en la lista de vendedores sin ubicación.
 
 ## Contribuir
 
@@ -49,3 +49,6 @@ GRANT ALL PRIVILEGES ON products_covid19.* TO covid19@'localhost' IDENTIFIED BY 
 FLUSH PRIVILEGES;
 exit
 ```
+
+## Todo list:
+- Mejoras en la lista de vendedores sin ubicación.
