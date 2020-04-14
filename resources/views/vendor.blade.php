@@ -114,19 +114,19 @@
             <div>
                 <label>
                     <span class="label label-default" style="font-size:22px;">Ubicaci&oacute;n del vendedor</span>
-                    <span>(opcional)</span>
+                    <span>(*)</span>
                     </br>
                     <div class="alert alert-info" role="alert">
                         <h4 class="alert-heading">Aviso!</h4>
                         <p>
-                            Si tenes una ubicaci&oacute;n geogr&aacute;fica haz click en el bot&oacute;n de abajo para que 
-                            aparezca en el mapa un marcador y puedas moverlo para indicar tu ubicaci&oacute;n.
+                            Seleccion&aacute; tu ubicaci&oacute;n para que las personas puedan localizarte. Solo debes de hacer click en el bot&oacute;n de 
+                            abajo para que aparezca en el mapa un marcador y puedas moverlo para indicar tu ubicaci&oacute;n.
                         </p>
                     </div>
                     <div class="alert alert-warning" role="alert">
                         <h4 class="alert-heading">Observaci&oacute;n!</h4>
                         <p>
-                            Si no moves el marcador no va a guardar tu ubicaci&oacute;n!!!
+                            Si no moves el marcador no va a poder registrarte como vendedor. Tu ubicaci&oacute;n es obligatoria!
                         </p>
                     </div>
                     <button type="button" class="btn btn-success btn-lg btn-block" onclick="marker_point_map(event, DEFAULT_ZOOM_MAP)">Marcar ubicaci&oacute;n</button>

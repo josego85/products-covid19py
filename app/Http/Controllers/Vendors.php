@@ -58,11 +58,14 @@ class Vendors extends Controller
         [            
             'user_email' => 'email|nullable',
             'user_phone' => 'required|numeric',
+            'user_lat' => 'required_without:user_lng|numeric',
             "products" => "required|array|min:1"
         ],
         [
-            'user_phone.required' => 'El contacto es obligatorio.',
-            'products.required' => 'Tiene que agregar por lo menos 1 producto.'
+            'user_phone.required'       => 'El contacto es obligatorio.',
+            'user_lat.required_without' => 'La ubicaci&oacute;n en el mapa es obligatoria.',
+            'user_lng.required'         => 'La ubicaci&oacute;n en el mapa es obligatoria.',
+            'products.required'         => 'Tiene que agregar por lo menos 1 producto.'
         ]);
         if ($validador->fails())
         {
