@@ -14,17 +14,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('pages.index');
+    return view('main');
 });
 
 Route::get('/disclamer', function () {
-    return view('pages.disclaimer');
+    return view('disclamer');
 });
 
 Route::get('/vendor', function () {
-    return view('pages.vendor');
+    return view('vendor');
 });
-
 
 
 /**

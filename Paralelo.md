@@ -2,7 +2,7 @@
 
 ### Paralelo 
 
-
+- Ruta /p/*
 - Controladores dela web **Controllers/Web/Controlador.php**
 - Modelo **Model2/Modelo.php**
 - Vista
