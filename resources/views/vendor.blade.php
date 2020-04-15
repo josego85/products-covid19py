@@ -1,16 +1,10 @@
-<html>
-<head>
-<?php 
-        $data = 
-        [
-            'data_load_map' => "marker"
-        ]
-    ?>
-    @include('header', $data)
-</head>
-<body>
-    @include('menu')
-    
+@php
+    $data_load_map  = "marker";
+@endphp
+
+@extends('template.template')
+
+@section('content_page')
     <header class="jumbotron my-4 bg-warning">
         </br>
         <h2 class="display-5">Registrarse como vendedor</h2>
@@ -122,7 +116,11 @@
                     <span class="label label-default" style="font-size:22px;">Productos</span>
                     <span>(*)</span>
                 </label>
-                @include('products')
+
+                @include('partials.producto-tipo-form', [
+                    'data_load_map' => $data_load_map
+                ])
+
             </div>
             <div>
                 <label>
@@ -163,6 +161,6 @@
        </div>
     </div>
     </br>
-    @include('footer')
-</body>
-</html>
+
+
+@endsection

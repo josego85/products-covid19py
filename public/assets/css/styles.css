@@ -80,3 +80,21 @@ a.a-vendedor {
     border-color: rgb(237, 28, 36);
     background: #ed1c24;
 }
+
+
+.bg-warning {
+    background: #ffc10785 !important;
+}
+
+.logo-top {
+    max-width: 200px;
+}
+
+#navbarResponsive {
+    margin-top: 10px;
+}
+
+
+.bg-main {
+    background: #ed1c24 !important;
+}

@@ -18,7 +18,7 @@ class AppServiceProvider extends ServiceProvider
 
         // Prefijo de links
         // Uso para el caso de plataforma paralela, por default dejar vacio 
-        view()->share('p_link', "p"); 
+        view()->share('p_link', ""); 
     }
 
     /**

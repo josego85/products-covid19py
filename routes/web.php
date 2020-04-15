@@ -27,9 +27,9 @@ Route::get('/vendor', function () {
 
 
 /**
- * Utilidades Paralelas
+ * Utilidades Paralelas, mejorar para la aplicacion que se iran insertando 
+ * de manera gradual
  * @since 1.*
- * 
  * 
  */ 
 Route::prefix('p')->namespace('Web')->group(function(){

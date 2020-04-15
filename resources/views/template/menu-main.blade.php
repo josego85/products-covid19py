@@ -1,5 +1,4 @@
 <header class="jumbotron my-4 bg-warning">
-    </br>
     <h2 class="display-5">Productos para la cuarentena 2020 - Paraguay!</h2>
     @if( request()->get('guardado') === 'ok' )
         <div class="alert alert-success" role="alert">
@@ -9,6 +8,8 @@
             </p>
         </div>
     @endif
+
+
     <p class="lead">
         El sitio re&uacute;ne a vendedores que ofrecen productos para poder contactarlos.
         <br/>
