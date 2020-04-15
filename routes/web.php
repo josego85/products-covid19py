@@ -14,14 +14,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('main');
+    return view('pages.index');
 });
 
 Route::get('/disclamer', function () {
-    return view('disclamer');
+    return view('pages.disclaimer');
 });
 
 Route::get('/vendor', function () {
-    return view('vendor');
+    return view('pages.vendor');
 });
 

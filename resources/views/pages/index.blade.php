@@ -1,20 +1,9 @@
-<html>
-<head>
-    <?php 
-        $data = 
-        [
-            'data_load_map' => "list"
-        ]
-    ?>
-    @include('header', $data)
-</head>
-<body>
+@extends('template.template')
+
+@section('content_page')
     
-    @include('menu')
-
-    @include('main_menu')
-
-    @include('filter')
+    @include('template.menu-main')
+    @include('partials.filtro-productos')
 
     <div id="map">
         <div class="title-section">Vendedores con ubicaci&oacute;n</div>
@@ -29,7 +18,7 @@
         </div>
     </div>
     </br>
-    @include('footer')
+    
 
     <script>
         let checkbox = $('#changeShip'),
@@ -69,5 +58,5 @@
             });
         });
     </script>
-</body>
-</html>
+
+@endsection
