@@ -14,6 +14,7 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         view()->share('APP_NAME', 'productospy.org');
+        view()->share('data_load_map', "list");
     }
 
     /**

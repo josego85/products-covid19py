@@ -2,8 +2,6 @@
 <head>
     <?php 
         $data =  [ 'data_load_map' => "list" ];
-
-        var_dump($data);
     ?>
     @include('header', $data)
     

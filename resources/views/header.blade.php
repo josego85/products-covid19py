@@ -26,3 +26,21 @@
 <script src="assets/js/Utilities.js" type="text/javascript" charset="utf-8"></script>
 <script id="loadMap" data_load_map=<?php echo $data_load_map; ?> src="assets/js/onLoadScripts.js" type="text/javascript" charset="utf-8"></script>
 <script src="assets/js/Map.js" type="text/javascript" charset="utf-8"></script>
+
+
+<script type="text/javascript">
+	var HOSTNAME = '{{ @url('/')}}';
+	var HOSTNAME_API = HOSTNAME + 'api/';
+	var GOOGLE_ANALYTICS_CODE = '';
+
+	// Map.
+	var DEFAULT_ZOOM_MAP = 6;
+	var DEFAULT_ZOOM_MARKER = 16;
+	var DEFAULT_MIN_ZOOM_MAP = 6;
+	var DEFAULT_MAX_ZOOM_MAP = 20;
+
+	// Villa Hayes - Paraguay.
+	var DEFAULT_LNG = -57.623807;
+	var DEFAULT_LAT = -23.299114;
+
+</script>
