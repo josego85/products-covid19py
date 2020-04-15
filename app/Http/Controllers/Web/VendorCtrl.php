@@ -14,7 +14,8 @@ class VendorCtrl extends Controller
      */
     public function index()
     {
-        //
+
+        return view('pages.vendor-list');
     }
 
     /**
@@ -24,7 +25,7 @@ class VendorCtrl extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.vendor-create');
     }
 
     /**

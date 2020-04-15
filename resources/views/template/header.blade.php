@@ -29,10 +29,28 @@
 	<script src="{{ @url("assets/js/libs/leaflet/plugins/Leaflet-control-geocoder/Control.Geocoder.js") }}" type="text/javascript" charset="utf-8"></script>
 	<script src="{{ @url("assets/js/libs/jquery/jquery-3.4.1.min.js") }}" type="text/javascript" charset="utf-8"></script>
 	<script src="{{ @url("assets/js/libs/bootstrap-4.4.1-dist/js/bootstrap.min.js") }}" type="text/javascript" charset="utf-8"></script>
-	<script src="{{ @url("assets/js/Constants.js") }}" type="text/javascript" charset="utf-8"></script>
+
 	<script src="{{ @url("assets/js/Utilities.js") }}" type="text/javascript" charset="utf-8"></script>
-	<script id="loadMap" data_load_map="list" src="{{ @url("assets/js/onLoadScripts.js") }}" type="text/javascript" charset="utf-8"></script> 
+	<script id="loadMap" data_load_map={{ $data_load_map }} src="{{ @url("assets/js/onLoadScripts.js") }}" type="text/javascript" charset="utf-8"></script> 
 	<script src="{{ @url("assets/js/Map.js") }}" type="text/javascript" charset="utf-8"></script>
+
+
+	
+	<script type="text/javascript">
+		var HOSTNAME = '{{ @url('/')}}';
+		var HOSTNAME_API = HOSTNAME + 'api/';
+		var GOOGLE_ANALYTICS_CODE = '';
+
+		// Map.
+		var DEFAULT_ZOOM_MAP = 6;
+		var DEFAULT_ZOOM_MARKER = 16;
+		var DEFAULT_MIN_ZOOM_MAP = 6;
+		var DEFAULT_MAX_ZOOM_MAP = 20;
+
+		// Villa Hayes - Paraguay.
+		var DEFAULT_LNG = -57.623807;
+		var DEFAULT_LAT = -23.299114;
+	</script>
 
 </head>
 <body>

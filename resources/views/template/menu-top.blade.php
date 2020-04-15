@@ -9,12 +9,17 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="{{ url('/') }}">Inicio
+                    <a class="nav-link" href="{{ url("$p_link/") }}">Inicio
                     <span class="sr-only">(current)</span>
                     </a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="{{ url('vendor') }}">Registrar vendedor
+                    <a class="nav-link" href="{{ url("$p_link/products") }}">
+                        Productos Disponibles
+                    </a>
+                </li>
+                <li class="nav-item active ">
+                    <a class="nav-link a-vendedor" href="{{ url("p_link/vendor") }}">Registrar vendedor
                     <span class="sr-only">(current)</span>
                     </a>
                 </li>

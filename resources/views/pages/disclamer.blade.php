@@ -1,3 +1,4 @@
+@extends('template.template')
 @section('content_page')
 
     <header class="jumbotron my-4">

@@ -3,7 +3,7 @@
 @section('content_page')
     
     @include('template.menu-main')
-    @include('partials.filtro-productos')
+    @include('partials.producto-filtro')
 
     <div id="map">
         <div class="title-section">Vendedores con ubicaci&oacute;n</div>
@@ -22,7 +22,7 @@
 
     <script>
         let checkbox = $('#changeShip'),
-          chShipBlock = $('#changeShipInputs');
+            chShipBlock = $('#changeShipInputs');
 
         chShipBlock.hide();
 
@@ -40,9 +40,11 @@
             }
         });
 
+
+        // Check selected only products.
         $("#selectAll").click(function()
         {
-            // Check selected only products.
+            
             let current_check;
             $('input[name="products[]"]').each(function ()
             {

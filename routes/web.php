@@ -18,7 +18,7 @@ Route::get('/', function () {
 });
 
 Route::get('/disclamer', function () {
-    return view('disclamer');
+    return view('pages.disclaimer');
 });
 
 Route::get('/vendor', function () {
@@ -32,7 +32,8 @@ Route::get('/vendor', function () {
  * 
  * 
  */ 
-Route::prefix('p')->group(function(){
+Route::prefix('p')->namespace('Web')->group(function(){
+
 	Route::get('/', function () {
 	    return view('pages.index');
 	});
@@ -42,6 +43,13 @@ Route::prefix('p')->group(function(){
 	});
 
 	Route::get('/vendor', function () {
-	    return view('pages.vendor');
+	    return view('pages.vendor-create');
 	});
+
+
+	// Nuevas funcionalidades
+	Route::resources([
+		'vendors' => 'VendorCtrl'
+	]);
+
 });

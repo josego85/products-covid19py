@@ -54,3 +54,29 @@ form {
       transform: rotate(360deg);
     }
 }
+
+
+nav.bg-info {
+    background: #fff !important;
+}
+
+a.nav-link  {
+    font-weight: bold;
+    color: #ed1e26 !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+    font-size: 17px !important;
+}
+
+a.a-vendedor {
+    background: #ed1c24;
+    border-radius: 10px;
+    color: #fff !important;
+    margin-left: 20px;
+}
+
+
+.navbar-dark .navbar-toggler {
+    border-color: rgb(237, 28, 36);
+    background: #ed1c24;
+}

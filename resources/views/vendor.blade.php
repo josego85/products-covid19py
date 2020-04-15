@@ -22,6 +22,9 @@
     </header>
 
     <script>
+
+        
+        {{-- Guarda el formulario de un nuevo vendedor --}}
         $(function ()
         {
             const lockModal = $("#lock-modal");
@@ -42,6 +45,9 @@
                     lockModal.css("display", "none");
                     loadingCircle.css("display", "none");
                 }, 3000);
+
+
+                alert('test');
 
                 $.ajax(
                 {
@@ -74,6 +80,8 @@
                     },
                     error: function (request, status, error)
                     {
+                        console.log('test');
+
                         alert(request.responseText);
                     }
                 });
