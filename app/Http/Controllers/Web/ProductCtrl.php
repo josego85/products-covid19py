@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Web;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class VendedorController extends Controller
+class ProductCtrl extends Controller
 {
     /**
      * Display a listing of the resource.
