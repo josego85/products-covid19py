@@ -25,3 +25,24 @@ Route::get('/vendor', function () {
     return view('pages.vendor');
 });
 
+
+
+/**
+ * Utilidades Paralelas
+ * @since 1.*
+ * 
+ * 
+ */ 
+Route::prefix('p')->group(function(){
+	Route::get('/', function () {
+	    return view('pages.index');
+	});
+
+	Route::get('/disclamer', function () {
+	    return view('pages.disclaimer');
+	});
+
+	Route::get('/vendor', function () {
+	    return view('pages.vendor');
+	});
+});
