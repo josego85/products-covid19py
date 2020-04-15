@@ -5,7 +5,7 @@ var GOOGLE_ANALYTICS_CODE = '';
 // Map.
 var DEFAULT_ZOOM_MAP = 6;
 var DEFAULT_ZOOM_MARKER = 16;
-var DEFAULT_MIN_ZOOM_MAP = 6;
+var DEFAULT_MIN_ZOOM_MAP = 4;
 var DEFAULT_MAX_ZOOM_MAP = 20;
 
 // Villa Hayes - Paraguay.
