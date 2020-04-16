@@ -38,7 +38,7 @@
 	
 	<script type="text/javascript">
 		var HOSTNAME = '{{ @url('/')}}';
-		var HOSTNAME_API = HOSTNAME + 'api/';
+		var HOSTNAME_API = HOSTNAME + '/api/';
 		var GOOGLE_ANALYTICS_CODE = '';
 
 		// Map.
