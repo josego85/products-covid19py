@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'Main@index');
 
-Route::get('/disclamer', function () {
+Route::get('/disclaimer', function () {
     return view('pages.disclaimer');
 });
 
@@ -36,7 +36,7 @@ Route::prefix('p')->namespace('Web')->group(function(){
 	    return view('pages.index');
 	});
 
-	Route::get('/disclamer', function () {
+	Route::get('/disclaimer', function () {
 	    return view('pages.disclaimer');
 	});
 
