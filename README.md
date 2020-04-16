@@ -46,6 +46,7 @@ Levantar en sitio en cualquier server (Apache, etc.)
 	CREATE DATABASE products_covid19 CHARACTER SET utf8 COLLATE utf8_general_ci;
 	exit
 	mysql -u tu_usuario -p products_covid19 < ~/products_covid19.sql
+        mysql -u tu_usuario -p products_covid19 < ~/cities.sql 
 	GRANT ALL PRIVILEGES ON products_covid19.* TO tu_usuario@'localhost' IDENTIFIED BY 'xxxxxxxxxxxxx';
 	FLUSH PRIVILEGES;
 	exit
