@@ -1,3 +1,7 @@
+@php
+    $data = [ 'checked' => "checked" ];
+@endphp
+
 <div class="container">
     <form name="form_filter" role="form">
         <div class="form-group">
@@ -11,12 +15,6 @@
             </div>
 
             <div id="changeShipInputs">
-                <?php 
-                    $data = 
-                    [
-                        'checked' => "checked"
-                    ]
-                ?>
                 </br>
                 <label>
                     <span class="label label-default" style="font-size:22px;">Productos</span>
@@ -31,7 +29,7 @@
                 </div>
                 <hr />
 
-                @include('products', $data)
+                @include('partials.producto-tipo-form', $data)
 
                 <button class="btn btn-primary" type="button" onclick="products_filter();">
                     Filtrar

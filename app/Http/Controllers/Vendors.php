@@ -11,7 +11,12 @@ use App\Libraries\Utils;
 use Validator;
 
 class Vendors extends Controller
-{
+{   
+
+
+    /**
+     * Retorna un listado de vendedores
+     */
     public function getVendors(Request $request)
     {
         // @todo validation
@@ -52,6 +57,13 @@ class Vendors extends Controller
         return $GISFunctions->create_geo_json($geo_json);
     }
 
+
+    /**
+     * 
+     * Inserta un nuevo vendedor
+     * 
+     * @param Request $request
+     */
     public function postVendor(Request $request)
     {
         $validador = Validator::make($request->all(),

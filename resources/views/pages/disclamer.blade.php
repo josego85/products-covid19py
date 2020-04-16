@@ -1,15 +1,5 @@
-<html>
-<head>
-    <?php 
-        $data = 
-        [
-            'data_load_map' => "list"
-        ]
-    ?>
-    @include('header', $data)
-</head>
-<body>
-    @include('menu')
+@extends('template.template')
+@section('content_page')
 
     <header class="jumbotron my-4">
         </br>
@@ -36,6 +26,5 @@
             </ol>
         </p>
     </header>
-    @include('footer')
-</body>
-</html>
+    
+@endsection

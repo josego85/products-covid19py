@@ -1,17 +1,14 @@
 @extends('template.template')
 
-
 @section('content_page')
-
+    
     @include('template.menu-main')
     @include('partials.producto-filtro')
 
-    
     <div id="map">
         <div class="title-section">Vendedores con ubicaci&oacute;n</div>
-        <div id='map-container' class="map-container-vendors" style="height: 800px; border: 1px solid #AAA;"></div>
+        <div id='map-container' class="map-container-vendors" style="height: 450px; border: 1px solid #AAA;"></div>
     </div>
-    
     </br>
     <div class="container">
         <div class="title-section">Lista de todos los vendedores</div>
@@ -21,10 +18,11 @@
         </div>
     </div>
     </br>
+    
 
     <script>
         let checkbox = $('#changeShip'),
-          chShipBlock = $('#changeShipInputs');
+            chShipBlock = $('#changeShipInputs');
 
         chShipBlock.hide();
 
@@ -42,9 +40,11 @@
             }
         });
 
+
+        // Check selected only products.
         $("#selectAll").click(function()
         {
-            // Check selected only products.
+            
             let current_check;
             $('input[name="products[]"]').each(function ()
             {
@@ -60,6 +60,5 @@
             });
         });
     </script>
-
 
 @endsection

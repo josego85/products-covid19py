@@ -1,10 +1,7 @@
-@php
-    $data_load_map  = "marker";
-@endphp
-
 @extends('template.template')
 
 @section('content_page')
+    
     <header class="jumbotron my-4 bg-warning">
         </br>
         <h2 class="display-5">Registrarse como vendedor</h2>
@@ -16,9 +13,6 @@
     </header>
 
     <script>
-
-        
-        {{-- Guarda el formulario de un nuevo vendedor --}}
         $(function ()
         {
             const lockModal = $("#lock-modal");
@@ -39,9 +33,6 @@
                     lockModal.css("display", "none");
                     loadingCircle.css("display", "none");
                 }, 3000);
-
-
-                alert('test');
 
                 $.ajax(
                 {
@@ -74,8 +65,6 @@
                     },
                     error: function (request, status, error)
                     {
-                        console.log('test');
-
                         alert(request.responseText);
                     }
                 });
@@ -84,7 +73,8 @@
 
         function send_marker ()
         {
-            marker_point_map(event, ((gps_active)? DEFAULT_ZOOM_MARKER : DEFAULT_ZOOM_MAP))
+            console.log("gps_active: ", gps_active);
+            marker_point_map(event,  ((gps_active)? DEFAULT_ZOOM_MARKER : DEFAULT_ZOOM_MAP))
         }
     </script>
     
@@ -116,11 +106,7 @@
                     <span class="label label-default" style="font-size:22px;">Productos</span>
                     <span>(*)</span>
                 </label>
-
-                @include('partials.producto-tipo-form', [
-                    'data_load_map' => $data_load_map
-                ])
-
+                @include('products')
             </div>
             <div>
                 <label>
@@ -161,6 +147,5 @@
        </div>
     </div>
     </br>
-
 
 @endsection

@@ -18,10 +18,38 @@ Route::get('/', function () {
 });
 
 Route::get('/disclamer', function () {
-    return view('disclamer');
+    return view('pages.disclaimer');
 });
 
 Route::get('/vendor', function () {
     return view('vendor');
 });
 
+
+/**
+ * Utilidades Paralelas, mejorar para la aplicacion que se iran insertando 
+ * de manera gradual
+ * @since 1.*
+ * 
+ */ 
+Route::prefix('p')->namespace('Web')->group(function(){
+
+	Route::get('/', function () {
+	    return view('pages.index');
+	});
+
+	Route::get('/disclamer', function () {
+	    return view('pages.disclaimer');
+	});
+
+	Route::get('/vendor', function () {
+	    return view('pages.vendor-create');
+	});
+
+
+	// Nuevas funcionalidades
+	Route::resources([
+		'vendors' => 'VendorCtrl'
+	]);
+
+});
