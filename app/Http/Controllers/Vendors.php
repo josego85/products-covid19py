@@ -12,8 +12,7 @@ use Validator;
 
 class Vendors extends Controller
 {   
-
-
+    
     /**
      * Retorna un listado de vendedores
      */
@@ -25,6 +24,7 @@ class Vendors extends Controller
 
         // Parameters
         $products_filter = json_decode($this->securityCleanCode($request->input('products')));
+        $city_filter = json_decode($this->securityCleanCode($request->input('city')));
         $filter_products = null;
         if ($products_filter != null)
         {
@@ -35,7 +35,7 @@ class Vendors extends Controller
                 $filter_products[] = $product_id;
             }
         }
-        $result_vendors = $user->getUsers($filter_products);
+        $result_vendors = $user->getUsers($filter_products, $city_filter);
         $vendors = $result_vendors['data'];
 
         foreach($vendors as $vendor)

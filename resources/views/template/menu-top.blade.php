@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-info">
     <div class="container">
         <a class="navbar-brand" href="/">
-            <img src="{{asset('assets/img/logo.png')}}" alt="Logo productospy" 
+            <img src="{{ asset('assets/img/logo.png') }}" alt="Logo productospy" 
                 class="logo-top" />
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -10,17 +10,17 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="{{ url("$p_link/") }}">Inicio
+                    <a class="nav-link" href="{{ url('$p_link/') }}">Inicio
                     <span class="sr-only">(current)</span>
                     </a>
                 </li>
                 {{-- <li class="nav-item active">
-                    <a class="nav-link" href="{{ url("$p_link/products") }}">
+                    <a class="nav-link" href="{{ url('$p_link/products') }}">
                         Productos Disponibles
                     </a>
                 </li> --}}
                 <li class="nav-item active ">
-                    <a class="nav-link a-vendedor" href="{{ url("$p_link/vendor") }}">Registrar vendedor
+                    <a class="nav-link a-vendedor" href="{{ url('$p_link/vendor') }}">Registrar vendedor
                     <span class="sr-only">(current)</span>
                     </a>
                 </li>

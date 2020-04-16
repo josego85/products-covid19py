@@ -40,8 +40,7 @@
                     loadingCircle.css("display", "none");
                 }, 3000);
 
-
-                alert('test');
+                //alert('test');
 
                 $.ajax(
                 {
@@ -76,7 +75,7 @@
                     {
                         console.log('test');
 
-                        alert(request.responseText);
+                        //alert(request.responseText);
                     }
                 });
             });

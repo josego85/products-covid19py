@@ -114,8 +114,10 @@ function load_map (p_coordinates, p_zoom)
 //
 function products_filter ()
 {
-    let products_filter = $("[name='form_filter']").serializeArray()
-    map.products_filter(products_filter);
+    let products_filter = $("[name='products[]']").serializeArray();
+    let city_filter = $("[name='city']").val();
+
+    map.products_filter(products_filter, city_filter);
 }
 
 function marker_point_map (p_e, p_zoom)

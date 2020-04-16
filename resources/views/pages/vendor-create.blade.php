@@ -73,7 +73,6 @@
 
         function send_marker ()
         {
-            console.log("gps_active: ", gps_active);
             marker_point_map(event,  ((gps_active)? DEFAULT_ZOOM_MARKER : DEFAULT_ZOOM_MAP))
         }
     </script>

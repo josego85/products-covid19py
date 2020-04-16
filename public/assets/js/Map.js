@@ -101,7 +101,7 @@ Map.prototype.get_vendors = function()
     });
 };
 
-Map.prototype.products_filter = function (p_products_filter)
+Map.prototype.products_filter = function (p_products_filter, p_city_filter)
 {
     let map = this.map;
     let product;
@@ -117,7 +117,7 @@ Map.prototype.products_filter = function (p_products_filter)
     cluster_markers.clearLayers();
 
     let products = JSON.stringify(product_array);
-    let url = HOSTNAME_API + "vendors?products=" + products;
+    let url = HOSTNAME_API + "vendors?products=" + products + "&city=" + p_city_filter;
 
     $.getJSON(url, function(p_data)
     {

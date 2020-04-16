@@ -22,7 +22,7 @@
 
     <script>
         let checkbox = $('#changeShip'),
-            chShipBlock = $('#changeShipInputs');
+          chShipBlock = $('#changeShipInputs');
 
         chShipBlock.hide();
 
@@ -44,7 +44,6 @@
         // Check selected only products.
         $("#selectAll").click(function()
         {
-            
             let current_check;
             $('input[name="products[]"]').each(function ()
             {

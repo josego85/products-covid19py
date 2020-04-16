@@ -16,7 +16,7 @@
                 </li>
                 <li>
                     El contenido y los datos del sitio web est&aacute;n distribuidos bajo la 
-                    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" target="_blank">Licencia Creative Commons 
+                    <a href="{{ @url('https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es') }}" target="_blank">Licencia Creative Commons 
                     Atribución-NoComercial-CompartirIgual 4.0 Internacional</a> y el c&oacute;digo fuente bajo dominio p&uacute;blico.
                 </li>
                 <li>

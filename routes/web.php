@@ -13,9 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('main');
-});
+Route::get('/', 'Main@index');
 
 Route::get('/disclamer', function () {
     return view('pages.disclaimer');
@@ -51,5 +49,4 @@ Route::prefix('p')->namespace('Web')->group(function(){
 	Route::resources([
 		'vendors' => 'VendorCtrl'
 	]);
-
 });
