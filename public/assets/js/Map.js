@@ -193,7 +193,7 @@ function onEachFeature (p_feature, p_layer)
 {
     if (p_feature.properties)
     {
-        let v_popupString = '<div class="popup">';
+        let v_popupString = '<div>';
         let propertie;
 
         for (propertie in p_feature.properties)
@@ -248,6 +248,9 @@ function onEachFeature (p_feature, p_layer)
                 }
             }
         }
+        // Delete the last <br />
+        v_popupString = v_popupString.substr(0, v_popupString.length - 6);
+        
         v_popupString += '</div>';
         p_layer.bindPopup(v_popupString);
     }
