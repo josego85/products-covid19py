@@ -42,7 +42,8 @@ class Users
                     )
               WHERE c.city_id = $p_filter_city and u.user_state = 'active'
                 $sql_where
-                GROUP By u.user_id, u.user_full_name, u.user_phone, u.user_lng, u.user_lat;
+                GROUP By u.user_id, u.user_full_name, u.user_phone, u.user_lng, u.user_lat
+                ORDER BY u.user_registration DESC;
             ";
             $query = DB::select(DB::raw($sql));
             $result_data = $query;
@@ -52,6 +53,7 @@ class Users
             $query = DB::table('users as u')
             ->select(array( DB::raw($expression_raw)));
             $query->where('u.user_state', 'active');
+            $query->orderBy('u.user_registration', 'desc');
 
             if (isset($p_filter_products))
             {
