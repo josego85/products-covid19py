@@ -46,8 +46,7 @@ Levantar en sitio en cualquier server (Apache, etc.)
 	mysql -u root -p
 	CREATE DATABASE productospy CHARACTER SET utf8 COLLATE utf8_general_ci;
 	exit
-	mysql -u tu_usuario -p productospy < ~/productospy.sql
-        mysql -u tu_usuario -p productospy < ~/cities.sql 
+	mysql -u tu_usuario -p productospy < ~/productospy.sql 
 	GRANT ALL PRIVILEGES ON productospy.* TO tu_usuario@'localhost' IDENTIFIED BY 'xxxxxxxxxxxxx';
 	FLUSH PRIVILEGES;
 	exit
