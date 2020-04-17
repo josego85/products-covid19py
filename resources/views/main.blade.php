@@ -45,19 +45,7 @@
         $("#selectAll").click(function()
         {
             // Check selected only products.
-            let current_check;
-            $('input[name="products[]"]').each(function ()
-            {
-                current_check = $(this);
-                if (current_check.is(':checked'))
-                {
-                    current_check.prop("checked", false);
-                }
-                else
-                {
-                    current_check.prop("checked", true); 
-                }
-            });
+            $('input[name="products[]"]').prop('checked', $(this).is(":checked"));
         });
     </script>
 
