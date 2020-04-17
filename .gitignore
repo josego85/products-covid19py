@@ -12,4 +12,4 @@ npm-debug.log
 yarn-error.log
 /database/Products-COVID19.mwb.bak
 composer.lock
-public/assets/js/Constants.js
+/public/assets/js/Constants.js
