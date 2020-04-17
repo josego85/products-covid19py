@@ -31,7 +31,7 @@
 
                 @include('partials.producto-tipo-form', $data)
 
-                @include('partials.city-filter')
+                <!-- @include('partials.city-filter') -->
 
                 <button class="btn btn-primary" type="button" onclick="products_filter();">
                     Filtrar
