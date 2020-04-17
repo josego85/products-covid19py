@@ -7,7 +7,8 @@ Levantar en sitio en cualquier server (Apache, etc.)
 [Ir a productospy.org](https://productospy.org/)
 
 
-## Tecnologías utilizadas (Toolkit):
+## Tecnologías utilizadas (Toolkit)
+
 - JavaScript (Leaflet, JQuery, Boostrap)
 - CSS
 - HTML
@@ -25,7 +26,7 @@ Levantar en sitio en cualquier server (Apache, etc.)
 - Push el branch: git push origin nueva-feature
 - Enviar un pull request.
 
-## Pasos:
+## Pasos
 
 ```sh
 	git clone https://github.com/josego85/products-covid19py.git
@@ -39,18 +40,19 @@ Levantar en sitio en cualquier server (Apache, etc.)
 ```
 
 
-## Base de datos:
+## Base de datos
 
 ```sh
 	mysql -u root -p
-	CREATE DATABASE products_covid19 CHARACTER SET utf8 COLLATE utf8_general_ci;
+	CREATE DATABASE productospy CHARACTER SET utf8 COLLATE utf8_general_ci;
 	exit
-	mysql -u tu_usuario -p products_covid19 < ~/products_covid19.sql
-        mysql -u tu_usuario -p products_covid19 < ~/cities.sql 
-	GRANT ALL PRIVILEGES ON products_covid19.* TO tu_usuario@'localhost' IDENTIFIED BY 'xxxxxxxxxxxxx';
+	mysql -u tu_usuario -p productospy < ~/productospy.sql
+        mysql -u tu_usuario -p productospy < ~/cities.sql 
+	GRANT ALL PRIVILEGES ON productospy.* TO tu_usuario@'localhost' IDENTIFIED BY 'xxxxxxxxxxxxx';
 	FLUSH PRIVILEGES;
 	exit
 ```
 
-## Todo list:
-- Mejoras en la lista de vendedores sin ubicación.
+## Todo list
+* Mejoras en la lista de vendedores sin ubicación.
+* Mejora en la GUI.
