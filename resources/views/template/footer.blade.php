@@ -1,9 +1,9 @@
 
     <footer class="py-5 bg-main">
         <div class="container">
-            <p class="m-0 text-center text-white"><a href="{{ url('disclaimer') }}"><strong>T&eacute;rminos de uso</strong></a></p>
+            <p class="m-0 text-center"><a class="a-vendedor" href="{{ url('disclaimer') }}"><strong>T&eacute;rminos de uso</strong></a></p>
             <p class="m-0 text-center text-white">Copyright &copy; Proyectos Beta 2020</p>
-            <p class="m-0 text-center text-white"><a href="{{ url('https://github.com/josego85/products-covid19py') }}" target="_blank"><strong>GitHub</strong></a></p>
+            <p class="m-0 text-center"><a class="a-vendedor" href="{{ url('https://github.com/josego85/products-covid19py') }}" target="_blank"><strong>GitHub</strong></a></p>
         </div>
 
         <!-- Global site tag (gtag.js) - Google Analytics -->
