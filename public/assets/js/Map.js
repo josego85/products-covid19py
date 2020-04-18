@@ -173,7 +173,7 @@ Map.prototype.marker_point = function (p_zoom)
     });
     marker_point.bindPopup('Mi ubicación').openPopup();
     map.addLayer(marker_point);
-    map.setView([lat, lng], p_zoom);
+    map.setView(coordinates, p_zoom);
 
     marker_point.on("dragend", function(e) {
         let marker = e.target;
