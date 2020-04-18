@@ -118,6 +118,13 @@ function products_filter ()
     let city_filter = $("[name='city']").val();
 
     map.products_filter(products_filter, city_filter);
+
+    // Hide product filter.
+    let checkbox = $('#changeShip'),
+      chShipBlock = $('#changeShipInputs');
+
+    checkbox.prop('checked', false);
+    chShipBlock.hide();
 }
 
 function marker_point_map (p_e, p_zoom)
