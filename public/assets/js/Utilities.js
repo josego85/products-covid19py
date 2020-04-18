@@ -125,6 +125,9 @@ function products_filter ()
 
     checkbox.prop('checked', false);
     chShipBlock.hide();
+
+    // Go to the top product-filter section.
+    $(window).scrollTop($('#product-filter').offset().top);
 }
 
 function marker_point_map (p_e, p_zoom)

@@ -2,7 +2,7 @@
     $data = [ 'checked' => "checked" ];
 @endphp
 
-<div class="container">
+<div id="product-filter" class="container">
     <form name="form_filter" role="form">
         <div class="form-group">
             <label>
