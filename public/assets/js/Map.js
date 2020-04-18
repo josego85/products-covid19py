@@ -93,7 +93,10 @@ Map.prototype.get_vendors = function()
                 });
 			}
         });
-        cluster_markers = L.markerClusterGroup();
+        cluster_markers = L.markerClusterGroup(
+        {
+            showCoverageOnHover: false
+        });
         cluster_markers.addLayer(layer_vendors);
         map.addLayer(cluster_markers);
 
@@ -128,6 +131,29 @@ Map.prototype.products_filter = function (p_products_filter, p_city_filter)
         cluster_markers.addLayer(geojsonLayer);
         map.addLayer(cluster_markers);
 
+        // Go to the specific city.
+        if (!!p_city_filter)
+        {
+            let values = p_data.features;
+            let count = values.length;
+
+            if (count != 0)
+            {
+                let bounds = cluster_markers.getBounds();
+                map.fitBounds(bounds);
+            }
+            else
+            {
+                let coordinates = get_coordinates_center_map(map);
+                map.setView(coordinates, DEFAULT_ZOOM_MAP);
+            }
+        }
+        else
+        {
+            // Options all cities.
+            let coordinates = get_coordinates_center_map(map);
+            map.setView(coordinates, DEFAULT_ZOOM_MAP);
+        }
         generate_table (p_data);
     });
 }
@@ -135,14 +161,11 @@ Map.prototype.products_filter = function (p_products_filter, p_city_filter)
 Map.prototype.marker_point = function (p_zoom)
 {
     let map = this.map;
-    let options = map.options;
-    let coordinates = options.center;
-    let lng = coordinates[1];
-    let lat = coordinates[0];
+    let coordinates = get_coordinates_center_map(map);
 
     clean_marker();
 	
-    marker_point = new L.marker([lat,lng],
+    marker_point = new L.marker(coordinates,
     {
 		id: 'vendor', 
         draggable: 'true',
@@ -391,4 +414,11 @@ function convert_link_wa (p_phone_number)
         return wa_number;
     }
     return p_phone_number;
+}
+
+function get_coordinates_center_map (map)
+{
+    let options = map.options;
+    let coordinates = options.center;
+    return coordinates;
 }
