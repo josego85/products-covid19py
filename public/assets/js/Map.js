@@ -274,12 +274,7 @@ function onEachFeature (p_feature, p_layer)
                     v_popupString += '<b>' + capitalize(propertie) + '</b>: ' + value + '<br />';
                 }
             }
-        }
-        // Delete the last <br />
-        console.log("v_popupString1: ", v_popupString);
-        //v_popupString = v_popupString.substr(0, v_popupString.length - 6);
-        console.log("v_popupString2: ", v_popupString);
-        
+        }        
         v_popupString += '</div>';
         p_layer.bindPopup(v_popupString);
     }
