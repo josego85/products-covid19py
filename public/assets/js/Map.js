@@ -235,14 +235,14 @@ function onEachFeature (p_feature, p_layer)
                     if (value != null && (value[0] === 'w' & value[1] === 'w' & value[2] === 'w') ||
                     (value[0] === 'h' & value[1] === 't' & value[2] === 't' & value[3] === 'p'))
                     {
-                        v_popupString += `<b> ${capitalize(propertie)} </b>: <a href="${value}" target="_blank">${value}</a><br />`;
+                        v_popupString += `<b> ${capitalize(propertie)} </b>: <a href="${value}" target="_blank">${value}</a>`;
                     }
                     else
                     {
-                        v_popupString += '<b>' + capitalize(propertie) + '</b>: ' + value + '<br />';
+                        v_popupString += '<b>' + capitalize(propertie) + '</b>: ' + value ;
                     }
-                }
-                if (propertie === 'contacto')
+                    v_popupString += '<br/>';
+                }else if (propertie === 'contacto')
                 {
                     let description = capitalize(propertie);
                     description = (check_cellphone_number(value))? (description + ' WA') : description;
@@ -267,7 +267,7 @@ function onEachFeature (p_feature, p_layer)
                        
                     }
                     product += '</ul>';
-                    v_popupString += '<b>' + capitalize(propertie) + '</b>: ' + product + '<br />';
+                    v_popupString += '<b>' + capitalize(propertie) + '</b>: ' + product;
                 }
                 else
                 {
@@ -276,7 +276,9 @@ function onEachFeature (p_feature, p_layer)
             }
         }
         // Delete the last <br />
-        v_popupString = v_popupString.substr(0, v_popupString.length - 6);
+        console.log("v_popupString1: ", v_popupString);
+        //v_popupString = v_popupString.substr(0, v_popupString.length - 6);
+        console.log("v_popupString2: ", v_popupString);
         
         v_popupString += '</div>';
         p_layer.bindPopup(v_popupString);
