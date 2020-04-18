@@ -9,7 +9,7 @@
     
     <div id="map">
         <div class="title-section">Vendedores con ubicaci&oacute;n</div>
-        <div id='map-container' class="map-container-vendors" style="height: 450px; border: 1px solid #AAA;"></div>
+        <div id='map-container' class="map-container-vendors" style="height: 430px; border: 1px solid #AAA;"></div>
     </div>
     
     </br>
