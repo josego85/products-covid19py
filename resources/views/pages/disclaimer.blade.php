@@ -11,7 +11,7 @@
                     publicada como tambi&eacute;n del mal uso de la informaci&oacute;n.
                 </li>
                 <li>
-                    El sitio reune a todos los vendedores que ofrecen productos para la cuarentena en el territorio paraguayo 
+                    El sitio reune a todos los vendedores que ofrecen productos y/o servicios para la cuarentena en el territorio paraguayo 
                     para poder contactarlos. No se responsabiliza de estafas, etc; solo facilita el contacto.
                 </li>
                 <li>

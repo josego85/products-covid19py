@@ -9,7 +9,7 @@
         </br>
         <h2 class="display-5">Registrarse como vendedor</h2>
         <p class="lead">
-            Completa tus datos como vendedor con los productos para aparecer en productospy.
+            Completa tus datos como vendedor con los productos y/o servicios para aparecer en productospy.
             </br>
             Cualquier consulta a <strong>productospy.org@gmail.com</strong>
         </p>
@@ -112,35 +112,53 @@
             </div>
             <div class="form-group">
                 <label>
-                    <span class="label label-default" style="font-size:22px;">Productos</span>
+                    <span class="label label-default" style="font-size:22px;">Productos y/o servicios</span>
                     <span>(*)</span>
                 </label>
 
                 @include('partials.producto-tipo-form', [
                     'data_load_map' => $data_load_map
                 ])
-
             </div>
-            <div>
+            <div class="form-group">
+                <label>
+                    <span class="label label-default" style="font-size:22px;">Descripci&oacute;n de los productos o servicios ofrecidos</span>
+                    <span>(opcional)</span>
+                </label>
+                </br>
+                <div class="alert alert-info" role="alert">
+                    <h4 class="alert-heading">Aviso!</h4>
+                    <p>
+                        En esta secci&oacute;n pod&eacute;s escribir detalladamente tus productos y/o servicios que ofreces.
+                        <br />
+                        <i>Ejemplo:</i>
+                        Hacemos servicio de mantenimiento de autom&oacute;viles incluyendo chaper&iacute;a y pintura.
+                    </p>
+                </div>
+                <div class="col-sm-16">
+                    <textarea class="form-control" maxlength="4000" name="user_comment" placeholder="Descripción de tus productos y/o servicios" rows="5"></textarea>
+                </div>
+            </div>
+            <div class="form-group">
                 <label>
                     <span class="label label-default" style="font-size:22px;">Ubicaci&oacute;n del vendedor</span>
                     <span>(*)</span>
-                    </br>
-                    <div class="alert alert-info" role="alert">
-                        <h4 class="alert-heading">Aviso!</h4>
-                        <p>
-                            Seleccion&aacute; tu ubicaci&oacute;n para que las personas puedan localizarte. Solo debes de hacer click en el bot&oacute;n de 
-                            abajo para que aparezca en el mapa un marcador y puedas moverlo para indicar tu ubicaci&oacute;n.
-                        </p>
-                    </div>
-                    <div class="alert alert-warning" role="alert">
-                        <h4 class="alert-heading">Observaci&oacute;n!</h4>
-                        <p>
-                            Si no moves el marcador no va a poder registrarte como vendedor. Tu ubicaci&oacute;n es obligatoria!
-                        </p>
+                </label>
+                </br>
+                <div class="alert alert-info" role="alert">
+                    <h4 class="alert-heading">Aviso!</h4>
+                    <p>
+                        Seleccion&aacute; tu ubicaci&oacute;n para que las personas puedan localizarte. Solo debes de hacer click en el bot&oacute;n de 
+                        abajo para que aparezca en el mapa un marcador y puedas moverlo para indicar tu ubicaci&oacute;n.
+                    </p>
+                </div>
+                <div class="alert alert-warning" role="alert">
+                    <h4 class="alert-heading">Observaci&oacute;n!</h4>
+                    <p>
+                        Si no moves el marcador no va a poder registrarte como vendedor. Tu ubicaci&oacute;n es obligatoria!
+                    </p>
                     </div>
                     <button type="button" class="btn btn-success btn-lg btn-block" onclick="send_marker()">Marcar ubicaci&oacute;n</button>
-                </label>
                 </br>
                 <div id="map">
                     <div id='map-container' style="width: 100%; height: 300px; border: 1px solid #AAA;"></div>
