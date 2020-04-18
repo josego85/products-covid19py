@@ -63,6 +63,7 @@ class Users
                   ->groupBy('u.user_id')
                   ->groupBy('u.user_full_name')
                   ->groupBy('u.user_phone')
+                  ->groupBy('u.user_comment')
                   ->groupBy('u.user_lng')
                   ->groupBy('u.user_lat');
             }
