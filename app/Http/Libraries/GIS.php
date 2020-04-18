@@ -22,7 +22,8 @@ namespace App\Libraries
                     'properties' => array(
                         'nombre' => $value->user_full_name,
                         'contacto' => $value->user_phone,
-                        'productos' => $value->products
+                        'productos' => $value->products,
+                        'comentarios' => ($value->user_comment)? $value->user_comment : '',
                     )
                 );
             };

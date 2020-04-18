@@ -17,7 +17,7 @@ class Users
      */
     public function getUsers ($p_filter_products = null, $p_filter_city = null)
     {
-        $expression_raw = 'SQL_CALC_FOUND_ROWS u.user_id, u.user_full_name, u.user_phone, u.user_lng, ' .
+        $expression_raw = 'SQL_CALC_FOUND_ROWS u.user_id, u.user_full_name, u.user_phone, u.user_comment, u.user_lng, ' .
           'u.user_lat';
         if (isset($p_filter_city))
         {

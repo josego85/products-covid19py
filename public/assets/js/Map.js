@@ -342,7 +342,8 @@ function generate_table (p_data)
                 numero: ++count,
                 nombre: propertie.nombre,
                 contacto: propertie.contacto,
-                productos: propertie.productos
+                productos: propertie.productos,
+                comentarios: propertie.comentarios
             })  
         // }
     }
@@ -355,7 +356,8 @@ function generate_table (p_data)
         '#',
         'Nombre',
         'Contacto WA',
-        'Productos'
+        'Productos',
+        'Comentarios'
     ];
     let index_header;
     let propertie_header;
@@ -390,6 +392,8 @@ function generate_table (p_data)
         }
         product = product.substr(0, product.length - 2);
         cell.innerHTML = product;
+        var cell = row.insertCell(-1);
+        cell.innerHTML = table[i].comentarios;
     }
     let dvTable = document.getElementById("table_vendors_without_geo");
     dvTable.innerHTML = "";
