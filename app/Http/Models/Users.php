@@ -36,7 +36,7 @@ class Users
               $sql_join
               JOIN cities as c
                 ON 
-                    CONTAINS(
+                    ST_CONTAINS(
                       c.geom,
                       GeomFromText(CONCAT('POINT(', u.user_lng, ' ', u.user_lat, ')'), 1)
                     )
