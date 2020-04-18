@@ -141,6 +141,10 @@ Map.prototype.products_filter = function (p_products_filter, p_city_filter)
             {
                 let bounds = cluster_markers.getBounds();
                 map.fitBounds(bounds);
+                if (count == 1)
+                {   
+                    map.setZoom(DEFAULT_ZOOM_MARKER);
+                }
             }
             else
             {
