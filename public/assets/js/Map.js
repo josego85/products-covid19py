@@ -343,7 +343,7 @@ function generate_table_all_vendor (p_data)
         {
             numero: ++count,
             vendedor: propertie.nombre,
-            contacto: propertie.contacto,
+            contacto: convert_link_wa(propertie.contacto),
             productos: product,
             comentarios: propertie.comentarios
         });
