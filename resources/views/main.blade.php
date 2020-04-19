@@ -16,7 +16,7 @@
     <div class="container">
         <div class="title-section">Lista de todos los vendedores</div>
         <div class="table-responsive">
-            <table id="table_vendors_without_geo" class="display" width="100%">
+            <table id="table_vendors_without_geo" class="display" style="width:100%">
                 <thead>
                     <tr>
                         <th>#</th>
