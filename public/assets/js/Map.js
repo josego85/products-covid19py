@@ -355,10 +355,10 @@ function generate_table_all_vendor (p_data)
         columns:
         [
             { data: "numero" },
-            { data: "nombre" },
-            { data: "contacto" },
+            { data: "comentarios" },
             { data: "productos" },
-            { data: "comentarios" }
+            { data: "contacto" },
+            { data: "nombre" }
         ],
         language:
         {

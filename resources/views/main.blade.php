@@ -20,19 +20,19 @@
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>Nombre</th>
-                        <th>Contacto</th>
-                        <th>Productos</th>
                         <th>Comentarios</th>
+                        <th>Productos</th>
+                        <th>Contacto</th>
+                        <th>Nombre</th>
                     </tr>
                 </thead>
                 <tfoot>
                     <tr>
                         <th>#</th>
-                        <th>Nombre</th>
-                        <th>Contacto</th>
-                        <th>Productos</th>
                         <th>Comentarios</th>
+                        <th>Productos</th>
+                        <th>Contacto</th>
+                        <th>Nombre</th>
                     </tr>
                 </tfoot>
             </table>
