@@ -22,6 +22,7 @@
 	<link rel="stylesheet" href="{{ @url('assets/js/libs/leaflet/plugins/Leaflet-control-geocoder/Control.Geocoder.min.css') }}" charset="utf-8" />
 	<link rel="stylesheet" href="{{ @url('assets/js/libs//bootstrap-4.4.1-dist/css/bootstrap.min.css') }}" media="screen" charset="utf-8" />
 	<link rel='stylesheet' href="{{ @url('https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.12/css/bootstrap-select.min.css') }}" charset="utf-8" />
+	<link rel='stylesheet' href="{{ @url('https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css') }}" charset="utf-8" />
 	<link rel="stylesheet" href="{{ @url('assets/css/styles.css')}}" charset="utf-8" />
 
 	<script src="{{ @url('assets/js/libs/leaflet/leaflet.js') }}" type="text/javascript" charset="utf-8"></script>
@@ -32,6 +33,7 @@
 	<script src="{{ @url('https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js') }}" type="text/javascript" charset="utf-8"></script>
 	<script src="{{ @url('assets/js/libs/bootstrap-4.4.1-dist/js/bootstrap.min.js') }}" type="text/javascript" charset="utf-8"></script>
 	<script src="{{ @url('//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.12/js/bootstrap-select.min.js') }}" type="text/javascript" charset="utf-8"></script>
+	<script src="{{ @url('https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js') }}" type="text/javascript" charset="utf-8"></script>
 	<script src="{{ @url('assets/js/Utilities.js') }}" type="text/javascript" charset="utf-8"></script>
 	<script id="loadMap" data_load_map={{ $data_load_map }} src="{{ @url('assets/js/onLoadScripts.js') }}" type="text/javascript" charset="utf-8"></script> 
 	<script src="{{ @url('assets/js/Map.js') }}" type="text/javascript" charset="utf-8"></script>

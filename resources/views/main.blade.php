@@ -16,8 +16,26 @@
     <div class="container">
         <div class="title-section">Lista de todos los vendedores</div>
         <div class="table-responsive">
-            <div id="table_vendors_without_geo">
-            </div>
+            <table id="table_vendors_without_geo" class="display" width="100%">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Nombre</th>
+                        <th>Contacto</th>
+                        <th>Productos</th>
+                        <th>Comentarios</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>#</th>
+                        <th>Nombre</th>
+                        <th>Contacto</th>
+                        <th>Productos</th>
+                        <th>Comentarios</th>
+                    </tr>
+                </tfoot>
+            </table>
         </div>
     </div>
     </br>

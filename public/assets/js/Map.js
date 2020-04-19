@@ -100,7 +100,7 @@ Map.prototype.get_vendors = function()
         cluster_markers.addLayer(layer_vendors);
         map.addLayer(cluster_markers);
 
-        generate_table (p_data);
+        generate_table_all_vendor (p_data);
     });
 };
 
@@ -158,7 +158,6 @@ Map.prototype.products_filter = function (p_products_filter, p_city_filter)
             let coordinates = get_coordinates_center_map(map);
             map.setView(coordinates, DEFAULT_ZOOM_MAP);
         }
-        generate_table (p_data);
     });
 }
 
@@ -317,84 +316,66 @@ function clean_marker ()
     }
 }
 
-function generate_table (p_data)
+function generate_table_all_vendor (p_data)
 {
     let features = p_data.features;
-    let index, propertie, coordinates, lat, lng;
+    let index, propertie;
     let table = [];
     let count = 0;
+    let index_tmp;
+    let products;
+    let product;
 
     for (index in features)
     {
-        coordinates = features[index].geometry.coordinates;
-        lat = coordinates[0];
-        lng = coordinates[1];
+        propertie = features[index].properties;
 
-        // if (lat == null || lng == null)
-        // {
-            propertie = features[index].properties;
-
-            table.push(
-            {
-                numero: ++count,
-                nombre: propertie.nombre,
-                contacto: propertie.contacto,
-                productos: propertie.productos,
-                comentarios: propertie.comentarios
-            })  
-        // }
-    }
-    let table_html = document.createElement("table");
-    table_html.setAttribute('class', 'table')
-
-    let row = table_html.insertRow(-1);
-    let array_header =
-    [
-        '#',
-        'Nombre',
-        'Contacto WA',
-        'Productos',
-        'Comentarios'
-    ];
-    let index_header;
-    let propertie_header;
-    for (index_header in array_header)
-    {
-        propertie_header = array_header[index_header];
-        var headerCell = document.createElement("th");
-        headerCell.innerHTML = propertie_header;
-        row.appendChild(headerCell);
-    }
-
-    let i;
-    for (i = 0; i < table.length; i++)
-    {
-        row = table_html.insertRow(-1);
-
-        var cell = row.insertCell(-1);
-        cell.innerHTML = table[i].numero;
-        var cell = row.insertCell(-1);
-        cell.innerHTML = table[i].nombre;
-        var cell = row.insertCell(-1);
-        cell.innerHTML = convert_link_wa(table[i].contacto);
-        var cell = row.insertCell(-1);
-
-        let index_tmp;
-        let products = table[i].productos;
-        let product = '';
+        products = propertie.productos;
+        product = '';
         
         for (index_tmp in products)
         {
             product += products[index_tmp].product_name + ', ';
         }
         product = product.substr(0, product.length - 2);
-        cell.innerHTML = product;
-        var cell = row.insertCell(-1);
-        cell.innerHTML = table[i].comentarios;
+
+        table.push(
+        {
+            numero: ++count,
+            nombre: propertie.nombre,
+            contacto: propertie.contacto,
+            productos: product,
+            comentarios: propertie.comentarios
+        });
     }
-    let dvTable = document.getElementById("table_vendors_without_geo");
-    dvTable.innerHTML = "";
-    dvTable.appendChild(table_html);
+
+    $('#table_vendors_without_geo').DataTable(
+    {
+        data: table,
+        columns:
+        [
+            { data: "numero" },
+            { data: "nombre" },
+            { data: "contacto" },
+            { data: "productos" },
+            { data: "comentarios" }
+        ],
+        language:
+        {
+            search: "Buscar:",
+            lengthMenu: "Mostrar _MENU_ vendedores",
+            info: "Mostrando la p&aacute;gina _PAGE_ de _PAGES_",
+            infoEmpty: "No hay registros disponibles",
+            zeroRecords: "Nada encontrado - lo siento",
+            paginate:
+            {
+                first: "Primero",
+                previous: "Anterior",
+                next: "Siguiente",
+                last: "&Uaute;ltimo"
+            }
+        }
+    });
 }
 
 function check_cellphone_number (p_phone_number)
