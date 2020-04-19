@@ -20,21 +20,12 @@
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>Comentarios</th>
+                        <th>Comentario</th>
                         <th>Productos</th>
                         <th>Contacto</th>
-                        <th>Nombre</th>
+                        <th>Vendedor</th>
                     </tr>
                 </thead>
-                <tfoot>
-                    <tr>
-                        <th>#</th>
-                        <th>Comentarios</th>
-                        <th>Productos</th>
-                        <th>Contacto</th>
-                        <th>Nombre</th>
-                    </tr>
-                </tfoot>
             </table>
         </div>
     </div>

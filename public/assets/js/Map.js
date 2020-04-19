@@ -342,7 +342,7 @@ function generate_table_all_vendor (p_data)
         table.push(
         {
             numero: ++count,
-            nombre: propertie.nombre,
+            vendedor: propertie.nombre,
             contacto: propertie.contacto,
             productos: product,
             comentarios: propertie.comentarios
@@ -358,13 +358,13 @@ function generate_table_all_vendor (p_data)
             { data: "comentarios" },
             { data: "productos" },
             { data: "contacto" },
-            { data: "nombre" }
+            { data: "vendedor" }
         ],
         language:
         {
             search: "Buscar:",
             lengthMenu: "Mostrar _MENU_ vendedores",
-            info: "Mostrando la p&aacute;gina _PAGE_ de _PAGES_",
+            info: "Mostrando la p&aacute;gina _PAGE_ de _PAGES_ de _TOTAL_ vendedores",
             infoEmpty: "No hay registros disponibles",
             zeroRecords: "Nada encontrado - lo siento",
             paginate:
