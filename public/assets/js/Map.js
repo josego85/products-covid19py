@@ -356,7 +356,11 @@ function generate_table_all_vendor (p_data)
         [
             { data: "numero" },
             { data: "comentarios" },
-            { data: "productos" },
+            { 
+                data: "productos",
+                targets: 'no-sort',
+                orderable: false
+            },
             { data: "contacto" },
             { data: "vendedor" }
         ],
