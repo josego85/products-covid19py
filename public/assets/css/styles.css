@@ -55,7 +55,6 @@ form {
     }
 }
 
-
 nav.bg-info {
     background: #fff !important;
 }
@@ -69,12 +68,10 @@ a.nav-link  {
 }
 
 a.a-vendedor {
-    background: #ed1c24;
-    border-radius: 10px;
-    color: #fff !important;
+    color: #ed1e26 !important;
     margin-left: 20px;
+    text-decoration: none;
 }
-
 
 .navbar-dark .navbar-toggler {
     border-color: rgb(237, 28, 36);
@@ -94,7 +91,41 @@ a.a-vendedor {
     margin-top: 10px;
 }
 
-
 .bg-main {
     background: #ed1c24 !important;
+}
+
+/* Style all font awesome icons */
+.fa {
+    padding: 20px;
+    font-size: 30px;
+    width: 65px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 50%;
+}
+  
+.fa:hover {
+    opacity: 0.7;
+    text-decoration: none;
+}
+
+.fa-github {
+    background: #FFFFFF;
+    color: black;
+}
+  
+.fa-facebook {
+    background: #3B5998;
+    color: white;
+}
+  
+.fa-twitter {
+    background: #55ACEE;
+    color: white;
+}
+  
+.fa-instagram {
+    background: #125688;
+    color: white;
 }
