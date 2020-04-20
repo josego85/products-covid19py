@@ -42,7 +42,7 @@ class Users
                     )
               WHERE c.city_id = $p_filter_city and u.user_state = 'active'
                 $sql_where
-                GROUP By u.user_id, u.user_full_name, u.user_phone, u.user_lng, u.user_lat
+                GROUP By u.user_id, u.user_full_name, u.user_phone, u.user_comment, u.user_lng, u.user_lat
                 ORDER BY u.user_registration DESC;
             ";
             $query = DB::select(DB::raw($sql));
