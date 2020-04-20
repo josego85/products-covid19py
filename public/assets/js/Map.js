@@ -366,6 +366,7 @@ function generate_table_all_vendor (p_data)
             lengthMenu: "Mostrar _MENU_ vendedores",
             info: "Mostrando la p&aacute;gina _PAGE_ de _PAGES_ de _TOTAL_ vendedores",
             infoEmpty: "No hay registros disponibles",
+            infoFiltered: "(filtrado de _MAX_ vendedores)",
             zeroRecords: "Nada encontrado - lo siento",
             paginate:
             {
