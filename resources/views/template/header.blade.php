@@ -11,11 +11,11 @@
 	<title>Productos y/o servicios para el consumo en Paraguay </title>
 
 	<!-- Facebook Open Graph -->
-    <meta property="og:url" content="https://productospy.org/" />
+    <meta property="og:url" content="{{ @url('/') }}" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Productospy" />
     <meta property="og:description" content="Productos y/o servicios para la venta y consumo en Paraguay de forma sencilla." />
-    <meta property="og:image" content="https://products-covid19py/assets/img/logo.png" />
+    <meta property="og:image" content="{{ @url('assets/img/logo.png') }}" />
 
     <!-- Twitter Open Graph -->
     <meta name="twitter:card" content="summary_large_image" />
@@ -23,7 +23,7 @@
     <meta name="twitter:creator" content="@productospy" />
     <meta name="twitter:title" content="Productospy" />
     <meta name="twitter:description" content="Productos y/o servicios para la venta y consumo en Paraguay de forma sencilla." />
-    <meta name="twitter:image" content="https://products-covid19py/assets/img/logo.png" />
+    <meta name="twitter:image" content="{{ @url('assets/img/logo.png') }}" />
 
 	<link rel="stylesheet" href="{{ @url('assets/js/libs/leaflet/leaflet.css') }}" charset="utf-8" />
 	<link rel="stylesheet" href="{{ @url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css') }}" charset="utf-8" />
