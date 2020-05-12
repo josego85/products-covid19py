@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+
 Route::get('/', 'Main@index');
 
 Route::get('/disclaimer', function () {
@@ -23,6 +25,7 @@ Route::get('/vendor', function () {
     return view('vendor');
 });
 
+Route::get('/sitemap.xml', 'SiteMapController@index');
 
 /**
  * Utilidades Paralelas, mejorar para la aplicacion que se iran insertando 

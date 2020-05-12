@@ -23,7 +23,3 @@ Route::group(['middleware' => ['cors']], function () {
    Route::get('/vendors','Vendors@getVendors')->name('getVendors');
    Route::post('/vendor','Vendors@postVendor')->name('postVendor');
 });
-
-
-
-
