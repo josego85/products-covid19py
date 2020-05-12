@@ -27,7 +27,7 @@ class SiteMapController extends Controller
         $this->siteMap->add(
             Url::create('/')
                 ->lastUpdate($startOfMonth)
-                ->frequency('monthly')
+                ->frequency('always')
                 ->priority('1.00')
         );
 
@@ -41,7 +41,7 @@ class SiteMapController extends Controller
         $this->siteMap->add(
             Url::create('/disclaimer')
                 ->lastUpdate($startOfMonth)
-                ->frequency('monthly')
+                ->frequency('never')
                 ->priority('0.8')
         );
     }   
