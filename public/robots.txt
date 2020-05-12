@@ -1,2 +1,3 @@
+Sitemap: https://productospy.org/sitemap.xml
 User-agent: *
 Disallow:
