@@ -44,7 +44,7 @@
 
                 $.ajax(
                 {
-                    url: HOSTNAME_API + "vendor",
+                    url: HOSTNAME_API + "vendors",
                     type: 'POST',
                     data: $('#form').serialize(),
                     success: function (data, text)

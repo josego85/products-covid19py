@@ -20,7 +20,7 @@
                     </a>
                 </li> --}}
                 <li class="nav-item active ">
-                    <a class="nav-link a-vendedor" href="{{ url('/vendor') }}">Registrar vendedor
+                    <a class="nav-link a-vendedor" href="{{ url('/vendors') }}">Registrar vendedor
                     <span class="sr-only">(current)</span>
                     </a>
                 </li>

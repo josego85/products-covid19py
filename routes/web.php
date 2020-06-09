@@ -19,8 +19,8 @@ Route::get('/disclaimer', function () {
     return view('pages.disclaimer');
 });
 
-Route::get('/vendor', function () {
-    return view('vendor');
+Route::get('/vendors', function () {
+    return view('vendors');
 });
 
 Route::get('/sitemap.xml', 'SiteMapController@index');
@@ -31,23 +31,22 @@ Route::get('/sitemap.xml', 'SiteMapController@index');
  * @since 1.*
  * 
  */ 
-Route::prefix('p')->namespace('Web')->group(function(){
+// Route::prefix('p')->namespace('Web')->group(function(){
 
-	Route::get('/', function () {
-	    return view('pages.index');
-	});
+// 	Route::get('/', function () {
+// 	    return view('pages.index');
+// 	});
 
-	Route::get('/disclaimer', function () {
-	    return view('pages.disclaimer');
-	});
+// 	Route::get('/disclaimer', function () {
+// 	    return view('pages.disclaimer');
+// 	});
 
-	Route::get('/vendor', function () {
-	    return view('pages.vendor-create');
-	});
+// 	Route::get('/vendor', function () {
+// 	    return view('pages.vendor-create');
+// 	});
 
-
-	// Nuevas funcionalidades
-	Route::resources([
-		'vendors' => 'VendorCtrl'
-	]);
-});
+// 	// Nuevas funcionalidades
+// 	Route::resources([
+// 		'vendors' => 'VendorCtrl'
+// 	]);
+// });

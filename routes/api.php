@@ -20,6 +20,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::group(['middleware' => ['cors']], function () {
    // Routes to which access will be allowed.
-   Route::get('/vendors','Vendors@getVendors')->name('getVendors');
-   Route::post('/vendor','Vendors@postVendor')->name('postVendor');
+   Route::get('/vendors', 'VendorController@getVendors')->name('getVendors');
+   Route::post('/vendors', 'VendorController@postVendor')->name('postVendor');
 });

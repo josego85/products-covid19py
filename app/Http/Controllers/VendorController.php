@@ -10,7 +10,7 @@ use App\Libraries\GIS;
 use App\Libraries\Utils;
 use Validator;
 
-class Vendors extends Controller
+class VendorController extends Controller
 {   
     
     /**

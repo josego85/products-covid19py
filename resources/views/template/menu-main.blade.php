@@ -15,6 +15,6 @@
         <br/>
         Leer <a href="{{ url('disclaimer') }}"><strong>t&eacute;rminos de uso</strong></a>
         </br>
-        Registrarse como vendedor <a href="{{ url('vendor') }}"><strong>aqu&iacute;</strong></a>. 
+        Registrarse como vendedor <a href="{{ url('vendors') }}"><strong>aqu&iacute;</strong></a>. 
     </p>
 </header>
