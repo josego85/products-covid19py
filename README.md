@@ -12,7 +12,7 @@ Levantar en sitio en cualquier server (Apache, etc.)
 - JavaScript (Leaflet, JQuery, Boostrap)
 - CSS
 - HTML
-- [PHP 7.4 (Laravel 6)](https://laravel.com/docs)
+- [PHP 7.4 (Laravel 7)](https://laravel.com/docs)
 - [Composer](https://getcomposer.org/download/)
 - Datos OSM (Nominatim como buscador)
 
