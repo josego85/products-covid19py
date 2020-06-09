@@ -17,20 +17,11 @@ Levantar en sitio en cualquier server (Apache, etc.)
 - Datos OSM (Nominatim como buscador)
 
 
-
-## Contribuir
-
-- Crear fork.
-- Crear un feature branch: git checkout -b nueva-feature
-- Comitear tus cambios: git commit -am 'Añadir alguna feature'
-- Push el branch: git push origin nueva-feature
-- Enviar un pull request.
-
 ## Pasos
 
 ```sh
 	git clone https://github.com/josego85/products-covid19py.git
-	sudo chown -R www-data:www-data ./products-covid19py
+	sudo chown -R tu_usuario:www-data ./products-covid19py
 	cd products-covid19py
 	composer install 
 	composer update
@@ -46,11 +37,21 @@ Levantar en sitio en cualquier server (Apache, etc.)
 	mysql -u root -p
 	CREATE DATABASE productospy CHARACTER SET utf8 COLLATE utf8_general_ci;
 	exit
-	mysql -u tu_usuario -p productospy < ~/productospy.sql 
+	mysql -u root -p productospy < database/productospy.sql
+	mysql -u root -p
 	GRANT ALL PRIVILEGES ON productospy.* TO tu_usuario@'localhost' IDENTIFIED BY 'xxxxxxxxxxxxx';
 	FLUSH PRIVILEGES;
 	exit
 ```
+
+## Contribuir
+
+- Crear fork.
+- Crear un feature branch: git checkout -b nueva-feature
+- Comitear tus cambios: git commit -am 'Añadir alguna feature'
+- Push el branch: git push origin nueva-feature
+- Enviar un pull request.
+
 
 ## Todo list
 * Mejoras en la lista de vendedores sin ubicación.
