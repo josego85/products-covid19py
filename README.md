@@ -21,7 +21,7 @@ Levantar en sitio en cualquier server (Apache, etc.)
 
 ```sh
 	git clone https://github.com/josego85/products-covid19py.git
-	sudo chown -R tu_usuario:www-data ./products-covid19py
+	sudo chown -R $USER:www-data ./products-covid19py
 	cd products-covid19py
 	composer install 
 	composer update
@@ -39,10 +39,26 @@ Levantar en sitio en cualquier server (Apache, etc.)
 	exit
 	mysql -u root -p productospy < database/productospy.sql
 	mysql -u root -p
-	GRANT ALL PRIVILEGES ON productospy.* TO tu_usuario@'localhost' IDENTIFIED BY 'xxxxxxxxxxxxx';
+	GRANT ALL PRIVILEGES ON productospy.* TO your_user@'localhost' IDENTIFIED BY 'xxxxxxxxxxxxx';
 	FLUSH PRIVILEGES;
 	exit
 ```
+
+## Permisos
+
+```sh
+	sudo chown -R $USER:www-data storage
+	sudo chown -R $USER:www-data bootstrap/cache
+	chmod -R 775 storage
+	chmod -R 775 bootstrap/cache
+```
+
+
+## Observaciones:
+
+- El sitio debe de tener un certificado SSL para que funcione la geolocalización.
+- Se recomienda usar un servicio web como Apache.
+
 
 ## Contribuir
 
