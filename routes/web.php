@@ -13,9 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
-
-Route::get('/', 'Main@index');
+Route::get('/', 'HomeController@index');
 
 Route::get('/disclaimer', function () {
     return view('pages.disclaimer');
