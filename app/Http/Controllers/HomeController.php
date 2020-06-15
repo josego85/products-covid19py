@@ -9,9 +9,19 @@ use App\Models\Cities as citiesModel;
 class HomeController extends Controller
 {
     /**
-     * Show the application home.
+     * Create a new controller instance.
      *
-     * @return \Illuminate\Http\Response
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
     {
@@ -19,6 +29,7 @@ class HomeController extends Controller
         $citiesModel = new citiesModel();
         $cities = $citiesModel->getCities();
  
-        return view('main')->with("cities", $cities);
+        //return view('main')->with("cities", $cities);
+        return view('home');
     }
 }

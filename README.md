@@ -69,6 +69,13 @@ Levantar en sitio en cualquier server (Apache, etc.)
 - Enviar un pull request.
 
 
-## Todo list
+## Todo list (master)
 * Mejoras en la lista de vendedores sin ubicación.
 * Mejora en la GUI.
+
+## Todo list (branch login)
+* Multi lenguaje (español, ingles)
+* En el registro que se verifique que el password sea strong.
+* El dashboard que sea en español (primera version).
+* Probar que funcione en el login el recordar password.
+* Implementar token en el login.

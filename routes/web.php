@@ -50,3 +50,6 @@ Route::get('/sitemap.xml', 'SiteMapController@index');
 // 		'vendors' => 'VendorCtrl'
 // 	]);
 // });
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
