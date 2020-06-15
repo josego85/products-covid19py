@@ -79,3 +79,9 @@ Levantar en sitio en cualquier server (Apache, etc.)
 * El dashboard que sea en español (primera version).
 * Probar que funcione en el login el recordar password.
 * Implementar token en el login.
+* Implementar autenticación de dos factores (A2F) para los usuarios Admin (obligatorio).
+* Hacer test unitarios.
+* Traducir al español las vistas roles:
+  * Crear
+  * Listar
+* Implementar responsive en las vistas de los roles.
