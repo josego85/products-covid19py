@@ -8,7 +8,7 @@
                 <div class="card-header"><h2>Lista de roles</h2></div>
 
                 <div class="card-body">
-                    <a href="{{ route('roles.create') }}"
+                    <a href="{{ route('role.create') }}"
                       class="btn btn-primary float-right"
                         >Crear
                     </a>
@@ -35,10 +35,10 @@
                                       <td>{{ $role->slug }}</td>
                                       <td>{{ $role->description }}</td>
                                       <td>{{ $role['full-access'] }}</td>
-                                      <td><a class="btn btn-primary" href="{{ route('roles.show', $role->id) }}">Mostrar</td>
-                                      <td><a class="btn btn-success" href="{{ route('roles.edit', $role->id) }}">Editar</td>
+                                      <td><a class="btn btn-primary" href="{{ route('role.show', $role->id) }}">Mostrar</td>
+                                      <td><a class="btn btn-success" href="{{ route('role.edit', $role->id) }}">Editar</td>
                                       <td>
-                                        <form action="{{ route('roles.destroy', $role->id) }}" method="post">
+                                        <form action="{{ route('role.destroy', $role->id) }}" method="post">
                                           @csrf
                                           @method('DELETE')
                                           <button class="btn btn-danger">

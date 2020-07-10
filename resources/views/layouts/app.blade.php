@@ -26,7 +26,10 @@
                 <a class="navbar-brand" href="{{ url('/') }}">
                     Inicio
                 </a>
-                <a class="navbar-brand" href="{{ url('/roles') }}">
+                <a class="navbar-brand" href="{{ url('/user') }}">
+                    Usuarios
+                </a>
+                <a class="navbar-brand" href="{{ url('/role') }}">
                     Roles
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">

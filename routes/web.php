@@ -52,6 +52,13 @@ Route::get('/sitemap.xml', 'SiteMapController@index');
 // });
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')
+  ->name('home');
 
-Route::resource('/roles', 'RoleController')->names('roles');
+  Route::resource('/user', 'User\UserController')
+  ->names('user')
+  ->middleware('auth');
+
+Route::resource('/role', 'Permission\RoleController')
+  ->names('role')
+  ->middleware('auth');

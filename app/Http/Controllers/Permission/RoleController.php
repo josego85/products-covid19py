@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Permission;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Permission\Role;
-// use App\ModelsPermission\Permission;
+use App\Models\Permission\Permission;
 use Illuminate\Support\Facades\Gate;
 
 class RoleController extends Controller
@@ -16,10 +17,10 @@ class RoleController extends Controller
      */
     public function index()
     {
-        //Gate::authorize('haveaccess', 'role.index');
+        Gate::authorize('haveaccess', 'role.index');
 
         $roles = Role::orderBy('id', 'Desc')->paginate(10);
-        return view('roles.index', compact('roles'));
+        return view('role.index', compact('roles'));
     }
 
     /**
@@ -29,11 +30,11 @@ class RoleController extends Controller
      */
     public function create()
     {
-        //Gate::authorize('haveaccess', 'role.create');
+        Gate::authorize('haveaccess', 'role.create');
 
         //$permissions = Permission::get();
         $permissions = array();
-        return view('roles.create', compact('permissions'));;
+        return view('role.create', compact('permissions'));;
     }
 
     /**
@@ -44,7 +45,7 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-        //Gate::authorize('haveaccess', 'role.create');
+        Gate::authorize('haveaccess', 'role.create');
 
         $request->validate([
             'name'          => 'required|max:50|unique:roles,name',
@@ -55,7 +56,7 @@ class RoleController extends Controller
             $request->all()
         );
         //$role->permissions()->sync($request->get('permission'));
-        return redirect()->route('roles.index')->with('status_success', 'Rol guardado con éxito.');
+        return redirect()->route('role.index')->with('status_success', 'Rol guardado con éxito.');
     }
 
     /**
@@ -66,7 +67,7 @@ class RoleController extends Controller
      */
     public function show(Role $role)
     {
-        $this->authorize('haveaccess', 'roles.show');
+        $this->authorize('haveaccess', 'role.show');
 
         $permission_role = [];
         foreach($role->permissions as $permission)
@@ -74,7 +75,7 @@ class RoleController extends Controller
             $permission_role[] = $permission->id;
         }
         $permissions = Permission::get();
-        return view('roles.view', compact('permissions', 'role', 'permission_role'));
+        return view('role.view', compact('permissions', 'role', 'permission_role'));
     }
 
     /**
@@ -93,7 +94,7 @@ class RoleController extends Controller
             $permission_role[] = $permission->id;
         }
         $permissions = Permission::get();
-        return view('roles.edit', compact('permissions', 'role', 'permission_role'));
+        return view('role.edit', compact('permissions', 'role', 'permission_role'));
     }
 
     /**
@@ -116,7 +117,7 @@ class RoleController extends Controller
             $request->all()
         );
         $role->permissions()->sync($request->get('permission'));
-        return redirect()->route('roles.index')->with('status_success', 'Role updated successfully.');
+        return redirect()->route('role.index')->with('status_success', 'Role updated successfully.');
     }
 
     /**
@@ -130,6 +131,6 @@ class RoleController extends Controller
         $this->authorize('haveaccess', 'role.destroy');
 
         $role->delete();
-        return redirect()->route('roles.index')->with('status_success', 'Role successfully removed.');
+        return redirect()->route('role.index')->with('status_success', 'Rol eliminado con éxito.');
     }
 }
