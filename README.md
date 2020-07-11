@@ -20,37 +20,37 @@ Levantar en sitio en cualquier server (Apache, etc.)
 ## Pasos
 
 ```sh
-	git clone https://github.com/josego85/products-covid19py.git
-	sudo chown -R $USER:www-data ./products-covid19py
-	cd products-covid19py
-	composer install 
-	composer update
-	cp .env.example .env
-	php artisan key:generate
-	php artisan serve 
+git clone https://github.com/josego85/products-covid19py.git
+sudo chown -R $USER:www-data ./products-covid19py
+cd products-covid19py
+composer install 
+composer update
+cp .env.example .env
+php artisan key:generate
+php artisan serve 
 ```
 
 
 ## Base de datos
 
 ```sh
-	mysql -u root -p
-	CREATE DATABASE productospy CHARACTER SET utf8 COLLATE utf8_general_ci;
-	exit
-	mysql -u root -p productospy < database/productospy.sql
-	mysql -u root -p
-	GRANT ALL PRIVILEGES ON productospy.* TO your_user@'localhost' IDENTIFIED BY 'xxxxxxxxxxxxx';
-	FLUSH PRIVILEGES;
-	exit
+mysql -u root -p
+CREATE DATABASE productospy CHARACTER SET utf8 COLLATE utf8_general_ci;
+exit
+mysql -u root -p productospy < database/productospy.sql
+mysql -u root -p
+GRANT ALL PRIVILEGES ON productospy.* TO your_user@'localhost' IDENTIFIED BY 'xxxxxxxxxxxxx';
+FLUSH PRIVILEGES;
+exit
 ```
 
 ## Permisos
 
 ```sh
-	sudo chown -R $USER:www-data storage
-	sudo chown -R $USER:www-data bootstrap/cache
-	chmod -R 775 storage
-	chmod -R 775 bootstrap/cache
+sudo chown -R $USER:www-data storage
+sudo chown -R $USER:www-data bootstrap/cache
+chmod -R 775 storage
+chmod -R 775 bootstrap/cache
 ```
 
 
