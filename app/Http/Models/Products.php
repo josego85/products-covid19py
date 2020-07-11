@@ -21,7 +21,7 @@ class Products
           ->select(array( DB::raw($expression_raw)))
           ->join('products_users as p_u', 'p_u.product_id', '=' ,'p.product_id')
           ->join('users as u', 'u.id', '=' ,'p_u.user_id')
-          ->where('u.user_state', 'active')
+          ->where('u.state', 'active')
           ->where('p_u.user_id', $p_user_id);
 
         if (isset($filter_products))

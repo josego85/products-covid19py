@@ -15,14 +15,14 @@ namespace App\Libraries
                     'geometry' => array(
                         'type' => 'Point', 
                         'coordinates' => array(
-                            ($value->user_lng)? (float)$value->user_lng : null,
-                            ($value->user_lat)? (float)$value->user_lat : null,
+                            ($value->longitude)? (float)$value->longitude : null,
+                            ($value->latitude)? (float)$value->latitude : null,
                         )
                     ),
                     'properties' => array(
                         'nombre' => $value->name,
-                        'contacto' => $value->user_phone,
-                        'comentarios' => ($value->user_comment)? $value->user_comment : '',
+                        'contacto' => $value->phone,
+                        'comentarios' => ($value->comment)? $value->comment : '',
                         'productos' => $value->products
                     )
                 );

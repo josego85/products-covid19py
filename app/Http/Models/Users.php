@@ -17,8 +17,8 @@ class Users
      */
     public function getUsers ($p_filter_products = null, $p_filter_city = null)
     {
-        $expression_raw = 'SQL_CALC_FOUND_ROWS u.id, u.name, u.user_phone, u.user_comment, u.user_lng, ' .
-          'u.user_lat';
+        $expression_raw = 'SQL_CALC_FOUND_ROWS u.id, u.name, u.phone, u.comment, u.longitude, ' .
+          'u.latitude';
         if (isset($p_filter_city))
         {
             $sql_join = "";
@@ -38,11 +38,11 @@ class Users
                 ON 
                     ST_CONTAINS(
                       c.geom,
-                      GeomFromText(CONCAT('POINT(', u.user_lng, ' ', u.user_lat, ')'), 1)
+                      GeomFromText(CONCAT('POINT(', u.longitude, ' ', u.latitude, ')'), 1)
                     )
               WHERE c.city_id = $p_filter_city and u.user_state = 'active'
                 $sql_where
-                GROUP By u.id, u.name, u.user_phone, u.user_comment, u.user_lng, u.user_lat
+                GROUP By u.id, u.name, u.phone, u.comment, u.longitude, u.latitude
                 ORDER BY u.created_at DESC;
             ";
             $query = DB::select(DB::raw($sql));
@@ -52,7 +52,7 @@ class Users
         {
             $query = DB::table('users as u')
             ->select(array( DB::raw($expression_raw)));
-            $query->where('u.user_state', 'active');
+            $query->where('u.state', 'active');
             $query->orderBy('u.created_at', 'desc');
 
             if (isset($p_filter_products))
@@ -62,10 +62,10 @@ class Users
                   ->whereIn('p.product_id', $p_filter_products)
                   ->groupBy('u.id')
                   ->groupBy('u.name')
-                  ->groupBy('u.user_phone')
-                  ->groupBy('u.user_comment')
-                  ->groupBy('u.user_lng')
-                  ->groupBy('u.user_lat');
+                  ->groupBy('u.phone')
+                  ->groupBy('u.comment')
+                  ->groupBy('u.longitude')
+                  ->groupBy('u.latitude');
             }
             $result = $query->get();
             $result_data = $result->all();
