@@ -17,11 +17,12 @@ class UserController extends Controller
      */
     public function index()
     {
-        //Gate::authorize('haveaccess');
+        $this->authorize('haveaccess', 'user.index');
 
         // Using query builder.
         $users = \DB::table('users as u')
-          ->select('u.id', 'u.name', 'u.email', 'r.name as role')
+          ->select('u.id', 'u.name', 'u.email', 
+            'u.state', 'r.name as role')
           ->leftJoin('role_user as r_u', 'u.id', '=', 'r_u.user_id')
           ->leftJoin('roles as r', 'r.id', '=', 'r_u.role_id')
           ->orderBy('u.id', 'asc')
@@ -37,7 +38,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //Gate::authorize('haveaccess');
+        $this->authorize('haveaccess', 'user.create');
 
         $method = 'create';
 
@@ -53,7 +54,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //Gate::authorize('haveaccess');
+        $this->authorize('haveaccess', 'user.create');
 
         $request->validate([
             'name'          => 'required|max:50|unique:users,name',
@@ -73,13 +74,14 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //Gate::authorize('haveaccess');
+        $this->authorize('haveaccess', 'user.show');
 
         $method = 'show';
 
         // Using query builder.
         $user = \DB::table('users as u')
-          ->select('u.id', 'u.name', 'u.email', 'r.name as role')
+          ->select('u.id', 'u.name', 'u.email', 'u.phone', 
+            'u.state', 'r.name as role')
           ->leftJoin('role_user as r_u', 'u.id', '=', 'r_u.user_id')
           ->leftJoin('roles as r', 'r.id', '=', 'r_u.role_id')
           ->where('u.id', $id)
@@ -97,13 +99,14 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //Gate::authorize('haveaccess');
+        $this->authorize('haveaccess', 'user.edit');
 
         $method = 'edit';
 
         // Using query builder.
         $user = \DB::table('users as u')
-          ->select('u.id', 'u.name', 'u.email', 'r.name as role')
+          ->select('u.id', 'u.name', 'u.email', 'u.phone', 
+            'u.state', 'r.name as role')
           ->leftJoin('role_user as r_u', 'u.id', '=', 'r_u.user_id')
           ->leftJoin('roles as r', 'r.id', '=', 'r_u.role_id')
           ->where('u.id', $id)
@@ -127,7 +130,7 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //Gate::authorize('haveaccess');
+        $this->authorize('haveaccess', 'user.edit');
 
         $request->validate([
             'name'          => 'required|max:50|unique:users,name,' . $user->id,
@@ -148,7 +151,7 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        //Gate::authorize('haveaccess');
+        $this->authorize('haveaccess', 'user.destroy');
 
         // @todo controlar que elimine si usuario no es 
         // el actual

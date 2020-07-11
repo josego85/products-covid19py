@@ -5,6 +5,8 @@
         $action = route('user.store');
         $value_name = old('name');
         $value_email = old('email');
+        $value_phone = old('phone');
+        $value_state = old('state');
         //$value_password = old('password'd);
         $button_submit = 'Guardar';
     }
@@ -14,6 +16,8 @@
         $action = route('user.update', $user->id);
         $value_name = old('name', $user->name);
         $value_email = old('email', $user->email);
+        $value_phone = old('phone', $user->phone);
+        $value_state = old('state', $user->state);
         //$value_password = old('password', $user->password);
         $button_submit = 'Actualizar';
     }
@@ -23,6 +27,8 @@
         $action = route('user.update', $user->id);
         $value_name = old('name', $user->name);
         $value_email = old('email', $user->email);
+        $value_phone = old('phone', $user->phone);
+        $value_state = old('state', $user->state);
         //$value_password = old('password', $user->password);
         $button_submit = 'Editar';
     }
@@ -60,6 +66,32 @@
                     id="email"
                     placeholder="Email"
                     value={{ $value_email }}
+                    @if ($data['method'] === 'show')
+                        readonly
+                    @endif
+                >
+            </div>
+            <div class="form-group">
+                <input
+                    type="text"
+                    class="form-control"
+                    name="phone"
+                    id="phone"
+                    placeholder="Phone"
+                    value={{ $value_phone }}
+                    @if ($data['method'] === 'show')
+                        readonly
+                    @endif
+                >
+            </div>
+            <div class="form-group">
+                <input
+                    type="text"
+                    class="form-control"
+                    name="state"
+                    id="state"
+                    placeholder="State"
+                    value={{ $value_state }}
                     @if ($data['method'] === 'show')
                         readonly
                     @endif

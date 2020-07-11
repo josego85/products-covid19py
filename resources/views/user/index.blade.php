@@ -24,6 +24,7 @@
                             <th scope="col">Nombre</th>
                             <th scope="col">Email</th>
                             <th scope="col">Rol</th>
+                            <th scope="col">Estado</th>
                             <th colspan="3"></th>
                           </tr>
                         </thead>
@@ -36,6 +37,11 @@
                                       <td>
                                         @isset($user->role)
                                           {{ $user->role }}
+                                        @endisset
+                                      </td>
+                                      <td>
+                                        @isset($user->state)
+                                          {{ $user->state }}
                                         @endisset
                                       </td>
                                       <td><a class="btn btn-info" href="{{ route('user.show', $user->id) }}">Mostrar</td>
