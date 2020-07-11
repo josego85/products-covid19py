@@ -86,4 +86,5 @@ chmod -R 775 bootstrap/cache
   * Listar
 * Implementar responsive en las vistas de los roles.
 * Buscador en el listado de usuarios.
-* Agregar módulo Productos
+* Agregar módulo Productos.
+* Agregar Profile.
