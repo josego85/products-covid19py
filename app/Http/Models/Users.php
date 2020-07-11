@@ -17,7 +17,7 @@ class Users
      */
     public function getUsers ($p_filter_products = null, $p_filter_city = null)
     {
-        $expression_raw = 'SQL_CALC_FOUND_ROWS u.user_id, u.user_full_name, u.user_phone, u.user_comment, u.user_lng, ' .
+        $expression_raw = 'SQL_CALC_FOUND_ROWS u.id, u.name, u.user_phone, u.user_comment, u.user_lng, ' .
           'u.user_lat';
         if (isset($p_filter_city))
         {
@@ -26,7 +26,7 @@ class Users
             if (isset($p_filter_products))
             {
                 $products = "(" . join(',', $p_filter_products) . ")";
-                $sql_join = "JOIN products_users as p_u ON p_u.user_id = u.user_id
+                $sql_join = "JOIN products_users as p_u ON p_u.user_id = u.id
                   JOIN products as p ON p.product_id = p_u.product_id";
                 $sql_where = "and p.product_id IN $products";
             }
@@ -42,8 +42,8 @@ class Users
                     )
               WHERE c.city_id = $p_filter_city and u.user_state = 'active'
                 $sql_where
-                GROUP By u.user_id, u.user_full_name, u.user_phone, u.user_comment, u.user_lng, u.user_lat
-                ORDER BY u.user_registration DESC;
+                GROUP By u.id, u.name, u.user_phone, u.user_comment, u.user_lng, u.user_lat
+                ORDER BY u.created_at DESC;
             ";
             $query = DB::select(DB::raw($sql));
             $result_data = $query;
@@ -53,15 +53,15 @@ class Users
             $query = DB::table('users as u')
             ->select(array( DB::raw($expression_raw)));
             $query->where('u.user_state', 'active');
-            $query->orderBy('u.user_registration', 'desc');
+            $query->orderBy('u.created_at', 'desc');
 
             if (isset($p_filter_products))
             {
-                $query->join('products_users as p_u', 'p_u.user_id', '=' ,'u.user_id')
+                $query->join('products_users as p_u', 'p_u.user_id', '=' ,'u.id')
                   ->join('products as p', 'p.product_id', '=' ,'p_u.product_id')
                   ->whereIn('p.product_id', $p_filter_products)
-                  ->groupBy('u.user_id')
-                  ->groupBy('u.user_full_name')
+                  ->groupBy('u.id')
+                  ->groupBy('u.name')
                   ->groupBy('u.user_phone')
                   ->groupBy('u.user_comment')
                   ->groupBy('u.user_lng')

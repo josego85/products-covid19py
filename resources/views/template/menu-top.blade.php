@@ -9,18 +9,18 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="{{ url('/') }}">Inicio
+                <li class="nav-item active ">
+                    <a class="nav-link a-vendedor" href="{{ url('/vendors') }}">Registrar vendedor
                     <span class="sr-only">(current)</span>
                     </a>
                 </li>
-                {{-- <li class="nav-item active">
-                    <a class="nav-link" href="{{ url('/products') }}">
-                        Productos Disponibles
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{ url('/login') }}">Login
+                    <span class="sr-only">(current)</span>
                     </a>
-                </li> --}}
-                <li class="nav-item active ">
-                    <a class="nav-link a-vendedor" href="{{ url('/vendors') }}">Registrar vendedor
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{ url('/register') }}">Registro
                     <span class="sr-only">(current)</span>
                     </a>
                 </li>

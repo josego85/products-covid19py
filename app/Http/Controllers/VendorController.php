@@ -40,7 +40,7 @@ class VendorController extends Controller
 
         foreach($vendors as $vendor)
         {
-            $vendor_id = $vendor->user_id;
+            $vendor_id = $vendor->id;
             $result_products = $products->getProducts($vendor_id, $filter_products);
             $total = $result_products['total'];
             $vendor->products = null;

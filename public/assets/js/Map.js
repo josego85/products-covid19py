@@ -381,6 +381,10 @@ function generate_table_all_vendor (p_data)
 
 function check_cellphone_number (p_phone_number)
 {
+    if (p_phone_number == null)
+    {
+        return false;
+    }
     let cellphone_number = p_phone_number;
     let first_character = cellphone_number.substr(0, 1);
     let length_number = cellphone_number.length;
