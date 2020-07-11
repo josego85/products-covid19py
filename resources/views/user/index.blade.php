@@ -40,7 +40,7 @@
                                       </td>
                                       <td><a class="btn btn-info" href="{{ route('user.show', $user->id) }}">Mostrar</td>
                                       <td><a class="btn btn-success" href="{{ route('user.edit', $user->id) }}">Editar</td>
-                                      <td>
+                                      {{-- <td>
                                         <form action="{{ route('user.destroy', $user->id) }}" method="post">
                                           {{ csrf_field() }}
                                           @method('DELETE')
@@ -48,7 +48,7 @@
                                             Borrar
                                           </button>  
                                         </form>
-                                      </td>
+                                      </td> --}}
                                     </tr>  
                                 @endforeach
                         </tbody>

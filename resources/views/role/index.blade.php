@@ -14,7 +14,7 @@
                     </a>
                     <br/><br/>    
 
-                    @include('custom.message')
+                    {{-- @include('custom.message') --}}
                     
                     <table class="table table-hover">
                         <thead>
@@ -34,23 +34,28 @@
                                       <td>{{ $role->name }}</td>
                                       <td>{{ $role->slug }}</td>
                                       <td>{{ $role->description }}</td>
-                                      <td>{{ $role['full-access'] }}</td>
-                                      <td><a class="btn btn-primary" href="{{ route('role.show', $role->id) }}">Mostrar</td>
-                                      <td><a class="btn btn-success" href="{{ route('role.edit', $role->id) }}">Editar</td>
                                       <td>
+                                        @if ($role->{'full-access'} === 'yes')
+                                            S&iacute;
+                                        @else
+                                            No
+                                        @endif
+                                      </td>
+                                      <td><a class="btn btn-info" href="{{ route('role.show', $role->id) }}">Mostrar</td>
+                                      <td><a class="btn btn-success" href="{{ route('role.edit', $role->id) }}">Editar</td>
+                                      {{-- <td>
                                         <form action="{{ route('role.destroy', $role->id) }}" method="post">
-                                          @csrf
+                                          {{ csrf_field() }}
                                           @method('DELETE')
                                           <button class="btn btn-danger">
                                             Eliminar
                                           </button>  
                                         </form>
-                                      </td>
+                                      </td> --}}
                                     </tr>  
                                 @endforeach
                         </tbody>
                       </table>
-                      {{ $roles->links() }}
                 </div>
             </div>
         </div>

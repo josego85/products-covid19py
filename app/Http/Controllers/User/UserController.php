@@ -24,7 +24,7 @@ class UserController extends Controller
           ->select('u.id', 'u.name', 'u.email', 'r.name as role')
           ->leftJoin('role_user as r_u', 'u.id', '=', 'r_u.user_id')
           ->leftJoin('roles as r', 'r.id', '=', 'r_u.role_id')
-          ->orderBy('u.name', 'asc')
+          ->orderBy('u.id', 'asc')
           ->paginate(10);
 
         return view('user.index', compact('users'));

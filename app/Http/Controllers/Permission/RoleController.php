@@ -19,7 +19,11 @@ class RoleController extends Controller
     {
         Gate::authorize('haveaccess', 'role.index');
 
-        $roles = Role::orderBy('id', 'Desc')->paginate(10);
+        // Using query builder
+        $roles = \DB::table('roles')
+          ->select('id', 'name', 'slug', 'description', 'full-access')
+          ->orderBy('name')
+          ->get();
         return view('role.index', compact('roles'));
     }
 
@@ -32,9 +36,13 @@ class RoleController extends Controller
     {
         Gate::authorize('haveaccess', 'role.create');
 
+        $method = 'create';
+
         //$permissions = Permission::get();
         $permissions = array();
-        return view('role.create', compact('permissions'));;
+
+        // Load role/createOrEditOrShow.blade.php view
+        return view('role.createOrEditOrShow', compact('permissions', 'method'));;
     }
 
     /**
@@ -69,13 +77,17 @@ class RoleController extends Controller
     {
         $this->authorize('haveaccess', 'role.show');
 
+        $method = 'show';
+
         $permission_role = [];
         foreach($role->permissions as $permission)
         {
             $permission_role[] = $permission->id;
         }
         $permissions = Permission::get();
-        return view('role.view', compact('permissions', 'role', 'permission_role'));
+
+        // Load role/createOrEditOrShow.blade.php view
+        return view('role.createOrEditOrShow', compact('permissions', 'role', 'permission_role', 'method'));
     }
 
     /**
@@ -88,13 +100,17 @@ class RoleController extends Controller
     {
         $this->authorize('haveaccess', 'role.edit');
 
+        $method = 'edit';
+
         $permission_role = [];
         foreach($role->permissions as $permission)
         {
             $permission_role[] = $permission->id;
         }
         $permissions = Permission::get();
-        return view('role.edit', compact('permissions', 'role', 'permission_role'));
+
+        // Load role/createOrEditOrShow.blade.php view
+        return view('role.createOrEditOrShow', compact('permissions', 'role', 'permission_role', 'method'));
     }
 
     /**
@@ -117,7 +133,7 @@ class RoleController extends Controller
             $request->all()
         );
         $role->permissions()->sync($request->get('permission'));
-        return redirect()->route('role.index')->with('status_success', 'Role updated successfully.');
+        return redirect()->route('role.index')->with('status_success', 'Rol actualizado con éxito.');
     }
 
     /**
