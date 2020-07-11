@@ -72,16 +72,18 @@ Levantar en sitio en cualquier server (Apache, etc.)
 ## Todo list (master)
 * Mejoras en la lista de vendedores sin ubicación.
 * Mejora en la GUI.
+* Implementar autenticación de dos factores (A2F) para los usuarios Admin (obligatorio).
+* Multi lenguaje (español, ingles)
+
 
 ## Todo list (branch login)
-* Multi lenguaje (español, ingles)
 * En el registro que se verifique que el password sea strong.
 * El dashboard que sea en español (primera version).
 * Probar que funcione en el login el recordar password.
-* Implementar token en el login.
-* Implementar autenticación de dos factores (A2F) para los usuarios Admin (obligatorio).
 * Hacer test unitarios.
 * Traducir al español las vistas roles:
   * Crear
   * Listar
 * Implementar responsive en las vistas de los roles.
+* Buscador en el listado de usuarios.
+* Agregar módulo Productos
