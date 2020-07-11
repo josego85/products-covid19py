@@ -40,8 +40,16 @@ class PermissionSeeder extends Seeder
         $roleAdmin = Role::create([
             'name' => 'Admin',
             'slug' => 'admin',
-            'description' => 'Administrator',
+            'description' => 'Administrador',
             'full-access' => 'yes',
+        ]);
+
+        // Role vendedor.
+        $roleVendor = Role::create([
+            'name' => 'Vendedor',
+            'slug' => 'vendedor',
+            'description' => 'Vendedor',
+            'full-access' => 'no',
         ]);
         
         // Table role_user.

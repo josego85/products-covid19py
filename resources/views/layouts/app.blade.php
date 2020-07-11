@@ -23,6 +23,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
+                <!-- Authentication Links -->
                 @auth
                     <a class="navbar-brand" href="{{ url('/') }}">
                         Inicio
