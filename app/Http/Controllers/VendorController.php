@@ -18,6 +18,13 @@ class VendorController extends Controller
      */
     public function getVendors(Request $request)
     {
+        // Parche plataforma wenda.
+        $with_coordinates_null = true;
+        if($request->path() === 'api/vendedores')
+        {
+            $with_coordinates_null = false;
+        }
+
         // @todo validation
         $user = new usersModel();
         $products = new productsModel();
@@ -35,7 +42,7 @@ class VendorController extends Controller
                 $filter_products[] = $product_id;
             }
         }
-        $result_vendors = $user->getUsers($filter_products, $city_filter);
+        $result_vendors = $user->getUsers($filter_products, $city_filter, $with_coordinates_null);
         $vendors = $result_vendors['data'];
 
         foreach($vendors as $vendor)

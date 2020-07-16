@@ -13,9 +13,10 @@ class Users
      * @method getUsers
      * @param  void $p_filter_products
      * @param  void $p_filter_city
+     * @param  boolean $p_with_coordinates_null
      * @return array
      */
-    public function getUsers ($p_filter_products = null, $p_filter_city = null)
+    public function getUsers ($p_filter_products = null, $p_filter_city = null, $p_with_coordinates_null = null)
     {
         $expression_raw = 'SQL_CALC_FOUND_ROWS u.user_id, u.user_full_name, u.user_phone, u.user_comment, u.user_lng, ' .
           'u.user_lat';
@@ -23,12 +24,19 @@ class Users
         {
             $sql_join = "";
             $sql_where = "";
+
+            // Parche plataforma wenda.
+            if (!$p_with_coordinates_null)
+            {
+                $sql_where .= "(u.user_lng is not null or u.user_lat is not null) ";
+            }
+
             if (isset($p_filter_products))
             {
                 $products = "(" . join(',', $p_filter_products) . ")";
                 $sql_join = "JOIN products_users as p_u ON p_u.user_id = u.user_id
                   JOIN products as p ON p.product_id = p_u.product_id";
-                $sql_where = "and p.product_id IN $products";
+                $sql_where .= "and p.product_id IN $products";
             }
             $sql = "SELECT $expression_raw
               FROM
@@ -51,7 +59,13 @@ class Users
         else
         {
             $query = DB::table('users as u')
-            ->select(array( DB::raw($expression_raw)));
+              ->select(array( DB::raw($expression_raw)));
+            
+            // Parche plataforma wenda.
+            if (!$p_with_coordinates_null)
+            {
+                $query->whereNotNull('u.user_lng');
+            }
             $query->where('u.user_state', 'active');
             $query->orderBy('u.user_registration', 'desc');
 
