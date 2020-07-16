@@ -22,4 +22,8 @@ Route::group(['middleware' => ['cors']], function () {
    // Routes to which access will be allowed.
    Route::get('/vendors', 'VendorController@getVendors')->name('getVendors');
    Route::post('/vendors', 'VendorController@postVendor')->name('postVendor');
+
+   // Plataforma wenda. No cambiar la estructura ni la url porque se esta
+   // utilizando en produccion.
+   Route::get('/vendedores', 'VendorController@getVendors')->name('getVendors');
 });

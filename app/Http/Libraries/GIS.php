@@ -19,7 +19,9 @@ namespace App\Libraries
                             ($value->user_lat)? (float)$value->user_lat : null,
                         )
                     ),
-                    'properties' => array(
+                    'properties' => array
+                    (
+                        'id' => $value->user_id,
                         'nombre' => $value->user_full_name,
                         'contacto' => $value->user_phone,
                         'comentarios' => ($value->user_comment)? $value->user_comment : '',
