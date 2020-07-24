@@ -9,7 +9,7 @@ Levantar en sitio en cualquier server (Apache, etc.)
 
 ## Logros
 
-- Formamos parte de la plataforma [Wendá] (https://wenda.org.py/)
+- Formamos parte de la plataforma [Wendá](https://wenda.org.py/)
 
 
 ## Tecnologías utilizadas (Toolkit)
