@@ -48,7 +48,7 @@ class Users
                       c.geom,
                       GeomFromText(CONCAT('POINT(', u.user_lng, ' ', u.user_lat, ')'), 1)
                     )
-              WHERE c.city_id = $p_filter_city and u.user_state = 'active'
+              WHERE c.city_id = $p_filter_city AND u.user_state = 'active'
                 $sql_where
                 GROUP By u.user_id, u.user_full_name, u.user_phone, u.user_comment, u.user_lng, u.user_lat
                 ORDER BY u.user_registration DESC;
@@ -65,6 +65,10 @@ class Users
             if (!$p_with_coordinates_null)
             {
                 $query->whereNotNull('u.user_lng');
+
+                // Parche para wenda para que no aparezca los usuarios
+                // que no estan en Paraguay.
+                $query->whereNotIn('u.user_id', [69,122]);
             }
             $query->where('u.user_state', 'active');
             $query->orderBy('u.user_registration', 'desc');
