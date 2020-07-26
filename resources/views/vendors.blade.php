@@ -139,6 +139,9 @@
                     <textarea class="form-control" maxlength="4000" name="user_comment" placeholder="Descripción de tus productos y/o servicios" rows="5"></textarea>
                 </div>
             </div>
+
+            @include('partials.upload-image')
+
             <div class="form-group">
                 <label>
                     <span class="label label-default" style="font-size:22px;">Ubicaci&oacute;n del vendedor</span>

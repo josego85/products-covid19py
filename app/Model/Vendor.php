@@ -8,9 +8,8 @@ class Vendor extends Model
 {
     protected $table = 'contact';
 
-
-	public function products(){
-		return $this->hasMany('App\Model2\Product', 'id_')
+	public function products()
+	{
+		return $this->hasMany('App\Model2\Product', 'id_');
 	}
-
 }
