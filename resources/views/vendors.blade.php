@@ -6,11 +6,11 @@
 
 @section('content_page')
     <header class="jumbotron my-4 bg-warning">
-        </br>
+        <br/>
         <h2 class="display-5">Registrarse como vendedor</h2>
         <p class="lead">
             Completa tus datos como vendedor con los productos y/o servicios para aparecer en productospy.
-            </br>
+            <br/>
             Cualquier consulta a <strong>productospy.org@gmail.com</strong>
         </p>
     </header>
@@ -57,7 +57,7 @@
                         {
                             window.location = '/?guardado=ok';
                         }
-                        else if (!result)
+                        else @csrfif (!result)
                         {
                             let errors = response.errors;
                             let msg = '<div class="alert alert-warning" id="success-alert">' +
@@ -89,6 +89,7 @@
     
     <div class="container">
         <form id="form" role="form" method='post'>
+            @csrf
             <div class="form-group">
                 <label>
                     <span class="label label-default" style="font-size:22px;">Email</span>
@@ -125,7 +126,7 @@
                     <span class="label label-default" style="font-size:22px;">Descripci&oacute;n de los productos o servicios ofrecidos</span>
                     <span>(opcional)</span>
                 </label>
-                </br>
+                <br/>
                 <div class="alert alert-info" role="alert">
                     <h4 class="alert-heading">Aviso!</h4>
                     <p>
@@ -139,12 +140,16 @@
                     <textarea class="form-control" maxlength="4000" name="user_comment" placeholder="Descripción de tus productos y/o servicios" rows="5"></textarea>
                 </div>
             </div>
+
+            {{-- No se utiliza por ahora --}}
+            {{-- @include('partials.upload-image') --}}
+
             <div class="form-group">
                 <label>
                     <span class="label label-default" style="font-size:22px;">Ubicaci&oacute;n del vendedor</span>
                     <span>(*)</span>
                 </label>
-                </br>
+                <br/>
                 <div class="alert alert-info" role="alert">
                     <h4 class="alert-heading">Aviso!</h4>
                     <p>
@@ -159,7 +164,7 @@
                     </p>
                     </div>
                     <button type="button" class="btn btn-success btn-lg btn-block" onclick="send_marker()">Marcar ubicaci&oacute;n</button>
-                </br>
+                <br/>
                 <div id="map">
                     <div id='map-container' style="width: 100%; height: 300px; border: 1px solid #AAA;"></div>
                 </div>
@@ -177,7 +182,6 @@
        <div id="msg">
        </div>
     </div>
-    </br>
-
+    <br/>
 
 @endsection

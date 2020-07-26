@@ -9,7 +9,7 @@
         <div class="title-section">Vendedores con ubicaci&oacute;n</div>
         <div id='map-container' class="map-container-vendors" style="height: 450px; border: 1px solid #AAA;"></div>
     </div>
-    </br>
+    <br/>
     <div class="container">
         <div class="title-section">Lista de todos los vendedores</div>
         <div class="table-responsive">
@@ -17,9 +17,8 @@
             </div>
         </div>
     </div>
-    </br>
+    <br/>
     
-
     <script>
         let checkbox = $('#changeShip'),
           chShipBlock = $('#changeShipInputs');
