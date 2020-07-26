@@ -25,11 +25,11 @@ Route::get('/vendors', function () {
 
 Route::get('/sitemap.xml', 'SiteMapController@index');
 
-// Create image upload form.
-Route::get('/image-upload', 'ImageUpload@createForm');
+// // Create image upload form.
+// Route::get('/image-upload', 'ImageUpload@createForm');
 
-// Store image.
-Route::post('/image-upload', 'ImageUpload@imageUpload')->name('imageUpload');
+// // Store image.
+// Route::post('/image-upload', 'ImageUpload@imageUpload')->name('imageUpload');
 
 /**
  * Utilidades Paralelas, mejorar para la aplicacion que se iran insertando 

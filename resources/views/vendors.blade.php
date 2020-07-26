@@ -141,7 +141,8 @@
                 </div>
             </div>
 
-            @include('partials.upload-image')
+            {{-- No se utiliza por ahora --}}
+            {{-- @include('partials.upload-image') --}}
 
             <div class="form-group">
                 <label>
