@@ -69,10 +69,16 @@ class Users
                 // Parche para wenda para que no aparezca los usuarios
                 // que no estan en Paraguay.
                 $query->whereNotIn('u.user_id', [69,122]);
+
+                // Parche limit temporal para wenda
+                $query->limit($_ENV['LIMIT_VENDORS_WENDA']);
+                $query->orderBy('u.user_registration', 'asc');
+            }else
+            {
+                $query->orderBy('u.user_registration', 'desc');
             }
             $query->where('u.user_state', 'active');
-            $query->orderBy('u.user_registration', 'desc');
-
+            
             if (isset($p_filter_products))
             {
                 $query->join('products_users as p_u', 'p_u.user_id', '=' ,'u.user_id')
