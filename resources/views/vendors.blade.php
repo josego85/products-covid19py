@@ -57,7 +57,7 @@
                         {
                             window.location = '/?guardado=ok';
                         }
-                        else @csrfif (!result)
+                        else if (!result)
                         {
                             let errors = response.errors;
                             let msg = '<div class="alert alert-warning" id="success-alert">' +
