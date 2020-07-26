@@ -254,19 +254,21 @@ function onEachFeature (p_feature, p_layer)
                 else if (propertie === 'productos')
                 {
                     let product_name;
-                    let product_type;
                     let product = '<ul>';
                     let index;
 
                     for (index in value)
                     {
                         product_name = value[index]['product_name'];
-                        product_type = value[index]['product_type'];
                         product += '<li>' + capitalize(product_name) + '</li>';
                        
                     }
                     product += '</ul>';
                     v_popupString += '<b>' + capitalize(propertie) + '</b>: ' + product;
+                }
+                else if (propertie === 'id')
+                {
+                    continue;
                 }
                 else
                 {

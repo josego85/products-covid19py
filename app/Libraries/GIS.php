@@ -19,10 +19,12 @@ namespace App\Libraries
                             ($value->latitude)? (float)$value->latitude : null,
                         )
                     ),
-                    'properties' => array(
-                        'nombre' => $value->name,
-                        'contacto' => $value->phone,
-                        'comentarios' => ($value->comment)? $value->comment : '',
+                    'properties' => array
+                    (
+                        'id' => $value->user_id,
+                        'nombre' => $value->user_full_name,
+                        'contacto' => $value->user_phone,
+                        'comentarios' => ($value->user_comment)? $value->user_comment : '',
                         'productos' => $value->products
                     )
                 );

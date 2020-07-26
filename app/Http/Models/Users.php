@@ -13,9 +13,10 @@ class Users
      * @method getUsers
      * @param  void $p_filter_products
      * @param  void $p_filter_city
+     * @param  boolean $p_with_coordinates_null
      * @return array
      */
-    public function getUsers ($p_filter_products = null, $p_filter_city = null)
+    public function getUsers ($p_filter_products = null, $p_filter_city = null, $p_with_coordinates_null = null)
     {
         $expression_raw = 'SQL_CALC_FOUND_ROWS u.id, u.name, u.phone, u.comment, u.longitude, ' .
           'u.latitude';
@@ -23,12 +24,19 @@ class Users
         {
             $sql_join = "";
             $sql_where = "";
+
+            // Parche plataforma wenda.
+            if (!$p_with_coordinates_null)
+            {
+                $sql_where .= "(u.user_lng is not null or u.user_lat is not null) ";
+            }
+
             if (isset($p_filter_products))
             {
                 $products = "(" . join(',', $p_filter_products) . ")";
                 $sql_join = "JOIN products_users as p_u ON p_u.user_id = u.id
                   JOIN products as p ON p.product_id = p_u.product_id";
-                $sql_where = "and p.product_id IN $products";
+                $sql_where .= "and p.product_id IN $products";
             }
             $sql = "SELECT $expression_raw
               FROM
@@ -40,7 +48,7 @@ class Users
                       c.geom,
                       GeomFromText(CONCAT('POINT(', u.longitude, ' ', u.latitude, ')'), 1)
                     )
-              WHERE c.city_id = $p_filter_city and u.user_state = 'active'
+              WHERE c.city_id = $p_filter_city AND u.user_state = 'active'
                 $sql_where
                 GROUP By u.id, u.name, u.phone, u.comment, u.longitude, u.latitude
                 ORDER BY u.created_at DESC;
@@ -51,10 +59,28 @@ class Users
         else
         {
             $query = DB::table('users as u')
-            ->select(array( DB::raw($expression_raw)));
+              ->select(array( DB::raw($expression_raw)));
             $query->where('u.state', 'active');
             $query->orderBy('u.created_at', 'desc');
+            
+            // Parche plataforma wenda.
+            if (!$p_with_coordinates_null)
+            {
+                $query->whereNotNull('u.user_lng');
 
+                // Parche para wenda para que no aparezca los usuarios
+                // que no estan en Paraguay.
+                $query->whereNotIn('u.user_id', [69,122]);
+
+                // Parche limit temporal para wenda
+                $query->limit($_ENV['LIMIT_VENDORS_WENDA']);
+                $query->orderBy('u.user_registration', 'asc');
+            }else
+            {
+                $query->orderBy('u.user_registration', 'desc');
+            }
+            $query->where('u.user_state', 'active');
+            
             if (isset($p_filter_products))
             {
                 $query->join('products_users as p_u', 'p_u.user_id', '=' ,'u.id')

@@ -7,6 +7,11 @@ Levantar en sitio en cualquier server (Apache, etc.)
 [Ir a productospy.org](https://productospy.org/)
 
 
+## Logros
+
+- Formamos parte de la plataforma [Wendá](https://wenda.org.py/)
+
+
 ## Tecnologías utilizadas (Toolkit)
 
 - JavaScript (Leaflet, JQuery, Boostrap)
