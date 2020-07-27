@@ -21,10 +21,10 @@ namespace App\Libraries
                     ),
                     'properties' => array
                     (
-                        'id' => $value->user_id,
-                        'nombre' => $value->user_full_name,
-                        'contacto' => $value->user_phone,
-                        'comentarios' => ($value->user_comment)? $value->user_comment : '',
+                        'id' => $value->id,
+                        'nombre' => $value->name,
+                        'contacto' => $value->phone,
+                        'comentarios' => ($value->comment)? $value->comment : '',
                         'productos' => $value->products
                     )
                 );

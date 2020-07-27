@@ -68,3 +68,7 @@ Route::get('/home', 'HomeController@index')
 Route::resource('/role', 'Permission\RoleController')
   ->names('role')
   ->middleware('auth');
+
+  Route::resource('/product', 'Product\ProductController')
+    ->names('product')
+    ->middleware('auth');

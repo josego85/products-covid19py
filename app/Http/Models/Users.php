@@ -28,7 +28,7 @@ class Users
             // Parche plataforma wenda.
             if (!$p_with_coordinates_null)
             {
-                $sql_where .= "(u.user_lng is not null or u.user_lat is not null) ";
+                $sql_where .= "(u.longitude is not null or u.latitude is not null) ";
             }
 
             if (isset($p_filter_products))
@@ -60,26 +60,24 @@ class Users
         {
             $query = DB::table('users as u')
               ->select(array( DB::raw($expression_raw)));
-            $query->where('u.state', 'active');
-            $query->orderBy('u.created_at', 'desc');
             
             // Parche plataforma wenda.
             if (!$p_with_coordinates_null)
             {
-                $query->whereNotNull('u.user_lng');
+                $query->whereNotNull('u.longitude');
 
                 // Parche para wenda para que no aparezca los usuarios
                 // que no estan en Paraguay.
-                $query->whereNotIn('u.user_id', [69,122]);
+                $query->whereNotIn('u.id', [69,122]);
 
                 // Parche limit temporal para wenda
                 $query->limit($_ENV['LIMIT_VENDORS_WENDA']);
-                $query->orderBy('u.user_registration', 'asc');
+                $query->orderBy('u.created_at', 'asc');
             }else
             {
-                $query->orderBy('u.user_registration', 'desc');
+                $query->orderBy('u.created_at', 'desc');
             }
-            $query->where('u.user_state', 'active');
+            $query->where('u.state', 'active');
             
             if (isset($p_filter_products))
             {

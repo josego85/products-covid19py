@@ -42,7 +42,7 @@ class RoleController extends Controller
         $permissions = array();
 
         // Load role/createOrEditOrShow.blade.php view
-        return view('role.createOrEditOrShow', compact('permissions', 'method'));;
+        return view('role.createOrEditOrShow', compact('permissions', 'method'));
     }
 
     /**
