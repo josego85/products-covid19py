@@ -63,6 +63,9 @@
             </div>
             <hr>
 
+            <a class="btn btn-secondary" href="{{ route('product.index') }}">
+                Atr&aacute;s
+            </a>
 
             @if ($data['method'] === 'create' || $data['method'] === 'edit')
                 <input class="btn btn-primary" type="submit" value={{ $button_submit }}>
@@ -71,10 +74,6 @@
                     {{ $button_submit }}
                 </a>
             @endif
-
-            <a class="btn btn-secondary" href="{{ route('product.index') }}">
-                Atr&aacute;s
-            </a>
         </div>    
     </form>
 </div>

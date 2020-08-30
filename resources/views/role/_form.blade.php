@@ -137,6 +137,10 @@
             </div>
             <hr>
 
+            <a class="btn btn-secondary" href="{{ route('role.index') }}">
+                Atr&aacute;s
+            </a>
+
             @if ($data['method'] === 'create' || $data['method'] === 'edit')
                 <input class="btn btn-primary" type="submit" value={{ $button_submit }}>
             @else
@@ -144,10 +148,6 @@
                     {{ $button_submit }}
                 </a>
             @endif
-
-            <a class="btn btn-secondary" href="{{ route('role.index') }}">
-                Atr&aacute;s
-            </a>
         </div>    
     </form>
 </div>
