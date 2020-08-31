@@ -28,7 +28,11 @@
     }
 @endphp
 
-<div class="card-header"><h2>{{ $title }}</h2></div>
+<div class="card-header">
+    <h2>
+        {{ $title }}
+    </h2>
+</div>
 <div class="card-body">
     
     <form action="{{ $action }}" method="post">
@@ -138,7 +142,7 @@
             <hr>
 
             <a class="btn btn-secondary" href="{{ route('role.index') }}">
-                Atr&aacute;s
+                {{ __('module/role.back') }}
             </a>
 
             @if ($data['method'] === 'create' || $data['method'] === 'edit')

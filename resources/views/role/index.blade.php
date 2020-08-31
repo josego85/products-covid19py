@@ -5,12 +5,17 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header"><h2>Lista de roles</h2></div>
+                <div class="card-header">
+                    <h2>
+                        {{ __('module/role.title_main') }}
+                    </h2>
+                </div>
 
                 <div class="card-body">
                     <a href="{{ route('role.create') }}"
                       class="btn btn-primary float-right"
-                        >Crear
+                        >
+                        {{ __('module/role.new') }}
                     </a>
                     <br/><br/>    
 
@@ -20,10 +25,18 @@
                         <thead>
                           <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Nombre</th>
-                            <th scope="col">Slug</th>
-                            <th scope="col">Descripci&oacute;n</th>
-                            <th scope="col">Acceso total</th>
+                            <th scope="col">
+                                {{ __('module/role.name') }}
+                            </th>
+                            <th scope="col">
+                                {{ __('module/role.slug') }}
+                            </th>
+                            <th scope="col">
+                                {{ __('module/role.description') }}
+                            </th>
+                            <th scope="col">
+                                {{ __('module/role.total_access') }}
+                            </th>
                             <th colspan="3"></th>
                           </tr>
                         </thead>
@@ -41,14 +54,22 @@
                                             No
                                         @endif
                                       </td>
-                                      <td><a class="btn btn-info" href="{{ route('role.show', $role->id) }}">Mostrar</td>
-                                      <td><a class="btn btn-success" href="{{ route('role.edit', $role->id) }}">Editar</td>
+                                      <td>
+                                          <a class="btn btn-info" href="{{ route('role.show', $role->id) }}">
+                                              {{ __('module/role.show') }}
+                                          </a>
+                                      </td>
+                                      <td>
+                                          <a class="btn btn-success" href="{{ route('role.edit', $role->id) }}">
+                                              {{ __('module/role.edit') }}
+                                          </a>        
+                                      </td>
                                       {{-- <td>
                                         <form action="{{ route('role.destroy', $role->id) }}" method="post">
                                           {{ csrf_field() }}
                                           @method('DELETE')
                                           <button class="btn btn-danger">
-                                            Eliminar
+                                              {{ __('module/role.delete') }}
                                           </button>  
                                         </form>
                                       </td> --}}
