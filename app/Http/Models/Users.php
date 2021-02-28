@@ -110,8 +110,7 @@ class Users
      */
     public function setUser ($p_data)
     {
-        $user_id = DB::table('users')->insertGetId($p_data);
-        return $user_id;
+        return DB::table('users')->insertGetId($p_data);
     }
 
     /**
@@ -123,11 +122,10 @@ class Users
      */
     public function setRoleUser ($role_id, $user_id)
     {
-        $result = DB::table('roles_users')->insert(
+        return DB::table('roles_users')->insert(
         [
             'user_id' => $user_id,
             'role_id' => $role_id
         ]);
-        return $result;
     }
 }

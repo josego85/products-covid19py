@@ -80,12 +80,10 @@ class Products
      */
     public function setProductUser ($p_product_id, $p_user_id)
     {
-        
-        $result = DB::table('products_users')->insert(
+        return DB::table('products_users')->insert(
         [
             'product_id' => $p_product_id,
             'user_id' => $p_user_id
         ]);
-        return $result;
     }
 }

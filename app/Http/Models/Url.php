@@ -13,24 +13,28 @@ class Url
     {
         $newNode = new self();
         $newNode->url = url($url);
+
         return $newNode;
     }
 
     public function lastUpdate($lastUpdate)
     {
         $this->lastUpdate = $lastUpdate;
+
         return $this;
     }
 
     public function frequency($frequency)
     {
         $this->frequency = $frequency;
+
         return $this;
     }
 
     public function priority($priority)
     {
         $this->priority = $priority;
+        
         return $this;
     }
 
