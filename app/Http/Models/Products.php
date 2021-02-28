@@ -31,11 +31,11 @@ class Products
           
         $result = $query->get();
         $total = DB::select(DB::raw("SELECT FOUND_ROWS() AS total;"))[0];
-        $return = [
+
+        return [
             'total' =>  $total->total,
             'data'  =>  $result->all()
         ];
-        return $return;
     }
 
     /**
@@ -53,8 +53,8 @@ class Products
           ->where('p.product_type', $p_product_type);
           
         $result = $query->get();
-        $return = $result->all();
-        return $return;
+
+        return $result->all();
     }
 
     /**
@@ -65,7 +65,7 @@ class Products
      */
     public function setProduct ($p_data)
     {
-        $product_id = DB::table('products')->insertGetId(
+        DB::table('products')->insertGetId(
         [
             'product_type' => $p_data['product_type']
         ]);

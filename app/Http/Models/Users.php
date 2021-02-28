@@ -95,12 +95,11 @@ class Users
             $result_data = $result->all();
         }
         $total = DB::select(DB::raw("SELECT FOUND_ROWS() AS total;"))[0];
-        $return =
-        [
-            'total' =>  $total->total,
-            'data'  =>  $result_data
-        ];
-        return $return;
+        
+        return [
+          'total' =>  $total->total,
+          'data'  =>  $result_data
+      ];
     }
 
     /**
