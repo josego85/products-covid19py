@@ -8,10 +8,11 @@
     ],
     "license": "MIT",
     "require": {
-        "php": "7.4",
-        "doctrine/inflector": "v1.3.0",
+        "php": "7.4.16",
+        "doctrine/inflector": "v1.4.0",
         "fideloper/proxy": "4.4.1",
-        "laravel/framework": "7.30.4",
+        "guzzlehttp/guzzle": "7.2.0",
+        "laravel/framework": "v8.9.0",
         "laravel/tinker": "v2.6.1",
         "laraveles/spanish": "1.5.0",
         "stevebauman/purify": "v4.0.0"
