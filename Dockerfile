@@ -1,4 +1,4 @@
-FROM php:8.2.25-apache-bullseye
+FROM php:8.3.13-apache-bullseye
 
 RUN docker-php-ext-install pdo pdo_mysql
 
