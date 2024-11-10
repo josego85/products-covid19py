@@ -14,11 +14,11 @@ Levantar en sitio en cualquier server (Apache, etc.)
 
 ## Tecnologías utilizadas (Toolkit)
 
-- JavaScript (Leaflet, JQuery, Boostrap)
-- CSS
 - HTML
+- CSS
+- JavaScript (Leaflet, JQuery, Boostrap)
 - PHP 8.1.30
-- [(Laravel v8.75.0)](https://laravel.com/docs)
+- [(Laravel 9.0)](https://laravel.com/docs)
 - [Composer](https://getcomposer.org/download/)
 - MySQL 5.7
 - Datos OSM (Nominatim como buscador)
@@ -91,8 +91,3 @@ chmod -R 775 bootstrap/cache
 - Comitear tus cambios: git commit -am 'Añadir alguna feature'
 - Push el branch: git push origin nueva-feature
 - Enviar un pull request.
-
-
-## Todo list
-* Mejoras en la lista de vendedores sin ubicación.
-* Mejora en la GUI.
