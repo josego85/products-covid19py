@@ -18,6 +18,15 @@ class Users
      */
     public function getUsers ($p_filter_products = null, $p_filter_city = null, $p_with_coordinates_null = null)
     {
+        $columns = [
+          'u.user_id',
+          'u.user_full_name',
+          'u.user_phone',
+          'u.user_comment',
+          'u.user_lng',
+          'u.user_lat'
+        ];
+
         $expression_raw = 'SQL_CALC_FOUND_ROWS u.user_id, u.user_full_name, u.user_phone, u.user_comment, u.user_lng, ' .
           'u.user_lat';
         if (isset($p_filter_city))
@@ -59,9 +68,9 @@ class Users
         else
         {
             $query = DB::table('users as u')
-              ->select(array( DB::raw($expression_raw)));
+              ->select($columns);
             
-            // Parche plataforma wenda.
+            // Parche Plataforma Wenda.
             if (!$p_with_coordinates_null)
             {
                 $query->whereNotNull('u.user_lng');
@@ -94,7 +103,7 @@ class Users
             $result = $query->get();
             $result_data = $result->all();
         }
-        $total = DB::select(DB::raw("SELECT FOUND_ROWS() AS total;"))[0];
+        $total = DB::select("SELECT FOUND_ROWS() AS total;")[0];
         
         return [
           'total' =>  $total->total,

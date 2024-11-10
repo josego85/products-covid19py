@@ -11,6 +11,6 @@ class User extends Model
 
 	public function products()
 	{
-		return $this->hasMany('App\Model2\Product', 'id_');
+		return $this->hasMany(\App\Model2\Product::class, 'id_');
 	}
 }

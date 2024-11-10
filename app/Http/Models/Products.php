@@ -15,10 +15,13 @@ class Products
      */
     public function getProducts($p_user_id, $filter_products = null)
     {
-        $expression_raw = 'SQL_CALC_FOUND_ROWS p.product_name, p.product_type';
+        $columns = [
+            'p.product_name',
+            'p.product_type'
+        ];
 
         $query = DB::table('products as p')
-          ->select(array( DB::raw($expression_raw)))
+          ->select($columns)
           ->join('products_users as p_u', 'p_u.product_id', '=' ,'p.product_id')
           ->join('users as u', 'u.user_id', '=' ,'p_u.user_id')
           ->where('u.user_state', 'active')
@@ -30,7 +33,7 @@ class Products
         }
           
         $result = $query->get();
-        $total = DB::select(DB::raw("SELECT FOUND_ROWS() AS total;"))[0];
+        $total = DB::select("SELECT FOUND_ROWS() AS total;")[0];
 
         return [
             'total' =>  $total->total,
