@@ -2,7 +2,7 @@ services:
   app:
     build:
       context: .
-    container_name: laravel_app
+    container_name: app
     ports:
       - "8080:80"
     volumes:
@@ -12,13 +12,13 @@ services:
   
   db:
     image: mysql:5.7
-    container_name: mysql_db
+    container_name: mysql
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: 
-      MYSQL_DATABASE:
-      MYSQL_USER:
-      MYSQL_PASSWORD:
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_USER: ${DB_USERNAME}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
     ports:
       - "3306:3306"
     volumes:

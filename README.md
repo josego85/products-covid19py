@@ -17,14 +17,32 @@ Levantar en sitio en cualquier server (Apache, etc.)
 - JavaScript (Leaflet, JQuery, Boostrap)
 - CSS
 - HTML
-- [PHP 7.4 (Laravel 7)](https://laravel.com/docs)
+- PHP 8.1.30
+- [(Laravel v8.75.0)](https://laravel.com/docs)
 - [Composer](https://getcomposer.org/download/)
+- MySQL 5.7
 - Datos OSM (Nominatim como buscador)
+- Docker version 27.3.1, build ce12230
+- Docker Compose version v2.30.3
 
+## Docker
+
+```bash
+docker compose up -d --build
+docker exec -it app bash
+composer install
+exit
+```
+
+### Logs
+
+```bash
+docker compose logs -f
+```
 
 ## Pasos
 
-```sh
+```bash
 git clone https://github.com/josego85/products-covid19py.git
 sudo chown -R $USER:www-data ./products-covid19py
 cd products-covid19py
@@ -38,7 +56,8 @@ php artisan serve
 
 ## Base de datos
 
-```sh
+```bash
+tar -xzvf database/productospy.sql.tar.gz
 mysql -u root -p
 CREATE DATABASE productospy CHARACTER SET utf8 COLLATE utf8_general_ci;
 exit
@@ -51,7 +70,7 @@ exit
 
 ## Permisos
 
-```sh
+```bash
 sudo chown -R $USER:www-data storage
 sudo chown -R $USER:www-data bootstrap/cache
 chmod -R 775 storage
