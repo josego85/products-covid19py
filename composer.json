@@ -11,7 +11,7 @@
         "php": "8.1.30",
         "doctrine/inflector": "2.0.10",
         "fideloper/proxy": "4.4.1",
-        "guzzlehttp/guzzle": "v6.5.7",
+        "guzzlehttp/guzzle": "v6.5.8",
         "laravel/framework": "v8.75.0",
         "laravel/tinker": "v2.6.1",
         "laraveles/spanish": "1.5.0",
