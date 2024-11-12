@@ -18,7 +18,7 @@ Levantar en sitio en cualquier server (Apache, etc.)
 - CSS
 - JavaScript (Leaflet, JQuery, Boostrap)
 - PHP 8.3.13
-- [Laravel 11.9](https://laravel.com/docs)
+- [Laravel 11.30](https://laravel.com/docs)
 - [Composer 2.8.2](https://getcomposer.org/download/)
 - MySQL 5.7
 - Datos OSM (Nominatim como buscador)
@@ -77,6 +77,18 @@ chmod -R 775 storage
 chmod -R 775 bootstrap/cache
 ```
 
+## Sonarqube
+
+You need to have a Sonarqube server running in order to run the sonar scanner cli
+
+```bash
+docker run \
+   --rm \
+   -e SONAR_HOST_URL="http://172.21.197.47:9999"  \
+   -e SONAR_TOKEN="sqp_8382d6f4beb8ced1aa42dc27580a3a0bb66b8879" \
+   -v "/home/proyectosbeta/repositoriosGit/products-covid19py:/usr/src" \
+   sonarsource/sonar-scanner-cli
+```
 
 ## Observaciones:
 

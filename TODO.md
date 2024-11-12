@@ -5,3 +5,9 @@
 * Actualizar a MySQL 8
 * Agregar swagger
 * Fix migrations
+* Agregar FrankenPHP para probar
+* Agregar un make
+* Agregar test con PHPUnit
+* Refactorizar codigo
+* Sonarqube en docker
+* Agregar php stan en docker
