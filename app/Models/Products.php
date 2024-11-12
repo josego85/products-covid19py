@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\DB;
 
 class Products extends Model
 {
@@ -63,21 +62,6 @@ class Products extends Model
         return $this->insertGetId([
             'product_type' => $data['product_type'],
             'product_name' => $data['product_name'] ?? null,
-        ]);
-    }
-
-    /**
-     * Insert product user.
-     *
-     * @param int $productId
-     * @param int $userId
-     * @return bool
-     */
-    public function setProductUser(int $productId, int $userId): bool
-    {
-        return DB::table('products_users')->insert([
-            'product_id' => $productId,
-            'user_id' => $userId
         ]);
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Facades\DB;
 
 class User extends Model
@@ -107,5 +108,15 @@ class User extends Model
             'role_id' => $role_id
       ]
         );
+    }
+
+    /**
+     * Define the relationship with products.
+     *
+     * @return BelongsToMany
+     */
+    public function products(): BelongsToMany
+    {
+        return $this->belongsToMany(Products::class, 'products_users', 'user_id', 'product_id');
     }
 }
