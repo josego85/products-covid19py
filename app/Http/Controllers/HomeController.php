@@ -2,10 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Cities as citiesModel;
+use App\Repositories\CityRepositoryInterface;
 
 class HomeController extends Controller
 {
+    protected $cityRepository;
+
+    public function __construct(CityRepositoryInterface $cityRepository)
+    {
+        $this->cityRepository = $cityRepository;
+    }
+
     /**
      * Show the application home.
      *
@@ -13,9 +20,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        // Fetch cities.
-        $citiesModel = new citiesModel();
-        $cities = $citiesModel->getCities();
+        $cities =  $this->cityRepository->getCities();
 
         return view('main')->with('cities', $cities);
     }
