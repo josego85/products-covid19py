@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
@@ -12,83 +13,71 @@ class Products extends Model
     protected $fillable = ['product_id', 'product_name', 'product_type'];
 
     /**
+     * Get products for a user.
      *
-     * @method getProducts
      * @param int $userId
-     * @param array $filterProducts
+     * @param array|null $filterProducts
      * @return array
      */
-    public function getProducts(int $userId, array $filterProducts = null)
+    public function getProducts(int $userId, ?array $filterProducts = null): array
     {
-        $query = self::select([
-            'p.product_name',
-            'p.product_type'
-        ])
-            ->join('products_users as p_u', 'p_u.product_id', '=', 'p.product_id')
-            ->join('users as u', 'u.user_id', '=', 'p_u.user_id')
-            ->where('u.user_state', 'active')
-            ->where('p_u.user_id', $userId);
+        $query = $this->select('products.product_name', 'products.product_type')
+            ->join('products_users', 'products_users.product_id', '=', 'products.product_id')
+            ->join('users', 'users.user_id', '=', 'products_users.user_id')
+            ->where('users.user_state', 'active')
+            ->where('products_users.user_id', $userId);
 
-        if (isset($filterProducts)) {
-            $query->whereIn('p.product_id', $filterProducts);
+        if ($filterProducts) {
+            $query->whereIn('products.product_id', $filterProducts);
         }
 
-        $resultData = $query->get();
-        $total = DB::table(DB::raw('users'))
-            ->selectRaw('FOUND_ROWS() AS total')
-            ->value(
-                'total'
-            );
+        $products = $query->get();
 
         return [
-            'total' =>  $total,
-            'data'  =>  $resultData->toArray()
+            'total' => $products->count(),
+            'data'  => $products->toArray()
         ];
     }
 
     /**
+     * Get product ID by product type.
      *
-     * @method getProductID
      * @param string $productType
-     * @return array
+     * @return Collection
      */
-    public function getProductID(string $productType)
+    public function getProductID(string $productType): Collection
     {
-        $query = self::select(['product_id'])
-            ->where('product_type', $productType);
-
-        return $query->get()->toArray();
+        return $this->select('product_id')
+            ->where('product_type', $productType)
+            ->get();
     }
 
     /**
      * Insert product.
-     * @method setProduct
+     *
      * @param array $data
-     * @return type
+     * @return int
      */
-    public function setProduct(array $data)
+    public function setProduct(array $data): int
     {
-        DB::table('products')->insertGetId(
-            [
-                'product_type' => $data['product_type']
-            ]
-        );
+        return $this->insertGetId([
+            'product_type' => $data['product_type'],
+            'product_name' => $data['product_name'] ?? null,
+        ]);
     }
 
     /**
      * Insert product user.
-     * @method setProductUser
+     *
      * @param int $productId
      * @param int $userId
-     * @return type
+     * @return bool
      */
-    public function setProductUser($productId, $userId)
+    public function setProductUser(int $productId, int $userId): bool
     {
-        return DB::table('products_users')->insert(
-            [
-                'product_id' => $productId,
-                'user_id' => $userId
-            ]
-        );
+        return DB::table('products_users')->insert([
+            'product_id' => $productId,
+            'user_id' => $userId
+        ]);
     }
 }
