@@ -57,7 +57,7 @@ class User extends Model
     }
 
     if ($filterProducts) {
-      $query->join('products_users as p_u', 'p_u.user_id', '=', 'u.user.id')
+      $query->join('products_users as p_u', 'p_u.user_id', '=', 'u.user_id')
         ->join('products as p', 'p.product_id', '=', 'p_u.product_id')
         ->whereIn('p.product_id', $filterProducts);
     }
