@@ -2,17 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use App\Models\Users as usersModel;
-use App\Models\Products as productsModel;
 use App\Libraries\GIS;
 use App\Libraries\Utils;
+use App\Models\Products as productsModel;
+use App\Models\User as usersModel;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Validator;
 
 class VendorController extends Controller
-{   
-    
+{
     /**
      * Retorna un listado de vendedores
      */
@@ -20,8 +19,7 @@ class VendorController extends Controller
     {
         // Parche plataforma wenda.
         $with_coordinates_null = true;
-        if($request->path() === 'api/vendedores')
-        {
+        if ($request->path() === 'api/vendedores') {
             $with_coordinates_null = false;
         }
 
@@ -33,10 +31,8 @@ class VendorController extends Controller
         $products_filter = json_decode($this->securityCleanCode($request->input('products')));
         $city_filter = json_decode($this->securityCleanCode($request->input('city')));
         $filter_products = null;
-        if ($products_filter != null)
-        {
-            foreach ($products_filter as $product)
-            {
+        if ($products_filter != null) {
+            foreach ($products_filter as $product) {
                 $result_product = $products->getProductID($product);
                 $product_id = $result_product[0]->product_id;
                 $filter_products[] = $product_id;
@@ -45,71 +41,70 @@ class VendorController extends Controller
         $result_vendors = $user->getUsers($filter_products, $city_filter, $with_coordinates_null);
         $vendors = $result_vendors['data'];
 
-        foreach($vendors as $vendor)
-        {
+        foreach ($vendors as $vendor) {
             $vendor_id = $vendor->user_id;
             $result_products = $products->getProducts($vendor_id, $filter_products);
             $total = $result_products['total'];
             $vendor->products = null;
-            
-            if ($total != 0)
-            {
+
+            if ($total != 0) {
                 $data = $result_products['data'];
                 $vendor->products = $data;
             }
         }
         $geo_json = $vendors;
-        $GISFunctions = new GIS;
+        $GISFunctions = new GIS();
 
         return $GISFunctions->create_geo_json($geo_json);
     }
 
 
     /**
-     * 
+     *
      * Inserta un nuevo vendedor
-     * 
+     *
      * @param Request $request
      */
     public function postVendor(Request $request)
     {
-        $validador = Validator::make($request->all(),
-        [            
+        $validador = Validator::make(
+            $request->all(),
+            [
             'user_email' => 'email|nullable',
             'user_phone' => 'required|numeric',
             'user_comment' => 'max:4000',
             'user_lat' => 'required_without:user_lng|numeric',
-            "products" => "required|array|min:1"
+            'products' => 'required|array|min:1'
         ],
-        [
+            [
             'user_phone.required'       => 'El contacto es obligatorio.',
             'user_comment.max'          => 'La descripci&oacute;n no puede tener m&aacute; de 4000 car&aacute;cteres',
             'user_lat.required_without' => 'La ubicaci&oacute;n en el mapa es obligatoria.',
             'user_lng.required'         => 'La ubicaci&oacute;n en el mapa es obligatoria.',
             'products.required'         => 'Tiene que agregar por lo menos 1 producto.'
-        ]);
-        if ($validador->fails())
-        {
-            return json_encode(array
-            (
+        ]
+        );
+        if ($validador->fails()) {
+            return json_encode(
+                [
                 'success' => true,
                 'result' => false,
                 'errors' => $validador->errors()->all()
-            ),
-            JSON_PRETTY_PRINT);
+            ],
+                JSON_PRETTY_PRINT
+            );
         }
 
-        $user_email = $this->securityCleanCode($request->input("user_email"));
-        $user_full_name = $this->securityCleanCode($request->input("user_full_name"));
-        $user_phone = $this->securityCleanCode($request->input("user_phone"));
-        $user_comment = $this->securityCleanCode($request->input("user_comment"));
-        $user_lng = $this->securityCleanCode($request->input("user_lng"));
-        $user_lat = $this->securityCleanCode($request->input("user_lat"));
+        $user_email = $this->securityCleanCode($request->input('user_email'));
+        $user_full_name = $this->securityCleanCode($request->input('user_full_name'));
+        $user_phone = $this->securityCleanCode($request->input('user_phone'));
+        $user_comment = $this->securityCleanCode($request->input('user_comment'));
+        $user_lng = $this->securityCleanCode($request->input('user_lng'));
+        $user_lat = $this->securityCleanCode($request->input('user_lat'));
 
         DB::beginTransaction();
-        
-        try 
-        {
+
+        try {
             $user = new usersModel();
             $data_user =
             [
@@ -118,8 +113,8 @@ class VendorController extends Controller
                 'user_registration' => $this->getDateHour(),
                 'user_phone' => $user_phone,
                 'user_comment' => $user_comment,
-                'user_lng' => ($user_lng)? $user_lng : null,
-                'user_lat' => ($user_lat)? $user_lat : null
+                'user_lng' => ($user_lng) ? $user_lng : null,
+                'user_lat' => ($user_lat) ? $user_lat : null
             ];
             $user_id = $user->setUser($data_user);
             $user->setRoleUser(2, $user_id);
@@ -127,12 +122,10 @@ class VendorController extends Controller
             $product_model = new productsModel();
 
             // todo check products.
-            
+
             $products = $this->securityCleanCode($request->input('products'));
-            foreach ($products as $product)
-            {
-                if ($product != null)
-                {
+            foreach ($products as $product) {
+                if ($product != null) {
                     $result_product = $product_model->getProductID($product);
                     $product_id = $result_product[0]->product_id;
                     $product_model->setProductUser($product_id, $user_id);
@@ -140,19 +133,15 @@ class VendorController extends Controller
             }
             DB::commit();
             $msg = 'Vendedor guardado.';
-        }
-        catch (\Exception $e)
-        {
+        } catch (\Exception $e) {
             DB::rollback();
             $msg = $e->getMessage();
-        }
-        catch (\Throwable $e)
-        {
+        } catch (\Throwable $e) {
             DB::rollback();
             $msg = 'Problemas en el servidor.';
         }
 
-        $UtilsFunctions = new Utils;
+        $UtilsFunctions = new Utils();
         $code = 200;
 
         return $UtilsFunctions->json_response($code, $msg);

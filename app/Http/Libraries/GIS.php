@@ -6,34 +6,33 @@ namespace App\Libraries
     {
         public function create_geo_json($locales)
         {
-            $features = array();
+            $features = [];
 
-            foreach($locales as $key => $value)
-            {
-                $features[] = array(
+            foreach ($locales as $key => $value) {
+                $features[] = [
                     'type' => 'Feature',
-                    'geometry' => array(
-                        'type' => 'Point', 
-                        'coordinates' => array(
-                            ($value->user_lng)? (float)$value->user_lng : null,
-                            ($value->user_lat)? (float)$value->user_lat : null,
-                        )
-                    ),
-                    'properties' => array
-                    (
+                    'geometry' => [
+                        'type' => 'Point',
+                        'coordinates' => [
+                            ($value->user_lng) ? (float)$value->user_lng : null,
+                            ($value->user_lat) ? (float)$value->user_lat : null,
+                        ]
+                    ],
+                    'properties' =>
+                    [
                         'id' => $value->user_id,
                         'nombre' => $value->user_full_name,
                         'contacto' => $value->user_phone,
-                        'comentarios' => ($value->user_comment)? $value->user_comment : '',
+                        'comentarios' => ($value->user_comment) ? $value->user_comment : '',
                         'productos' => $value->products
-                    )
-                );
+                    ]
+                ];
             };
 
-            $allfeatures = array(
-                'type' => 'FeatureCollection', 
+            $allfeatures = [
+                'type' => 'FeatureCollection',
                 'features' => $features
-            );
+            ];
             return json_encode($allfeatures, JSON_PRETTY_PRINT);
         }
     }

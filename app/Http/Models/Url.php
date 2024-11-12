@@ -34,17 +34,17 @@ class Url
     public function priority($priority)
     {
         $this->priority = $priority;
-        
+
         return $this;
     }
 
     public function build()
     {
-        return "<url>" .
+        return '<url>' .
           "<loc>$this->url</loc>" .
           "<lastmod>$this->lastUpdate</lastmod>" .
           "<changefreq>$this->frequency</changefreq>" .
           "<priority>$this->priority</priority>" .
-          "</url>";
+          '</url>';
     }
 }

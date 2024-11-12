@@ -11,7 +11,7 @@ class Cities
         $expression_raw = 'c.city_id, c.city_name';
 
         return DB::table('cities as c')
-          ->select(array( DB::raw($expression_raw)))
+          ->select([ DB::raw($expression_raw)])
           ->orderBy('c.city_name', 'asc')
           ->get();
     }
