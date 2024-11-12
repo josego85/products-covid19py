@@ -2,21 +2,34 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
-class Users
+class User extends Model
 {
+    protected $table = 'users';
+    protected $primaryKey = 'user_id';
+    protected $fillable = [
+      'user_full_name',
+      'user_email',
+      'user_registration',
+      'user_phone',
+      'user_lng',
+      'user_lat',
+      'user_state',
+      'user_comment'
+    ];
+
 
     /**
-     * Public method that returns all users. 
-     * In case you have the product filter, it will return all the users that contain those products.
-     * @method getUsers
-     * @param  void $p_filter_products
-     * @param  void $p_filter_city
-     * @param  boolean $p_with_coordinates_null
+     * Get users with optional filters.
+     *
+     * @param array|null $filterProducts
+     * @param int|null $filterCity
+     * @param bool $withCoordinatesNull
      * @return array
      */
-    public function getUsers ($p_filter_products = null, $p_filter_city = null, $p_with_coordinates_null = null)
+    public function getUsers($p_filter_products = null, $p_filter_city = null, $p_with_coordinates_null = null)
     {
         $columns = [
           'u.user_id',
@@ -29,22 +42,19 @@ class Users
 
         $expression_raw = 'SQL_CALC_FOUND_ROWS u.user_id, u.user_full_name, u.user_phone, u.user_comment, u.user_lng, ' .
           'u.user_lat';
-        if (isset($p_filter_city))
-        {
-            $sql_join = "";
-            $sql_where = "";
+        if (isset($p_filter_city)) {
+            $sql_join = '';
+            $sql_where = '';
 
             // Parche plataforma wenda.
-            if (!$p_with_coordinates_null)
-            {
-                $sql_where .= "(u.user_lng is not null or u.user_lat is not null) ";
+            if (!$p_with_coordinates_null) {
+                $sql_where .= '(u.user_lng is not null or u.user_lat is not null) ';
             }
 
-            if (isset($p_filter_products))
-            {
-                $products = "(" . join(',', $p_filter_products) . ")";
-                $sql_join = "JOIN products_users as p_u ON p_u.user_id = u.user_id
-                  JOIN products as p ON p.product_id = p_u.product_id";
+            if (isset($p_filter_products)) {
+                $products = '(' . join(',', $p_filter_products) . ')';
+                $sql_join = 'JOIN products_users as p_u ON p_u.user_id = u.user_id
+                  JOIN products as p ON p.product_id = p_u.product_id';
                 $sql_where .= "and p.product_id IN $products";
             }
             $sql = "SELECT $expression_raw
@@ -64,34 +74,29 @@ class Users
             ";
             $query = DB::select(DB::raw($sql));
             $result_data = $query;
-        }
-        else
-        {
+        } else {
             $query = DB::table('users as u')
               ->select($columns);
-            
+
             // Parche Plataforma Wenda.
-            if (!$p_with_coordinates_null)
-            {
+            if (!$p_with_coordinates_null) {
                 $query->whereNotNull('u.user_lng');
 
                 // Parche para wenda para que no aparezca los usuarios
                 // que no estan en Paraguay.
-                $query->whereNotIn('u.user_id', [69,122]);
+                $query->whereNotIn('u.user_id', [69, 122]);
 
                 // Parche limit temporal para wenda
                 $query->limit($_ENV['LIMIT_VENDORS_WENDA']);
                 $query->orderBy('u.user_registration', 'asc');
-            }else
-            {
+            } else {
                 $query->orderBy('u.user_registration', 'desc');
             }
             $query->where('u.user_state', 'active');
-            
-            if (isset($p_filter_products))
-            {
-                $query->join('products_users as p_u', 'p_u.user_id', '=' ,'u.user_id')
-                  ->join('products as p', 'p.product_id', '=' ,'p_u.product_id')
+
+            if (isset($p_filter_products)) {
+                $query->join('products_users as p_u', 'p_u.user_id', '=', 'u.user_id')
+                  ->join('products as p', 'p.product_id', '=', 'p_u.product_id')
                   ->whereIn('p.product_id', $p_filter_products)
                   ->groupBy('u.user_id')
                   ->groupBy('u.user_full_name')
@@ -103,12 +108,12 @@ class Users
             $result = $query->get();
             $result_data = $result->all();
         }
-        $total = DB::select("SELECT FOUND_ROWS() AS total;")[0];
-        
+        $total = DB::select('SELECT FOUND_ROWS() AS total;')[0];
+
         return [
           'total' =>  $total->total,
           'data'  =>  $result_data
-      ];
+        ];
     }
 
     /**
@@ -117,7 +122,7 @@ class Users
      * @param array $p_data
      * @return type
      */
-    public function setUser ($p_data)
+    public function setUser($p_data)
     {
         return DB::table('users')->insertGetId($p_data);
     }
@@ -129,12 +134,13 @@ class Users
      * @param int $user_id
      * @return type
      */
-    public function setRoleUser ($role_id, $user_id)
+    public function setRoleUser($role_id, $user_id)
     {
         return DB::table('roles_users')->insert(
-        [
+            [
             'user_id' => $user_id,
             'role_id' => $role_id
-        ]);
+      ]
+        );
     }
 }
