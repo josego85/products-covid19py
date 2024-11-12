@@ -177,6 +177,8 @@ return [
 
         Stevebauman\Purify\PurifyServiceProvider::class,
 
+        App\Providers\RepositoryServiceProvider::class,
+
     ],
 
     /*
@@ -227,7 +229,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-        
+
         'Purify' => 'Stevebauman\Purify\Facades\Purify',
 
     ],
