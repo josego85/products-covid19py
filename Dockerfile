@@ -8,7 +8,7 @@ RUN docker-php-ext-install zip pdo pdo_mysql
 RUN pecl install -o -f xdebug \
   && docker-php-ext-enable xdebug
 
-COPY ./php.ini /usr/local/etc/php/
+COPY ./deploy/config/php.ini /usr/local/etc/php/
 
 COPY . /var/www/html
 
