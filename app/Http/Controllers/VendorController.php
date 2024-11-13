@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Libraries\Utils;
 use App\Models\User as usersModel;
 use App\Repositories\ProductRepositoryInterface;
 use App\Repositories\UserRepositoryInterface;
 use App\Services\GisService;
+use App\Services\ResponseService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Validator;
@@ -16,7 +16,8 @@ class VendorController extends Controller
     public function __construct(
         private ProductRepositoryInterface $productRepository,
         private UserRepositoryInterface $userRepository,
-        private GisService $gisService
+        private GisService $gisService,
+        private ResponseService $responseService
     ) {
     }
     /**
@@ -140,9 +141,8 @@ class VendorController extends Controller
             $msg = 'Problemas en el servidor.';
         }
 
-        $UtilsFunctions = new Utils();
         $code = 200;
 
-        return $UtilsFunctions->json_response($code, $msg);
+        return $this->responseService->jsonResponse($code, $msg);
     }
 }
