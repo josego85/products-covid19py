@@ -1,9 +1,14 @@
 FROM php:8.3.13-apache-bullseye
 
-RUN docker-php-ext-install pdo pdo_mysql
-
-RUN apt-get update && apt-get install -y zip unzip \
+RUN apt-get update && apt-get install -y libzip-dev zip unzip \
   && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+RUN docker-php-ext-install zip pdo pdo_mysql
+
+RUN pecl install -o -f xdebug \
+  && docker-php-ext-enable xdebug
+
+COPY ./php.ini /usr/local/etc/php/
 
 COPY . /var/www/html
 

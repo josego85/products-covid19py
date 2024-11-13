@@ -9,5 +9,3 @@
 -   Agregar un make
 -   Agregar test con PHPUnit
 -   Refactorizar codigo
--   Sonarqube en docker
--   Agregar php stan en docker
