@@ -2,14 +2,14 @@
 
 namespace App\Repositories;
 
-use App\Models\Cities;
+use App\Models\City;
 use Illuminate\Database\Eloquent\Collection;
 
 class CityRepository implements CityRepositoryInterface
 {
     protected $model;
 
-    public function __construct(Cities $model)
+    public function __construct(City $model)
     {
         $this->model = $model;
     }
