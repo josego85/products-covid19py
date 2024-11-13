@@ -15,7 +15,8 @@ class VendorController extends Controller
         private VendorService $vendorService,
         private GisService $gisService,
         private ResponseService $responseService
-    ) {}
+    ) {
+    }
     /**
      * Retorna un listado de vendedores
      */

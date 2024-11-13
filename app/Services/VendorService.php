@@ -10,7 +10,8 @@ class VendorService
     public function __construct(
         private ProductRepositoryInterface $productRepository,
         private UserRepositoryInterface $userRepository
-    ) {}
+    ) {
+    }
 
     public function getFilteredVendors(array $filters): array
     {
