@@ -50,9 +50,3 @@ Route::get('/sitemap.xml', 'SiteMapController@index');
 // 	Route::get('/vendor', function () {
 // 	    return view('pages.vendor-create');
 // 	});
-
-// 	// Nuevas funcionalidades
-// 	Route::resources([
-// 		'vendors' => 'VendorCtrl'
-// 	]);
-// });
