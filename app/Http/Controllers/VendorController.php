@@ -2,60 +2,27 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User as usersModel;
-use App\Repositories\ProductRepositoryInterface;
-use App\Repositories\UserRepositoryInterface;
+use App\Http\Requests\VendorRequest;
 use App\Services\GisService;
 use App\Services\ResponseService;
+use App\Services\VendorService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Validator;
 
 class VendorController extends Controller
 {
     public function __construct(
-        private ProductRepositoryInterface $productRepository,
-        private UserRepositoryInterface $userRepository,
+        private VendorService $vendorService,
         private GisService $gisService,
         private ResponseService $responseService
-    ) {
-    }
+    ) {}
     /**
      * Retorna un listado de vendedores
      */
     public function getVendors(Request $request)
     {
-        // Parche plataforma wenda.
-        $with_coordinates_null = true;
-        if ($request->path() === 'api/vendedores') {
-            $with_coordinates_null = false;
-        }
-
-        // Parameters
-        $products_filter = json_decode($this->securityCleanCode($request->input('products')));
-        $city_filter = json_decode($this->securityCleanCode($request->input('city')));
-        $filter_products = null;
-        if ($products_filter != null) {
-            foreach ($products_filter as $product) {
-                $result_product = $this->productRepository->getProductID($product);
-                $product_id = $result_product[0]->product_id;
-                $filter_products[] = $product_id;
-            }
-        }
-        $result_vendors = $this->userRepository->getUsers($filter_products, $city_filter, $with_coordinates_null);
-        $vendors = $result_vendors['data'];
-
-        foreach ($vendors as $vendor) {
-            $vendor_id = $vendor->user_id;
-            $result_products = $this->productRepository->getProducts($vendor_id, $filter_products);
-            $total = $result_products['total'];
-            $vendor->products = null;
-
-            if ($total != 0) {
-                $data = $result_products['data'];
-                $vendor->products = $data;
-            }
-        }
+        $filters = $this->prepareFilters($request);
+        $vendors = $this->vendorService->getFilteredVendors($filters);
 
         return $this->gisService->createGeoJson($vendors);
     }
@@ -67,82 +34,27 @@ class VendorController extends Controller
      *
      * @param Request $request
      */
-    public function postVendor(Request $request)
+    public function postVendor(VendorRequest $request)
     {
-        $validador = Validator::make(
-            $request->all(),
-            [
-                'user_email' => 'email|nullable',
-                'user_phone' => 'required|numeric',
-                'user_comment' => 'max:4000',
-                'user_lat' => 'required_without:user_lng|numeric',
-                'products' => 'required|array|min:1'
-            ],
-            [
-                'user_phone.required'       => 'El contacto es obligatorio.',
-                'user_comment.max'          => 'La descripci&oacute;n no puede tener m&aacute; de 4000 car&aacute;cteres',
-                'user_lat.required_without' => 'La ubicaci&oacute;n en el mapa es obligatoria.',
-                'user_lng.required'         => 'La ubicaci&oacute;n en el mapa es obligatoria.',
-                'products.required'         => 'Tiene que agregar por lo menos 1 producto.'
-            ]
-        );
-        if ($validador->fails()) {
-            return json_encode(
-                [
-                    'success' => true,
-                    'result' => false,
-                    'errors' => $validador->errors()->all()
-                ],
-                JSON_PRETTY_PRINT
-            );
-        }
-
-        $user_email = $this->securityCleanCode($request->input('user_email'));
-        $user_full_name = $this->securityCleanCode($request->input('user_full_name'));
-        $user_phone = $this->securityCleanCode($request->input('user_phone'));
-        $user_comment = $this->securityCleanCode($request->input('user_comment'));
-        $user_lng = $this->securityCleanCode($request->input('user_lng'));
-        $user_lat = $this->securityCleanCode($request->input('user_lat'));
-
-        DB::beginTransaction();
 
         try {
-            $user = new usersModel();   // TODO refactor
-            $data_user =
-                [
-                    'user_full_name' => $user_full_name,
-                    'user_email' => $user_email,
-                    'user_registration' => $this->getDateHour(),
-                    'user_phone' => $user_phone,
-                    'user_comment' => $user_comment,
-                    'user_lng' => ($user_lng) ? $user_lng : null,
-                    'user_lat' => ($user_lat) ? $user_lat : null
-                ];
-            $user_id =  $this->userRepository->setUser($data_user);
-            $this->userRepository->setRoleUser(2, $user_id);
+            DB::beginTransaction();
 
-            // todo check products.
-
-            $products = $this->securityCleanCode($request->input('products'));
-            foreach ($products as $product) {
-                if ($product != null) {
-                    $resultProduct = $this->productRepository->getProductID($product);
-                    $productId = $resultProduct[0]->product_id;
-                    $user->products()->attach($productId);  // TODO refactor
-                }
-            }
+            $vendor = $this->vendorService->createVendor($request);
             DB::commit();
-            $msg = 'Vendedor guardado.';
+            return $this->responseService->success('Vendedor guardado.', $vendor);
         } catch (\Exception $e) {
-            DB::rollback();
-            $msg = $e->getMessage();
-        } catch (\Throwable $e) {
-            DB::rollback();
-            $msg = 'Problemas en el servidor.';
+            DB::rollBack();
+            return $this->responseService->error($e->getMessage());
         }
+    }
 
-        $code = 200;
-
-        return $this->responseService->jsonResponse($code, $msg);
+    private function prepareFilters(Request $request): array
+    {
+        return [
+            'products' => json_decode($this->securityCleanCode($request->input('products'))),
+            'city' => json_decode($this->securityCleanCode($request->input('city'))),
+            'withCoordinatesNull' => $request->path() !== 'api/vendedores', // Parche plataforma wenda.
+        ];
     }
 }
