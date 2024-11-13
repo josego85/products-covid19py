@@ -1,29 +1,27 @@
 # products-covid19py
-Sitio para ver productos que se venden para el uso contra el virus COVID19.
 
+Sitio para ver productos que se venden para el uso contra el virus COVID19.
 
 Levantar en sitio en cualquier server (Apache, etc.)
 
 [Ir a productospy.org](https://productospy.org/)
 
-
 ## Logros
 
-- Formamos parte de la plataforma [Wendá](https://wenda.org.py/)
-
+-   Formamos parte de la plataforma [Wendá](https://wenda.org.py/)
 
 ## Tecnologías utilizadas (Toolkit)
 
-- HTML
-- CSS
-- JavaScript (Leaflet, JQuery, Boostrap)
-- PHP 8.3.13
-- [Laravel 11.30](https://laravel.com/docs)
-- [Composer 2.8.2](https://getcomposer.org/download/)
-- MySQL 5.7
-- Datos OSM (Nominatim como buscador)
-- Docker version 27.3.1, build ce12230
-- Docker Compose version v2.30.3
+-   HTML
+-   CSS
+-   JavaScript (Leaflet, JQuery, Boostrap)
+-   PHP 8.3.13
+-   [Laravel 11.30](https://laravel.com/docs)
+-   [Composer 2.8.2](https://getcomposer.org/download/)
+-   MySQL 5.7
+-   Datos OSM (Nominatim como buscador)
+-   Docker version 27.3.1, build ce12230
+-   Docker Compose version v2.30.3
 
 ## Docker
 
@@ -46,13 +44,12 @@ docker compose logs -f
 git clone https://github.com/josego85/products-covid19py.git
 sudo chown -R $USER:www-data ./products-covid19py
 cd products-covid19py
-composer install 
+composer install
 composer update
 cp .env.example .env
 php artisan key:generate
-php artisan serve 
+php artisan serve
 ```
-
 
 ## Base de datos
 
@@ -92,14 +89,13 @@ docker run \
 
 ## Observaciones:
 
-- El sitio debe de tener un certificado SSL para que funcione la geolocalización.
-- Se recomienda usar un servicio web como Apache.
-
+-   El sitio debe de tener un certificado SSL para que funcione la geolocalización.
+-   Se recomienda usar un servicio web como Apache.
 
 ## Contribuir
 
-- Crear fork.
-- Crear un feature branch: git checkout -b nueva-feature
-- Comitear tus cambios: git commit -am 'Añadir alguna feature'
-- Push el branch: git push origin nueva-feature
-- Enviar un pull request.
+-   Crear fork.
+-   Crear un feature branch: git checkout -b nueva-feature
+-   Comitear tus cambios: git commit -am 'Añadir alguna feature'
+-   Push el branch: git push origin nueva-feature
+-   Enviar un pull request.
