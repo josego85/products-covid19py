@@ -2,26 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\Libraries\GIS;
 use App\Libraries\Utils;
 use App\Models\User as usersModel;
 use App\Repositories\ProductRepositoryInterface;
 use App\Repositories\UserRepositoryInterface;
+use App\Services\GisService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Validator;
 
 class VendorController extends Controller
 {
-    protected $productRepository;
-    protected $userRepository;
-
     public function __construct(
-        ProductRepositoryInterface $productRepository,
-        UserRepositoryInterface $userRepository
+        private ProductRepositoryInterface $productRepository,
+        private UserRepositoryInterface $userRepository,
+        private GisService $gisService
     ) {
-        $this->productRepository = $productRepository;
-        $this->userRepository = $userRepository;
     }
     /**
      * Retorna un listado de vendedores
@@ -59,10 +55,8 @@ class VendorController extends Controller
                 $vendor->products = $data;
             }
         }
-        $geo_json = $vendors;
-        $GISFunctions = new GIS();
 
-        return $GISFunctions->create_geo_json($geo_json);
+        return $this->gisService->createGeoJson($vendors);
     }
 
 
