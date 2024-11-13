@@ -62,11 +62,7 @@ class UserRepository implements UserRepositoryInterface
             ->orderBy('u.user_registration', 'desc');
 
         $resultData = $query->get();
-        $total = DB::table(DB::raw('users'))
-            ->selectRaw('FOUND_ROWS() AS total')
-            ->value(
-                'total'
-            );
+        $total = $resultData->count();
 
         return [
             'total' =>  $total,
@@ -94,7 +90,7 @@ class UserRepository implements UserRepositoryInterface
      */
     public function setRoleUser(int $role_id, int $user_id): bool
     {
-        return DB::table('roles_users')->insert(
+        return $this->model->insert(
             [
                 'user_id' => $user_id,
                 'role_id' => $role_id
