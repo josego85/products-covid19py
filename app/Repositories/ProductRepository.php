@@ -2,14 +2,14 @@
 
 namespace App\Repositories;
 
-use App\Models\Products;
+use App\Models\Product;
 use Illuminate\Database\Eloquent\Collection;
 
 class ProductRepository implements ProductRepositoryInterface
 {
     protected $model;
 
-    public function __construct(Products $model)
+    public function __construct(Product $model)
     {
         $this->model = $model;
     }
