@@ -8,7 +8,7 @@ class GisService
     private const GEOMETRY_TYPE = 'Point';
     private const COLLECTION_TYPE = 'FeatureCollection';
 
-    public function createGeoJson(array $locales): string
+    public function createGeoJson(array $locales): string | false
     {
         $features = array_map([$this, 'createFeature'], $locales);
 
@@ -18,15 +18,26 @@ class GisService
         ], JSON_PRETTY_PRINT);
     }
 
-    private function createFeature($value): array
+    /**
+     * @param object{
+     *     user_id: int,
+     *     user_full_name: string,
+     *     user_phone: string,
+     *     user_comment?: string,
+     *     products: array,
+     *     user_lng?: float,
+     *     user_lat?: float
+     * } $value
+     */
+    private function createFeature(Object $value): array
     {
         return  [
             'type' => self::FEATURE_TYPE,
             'geometry' => [
                 'type' => self::GEOMETRY_TYPE,
                 'coordinates' => [
-                    $value->user_lng ? (float)$value->user_lng : null,
-                    $value->user_lat ? (float)$value->user_lat : null,
+                    isset($value->user_lng) ? (float)$value->user_lng : null,
+                    isset($value->user_lat) ? (float)$value->user_lat : null,
                 ]
             ],
             'properties' =>
