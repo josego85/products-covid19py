@@ -6,6 +6,7 @@ use App\Libraries\GIS;
 use App\Libraries\Utils;
 use App\Models\User as usersModel;
 use App\Repositories\ProductRepositoryInterface;
+use App\Repositories\UserRepositoryInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Validator;
@@ -13,10 +14,14 @@ use Validator;
 class VendorController extends Controller
 {
     protected $productRepository;
+    protected $userRepository;
 
-    public function __construct(ProductRepositoryInterface $productRepository)
-    {
+    public function __construct(
+        ProductRepositoryInterface $productRepository,
+        UserRepositoryInterface $userRepository
+    ) {
         $this->productRepository = $productRepository;
+        $this->userRepository = $userRepository;
     }
     /**
      * Retorna un listado de vendedores
@@ -29,9 +34,6 @@ class VendorController extends Controller
             $with_coordinates_null = false;
         }
 
-        // @todo validation
-        $user = new usersModel();
-
         // Parameters
         $products_filter = json_decode($this->securityCleanCode($request->input('products')));
         $city_filter = json_decode($this->securityCleanCode($request->input('city')));
@@ -43,7 +45,7 @@ class VendorController extends Controller
                 $filter_products[] = $product_id;
             }
         }
-        $result_vendors = $user->getUsers($filter_products, $city_filter, $with_coordinates_null);
+        $result_vendors = $this->userRepository->getUsers($filter_products, $city_filter, $with_coordinates_null);
         $vendors = $result_vendors['data'];
 
         foreach ($vendors as $vendor) {
@@ -110,7 +112,7 @@ class VendorController extends Controller
         DB::beginTransaction();
 
         try {
-            $user = new usersModel();
+            $user = new usersModel();   // TODO refactor
             $data_user =
                 [
                     'user_full_name' => $user_full_name,
@@ -121,8 +123,8 @@ class VendorController extends Controller
                     'user_lng' => ($user_lng) ? $user_lng : null,
                     'user_lat' => ($user_lat) ? $user_lat : null
                 ];
-            $user_id = $user->setUser($data_user);
-            $user->setRoleUser(2, $user_id);
+            $user_id =  $this->userRepository->setUser($data_user);
+            $this->userRepository->setRoleUser(2, $user_id);
 
             // todo check products.
 
@@ -131,7 +133,7 @@ class VendorController extends Controller
                 if ($product != null) {
                     $resultProduct = $this->productRepository->getProductID($product);
                     $productId = $resultProduct[0]->product_id;
-                    $user->products()->attach($productId);
+                    $user->products()->attach($productId);  // TODO refactor
                 }
             }
             DB::commit();
