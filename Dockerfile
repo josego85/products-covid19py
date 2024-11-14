@@ -5,8 +5,8 @@ RUN apt-get update && apt-get install -y libzip-dev zip unzip \
 
 RUN docker-php-ext-install zip pdo pdo_mysql
 
-RUN pecl install -o -f xdebug \
-  && docker-php-ext-enable xdebug
+# RUN pecl install -o -f xdebug \
+#   && docker-php-ext-enable xdebug
 
 COPY ./deploy/config/php.ini /usr/local/etc/php/
 
