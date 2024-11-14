@@ -10,7 +10,7 @@ Levantar en sitio en cualquier server (Apache, etc.)
 
 -   Formamos parte de la plataforma [Wendá](https://wenda.org.py/)
 
-## Tecnologías utilizadas (Toolkit)
+## Technologies
 
 -   HTML
 -   CSS
@@ -23,8 +23,25 @@ Levantar en sitio en cualquier server (Apache, etc.)
 -   Docker version 27.3.1, build ce12230
 -   Docker Compose version v2.30.3
 
-## Docker
+## Env
 
+```bash
+cp .env.example .env
+```
+
+### Change variables
+
+```bash
+APP_DEBUG=true
+
+DB_PORT=3306
+DB_DATABASE=productospy
+DB_USERNAME=productospy
+DB_PASSWORD=123456789
+DB_ROOT_PASSWORD=123456789
+```
+
+## Docker
 ```bash
 docker compose up -d --build
 docker exec -it app bash
@@ -51,7 +68,7 @@ php artisan key:generate
 php artisan serve
 ```
 
-## Base de datos
+## Data base
 
 ```bash
 tar -xzvf database/productospy.sql.tar.gz
