@@ -8,21 +8,30 @@ services:
     volumes:
       - .:/var/www/html
     depends_on:
-      - db
+      - mysql
+    networks:
+      - app-network
 
-  db:
+  mysql:
     image: mysql:5.7
     container_name: mysql
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
       MYSQL_DATABASE: ${DB_DATABASE}
       MYSQL_USER: ${DB_USERNAME}
       MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
     ports:
-      - "3306:3306"
+      - '3306:3306'
     volumes:
-      - db_data:/var/lib/mysql
+      - 'mysql-data:/var/lib/mysql'
+    networks:
+      - app-network
+
 
 volumes:
-  db_data:
+  mysql-data:
+
+networks:
+  app-network:
+    driver: bridge

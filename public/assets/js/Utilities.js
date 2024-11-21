@@ -101,10 +101,16 @@ function load_map (p_coordinates, p_zoom)
     switch (action)
     {
 	    case 'marker':
-			map = new Map(p_coordinates, p_zoom, action);
+            if (typeof map !== "undefined" && map !== null) {
+                map.remove();
+            }
+		 	map = new Map(p_coordinates, p_zoom, action);
             break;
         case 'list':
         case 'default':
+            if (typeof map !== "undefined" && map !== null) {
+                map.remove();
+            }
             map = new Map(p_coordinates, p_zoom, action);
             map.get_vendors();
             break;
