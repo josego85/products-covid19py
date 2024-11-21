@@ -41,12 +41,13 @@ class VendorController extends Controller
         try {
             DB::beginTransaction();
 
-            $vendor = $this->vendorService->createVendor($request);
+            $data = $request->validated();
+            $vendor = $this->vendorService->createVendor($data);
             DB::commit();
-            return $this->responseService->success('Vendedor guardado.', $vendor);
+            return $this->responseService->jsonResponse(200, 'Vendedor guardado.');
         } catch (\Exception $e) {
             DB::rollBack();
-            return $this->responseService->error($e->getMessage());
+            return $this->responseService->jsonResponse(400, $e->getMessage());
         }
     }
 

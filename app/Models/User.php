@@ -8,7 +8,11 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 class User extends Model
 {
     protected $table = 'users';
+
     protected $primaryKey = 'user_id';
+
+    public $timestamps = false;
+    
     protected $fillable = [
       'user_full_name',
       'user_email',
