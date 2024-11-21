@@ -9,3 +9,5 @@
 -   Agregar un make
 -   Agregar test con PHPUnit
 -   Refactorizar codigo
+-   Add PHP-FPM
+-   Add PHP 8.4

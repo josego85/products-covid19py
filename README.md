@@ -91,6 +91,15 @@ chmod -R 775 storage
 chmod -R 775 bootstrap/cache
 ```
 
+## Frankenphp / Octane
+
+```bash
+docker exec -it app bash
+composer require laravel/octane
+php artisan octane:install --server=frankenphp
+php artisan octane:frankenphp --port=8089 --host=172.21.0.3
+```
+
 ## Sonarqube
 
 You need to have a Sonarqube server running in order to run the sonar scanner cli

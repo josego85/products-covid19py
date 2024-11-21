@@ -16,3 +16,6 @@ composer.lock
 /storage/purify
 /.scannerwork
 .php-cs-fixer.cache
+**/caddy
+frankenphp
+frankenphp-worker.php
