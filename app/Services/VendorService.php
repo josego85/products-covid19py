@@ -31,7 +31,7 @@ class VendorService
         $this->userRepository->setRoleUser(2, $userId);
         $this->attachUserProducts($userId, $data['products']);
 
-        return $this->userRepository->findById($userId);
+        return $this->userRepository->getUser($userId);
     }
 
     private function getFilteredProductIds(array|null $productsFilter)

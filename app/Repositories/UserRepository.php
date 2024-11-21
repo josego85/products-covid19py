@@ -74,7 +74,7 @@ class UserRepository implements UserRepositoryInterface
         }
     }
 
-    public function findById(int $userId): User
+    public function getUser(int $userId): User
     {
         return User::find($userId);
     }

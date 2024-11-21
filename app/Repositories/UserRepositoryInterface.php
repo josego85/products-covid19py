@@ -14,5 +14,5 @@ interface UserRepositoryInterface
     public function setUser(array $data): int;
     public function setRoleUser(int $role_id, int $user_id): bool;
     public function attachProductToUser(int $userId, int $productId): void;
-    public function findById(int $userId): User;
+    public function getUser(int $userId): User;
 }
