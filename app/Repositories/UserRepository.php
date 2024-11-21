@@ -60,10 +60,23 @@ class UserRepository implements UserRepositoryInterface
      */
     public function setRoleUser(int $roleId, int $userId): bool
     {
-        return DB::table('role_user')->insert([
+        return DB::table('roles_users')->insert([
             'user_id' => $userId,
             'role_id' => $roleId
         ]);
+    }
+
+    public function attachProductToUser(int $userId, int $productId): void
+    {
+        $user = User::find($userId);
+        if ($user) {
+            $user->products()->attach($productId);
+        }
+    }
+
+    public function findById(int $userId): User
+    {
+        return User::find($userId);
     }
 
     /**

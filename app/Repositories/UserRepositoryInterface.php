@@ -2,6 +2,8 @@
 
 namespace App\Repositories;
 
+use App\Models\User;
+
 interface UserRepositoryInterface
 {
     public function getUsers(
@@ -11,4 +13,6 @@ interface UserRepositoryInterface
     ): array;
     public function setUser(array $data): int;
     public function setRoleUser(int $role_id, int $user_id): bool;
+    public function attachProductToUser(int $userId, int $productId): void;
+    public function findById(int $userId): User;
 }

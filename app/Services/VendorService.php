@@ -64,7 +64,7 @@ class VendorService
         ];
     }
 
-    private function attachUserProducts($userId, $products)
+    private function attachUserProducts(int $userId, array $products)
     {
         foreach ($products as $product) {
             if ($product) {

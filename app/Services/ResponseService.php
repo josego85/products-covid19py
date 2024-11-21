@@ -13,22 +13,13 @@ class ResponseService
         500 => '500 Internal Server Error'
     ];
 
-    public function jsonResponse($code = 200, $message = null): JsonResponse
+    public function jsonResponse($code = 200, $message = null)
     {
-        $status = self::HTTP_STATUSES[$code] ?? 'Unknown Status Code';
-
-        return response()->json(
-            [
+        return json_encode(array
+            (
                 'status' => $code < 300,
                 'message' => $message
-            ],
-            $code,
-            [
-                'Content-Type' => 'application/json',
-                'Cache-Control' => 'no-transform,public,max-age=300,s-maxage=900',
-                'Status' => $status
-            ],
-            JSON_PRETTY_PRINT
-        );
+            ),
+            JSON_PRETTY_PRINT);
     }
 }
