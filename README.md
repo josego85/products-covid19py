@@ -15,7 +15,7 @@ Levantar en sitio en cualquier server (Apache, etc.)
 -   HTML
 -   CSS
 -   JavaScript (Leaflet, JQuery, Boostrap)
--   PHP 8.4.1
+-   PHP 8.3.6
 -   [Laravel v11.33.2](https://laravel.com/docs)
 -   [Composer 2.8.2](https://getcomposer.org/download/)
 -   MySQL 8.0
@@ -42,6 +42,7 @@ DB_ROOT_PASSWORD=123456789
 ```
 
 ## Docker
+
 ```bash
 docker compose up -d --build
 docker exec -it app bash
@@ -117,6 +118,28 @@ docker run -d -p 8090:80 frankenapp
 
 ```
 http://localhost:8090/vendors
+```
+
+## Dev
+
+### PHPStan
+
+```bash
+composer phpstan
+```
+
+### PHP CS Fixer
+
+#### Check
+
+```bash
+vendor/bin/php-cs-fixer check
+```
+
+#### Fix
+
+```bash
+vendor/bin/php-cs-fixer fix
 ```
 
 ## Sonarqube
