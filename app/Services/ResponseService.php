@@ -2,8 +2,6 @@
 
 namespace App\Services;
 
-use Illuminate\Http\JsonResponse;
-
 class ResponseService
 {
     private const HTTP_STATUSES = [
@@ -15,11 +13,12 @@ class ResponseService
 
     public function jsonResponse($code = 200, $message = null)
     {
-        return json_encode(array
-            (
+        return json_encode(
+            [
                 'status' => $code < 300,
                 'message' => $message
-            ),
-            JSON_PRETTY_PRINT);
+            ],
+            JSON_PRETTY_PRINT
+        );
     }
 }
