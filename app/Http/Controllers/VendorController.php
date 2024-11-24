@@ -37,7 +37,6 @@ class VendorController extends Controller
      */
     public function postVendor(VendorRequest $request)
     {
-
         try {
             DB::beginTransaction();
 

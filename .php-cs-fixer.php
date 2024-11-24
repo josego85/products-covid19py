@@ -18,8 +18,9 @@ return (new Config())
         'single_quote' => true,
         'no_unused_imports' => true,
         'ordered_imports' => ['sort_algorithm' => 'alpha'],
-        'braces' => true,
-        'indentation_type' => true,
+        'method_chaining_indentation' => true, // Indentación de métodos encadenados
+        'braces' => true, // Formato de llaves
+        'indentation_type' => true // Espacios o tabulaciones según estándar
     ])
     ->setFinder($finder)
     ->setRiskyAllowed(true)
