@@ -10,4 +10,5 @@
 -   Agregar test con PHPUnit
 -   Refactorizar codigo
 -   Add PHP-FPM
--   Add PHP 8.4
+-   Fix XDebug with PHP 8.4
+- Add Api Platform 4
