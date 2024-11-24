@@ -18,6 +18,8 @@ return (new Config())
         'single_quote' => true,
         'no_unused_imports' => true,
         'ordered_imports' => ['sort_algorithm' => 'alpha'],
+        'braces' => true,
+        'indentation_type' => true,
     ])
     ->setFinder($finder)
     ->setRiskyAllowed(true)

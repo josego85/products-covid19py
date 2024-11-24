@@ -125,7 +125,7 @@ class UserRepository implements UserRepositoryInterface
         if ($filterCity) {
             $query->join('cities as c', DB::raw("ST_CONTAINS(c.geom, ST_GeomFromText(CONCAT('POINT(', u.user_lng, ' ', u.user_lat, ')'), 4326))"), '=', DB::raw('1'))
               ->where('c.city_id', $filterCity);
-        }        
+        }
     }
 
     /**
@@ -151,9 +151,10 @@ class UserRepository implements UserRepositoryInterface
     private function applyProductsFilter(Builder $query, ?array $filterProducts): void
     {
         if ($filterProducts) {
-            $query->join('products_users as p_u', 'p_u.user_id', '=', 'u.user_id')
-                ->join('products as p', 'p.product_id', '=', 'p_u.product_id')
-                ->whereIn('p.product_id', $filterProducts);
+            $query
+            ->join('products_users as p_u', 'p_u.user_id', '=', 'u.user_id')
+              ->join('products as p', 'p.product_id', '=', 'p_u.product_id')
+              ->whereIn('p.product_id', $filterProducts);
         }
     }
 
@@ -178,5 +179,10 @@ class UserRepository implements UserRepositoryInterface
     private function executeQuery(Builder $query)
     {
         return $query->get();
+    }
+
+    public function test()
+    {
+        echo 'Test';
     }
 }
