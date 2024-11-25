@@ -2,13 +2,21 @@
 
 namespace App\Models;
 
+use ApiPlatform\Metadata\ApiResource;
+use ApiPlatform\Metadata\Get;
+use ApiPlatform\Metadata\GetCollection;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
+#[ApiResource(
+    operations: [
+        new Get(),
+        new GetCollection()
+    ]
+)]
 class Product extends Model
 {
-    protected $table = 'products';
-    protected $primaryKey = 'product_id';
-    protected $fillable = ['product_id', 'product_name', 'product_type'];
+    protected $fillable = ['name', 'type'];
 
     /**
      * Define the relationship with users.
@@ -17,6 +25,6 @@ class Product extends Model
      */
     public function users(): BelongsToMany
     {
-        return $this->belongsToMany(User::class, 'products_users', 'product_id', 'user_id');
+        return $this->belongsToMany(Seller::class, 'product_seller');
     }
 }

@@ -7,6 +7,7 @@ use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\GetCollection;
 use ApiPlatform\Metadata\Post;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 #[ApiResource(
     operations: [
@@ -22,4 +23,14 @@ class Seller extends Model
         'longitude',
         'comment',
     ];
+
+    /**
+     * Define the relationship with products.
+     *
+     * @return BelongsToMany
+     */
+    public function products(): BelongsToMany
+    {
+        return $this->belongsToMany(Product::class, 'product_seller');
+    }
 }
