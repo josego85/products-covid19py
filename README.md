@@ -144,6 +144,12 @@ vendor/bin/php-cs-fixer check
 vendor/bin/php-cs-fixer fix
 ```
 
+## Docs
+
+```bash
+http://localhost:8080/api
+```
+
 ## Sonarqube
 
 You need to have a Sonarqube server running in order to run the sonar scanner cli
