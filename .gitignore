@@ -15,3 +15,7 @@ composer.lock
 /public/assets/js/Constants.js
 /storage/purify
 /.scannerwork
+.php-cs-fixer.cache
+**/caddy
+frankenphp
+frankenphp-worker.php

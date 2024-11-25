@@ -32,11 +32,11 @@ Route::get('/sitemap.xml', 'SiteMapController@index');
 // Route::post('/image-upload', 'ImageUpload@imageUpload')->name('imageUpload');
 
 /**
- * Utilidades Paralelas, mejorar para la aplicacion que se iran insertando 
+ * Utilidades Paralelas, mejorar para la aplicacion que se iran insertando
  * de manera gradual
  * @since 1.*
- * 
- */ 
+ *
+ */
 // Route::prefix('p')->namespace('Web')->group(function(){
 
 // 	Route::get('/', function () {
@@ -50,9 +50,3 @@ Route::get('/sitemap.xml', 'SiteMapController@index');
 // 	Route::get('/vendor', function () {
 // 	    return view('pages.vendor-create');
 // 	});
-
-// 	// Nuevas funcionalidades
-// 	Route::resources([
-// 		'vendors' => 'VendorCtrl'
-// 	]);
-// });

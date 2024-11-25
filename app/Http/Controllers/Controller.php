@@ -11,7 +11,9 @@ use Stevebauman\Purify\Facades\Purify as Purify;
 
 class Controller extends BaseController
 {
-    use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+    use AuthorizesRequests;
+    use DispatchesJobs;
+    use ValidatesRequests;
 
     private $date_hour;
 
@@ -25,7 +27,7 @@ class Controller extends BaseController
         return $this->date_hour;
     }
 
-    protected function securityCleanCode ($input)
+    protected function securityCleanCode($input)
     {
         $cleaned = Purify::clean($input);
         return $cleaned;

@@ -1,0 +1,11 @@
+parameters:
+  level: 1
+  paths:
+    - app
+  checkUnionTypes: true
+  checkExplicitMixed: true
+  inferPrivatePropertyTypeFromConstructor: true
+  checkDynamicProperties: true
+  ignoreErrors:
+    - identifier: missingType.iterableValue
+    - identifier: missingType.generics

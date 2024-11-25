@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Carbon\Carbon;
 use App\Models\SiteMap;
 use App\Models\Url;
+use Carbon\Carbon;
 
 class SiteMapController extends Controller
 {
@@ -44,5 +44,5 @@ class SiteMapController extends Controller
                 ->frequency('never')
                 ->priority('0.8')
         );
-    }   
+    }
 }
