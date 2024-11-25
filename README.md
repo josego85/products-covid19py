@@ -111,7 +111,9 @@ http://172.21.0.3:8089/vendors
 
 ```bash
 docker build -t frankenapp -f Dockerfile-frankenphp .
-docker run -d -p 8090:80 frankenapp
+docker run -d -p 80:80 frankenapp
+docker ps
+docker logs -f container_id
 ```
 
 ### Browser
