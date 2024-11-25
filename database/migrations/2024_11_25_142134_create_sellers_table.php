@@ -13,8 +13,8 @@ return new class () extends Migration {
         Schema::create('sellers', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->double('latitude', 10, 8);
             $table->double('longitude', 11, 8);
+            $table->double('latitude', 10, 8);
             $table->string('comment')->nullable();
             $table->timestamps();
 

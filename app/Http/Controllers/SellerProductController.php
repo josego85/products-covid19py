@@ -9,7 +9,7 @@ use App\Services\VendorService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class VendorController extends Controller
+class SellerProductController extends Controller
 {
     public function __construct(
         private VendorService $vendorService,
@@ -20,7 +20,7 @@ class VendorController extends Controller
     /**
      * Retorna un listado de vendedores
      */
-    public function getVendors(Request $request)
+    public function getSellersWithProducts(Request $request)
     {
         $filters = $this->prepareFilters($request);
         $vendors = $this->vendorService->getFilteredVendors($filters);

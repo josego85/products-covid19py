@@ -54,13 +54,13 @@ class VendorService
     private function prepareUserData(array $data): array
     {
         return [
-            'user_full_name' => $data['user_full_name'],
-            'user_email' => $data['user_email'],
-            'user_registration' => now(),
-            'user_phone' => $data['user_phone'],
-            'user_comment' => $data['user_comment'],
-            'user_lng' => $data['user_lng'],
-            'user_lat' => $data['user_lat'],
+            'full_name' => $data['user_full_name'],
+            'email' => $data['user_email'],
+            // 'user_registration' => now(),
+            'phone_number' => $data['user_phone'],
+            'comment' => $data['user_comment'],
+            'longitude' => $data['user_lng'],
+            'latitude' => $data['user_lat'],
         ];
     }
 

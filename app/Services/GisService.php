@@ -21,12 +21,12 @@ class GisService
     /**
      * @param object{
      *     user_id: int,
-     *     user_full_name: string,
-     *     user_phone: string,
-     *     user_comment?: string,
+     *     full_name: string,
+     *     phone_number: string,
+     *     comment?: string,
      *     products: array,
-     *     user_lng?: float,
-     *     user_lat?: float
+     *     longitude?: float,
+     *     latitude?: float,
      * } $value
      */
     private function createFeature(Object $value): array
@@ -36,16 +36,16 @@ class GisService
             'geometry' => [
                 'type' => self::GEOMETRY_TYPE,
                 'coordinates' => [
-                    isset($value->user_lng) ? (float)$value->user_lng : null,
-                    isset($value->user_lat) ? (float)$value->user_lat : null,
+                    isset($value->longitude) ? (float)$value->longitude : null,
+                    isset($value->latitude) ? (float)$value->latitude : null,
                 ]
             ],
             'properties' =>
             [
                 'id' => $value->user_id,
-                'nombre' => $value->user_full_name,
-                'contacto' => $value->user_phone,
-                'comentarios' => $value->user_comment ?? '',
+                'nombre' => $value->full_name,
+                'contacto' => $value->phone_number,
+                'comentarios' => $value->comment ?? '',
                 'productos' => $value->products
             ]
         ];

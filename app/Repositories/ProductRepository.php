@@ -16,14 +16,15 @@ class ProductRepository implements ProductRepositoryInterface
 
     public function getProducts(int $userId, ?array $filterProducts = null): array
     {
-        $query = $this->model->select('products.product_name', 'products.product_type')
-            ->join('products_users', 'products_users.product_id', '=', 'products.product_id')
-            ->join('users', 'users.user_id', '=', 'products_users.user_id')
-            ->where('users.user_state', 'active')
-            ->where('products_users.user_id', $userId);
+        $query = $this->model->select('products.name', 'products.type')
+            ->join('product_seller as p_s', 'p_s.product_id', '=', 'products.id')
+            ->join('sellers as s', 'products.id', '=', 'p_s.product_id')
+            ->join('users as u', 'u.id', '=', 's.user_id')
+            ->where('u.status', 'active')
+            ->where('s.user_id', $userId);
 
         if ($filterProducts) {
-            $query->whereIn('products.product_id', $filterProducts);
+            $query->whereIn('products.id', $filterProducts);
         }
 
         $products = $query->get();
@@ -36,15 +37,15 @@ class ProductRepository implements ProductRepositoryInterface
 
     public function getProductID(string $productType): Collection
     {
-        return $this->model->select('product_id')
-            ->where('product_type', $productType)
+        return $this->model->select('id')
+            ->where('type', $productType)
             ->get();
     }
     public function setProduct(array $data): int
     {
         return $this->model->insertGetId([
-            'product_type' => $data['product_type'],
-            'product_name' => $data['product_name'] ?? null,
+            'type' => $data['product_type'],
+            'name' => $data['product_name'] ?? null,
         ]);
     }
 }

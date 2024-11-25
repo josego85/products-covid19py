@@ -36,7 +36,7 @@ function localization (p_action)
 function getCoordinates (p_position)
 {
     let coordinates = new Array();
-    coordinates['lng']  = p_position.coords.longitude;
+    coordinates['lng'] = p_position.coords.longitude;
 	coordinates['lat'] = p_position.coords.latitude;
 	
     let zoom = DEFAULT_ZOOM_MAP;

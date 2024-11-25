@@ -86,16 +86,17 @@ class UserRepository implements UserRepositoryInterface
      */
     private function baseQuery(): Builder
     {
-        return DB::table('users as u')
+        return DB::table('sellers as s')
             ->select([
-                'u.user_id',
-                'u.user_full_name',
-                'u.user_phone',
-                'u.user_comment',
-                'u.user_lng',
-                'u.user_lat'
+                's.user_id',
+                'u.full_name',
+                'u.phone_number',
+                's.comment',
+                's.longitude',
+                's.latitude',
             ])
-            ->where('u.user_state', 'active');
+            ->join('users as u', 'u.id', '=', 's.user_id')
+            ->where('u.status', 'active');
     }
 
     /**
@@ -152,9 +153,9 @@ class UserRepository implements UserRepositoryInterface
     {
         if ($filterProducts) {
             $query
-                ->join('products_users as p_u', 'p_u.user_id', '=', 'u.user_id')
-                ->join('products as p', 'p.product_id', '=', 'p_u.product_id')
-                ->whereIn('p.product_id', $filterProducts);
+                ->join('product_seller as p_s', 'p_s.user_id', '=', 's.user_id')
+                ->join('products as p', 'p.id', '=', 'p_s.product_id')
+                ->whereIn('p.id', $filterProducts);
         }
     }
 
@@ -165,9 +166,9 @@ class UserRepository implements UserRepositoryInterface
      */
     private function applyExclusionsAndLimits(Builder $query): void
     {
-        $query->whereNotIn('u.user_id', [69, 122])
-            ->limit(config('app.limit_vendors_wenda', 100))
-            ->orderBy('u.user_registration', 'desc');
+        $query->whereNotIn('s.user_id', [69, 122])
+            ->limit(config('app.limit_vendors_wenda', 100));
+        // ->orderBy('u.user_registration', 'desc');
     }
 
     /**

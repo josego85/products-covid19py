@@ -19,8 +19,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 class Seller extends Model
 {
     protected $fillable = [
-        'latitude',
         'longitude',
+        'latitude',
         'comment',
     ];
 
