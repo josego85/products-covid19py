@@ -21,8 +21,8 @@ class CityRepository implements CityRepositoryInterface
      */
     public function getCities(): Collection
     {
-        return $this->model->select(['city_id', 'city_name'])
-            ->orderBy('city_name', 'asc')
+        return $this->model->select(['id', 'name'])
+            ->orderBy('name', 'asc')
             ->get();
     }
 }
