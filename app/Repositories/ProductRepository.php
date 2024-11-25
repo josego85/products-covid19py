@@ -35,7 +35,7 @@ class ProductRepository implements ProductRepositoryInterface
         ];
     }
 
-    public function getProductID(string $productType): Collection
+    public function getProductId(string $productType): Collection
     {
         return $this->model->select('id')
             ->where('type', $productType)

@@ -6,7 +6,7 @@ use App\Models\User;
 
 interface SellerRepositoryInterface
 {
-    public function getUsers(
+    public function getSellers(
         ?array $filterProducts = null,
         ?int $filterCity = null,
         ?bool $withCoordinatesNull = null

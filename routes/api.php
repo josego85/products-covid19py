@@ -19,11 +19,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::group(['middleware' => ['cors']], function () {
-    // Routes to which access will be allowed.
-    Route::get('/vendors', 'VendorController@getVendors')->name('getVendors');
-    Route::post('/vendors', 'VendorController@postVendor')->name('postVendor');
+    Route::get('/vendors', 'SellerProductController@getSellersWithProducts')->name('getSellersWithProducts');
+    Route::post('/vendors', 'SellerProductController@postSellersWithProducts')->name('postSellersWithProducts');
 
-    // Plataforma wenda. No cambiar la estructura ni la url porque se esta
-    // utilizando en produccion.
-    Route::get('/vendedores', 'VendorController@getVendors')->name('getVendors');
+    // // Plataforma wenda. No cambiar la estructura ni la url porque se esta
+    // // utilizando en produccion.
+    // Route::get('/vendedores', 'SellerProductController@getUsers')->name('getUsers');
 });

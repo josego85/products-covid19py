@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\VendorRequest;
+use App\Http\Requests\SellerRequest;
 use App\Services\GisService;
 use App\Services\ResponseService;
 use App\Services\SellerService;
@@ -23,9 +23,9 @@ class SellerProductController extends Controller
     public function getSellersWithProducts(Request $request)
     {
         $filters = $this->prepareFilters($request);
-        $vendors = $this->sellerService->getFilteredVendors($filters);
+        $sellers = $this->sellerService->getFilteredSellers($filters);
 
-        return $this->gisService->createGeoJson($vendors);
+        return $this->gisService->createGeoJson($sellers);
     }
 
 
@@ -35,13 +35,13 @@ class SellerProductController extends Controller
      *
      * @param Request $request
      */
-    public function postVendor(VendorRequest $request)
+    public function postSellersWithProducts(SellerRequest $request)
     {
         try {
             DB::beginTransaction();
 
             $data = $request->validated();
-            $vendor = $this->sellerService->createVendor($data);
+            $seller = $this->sellerService->createSeller($data);
             DB::commit();
             return $this->responseService->jsonResponse(200, 'Vendedor guardado.');
         } catch (\Exception $e) {

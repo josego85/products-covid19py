@@ -239,6 +239,6 @@ return [
     |--------------------------------------------------------------------------
     */
 
-    'limit_vendors_wenda' => env('LIMIT_VENDORS_WENDA', 100),
+    'limit_sellers_wenda' => env('LIMIT_SELLERS_WENDA', 100),
 
 ];

@@ -13,19 +13,19 @@ class SellerService
     ) {
     }
 
-    public function getFilteredVendors(array $filters): array
+    public function getFilteredSellers(array $filters): array
     {
         $filteredProducts = $this->getFilteredProductIds($filters['products']);
-        $vendors = $this->sellerRepository->getUsers($filteredProducts, $filters['city'], $filters['withCoordinatesNull'])['data'];
+        $sellers = $this->sellerRepository->getSellers($filteredProducts, $filters['city'], $filters['withCoordinatesNull'])['data'];
 
-        foreach ($vendors as $vendor) {
-            $vendor->products = $this->getVendorProducts($vendor->user_id, $filteredProducts);
+        foreach ($sellers as $seller) {
+            $seller->products = $this->getSellerProducts($seller->user_id, $filteredProducts);
         }
 
-        return $vendors;
+        return $sellers;
     }
 
-    public function createVendor(array $data)
+    public function createSeller(array $data)
     {
         $userId = $this->sellerRepository->setUser($this->prepareUserData($data));
         $this->sellerRepository->setRoleUser(2, $userId);
@@ -41,13 +41,13 @@ class SellerService
         }
 
         return array_map(function ($product) {
-            return $this->productRepository->getProductID($product)[0]->product_id;
+            return $this->productRepository->getProductId($product)[0]->product_id;
         }, $productsFilter);
     }
 
-    private function getVendorProducts($vendorId, $filterProducts)
+    private function getSellerProducts($sellerId, $filterProducts)
     {
-        $result = $this->productRepository->getProducts($vendorId, $filterProducts);
+        $result = $this->productRepository->getProducts($sellerId, $filterProducts);
         return $result['total'] != 0 ? $result['data'] : null;
     }
 
@@ -68,7 +68,7 @@ class SellerService
     {
         foreach ($products as $product) {
             if ($product) {
-                $productId = $this->productRepository->getProductID($product)[0]->product_id;
+                $productId = $this->productRepository->getProductId($product)[0]->product_id;
                 $this->sellerRepository->attachProductToUser($userId, $productId);
             }
         }

@@ -16,14 +16,14 @@ class SellerRepository implements SellerRepositoryInterface
     }
 
     /**
-     * Get users with optional filters.
+     * Get sellers with optional filters.
      *
      * @param array|null $filterProducts
      * @param int|null $filterCity
      * @param bool $withCoordinatesNull
      * @return array
      */
-    public function getUsers(
+    public function getSellers(
         ?array $filterProducts = null,
         ?int $filterCity = null,
         ?bool $withCoordinatesNull = null
@@ -167,7 +167,7 @@ class SellerRepository implements SellerRepositoryInterface
     private function applyExclusionsAndLimits(Builder $query): void
     {
         $query->whereNotIn('s.user_id', [69, 122])
-            ->limit(config('app.limit_vendors_wenda', 100));
+            ->limit(config('app.limit_sellers_wenda', 100));
         // ->orderBy('u.user_registration', 'desc');
     }
 
