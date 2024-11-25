@@ -4,7 +4,7 @@ namespace App\Repositories;
 
 use App\Models\User;
 
-interface UserRepositoryInterface
+interface SellerRepositoryInterface
 {
     public function getUsers(
         ?array $filterProducts = null,

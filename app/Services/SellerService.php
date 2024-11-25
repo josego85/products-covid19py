@@ -3,20 +3,20 @@
 namespace App\Services;
 
 use App\Repositories\ProductRepositoryInterface;
-use App\Repositories\UserRepositoryInterface;
+use App\Repositories\SellerRepositoryInterface;
 
-class VendorService
+class SellerService
 {
     public function __construct(
         private ProductRepositoryInterface $productRepository,
-        private UserRepositoryInterface $userRepository
+        private SellerRepositoryInterface $sellerRepository
     ) {
     }
 
     public function getFilteredVendors(array $filters): array
     {
         $filteredProducts = $this->getFilteredProductIds($filters['products']);
-        $vendors = $this->userRepository->getUsers($filteredProducts, $filters['city'], $filters['withCoordinatesNull'])['data'];
+        $vendors = $this->sellerRepository->getUsers($filteredProducts, $filters['city'], $filters['withCoordinatesNull'])['data'];
 
         foreach ($vendors as $vendor) {
             $vendor->products = $this->getVendorProducts($vendor->user_id, $filteredProducts);
@@ -27,11 +27,11 @@ class VendorService
 
     public function createVendor(array $data)
     {
-        $userId = $this->userRepository->setUser($this->prepareUserData($data));
-        $this->userRepository->setRoleUser(2, $userId);
+        $userId = $this->sellerRepository->setUser($this->prepareUserData($data));
+        $this->sellerRepository->setRoleUser(2, $userId);
         $this->attachUserProducts($userId, $data['products']);
 
-        return $this->userRepository->getUser($userId);
+        return $this->sellerRepository->getUser($userId);
     }
 
     private function getFilteredProductIds(array|null $productsFilter)
@@ -69,7 +69,7 @@ class VendorService
         foreach ($products as $product) {
             if ($product) {
                 $productId = $this->productRepository->getProductID($product)[0]->product_id;
-                $this->userRepository->attachProductToUser($userId, $productId);
+                $this->sellerRepository->attachProductToUser($userId, $productId);
             }
         }
     }

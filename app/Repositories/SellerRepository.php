@@ -6,7 +6,7 @@ use App\Models\User;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Facades\DB;
 
-class UserRepository implements UserRepositoryInterface
+class SellerRepository implements SellerRepositoryInterface
 {
     protected $model;
 
@@ -124,8 +124,8 @@ class UserRepository implements UserRepositoryInterface
     private function applyCityFilter(Builder $query, ?int $filterCity): void
     {
         if ($filterCity) {
-            $query->join('cities as c', DB::raw("ST_CONTAINS(c.geom, ST_GeomFromText(CONCAT('POINT(', u.user_lng, ' ', u.user_lat, ')'), 4326))"), '=', DB::raw('1'))
-                ->where('c.city_id', $filterCity);
+            $query->join('cities as c', DB::raw("ST_CONTAINS(c.geom, ST_GeomFromText(CONCAT('POINT(', s.longitude, ' ', s.latitude, ')'), 4326))"), '=', DB::raw('1'))
+                ->where('c.id', $filterCity);
         }
     }
 
@@ -138,8 +138,8 @@ class UserRepository implements UserRepositoryInterface
     private function applyCoordinatesFilter(Builder $query, ?bool $withCoordinatesNull): void
     {
         if (!$withCoordinatesNull) {
-            $query->whereNotNull('u.user_lng')
-                ->whereNotNull('u.user_lat');
+            $query->whereNotNull('s.longitude')
+                ->whereNotNull('s.latitude');
         }
     }
 
