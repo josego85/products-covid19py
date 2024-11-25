@@ -153,7 +153,7 @@ class UserRepository implements UserRepositoryInterface
     {
         if ($filterProducts) {
             $query
-                ->join('product_seller as p_s', 'p_s.user_id', '=', 's.user_id')
+                ->join('product_seller as p_s', 'p_s.seller_id', '=', 's.id')
                 ->join('products as p', 'p.id', '=', 'p_s.product_id')
                 ->whereIn('p.id', $filterProducts);
         }
