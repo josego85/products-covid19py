@@ -7,7 +7,6 @@ use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\GetCollection;
 use ApiPlatform\Metadata\Post;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 #[ApiResource(
     operations: [
@@ -29,14 +28,4 @@ class User extends Model
     protected $hidden = [
         'password',
     ];
-
-    // /**
-    //  * Define the relationship with products.
-    //  *
-    //  * @return BelongsToMany
-    //  */
-    // public function products(): BelongsToMany
-    // {
-    //     return $this->belongsToMany(Product::class, 'products_users', 'user_id', 'product_id');
-    // }
 }
