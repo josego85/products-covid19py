@@ -18,10 +18,10 @@ class ProductRepository implements ProductRepositoryInterface
     {
         $query = $this->model->select('products.name', 'products.type')
             ->join('product_seller as p_s', 'p_s.product_id', '=', 'products.id')
-            ->join('sellers as s', 'products.id', '=', 'p_s.product_id')
-            ->join('users as u', 'u.id', '=', 's.user_id')
+            ->join('sellers as s', 's.id', '=', 'p_s.seller_id')
+            ->join('users as u', 's.user_id', '=', 'u.id')
             ->where('u.status', 'active')
-            ->where('s.user_id', $userId);
+            ->where('u.id', $userId);
 
         if ($filterProducts) {
             $query->whereIn('products.id', $filterProducts);

@@ -2,6 +2,7 @@
 
 - fix: migration in table sellers
 - fix: list and map in frontend
+- fix: getProducts query in product repository
 
 ## v.1.1.0
 
