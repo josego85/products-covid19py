@@ -13,9 +13,9 @@ return new class () extends Migration {
         Schema::create('sellers', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->double('longitude', 11, 8);
-            $table->double('latitude', 10, 8);
-            $table->string('comment')->nullable();
+            $table->double('longitude', 11, 8)->nullable();
+            $table->double('latitude', 10, 8)->nullable();
+            $table->text('comment')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
