@@ -1,6 +1,7 @@
 ## v.1.1.1
 
 - fix: migration in table sellers
+- fix: list and map in frontend
 
 ## v.1.1.0
 

@@ -234,7 +234,7 @@ function onEachFeature(p_feature, p_layer) {
                     let index;
 
                     for (index in value) {
-                        product_name = value[index]['product_name'];
+                        product_name = value[index]['name'];
                         product += '<li>' + capitalize(product_name) + '</li>';
 
                     }
@@ -303,8 +303,9 @@ function generate_table_all_vendor(p_data) {
         product = '';
 
         for (index_tmp in products) {
-            product += products[index_tmp].product_name + ', ';
+            product += products[index_tmp].name + ', ';
         }
+
         product = product.substr(0, product.length - 2);
 
         table.push(
