@@ -3,6 +3,7 @@
 ## v.1.2.0
 
 - feat: update to PHP 8.4
+- refactor: sellers and cities endpoint perfomance
 
 ## v.1.1.1
 

@@ -17,7 +17,8 @@ Levantar en sitio en cualquier server (Apache, etc.)
 -   JavaScript (Leaflet, JQuery, Boostrap)
 -   PHP 8.4.3
 -   [Laravel v11.33.2](https://laravel.com/docs)
--   [Composer 2.8.2](https://getcomposer.org/download/)
+-   [Composer 2.8.5](https://getcomposer.org/download/)
+-   Api Platform 4.x
 -   MySQL 8.0
 -   Datos OSM (Nominatim como buscador)
 -   Docker version 27.3.1, build ce12230

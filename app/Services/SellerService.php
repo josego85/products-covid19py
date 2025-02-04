@@ -17,9 +17,12 @@ class SellerService
     {
         $filteredProducts = $this->getFilteredProductIds($filters['products']);
         $sellers = $this->sellerRepository->getSellers($filteredProducts, $filters['city'], $filters['withCoordinatesNull'])['data'];
+        
+        $sellerIds = array_column($sellers, 'user_id');
+        $productsBySeller = $this->productRepository->getProductsBySellers($sellerIds, $filteredProducts);
 
         foreach ($sellers as $seller) {
-            $seller->products = $this->getSellerProducts($seller->user_id, $filteredProducts);
+            $seller->products = $productsBySeller[$seller->user_id] ?? [];
         }
 
         return $sellers;
@@ -43,12 +46,6 @@ class SellerService
         return array_map(function ($product) {
             return $this->productRepository->getProductId($product)[0]->product_id;
         }, $productsFilter);
-    }
-
-    private function getSellerProducts($sellerId, $filterProducts)
-    {
-        $result = $this->productRepository->getProducts($sellerId, $filterProducts);
-        return $result['total'] != 0 ? $result['data'] : null;
     }
 
     private function prepareUserData(array $data): array

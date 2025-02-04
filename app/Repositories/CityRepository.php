@@ -3,7 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\City;
-use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Collection;
 
 class CityRepository implements CityRepositoryInterface
 {
@@ -21,8 +21,6 @@ class CityRepository implements CityRepositoryInterface
      */
     public function getCities(): Collection
     {
-        return $this->model->select(['id', 'name'])
-            ->orderBy('name', 'asc')
-            ->get();
+        return $this->model->orderBy('name', 'asc')->pluck('name', 'id');
     }
 }
