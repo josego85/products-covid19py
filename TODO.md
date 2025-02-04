@@ -7,4 +7,3 @@
 *   Agregar test con PHPUnit
 *   Refactor (views)
 *   Add PHP-FPM
-*   Add PHP 8.4

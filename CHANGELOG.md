@@ -1,3 +1,9 @@
+# Changelog
+
+## v.1.2.0
+
+- feat: update to PHP 8.4
+
 ## v.1.1.1
 
 - fix: migration in table sellers
