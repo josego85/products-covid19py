@@ -84,6 +84,13 @@ FLUSH PRIVILEGES;
 exit
 ```
 
+### Migration
+
+```bash
+docker exec -it app bash
+php artisan migrate
+```
+
 ## Permisos
 
 ```bash
@@ -148,7 +155,15 @@ vendor/bin/php-cs-fixer fix
 ## Docs
 
 ```bash
-http://localhost:8080/api
+http://localhost:8080/api-docs
+```
+
+### Observation
+
+If the Swagger documentation is not displaying correctly, run the following command inside the Docker container:
+
+```bash
+http://localhost:8080/api/docs
 ```
 
 ## Sonarqube

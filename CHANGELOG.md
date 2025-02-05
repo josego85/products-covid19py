@@ -5,6 +5,7 @@
 - feat: update to PHP 8.4
 - refactor: sellers and cities endpoint perfomance
 - refactor: update MySQL Morkbench model
+- fix: swagger
 
 ## v1.1.1
 
