@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.3.0
+
+- refactor: GisService
+
 ## v1.2.0
 
 - feat: update to PHP 8.4

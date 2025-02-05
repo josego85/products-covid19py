@@ -36,8 +36,8 @@ class GisService
             'geometry' => [
                 'type' => self::GEOMETRY_TYPE,
                 'coordinates' => [
-                    isset($value->longitude) ? (float)$value->longitude : null,
-                    isset($value->latitude) ? (float)$value->latitude : null,
+                    (float)$value->longitude ??  null,
+                    (float)$value->latitude ?? null,
                 ]
             ],
             'properties' =>
