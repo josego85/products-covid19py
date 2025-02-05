@@ -6,6 +6,8 @@
 - refactor: sellers and cities endpoint perfomance
 - refactor: update MySQL Morkbench model
 - fix: swagger
+- update: database
+- feat: add Api Platform 4
 
 ## v1.1.1
 
