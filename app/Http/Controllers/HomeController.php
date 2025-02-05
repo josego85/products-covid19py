@@ -20,7 +20,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $cities =  $this->cityRepository->getCities();
+        $cities = $this->cityRepository->getCities();
 
         return view('main')->with('cities', $cities);
     }

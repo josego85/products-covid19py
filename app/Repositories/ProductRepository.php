@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Models\Product;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Facades\Cache;
 
 class ProductRepository implements ProductRepositoryInterface
 {
@@ -14,37 +15,38 @@ class ProductRepository implements ProductRepositoryInterface
         $this->model = $model;
     }
 
-    public function getProducts(int $userId, ?array $filterProducts = null): array
+    public function getProductsBySellers(array $sellerIds, ?array $filterProducts = null): array
     {
-        $query = $this->model->select('products.product_name', 'products.product_type')
-            ->join('products_users', 'products_users.product_id', '=', 'products.product_id')
-            ->join('users', 'users.user_id', '=', 'products_users.user_id')
-            ->where('users.user_state', 'active')
-            ->where('products_users.user_id', $userId);
+        return Cache::remember('products_by_sellers_' . implode('_', $sellerIds), now()->addMinutes(30), function () use ($sellerIds, $filterProducts) {
+            $query = $this->model->toBase()
+                ->select('products.name', 'products.type', 'u.id as user_id')
+                ->join('product_seller as p_s', 'p_s.product_id', '=', 'products.id')
+                ->join('sellers as s', 's.id', '=', 'p_s.seller_id')
+                ->join('users as u', 's.user_id', '=', 'u.id')
+                ->where('u.status', 'active')
+                ->whereIn('u.id', $sellerIds);
 
-        if ($filterProducts) {
-            $query->whereIn('products.product_id', $filterProducts);
-        }
+            if ($filterProducts) {
+                $query->whereIn('products.id', $filterProducts);
+            }
 
-        $products = $query->get();
+            $products = $query->get()->groupBy('user_id');
 
-        return [
-            'total' => $products->count(),
-            'data'  => $products->toArray()
-        ];
+            return $products->map(fn ($group) => $group->toArray())->toArray();
+        });
     }
 
-    public function getProductID(string $productType): Collection
+    public function getProductId(string $productType): Collection
     {
-        return $this->model->select('product_id')
-            ->where('product_type', $productType)
+        return $this->model->select('id')
+            ->where('type', $productType)
             ->get();
     }
     public function setProduct(array $data): int
     {
         return $this->model->insertGetId([
-            'product_type' => $data['product_type'],
-            'product_name' => $data['product_name'] ?? null,
+            'type' => $data['product_type'],
+            'name' => $data['product_name'] ?? null,
         ]);
     }
 }

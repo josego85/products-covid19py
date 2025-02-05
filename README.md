@@ -15,9 +15,10 @@ Levantar en sitio en cualquier server (Apache, etc.)
 -   HTML
 -   CSS
 -   JavaScript (Leaflet, JQuery, Boostrap)
--   PHP 8.3.6
+-   PHP 8.4.3
 -   [Laravel v11.33.2](https://laravel.com/docs)
--   [Composer 2.8.2](https://getcomposer.org/download/)
+-   [Composer 2.8.5](https://getcomposer.org/download/)
+-   Api Platform 4.x
 -   MySQL 8.0
 -   Datos OSM (Nominatim como buscador)
 -   Docker version 27.3.1, build ce12230
@@ -83,6 +84,13 @@ FLUSH PRIVILEGES;
 exit
 ```
 
+### Migration
+
+```bash
+docker exec -it app bash
+php artisan migrate
+```
+
 ## Permisos
 
 ```bash
@@ -142,6 +150,20 @@ vendor/bin/php-cs-fixer check
 
 ```bash
 vendor/bin/php-cs-fixer fix
+```
+
+## Docs
+
+```bash
+http://localhost:8080/api-docs
+```
+
+### Observation
+
+If the Swagger documentation is not displaying correctly, run the following command inside the Docker container:
+
+```bash
+http://localhost:8080/api/docs
 ```
 
 ## Sonarqube

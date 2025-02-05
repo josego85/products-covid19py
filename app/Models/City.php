@@ -2,11 +2,19 @@
 
 namespace App\Models;
 
+use ApiPlatform\Metadata\ApiResource;
+use ApiPlatform\Metadata\Get;
+use ApiPlatform\Metadata\GetCollection;
 use Illuminate\Database\Eloquent\Model;
 
+#[ApiResource(
+    operations: [
+        new Get(),
+        new GetCollection()
+    ]
+)]
 class City extends Model
 {
-    protected $table = 'cities';
-    protected $primaryKey = 'city_id';
-    protected $fillable = ['city_id', 'city_name', 'geom'];
+    protected $fillable = ['name', 'geom'];
+    protected $hidden = ['geom'];
 }
