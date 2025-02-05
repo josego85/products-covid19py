@@ -4,10 +4,11 @@
 
 - feat: update to PHP 8.4
 - refactor: sellers and cities endpoint perfomance
-- refactor: update MySQL Morkbench model
+- refactor: update MySQL Workbench model
 - fix: swagger
 - update: database
 - feat: add Api Platform 4
+- docs: update changelog
 
 ## v1.1.1
 
@@ -17,8 +18,8 @@
 
 ## v1.1.0
 
-- Mejorar el composer.json y package.json para producción.
+- Improve composer.json and package.json for production
 
 ## v1.0.0
 
-- Implementar el sistema productospy.
+- Implement the productospy system
