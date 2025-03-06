@@ -4,6 +4,7 @@
 
 - refactor: change values in php.ini
 - build: update to PHP 8.4.4
+- build: update package.json
 
 ## v1.3.0
 
