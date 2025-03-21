@@ -31,6 +31,13 @@ All notable changes to this project will be documented in this file.
   - Added detailed field resolvers for seller details
   - Included product relationship resolution
   - Added support for filtering seller's products
+- Enhanced coordinate validation for city resolution:
+  - Checks if coordinates exist
+  - Verifies they are numeric values
+  - Validates they are within proper geographical ranges:
+    - Longitude: -180 to 180 degrees
+    - Latitude: -90 to 90 degrees
+  - The city resolver returns 'Unknown' if any validation fails
 
 ## [1.4.0]
 

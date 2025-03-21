@@ -77,9 +77,41 @@ class SellerType extends GraphQLType
                 'type' => Type::string(),
                 'description' => 'The city where the seller is located, based on coordinates',
                 'resolve' => function ($seller) {
-                    return $this->cityRepository->getCityFromCoordinates($seller->longitude, $seller->latitude);
+                    if (!$this->hasValidCoordinates($seller)) {
+                        return 'Unknown';
+                    }
+                    
+                    return $this->cityRepository->getCityFromCoordinates(
+                        $seller->longitude,
+                        $seller->latitude
+                    );
                 },
             ],
         ];
+    }
+
+    private function hasValidCoordinates($seller): bool
+    {
+        // Check if coordinates exist and are numeric
+        if (!isset($seller->longitude) || !isset($seller->latitude)) {
+            return false;
+        }
+
+        // Check if coordinates are numeric and within valid ranges
+        if (!is_numeric($seller->longitude) || !is_numeric($seller->latitude)) {
+            return false;
+        }
+
+        // Validate longitude range (-180 to 180)
+        if ($seller->longitude < -180 || $seller->longitude > 180) {
+            return false;
+        }
+
+        // Validate latitude range (-90 to 90)
+        if ($seller->latitude < -90 || $seller->latitude > 90) {
+            return false;
+        }
+
+        return true;
     }
 }
