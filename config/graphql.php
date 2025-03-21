@@ -78,8 +78,6 @@ return [
                 'cities' => App\GraphQL\Queries\CityAllQuery::class,
                 'cityId' => App\GraphQL\Queries\CityIdQuery::class,
                 'sellers' => App\GraphQL\Queries\SellerAllQuery::class,
-                // 'product' => App\GraphQL\Queries\ProductQuery::class,
-                // 'getProductId' => App\GraphQL\Queries\GetProductIdQuery::class,
             ],
             'mutation' => [
                 // ExampleMutation::class,
