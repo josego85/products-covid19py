@@ -6,6 +6,12 @@ All notable changes to this project will be documented in this file.
 
 ### Changed
 - Updated PHP version to 8.4.5
+- Enhanced README documentation:
+  - Added comprehensive table of contents
+  - Improved installation and setup instructions
+  - Added detailed Docker deployment guides
+  - Updated configuration steps for FrankenPHP and Laravel Octane
+  - Included developer tools and code quality sections
 
 ## [1.4.0]
 

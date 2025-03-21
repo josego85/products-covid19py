@@ -1,38 +1,79 @@
 # products-covid19py
 
-Sitio para ver productos que se venden para el uso contra el virus COVID19.
+A web application for browsing products sold to combat COVID-19.
 
-Levantar en sitio en cualquier server (Apache, etc.)
+## Table of Contents
 
-[Ir a productospy.org](https://productospy.org/)
+- [products-covid19py](#products-covid19py)
+  - [Table of Contents](#table-of-contents)
+  - [Overview](#overview)
+  - [Features](#features)
+  - [Requirements](#requirements)
+  - [Getting Started](#getting-started)
+    - [Clone the Repository](#clone-the-repository)
+    - [Configure Environment Variables](#configure-environment-variables)
+    - [Install Dependencies](#install-dependencies)
+    - [Generate Application Key](#generate-application-key)
+    - [Database Setup](#database-setup)
+  - [Docker](#docker)
+    - [Build and Run the Containers](#build-and-run-the-containers)
+    - [Access the Application Container](#access-the-application-container)
+    - [View Docker Logs](#view-docker-logs)
+  - [Additional Configuration](#additional-configuration)
+    - [Set Proper Permissions](#set-proper-permissions)
+    - [Laravel Octane with FrankenPHP](#laravel-octane-with-frankenphp)
+    - [Standalone FrankenPHP Binaries](#standalone-frankenphp-binaries)
+  - [Developer Tools](#developer-tools)
+    - [PHPStan (Static Analysis)](#phpstan-static-analysis)
+    - [PHP CS Fixer (Code Style)](#php-cs-fixer-code-style)
+  - [API Documentation](#api-documentation)
+  - [Sonarqube Integration](#sonarqube-integration)
+  - [Contribution Guidelines](#contribution-guidelines)
+  - [License](#license)
+  - [Final Notes](#final-notes)
 
-## Logros
+## Overview
 
--   Formamos parte de la plataforma [Wendá](https://wenda.org.py/)
+This project is built with PHP using the [Laravel framework](https://laravel.com/docs) and is designed to display products useful in the fight against COVID-19. It supports containerized deployment with Docker and offers various developer tools for quality assurance.
 
-## Technologies
+## Features
 
--   HTML
--   CSS
--   JavaScript (Leaflet, JQuery, Boostrap)
--   PHP 8.4.5
--   [Laravel v11.44.1](https://laravel.com/docs)
--   [Composer 2.8.6](https://getcomposer.org/download/)
--   Api Platform v4.1.0
--   MySQL 8.0
--   Datos OSM (Nominatim como buscador)
--   Docker version 27.3.1, build ce12230
--   Docker Compose version v2.30.3
+- Showcase COVID-19 related products
+- RESTful API support via Api Platform
+- Database integration with MySQL 8.0
+- Dockerized development environment
+- Code quality tools like PHPStan and PHP CS Fixer
+- High-performance execution with FrankenPHP and Laravel Octane
 
-## Env
+## Requirements
+
+- PHP 8.4.5 or later
+- Laravel v11.44.1
+- MySQL 8.0
+- Composer 2.8.6
+- Docker & Docker Compose
+- Node.js & npm (for frontend dependencies)
+
+## Getting Started
+
+### Clone the Repository
+
+```bash
+git clone https://github.com/josego85/products-covid19py.git
+cd products-covid19py
+```
+
+### Configure Environment Variables
+
+Copy the example `.env` file and update it as needed:
 
 ```bash
 cp .env.example .env
 ```
 
-### Change variables
+Edit the `.env` file if necessary. For example:
 
-```bash
+```env
 APP_DEBUG=true
 
 DB_PORT=3306
@@ -42,56 +83,97 @@ DB_PASSWORD=123456789
 DB_ROOT_PASSWORD=123456789
 ```
 
+### Install Dependencies
+
+Install PHP dependencies using Composer:
+
+```bash
+composer install
+composer update
+```
+
+If using Node.js for frontend tasks, install the Node dependencies:
+
+```bash
+npm install
+```
+
+### Generate Application Key
+
+Run the following command to generate the application key:
+
+```bash
+php artisan key:generate
+```
+
+### Database Setup
+
+Set up your MySQL database:
+
+1. Extract the SQL archive:
+
+    ```bash
+    tar -xzvf database/productospy.sql.tar.gz
+    ```
+
+2. Create the database and import the schema:
+
+    ```bash
+    mysql -u root -p
+    CREATE DATABASE productospy CHARACTER SET utf8 COLLATE utf8_general_ci;
+    exit
+    mysql -u root -p productospy < database/productospy.sql
+    ```
+
+3. (Optional) Grant privileges if needed:
+
+    ```sql
+    mysql -u root -p
+    GRANT ALL PRIVILEGES ON productospy.* TO your_user@'localhost' IDENTIFIED BY 'your_password';
+    FLUSH PRIVILEGES;
+    exit
+    ```
+
+4. Run Laravel migrations (if required and using Docker):
+
+    ```bash
+    docker exec -it app bash
+    php artisan migrate
+    ```
+
 ## Docker
+
+The project includes Docker configurations to streamline setup and deployment.
+
+### Build and Run the Containers
 
 ```bash
 docker compose up -d --build
-docker exec -it app bash
-composer install
-exit
 ```
 
-### Logs
+### Access the Application Container
+
+To enter the container’s shell:
+
+```bash
+docker exec -it app bash
+```
+
+Inside the container, you can execute Composer and Artisan commands.
+
+### View Docker Logs
+
+Monitor container logs with:
 
 ```bash
 docker compose logs -f
 ```
 
-## Pasos
+## Additional Configuration
 
-```bash
-git clone https://github.com/josego85/products-covid19py.git
-sudo chown -R $USER:www-data ./products-covid19py
-cd products-covid19py
-composer install
-composer update
-cp .env.example .env
-php artisan key:generate
-php artisan serve
-```
+### Set Proper Permissions
 
-## Data base
-
-```bash
-tar -xzvf database/productospy.sql.tar.gz
-mysql -u root -p
-CREATE DATABASE productospy CHARACTER SET utf8 COLLATE utf8_general_ci;
-exit
-mysql -u root -p productospy < database/productospy.sql
-mysql -u root -p
-GRANT ALL PRIVILEGES ON productospy.* TO your_user@'localhost' IDENTIFIED BY 'xxxxxxxxxxxxx';
-FLUSH PRIVILEGES;
-exit
-```
-
-### Migration
-
-```bash
-docker exec -it app bash
-php artisan migrate
-```
-
-## Permisos
+Ensure proper permissions for storage and cache directories:
 
 ```bash
 sudo chown -R $USER:www-data storage
@@ -100,94 +182,125 @@ chmod -R 775 storage
 chmod -R 775 bootstrap/cache
 ```
 
-## Frankenphp / Octane
+### Laravel Octane with FrankenPHP
 
-```bash
-docker exec -it app bash
-composer require laravel/octane
-php artisan octane:install --server=frankenphp
-php artisan octane:frankenphp --port=8089 --host=172.21.0.3
-```
+For high-performance execution using Laravel Octane and FrankenPHP:
 
-### Browser
+1. Enter the container:
+
+    ```bash
+    docker exec -it app bash
+    ```
+
+2. Install Laravel Octane:
+
+    ```bash
+    composer require laravel/octane
+    php artisan octane:install --server=frankenphp
+    php artisan octane:frankenphp --port=8089 --host=172.21.0.3
+    ```
+
+Access the service via your browser at:
 
 ```
 http://172.21.0.3:8089/vendors
 ```
 
-## Frankenphp / Standalone Binaries
+### Standalone FrankenPHP Binaries
+
+Build and run a standalone container:
 
 ```bash
 docker build -t frankenapp -f Dockerfile-frankenphp .
 docker run -d -p 80:80 frankenapp
 docker ps
-docker logs -f container_id
+docker logs -f <container_id>
 ```
 
-### Browser
+Then, access via:
 
 ```
 http://localhost:8090/vendors
 ```
 
-## Dev
+## Developer Tools
 
-### PHPStan
+### PHPStan (Static Analysis)
+
+Check your code with PHPStan:
 
 ```bash
 composer phpstan
 ```
 
-### PHP CS Fixer
+### PHP CS Fixer (Code Style)
 
-#### Check
+To check for code style issues:
 
 ```bash
 vendor/bin/php-cs-fixer check
 ```
 
-#### Fix
+To automatically fix style issues:
 
 ```bash
 vendor/bin/php-cs-fixer fix
 ```
 
-## Docs
+## API Documentation
 
-```bash
+Access the API documentation at:
+
+```
 http://localhost:8080/api-docs
 ```
 
-### Observation
+If there are issues with Swagger UI, try:
 
-If the Swagger documentation is not displaying correctly, run the following command inside the Docker container:
-
-```bash
+```
 http://localhost:8080/api/docs
 ```
 
-## Sonarqube
+## Sonarqube Integration
 
-You need to have a Sonarqube server running in order to run the sonar scanner cli
+Run a Sonarqube scan using the following command:
 
 ```bash
 docker run \
-   --rm \
-   -e SONAR_HOST_URL="http://172.21.197.47:9999"  \
-   -e SONAR_TOKEN="sqp_8382d6f4beb8ced1aa42dc27580a3a0bb66b8879" \
-   -v "/home/proyectosbeta/repositoriosGit/products-covid19py:/usr/src" \
-   sonarsource/sonar-scanner-cli
+  --rm \
+  -e SONAR_HOST_URL="http://172.21.197.47:9999"  \
+  -e SONAR_TOKEN="sqp_8382d6f4beb8ced1aa42dc27580a3a0bb66b8879" \
+  -v "/home/proyectosbeta/repositoriosGit/products-covid19py:/usr/src" \
+  sonarsource/sonar-scanner-cli
 ```
 
-## Observaciones:
+## Contribution Guidelines
 
--   El sitio debe de tener un certificado SSL para que funcione la geolocalización.
--   Se recomienda usar un servicio web como Apache.
+1. Fork the repository.
+2. Create a new feature branch:
 
-## Contribuir
+    ```bash
+    git checkout -b new-feature
+    ```
 
--   Crear fork.
--   Crear un feature branch: git checkout -b nueva-feature
--   Comitear tus cambios: git commit -am 'Añadir alguna feature'
--   Push el branch: git push origin nueva-feature
--   Enviar un pull request.
+3. Commit your changes:
+
+    ```bash
+    git commit -am 'Add new feature'
+    ```
+
+4. Push your branch:
+
+    ```bash
+    git push origin new-feature
+    ```
+
+5. Open a pull request.
+
+## License
+
+Specify the license details as applicable.
+
+## Final Notes
+
+Make sure your server has SSL configured and review any additional configurations if required. Enjoy contributing and improving the project!
