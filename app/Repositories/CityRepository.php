@@ -40,4 +40,13 @@ class CityRepository implements CityRepositoryInterface
     {
         return $this->model->select('id', 'name')->findOrFail($id);
     }
+
+    public function getCityFromCoordinates(float $longitude, float $latitude): string
+    {
+        $city = $this->model->select('name')
+          ->whereRaw("ST_CONTAINS(geom, ST_GeomFromText(?, 4326))", ["POINT($longitude $latitude)"])
+          ->first();
+
+        return $city ? $city->name : 'Unknown';
+    }
 }

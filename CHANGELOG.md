@@ -22,9 +22,10 @@ All notable changes to this project will be documented in this file.
   - Added GraphQL schema definitions
   - Optimized data fetching with GraphQL fields selection
 - Added comprehensive GraphQL support for sellers endpoint:
-  - Implemented query resolvers for sellers with associated products
-  - Created GraphQL schema definitions for seller-product relationships
-  - Optimized data loading with eager loading patterns
+  - Implemented comprehensive GraphQL query resolvers for sellers:
+    - Added support for seller-product relationship queries
+    - Created detailed schema definitions for sellers and products
+    - Integrated city information in seller queries
 
 ## [1.4.0]
 

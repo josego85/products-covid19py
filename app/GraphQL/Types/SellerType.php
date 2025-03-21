@@ -2,8 +2,7 @@
 
 namespace App\GraphQL\Types;
 
-use App\Models\Product;
-use App\Models\User;
+use App\Repositories\CityRepository;
 use GraphQL\Type\Definition\Type;
 use Rebing\GraphQL\Support\Type as GraphQLType;
 use Rebing\GraphQL\Support\Facades\GraphQL;
@@ -14,6 +13,13 @@ class SellerType extends GraphQLType
         'name' => 'Seller',
         'description' => 'A type that represents a seller',
     ];
+
+    protected $cityRepository;
+
+    public function __construct(CityRepository $cityRepository)
+    {
+        $this->cityRepository = $cityRepository;
+    }
 
     public function fields(): array
     {
@@ -38,7 +44,7 @@ class SellerType extends GraphQLType
                 'type' => GraphQL::type('User'),
                 'description' => 'The user associated with the seller',
                 'resolve' => function ($seller) {
-                    return User::find($seller->user_id);
+                    return $seller->user;
                 },
             ],
             'products' => [
@@ -46,6 +52,13 @@ class SellerType extends GraphQLType
                 'description' => 'The products associated with the seller',
                 'resolve' => function ($seller) {
                     return $seller->products;
+                },
+            ],
+            'city' => [
+                'type' => Type::string(),
+                'description' => 'The city where the seller is located, based on coordinates',
+                'resolve' => function ($seller) {
+                    return $this->cityRepository->getCityFromCoordinates($seller->longitude, $seller->latitude);
                 },
             ],
         ];

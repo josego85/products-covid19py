@@ -33,6 +33,6 @@ class SellerAllQuery extends Query
 
     public function resolve($root, $args)
     {
-        return Seller::with('products')->get();
+        return Seller::with(['products', 'user'])->get();
     }
 }
