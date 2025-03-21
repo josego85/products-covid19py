@@ -217,11 +217,11 @@ You can send queries and mutations to this endpoint using tools like Postman, In
 
 #### Example Query
 
-Here is an example of a query to fetch products by seller IDs:
+Here is an example of a query to fetch sellers:
 
 ```graphql
 {
-  sellers {
+  sellers   {
     id
     longitude
     latitude
@@ -231,7 +231,7 @@ Here is an example of a query to fetch products by seller IDs:
       email
       phone_number
     }
-    products {
+    products(type: "papel") {
       name
     }
   }
