@@ -49,9 +49,28 @@ class SellerType extends GraphQLType
             ],
             'products' => [
                 'type' => Type::listOf(GraphQL::type('Product')),
-                'description' => 'The products associated with the seller',
-                'resolve' => function ($seller) {
-                    return $seller->products;
+                'args' => [
+                    'type' => [
+                        'type' => Type::string(),
+                        'description' => 'Filter products by type',
+                    ],
+                    'name' => [
+                        'type' => Type::string(),
+                        'description' => 'Filter products by name',
+                    ],
+                ],
+                'resolve' => function ($seller, $args) {
+                    $query = $seller->products();
+                    
+                    if (isset($args['type'])) {
+                        $query->where('type', $args['type']);
+                    }
+                    
+                    if (isset($args['name'])) {
+                        $query->where('name', 'like', "%{$args['name']}%");
+                    }
+                    
+                    return $query->get();
                 },
             ],
             'city' => [

@@ -26,6 +26,11 @@ All notable changes to this project will be documented in this file.
     - Added support for seller-product relationship queries
     - Created detailed schema definitions for sellers and products
     - Integrated city information in seller queries
+- Added comprehensive GraphQL support for seller id endpoint:
+  - Implemented single seller query by ID
+  - Added detailed field resolvers for seller details
+  - Included product relationship resolution
+  - Added support for filtering seller's products
 
 ## [1.4.0]
 
