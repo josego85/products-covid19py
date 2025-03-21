@@ -9,28 +9,29 @@
     "license": "MIT",
     "require": {
         "php": "8.4.5",
-        "api-platform/laravel": "v4.1.0",
+        "api-platform/laravel": "v4.1.1",
         "guzzlehttp/guzzle": "^7.9.2",
-        "laravel/framework": "v11.44.1",
-        "laravel/octane": "v2.8.1",
+        "laravel/framework": "v11.44.2",
+        "laravel/octane": "v2.8.2",
         "laravel/tinker": "v2.10.1",
+        "laravel/ui": "v4.6.1",
         "laraveles/spanish": "1.5.0",
-        "stevebauman/purify": "^v6.3.0"
+        "stevebauman/purify": "v6.3.0"
     },
     "require-dev": {
-        "barryvdh/laravel-debugbar": "^v3.15.2",
-        "fakerphp/faker": "^v1.24.1",
-        "friendsofphp/php-cs-fixer": "v3.70.2",
+        "barryvdh/laravel-debugbar": "v3.15.2",
+        "fakerphp/faker": "v1.24.1",
+        "friendsofphp/php-cs-fixer": "v3.73.1",
         "mockery/mockery": "1.6.12",
         "nunomaduro/collision": "^v8.6.1",
-        "phpstan/phpstan": "2.1.7",
-        "phpstan/phpstan-deprecation-rules": "^2.0",
-        "phpstan/phpstan-doctrine": "2.0.1",
+        "phpstan/phpstan": "2.1.8",
+        "phpstan/phpstan-deprecation-rules": "2.0.1",
+        "phpstan/phpstan-doctrine": "2.0.2",
         "phpstan/phpstan-nette": "2.0.3",
         "phpstan/phpstan-phpunit": "2.0.4",
-        "phpstan/phpstan-strict-rules": "2.0.3",
+        "phpstan/phpstan-strict-rules": "2.0.4",
         "phpstan/phpstan-webmozart-assert": "2.0.0",
-        "phpunit/phpunit": "^11.5.2",
+        "phpunit/phpunit": "^11.5.14",
         "spatie/laravel-ignition": "^2.9.1"
     },
     "config": {
@@ -76,6 +77,49 @@
             "@php -r \"file_exists('database/database.sqlite') || touch('database/database.sqlite');\"",
             "@php artisan migrate --graceful --ansi"
         ],
-        "phpstan": "vendor/bin/phpstan analyse --memory-limit=512M"
+        "post-install-cmd": [
+            "@php artisan optimize",
+            "@php artisan view:cache",
+            "@php artisan config:cache",
+            "@php artisan route:cache"
+        ],
+        "clear-all": [
+            "@php artisan config:clear",
+            "@php artisan cache:clear",
+            "@php artisan view:clear",
+            "@php artisan route:clear"
+        ],
+        "optimize": [
+            "@php artisan optimize:clear",
+            "@php artisan optimize",
+            "@php artisan view:cache",
+            "@php artisan config:cache",
+            "@php artisan route:cache",
+            "@php artisan event:cache"
+        ],
+        "cache-clear": [
+            "@php artisan cache:clear",
+            "@php artisan config:clear",
+            "@php artisan view:clear",
+            "@php artisan route:clear",
+            "@php artisan event:clear"
+        ],
+        "reset": [
+            "@cache-clear",
+            "composer dump-autoload -o"
+        ],
+        "test": [
+            "@php artisan test"
+        ],
+        "test-coverage": [
+            "@php artisan test --coverage"
+        ],
+        "phpstan": "vendor/bin/phpstan analyse --memory-limit=512M",
+        "check-style": [
+            "vendor/bin/php-cs-fixer fix --dry-run --diff"
+        ],
+        "fix-style": [
+            "vendor/bin/php-cs-fixer fix"
+        ]
     }
 }

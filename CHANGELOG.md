@@ -13,6 +13,10 @@ All notable changes to this project will be documented in this file.
   - Updated configuration steps for FrankenPHP and Laravel Octane
   - Included developer tools and code quality sections
 - Improved task management functionality, including better organization and prioritization of tasks.
+- Updated and optimized dependencies in `composer.json` to ensure compatibility and improve performance.
+
+### Added
+- Introduced new scripts in `composer.json` to streamline development and deployment workflows.
 
 ## [1.4.0]
 
