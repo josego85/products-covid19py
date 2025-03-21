@@ -15,7 +15,7 @@ Levantar en sitio en cualquier server (Apache, etc.)
 -   HTML
 -   CSS
 -   JavaScript (Leaflet, JQuery, Boostrap)
--   PHP 8.4.4
+-   PHP 8.4.5
 -   [Laravel v11.44.1](https://laravel.com/docs)
 -   [Composer 2.8.6](https://getcomposer.org/download/)
 -   Api Platform v4.1.0

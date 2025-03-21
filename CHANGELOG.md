@@ -1,35 +1,51 @@
 # Changelog
 
-## v1.4.0
+All notable changes to this project will be documented in this file.
 
-- refactor: change values in php.ini
-- build: update to PHP 8.4.4
-- build: update composer.json
+## [1.5.0] - 2025-03-XX
 
-## v1.3.0
+### Changed
+- Updated PHP version to 8.4.5
 
-- refactor: GisService
+## [1.4.0]
 
-## v1.2.0
+### Changed
+- Updated PHP version to 8.4.4
+- Modified php.ini configuration values
+- Updated dependencies in composer.json
 
-- build: update to PHP 8.4
-- refactor: sellers and cities endpoint perfomance
-- refactor: update MySQL Workbench model
-- fix: swagger
-- update: database
-- feat: add Api Platform 4
-- docs: update changelog
+## [1.3.0]
 
-## v1.1.1
+### Changed
+- Refactored GIS service implementation
 
-- fix: migration in table sellers
-- fix: list and map in frontend
-- fix: getProducts query in product repository
+## [1.2.0]
 
-## v1.1.0
+### Added
+- Implemented API Platform 4 integration
 
-- Improve composer.json and package.json for production
+### Changed
+- Updated to PHP 8.4
+- Improved performance for sellers and cities endpoints
+- Updated MySQL Workbench model
+- Enhanced database structure
 
-## v1.0.0
+### Fixed
+- Resolved Swagger documentation issues
 
-- Implement the productospy system
+## [1.1.1]
+
+### Fixed
+- Corrected migration issues in sellers table
+- Fixed frontend list and map display
+- Resolved product query issues in ProductRepository
+
+## [1.1.0]
+
+### Changed
+- Optimized composer.json and package.json for production environment
+
+## [1.0.0]
+
+### Added
+- Initial release of the ProductosPY system
