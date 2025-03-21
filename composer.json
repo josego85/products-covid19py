@@ -16,6 +16,7 @@
         "laravel/tinker": "v2.10.1",
         "laravel/ui": "v4.6.1",
         "laraveles/spanish": "1.5.0",
+        "rebing/graphql-laravel": "9.9",
         "stevebauman/purify": "v6.3.0"
     },
     "require-dev": {

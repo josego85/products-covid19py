@@ -17,6 +17,10 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 - Introduced new scripts in `composer.json` to streamline development and deployment workflows.
+- Added GraphQL support for city and cities endpoints:
+  - Implemented query resolvers for single city and multiple cities
+  - Added GraphQL schema definitions
+  - Optimized data fetching with GraphQL fields selection
 
 ## [1.4.0]
 

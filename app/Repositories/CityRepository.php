@@ -21,6 +21,23 @@ class CityRepository implements CityRepositoryInterface
      */
     public function getCities(): Collection
     {
-        return $this->model->orderBy('name', 'asc')->pluck('name', 'id');
+        return $this->model->orderBy('id', 'asc')->get(['id', 'name']);
+    }
+
+    /**
+     * Get a city by its ID.
+     * 
+     * @param int $id The ID of the city to retrieve
+     * @return City Returns the City model instance if found, throws ModelNotFoundException otherwise
+     * @throws ModelNotFoundException When no city is found with the given ID
+     */
+    /**
+     * Get city id.
+     *
+     * @return City
+     */
+    public function getCityById(int $id): City
+    {
+        return $this->model->select('id', 'name')->findOrFail($id);
     }
 }
