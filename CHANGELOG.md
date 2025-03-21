@@ -12,6 +12,7 @@ All notable changes to this project will be documented in this file.
   - Added detailed Docker deployment guides
   - Updated configuration steps for FrankenPHP and Laravel Octane
   - Included developer tools and code quality sections
+- Improved task management functionality, including better organization and prioritization of tasks.
 
 ## [1.4.0]
 
