@@ -21,6 +21,10 @@ All notable changes to this project will be documented in this file.
   - Implemented query resolvers for single city and multiple cities
   - Added GraphQL schema definitions
   - Optimized data fetching with GraphQL fields selection
+- Added comprehensive GraphQL support for sellers endpoint:
+  - Implemented query resolvers for sellers with associated products
+  - Created GraphQL schema definitions for seller-product relationships
+  - Optimized data loading with eager loading patterns
 
 ## [1.4.0]
 

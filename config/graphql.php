@@ -77,6 +77,7 @@ return [
             'query' => [
                 'cities' => App\GraphQL\Queries\CityAllQuery::class,
                 'cityId' => App\GraphQL\Queries\CityIdQuery::class,
+                'sellers' => App\GraphQL\Queries\SellerAllQuery::class,
                 // 'product' => App\GraphQL\Queries\ProductQuery::class,
                 // 'getProductId' => App\GraphQL\Queries\GetProductIdQuery::class,
             ],
@@ -86,7 +87,9 @@ return [
             // The types only available in this schema
             'types' => [
                 'City' => App\GraphQL\Types\CityType::class,
-                // 'Product' => App\GraphQL\Types\ProductType::class,
+                'Seller' => App\GraphQL\Types\SellerType::class,
+                'User' => App\GraphQL\Types\UserType::class,
+                'Product' => App\GraphQL\Types\ProductType::class,
             ],
 
             // Laravel HTTP middleware

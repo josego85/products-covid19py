@@ -221,9 +221,19 @@ Here is an example of a query to fetch products by seller IDs:
 
 ```graphql
 {
-  cities {
+  sellers {
     id
-    name
+    longitude
+    latitude
+    comment
+    user {
+      full_name
+      email
+      phone_number
+    }
+    products {
+      name
+    }
   }
 }
 ```
