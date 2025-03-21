@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Models\Seller;
 use App\Models\User;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Facades\DB;
@@ -16,21 +17,32 @@ class SellerRepository implements SellerRepositoryInterface
     }
 
     /**
-     * Get sellers with optional filters.
+     * Retrieves sellers based on specified filters and parameters.
      *
-     * @param array|null $filterProducts
-     * @param int|null $filterCity
-     * @param bool $withCoordinatesNull
-     * @return array
+     * This method fetches sellers from the database with optional filtering capabilities.
+     * It can filter by products, city, coordinates availability, and specific seller ID.
+     *
+     * @param array|null $filterProducts Array of product IDs to filter sellers by their products
+     * @param int|null $filterCity City ID to filter sellers by location
+     * @param bool|null $withCoordinatesNull When true, includes only sellers with null coordinates
+     * @param int|null $sellerId Specific seller ID to fetch a single seller
+     * @return array Returns an associative array with:
+     *               - 'total' => Total number of sellers matching the criteria
+     *               - 'data'  => Array of seller records
      */
     public function getSellers(
         ?array $filterProducts = null,
         ?int $filterCity = null,
-        ?bool $withCoordinatesNull = null
+        ?bool $withCoordinatesNull = null,
+        ?int $sellerId = null
     ): array {
         $query = $this->baseQuery();
 
         $this->applyFilters($query, $filterProducts, $filterCity, $withCoordinatesNull);
+
+        if ($sellerId) {
+            $query->where('s.id', $sellerId);
+        }
 
         $resultData = $this->executeQuery($query);
 
@@ -38,6 +50,19 @@ class SellerRepository implements SellerRepositoryInterface
             'total' => $resultData->count(),
             'data'  => $resultData->toArray()
         ];
+        // return $resultData->toArray();
+    }
+
+    /**
+     * Retrieves a specific seller by their ID.
+     *
+     * @param int $sellerId The unique identifier of the seller
+     * @return array|null Returns an array containing the seller's data if found, null otherwise
+     */
+    public function getSeller(int $sellerId): ?Seller
+    {
+        return Seller::with(['user', 'products'])
+          ->find($sellerId);
     }
 
     /**
@@ -66,6 +91,15 @@ class SellerRepository implements SellerRepositoryInterface
         ]);
     }
 
+    /**
+     * Attach a product to a specific user.
+     *
+     * @param int $userId The ID of the user to attach the product to
+     * @param int $productId The ID of the product to be attached
+     * @return void
+     * 
+     * @throws \Illuminate\Database\Eloquent\ModelNotFoundException If user is not found
+     */
     public function attachProductToUser(int $userId, int $productId): void
     {
         $user = User::find($userId);
@@ -74,6 +108,13 @@ class SellerRepository implements SellerRepositoryInterface
         }
     }
 
+    /**
+     * Retrieve a user by their ID.
+     *
+     * @param int $userId The ID of the user to retrieve
+     * @return \App\Models\User The user instance
+     * @throws \Illuminate\Database\Eloquent\ModelNotFoundException When user is not found
+     */
     public function getUser(int $userId): User
     {
         return User::find($userId);

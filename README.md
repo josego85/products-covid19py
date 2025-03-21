@@ -29,6 +29,14 @@ A web application for browsing products sold to combat COVID-19.
     - [PHPStan](#phpstan)
     - [PHP CS Fixer](#php-cs-fixer)
   - [API Documentation](#api-documentation)
+  - [GraphQL and GraphiQL](#graphql-and-graphiql)
+    - [GraphQL](#graphql)
+      - [GraphQL Endpoint](#graphql-endpoint)
+      - [Example Query](#example-query)
+    - [GraphiQL](#graphiql)
+      - [Accessing GraphiQL](#accessing-graphiql)
+      - [Using GraphiQL](#using-graphiql)
+    - [Notes](#notes)
   - [Contribution Guidelines](#contribution-guidelines)
   - [License](#license)
 
@@ -190,6 +198,70 @@ Access the API documentation at:
 ```
 http://localhost:8080/api-docs
 ```
+
+## GraphQL and GraphiQL
+
+### GraphQL
+
+This project includes support for GraphQL, allowing you to query and manipulate data using a flexible and efficient API.
+
+#### GraphQL Endpoint
+
+The GraphQL endpoint is available at:
+
+```
+http://localhost:8080/graphql
+```
+
+You can send queries and mutations to this endpoint using tools like Postman, Insomnia, or any GraphQL client.
+
+#### Example Query
+
+Here is an example of a query to fetch products by seller IDs:
+
+```graphql
+{
+  sellers {
+    id
+    longitude
+    latitude
+    comment
+    user {
+      full_name
+      email
+      phone_number
+    }
+    products {
+      name
+    }
+  }
+}
+```
+
+### GraphiQL
+
+GraphiQL is a graphical interface for testing and exploring GraphQL APIs. It is enabled in this project for development purposes.
+
+#### Accessing GraphiQL
+
+You can access the GraphiQL interface at:
+
+```
+http://localhost:8080/graphiql
+```
+
+#### Using GraphiQL
+
+1. Open the URL in your browser.
+2. Write your GraphQL queries or mutations in the editor.
+3. Click the "Execute" button (▶️) to run the query and view the results.
+
+### Notes
+
+- Ensure that the GraphQL endpoint is accessible and properly configured in your environment.
+- GraphiQL is intended for development use only and should not be enabled in production environments.
+
+For more information about GraphQL, visit the [official documentation](https://graphql.org/).
 
 ## Contribution Guidelines
 

@@ -178,6 +178,7 @@ return [
         Stevebauman\Purify\PurifyServiceProvider::class,
 
         App\Providers\RepositoryServiceProvider::class,
+        Rebing\GraphQL\GraphQLServiceProvider::class,
     ],
 
     /*

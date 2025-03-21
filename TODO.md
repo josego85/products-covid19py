@@ -9,4 +9,6 @@
 *   Add PHP-FPM
 *   Redis (cache)
 *   CI/CD Pipeline in GitHub Actions workflow
-*   Add Graphql
+*   Graphql pagination
+*   API Rest pagination
+*   Filter API Rest

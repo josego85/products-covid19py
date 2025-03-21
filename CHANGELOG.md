@@ -17,6 +17,27 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 - Introduced new scripts in `composer.json` to streamline development and deployment workflows.
+- Added GraphQL support for city and cities endpoints:
+  - Implemented query resolvers for single city and multiple cities
+  - Added GraphQL schema definitions
+  - Optimized data fetching with GraphQL fields selection
+- Added comprehensive GraphQL support for sellers endpoint:
+  - Implemented comprehensive GraphQL query resolvers for sellers:
+    - Added support for seller-product relationship queries
+    - Created detailed schema definitions for sellers and products
+    - Integrated city information in seller queries
+- Added comprehensive GraphQL support for seller id endpoint:
+  - Implemented single seller query by ID
+  - Added detailed field resolvers for seller details
+  - Included product relationship resolution
+  - Added support for filtering seller's products
+- Enhanced coordinate validation for city resolution:
+  - Checks if coordinates exist
+  - Verifies they are numeric values
+  - Validates they are within proper geographical ranges:
+    - Longitude: -180 to 180 degrees
+    - Latitude: -90 to 90 degrees
+  - The city resolver returns 'Unknown' if any validation fails
 
 ## [1.4.0]
 
