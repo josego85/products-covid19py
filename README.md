@@ -1,6 +1,6 @@
 # products-covid19py
 
-[![Version](https://img.shields.io/badge/version-1.5.0-blue.svg)](https://github.com/josego85/products-covid19py)
+[![Version](https://img.shields.io/badge/version-1.6.0-blue.svg)](https://github.com/josego85/products-covid19py)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://opensource.org/licenses/MIT)
 [![PHP](https://img.shields.io/badge/PHP-8.4.6-777BB4?style=flat-square&logo=php)](https://php.net)
 [![Laravel](https://img.shields.io/badge/Laravel-v11.44.7-FF2D20?style=flat-square&logo=laravel)](https://laravel.com)

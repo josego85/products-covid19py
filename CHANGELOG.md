@@ -35,6 +35,7 @@ All notable changes to this project will be documented in this file.
   - Applied PHP CS Fixer to standardize code style
 - Enhanced README documentation:
   - Added comprehensive technology badges
+  - Updated version badges (Version 1.6.0)
   - Restructured table of contents for better organization
   - Improved navigation and readability
 - Updated dependencies:
