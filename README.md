@@ -18,33 +18,34 @@ A web application for browsing products sold to combat COVID-19.
 - [Features](#features)
 - [Requirements](#requirements)
 - [Getting Started](#getting-started)
-- [Clone the Repository](#clone-the-repository)
-- [Configure Environment Variables](#configure-environment-variables)
-- [Install Dependencies](#install-dependencies)
-- [Generate Application Key](#generate-application-key)
-- [Database Setup](#database-setup)
+  - [Clone the Repository](#clone-the-repository)
+  - [Configure Environment Variables](#configure-environment-variables)
+  - [Install Dependencies](#install-dependencies)
+  - [Generate Application Key](#generate-application-key)
+  - [Database Setup](#database-setup)
 - [Docker](#docker)
-- [Build and Run](#build-and-run)
-- [Access Container](#access-container)
-- [View Logs](#view-logs)
+  - [Build and Run](#build-and-run)
+  - [Access Container](#access-container)
+  - [View Logs](#view-logs)
 - [Development Commands](#development-commands)
-- [Application Optimization](#application-optimization)
-- [Command Descriptions](#command-descriptions)
-- [When to Use](#when-to-use)
+  - [Application Optimization](#application-optimization)
+  - [Command Descriptions](#command-descriptions)
+  - [When to Use](#when-to-use)
 - [Additional Configuration](#additional-configuration)
-- [Set Permissions](#set-permissions)
+  - [Set Permissions](#set-permissions)
 - [Developer Tools](#developer-tools)
-- [PHPStan](#phpstan)
-- [PHP CS Fixer](#php-cs-fixer)
+  - [PHPStan](#phpstan)
+  - [PHP CS Fixer](#php-cs-fixer)
+  - [SonarQube Analysis](#sonarqube-analysis)
 - [API Documentation](#api-documentation)
 - [GraphQL and GraphiQL](#graphql-and-graphiql)
-- [GraphQL](#graphql)
+  - [GraphQL](#graphql)
   - [GraphQL Endpoint](#graphql-endpoint)
   - [Example Query](#example-query)
-- [GraphiQL](#graphiql)
-  - [Accessing GraphiQL](#accessing-graphiql)
-  - [Using GraphiQL](#using-graphiql)
-- [Notes](#notes)
+  - [GraphiQL](#graphiql)
+    - [Accessing GraphiQL](#accessing-graphiql)
+    - [Using GraphiQL](#using-graphiql)
+  - [Notes](#notes)
 - [Contribution Guidelines](#contribution-guidelines)
 - [License](#license)
 
@@ -200,6 +201,16 @@ composer phpstan
 vendor/bin/php-cs-fixer check
 vendor/bin/php-cs-fixer fix
 ```
+
+### SonarQube Analysis
+
+Access SonarQube dashboard at: [http://localhost:9000](http://localhost:9000)
+
+Default credentials:
+- **Username:** `admin`
+- **Password:** `admin`
+
+For detailed SonarQube setup and usage, see our [SonarQube Documentation](docs/development/sonarqube.md).
 
 ## API Documentation
 

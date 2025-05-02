@@ -2,11 +2,21 @@
 
 All notable changes to this project will be documented in this file.
 
-# Changelog
-
-All notable changes to this project will be documented in this file.
-
 ## [1.6.0] - 2025-05-02
+
+### Added
+- Added detailed SonarQube documentation (sonarqube.md) with setup and usage instructions
+- Integrated SonarQube with Docker for improved code quality analysis:
+  - Added containerized SonarQube server configuration
+  - Implemented automated scanner setup
+  - Added persistent data storage for analysis history
+  - Configured development environment integration in docker-compose.dev.yml
+  - Added comprehensive setup and usage documentation
+- Improved README index structure:
+  - Added better section organization
+  - Enhanced navigation with clear subsections
+  - Included new SonarQube documentation links
+  - Updated table of contents formatting
 
 ### Changed
 - Updated PHP version from 8.4.5 to 8.4.6
