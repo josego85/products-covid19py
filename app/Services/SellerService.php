@@ -17,7 +17,7 @@ class SellerService
     {
         $filteredProducts = $this->getFilteredProductIds($filters['products']);
         $sellers = $this->sellerRepository->getSellers($filteredProducts, $filters['city'], $filters['withCoordinatesNull'])['data'];
-        
+
         $sellerIds = array_column($sellers, 'user_id');
         $productsBySeller = $this->productRepository->getProductsBySellers($sellerIds, $filteredProducts);
 
