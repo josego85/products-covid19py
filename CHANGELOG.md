@@ -15,6 +15,9 @@ All notable changes to this project will be documented in this file.
   - Added comprehensive technology badges
   - Restructured table of contents for better organization
   - Improved navigation and readability
+- Updated dependencies:
+  - Upgraded packages in composer.json to latest stable versions
+  - Updated npm packages in package.json for improved security and performance
 
 ## [1.5.0] - 2025-03-XX
 
