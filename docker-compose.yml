@@ -33,8 +33,36 @@ services:
       timeout: 5s
       retries: 5
 
+  sonarqube:
+    image: sonarqube:latest
+    container_name: sonarqube
+    ports:
+      - '9000:9000'
+    environment:
+      - SONAR_ES_BOOTSTRAP_CHECKS_DISABLE=true
+    volumes:
+      - sonarqube_data:/opt/sonarqube/data
+      - sonarqube_extensions:/opt/sonarqube/extensions
+      - sonarqube_logs:/opt/sonarqube/logs
+    networks:
+      - app-network
+
+  scanner:
+    image: sonarsource/sonar-scanner-cli:5.0
+    volumes:
+      - ./:/usr/src
+    working_dir: /usr/src
+    environment:
+      SONAR_TOKEN: ${SONAR_TOKEN}
+    command: -Dsonar.host.url=http://sonarqube:9000
+    networks:
+      - app-network
+
 volumes:
   mysql-data:
+  sonarqube_data:
+  sonarqube_extensions:
+  sonarqube_logs:
 
 
 networks:
