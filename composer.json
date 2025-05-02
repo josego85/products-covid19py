@@ -22,9 +22,10 @@
     "require-dev": {
         "barryvdh/laravel-debugbar": "v3.15.2",
         "fakerphp/faker": "v1.24.1",
-        "friendsofphp/php-cs-fixer": "v3.73.1",
+        "friendsofphp/php-cs-fixer": "v3.75.0",
         "mockery/mockery": "1.6.12",
         "nunomaduro/collision": "^v8.6.1",
+        "nunomaduro/larastan": "3.4",
         "phpstan/phpstan": "2.1.11",
         "phpstan/phpstan-deprecation-rules": "2.0.1",
         "phpstan/phpstan-doctrine": "2.0.2",

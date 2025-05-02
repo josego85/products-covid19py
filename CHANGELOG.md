@@ -21,6 +21,9 @@ All notable changes to this project will be documented in this file.
 ### Changed
 - Updated PHP version from 8.4.5 to 8.4.6
 - Specified MySQL version (8.0.42) in docker-compose.yml for better version control
+- Enhanced code quality with static analysis tools:
+  - Implemented PHPStan for enhanced type checking
+  - Applied PHP CS Fixer to standardize code style
 - Enhanced README documentation:
   - Added comprehensive technology badges
   - Restructured table of contents for better organization

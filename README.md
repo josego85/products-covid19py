@@ -198,8 +198,9 @@ composer phpstan
 ### PHP CS Fixer
 
 ```bash
-vendor/bin/php-cs-fixer check
-vendor/bin/php-cs-fixer fix
+PHP_CS_FIXER_IGNORE_ENV=1 vendor/bin/php-cs-fixer check
+PHP_CS_FIXER_IGNORE_ENV=1 vendor/bin/php-cs-fixer fix -vv
+PHP_CS_FIXER_IGNORE_ENV=1 vendor/bin/php-cs-fixer fix
 ```
 
 ### SonarQube Analysis
