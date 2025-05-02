@@ -66,14 +66,15 @@ class SellerRepository implements SellerRepositoryInterface
     }
 
     /**
-     * Insert a new user.
+     * Create a new user from the provided data.
      *
      * @param array $data
      * @return int
      */
     public function setUser(array $data): int
     {
-        return $this->model->create($data)->user_id;
+        // return $this->model->create($data)->user_id;
+        return $this->model->create($data)->id;
     }
 
     /**

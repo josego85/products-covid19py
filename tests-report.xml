@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="/var/www/html/phpunit.xml" tests="5" assertions="13" errors="0" failures="0" skipped="0" time="0.548565">
+    <testsuite name="Unit" tests="4" assertions="3" errors="0" failures="0" skipped="0" time="0.465334">
+      <testsuite name="Tests\Unit\Models\ProductTest" file="/var/www/html/tests/Unit/Models/ProductTest.php" tests="2" assertions="0" errors="0" failures="0" skipped="0" time="0.360007">
+        <testcase name="testProductBelongsToSeller" file="/var/www/html/tests/Unit/Models/ProductTest.php" line="14" class="Tests\Unit\Models\ProductTest" classname="Tests.Unit.Models.ProductTest" assertions="0" time="0.312298"/>
+        <testcase name="testProductAttributes" file="/var/www/html/tests/Unit/Models/ProductTest.php" line="23" class="Tests\Unit\Models\ProductTest" classname="Tests.Unit.Models.ProductTest" assertions="0" time="0.047709"/>
+      </testsuite>
+      <testsuite name="Tests\Unit\Repositories\SellerRepositoryTest" file="/var/www/html/tests/Unit/Repositories/SellerRepositoryTest.php" tests="2" assertions="3" errors="0" failures="0" skipped="0" time="0.105327">
+        <testcase name="testGetSellerById" file="/var/www/html/tests/Unit/Repositories/SellerRepositoryTest.php" line="33" class="Tests\Unit\Repositories\SellerRepositoryTest" classname="Tests.Unit.Repositories.SellerRepositoryTest" assertions="2" time="0.054687"/>
+        <testcase name="testSetUser" file="/var/www/html/tests/Unit/Repositories/SellerRepositoryTest.php" line="43" class="Tests\Unit\Repositories\SellerRepositoryTest" classname="Tests.Unit.Repositories.SellerRepositoryTest" assertions="1" time="0.050640"/>
+      </testsuite>
+    </testsuite>
+    <testsuite name="Feature" tests="1" assertions="10" errors="0" failures="0" skipped="0" time="0.083231">
+      <testsuite name="Tests\Feature\GraphQL\ProductQueryTest" file="/var/www/html/tests/Feature/GraphQL/ProductQueryTest.php" tests="1" assertions="10" errors="0" failures="0" skipped="0" time="0.083231">
+        <testcase name="testQueryProducts" file="/var/www/html/tests/Feature/GraphQL/ProductQueryTest.php" line="16" class="Tests\Feature\GraphQL\ProductQueryTest" classname="Tests.Feature.GraphQL.ProductQueryTest" assertions="10" time="0.083231"/>
+      </testsuite>
+    </testsuite>
+  </testsuite>
+</testsuites>

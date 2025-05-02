@@ -20,3 +20,4 @@ composer.lock
 **/caddy
 frankenphp
 frankenphp-worker.php
+.phpunit.cache

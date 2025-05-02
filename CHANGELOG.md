@@ -6,6 +6,15 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 - Added detailed SonarQube documentation (sonarqube.md) with setup and usage instructions
+- Created new model factories for improved testing:
+  - Added ProductFactory with proper product attributes
+  - Added SellerFactory with user associations and location data
+  - Fixed UserFactory to include required status and password fields
+- Implemented comprehensive test suite:
+  - Added SellerRepository unit tests
+  - Created GraphQL product query tests
+  - Added API endpoint tests with JSON-LD support
+  - Removed example/placeholder tests
 - Integrated SonarQube with Docker for improved code quality analysis:
   - Added containerized SonarQube server configuration
   - Implemented automated scanner setup
