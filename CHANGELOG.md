@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file.
 
+# Changelog
+
+All notable changes to this project will be documented in this file.
+
+## [1.6.0] - 2025-05-02
+
+### Changed
+- Updated PHP version from 8.4.5 to 8.4.6
+- Specified MySQL version (8.0.42) in docker-compose.yml for better version control
+- Enhanced README documentation:
+  - Added comprehensive technology badges
+  - Restructured table of contents for better organization
+  - Improved navigation and readability
+
 ## [1.5.0] - 2025-03-XX
 
 ### Changed

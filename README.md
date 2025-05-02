@@ -1,44 +1,52 @@
 # products-covid19py
 
+[![Version](https://img.shields.io/badge/version-1.5.0-blue.svg)](https://github.com/josego85/products-covid19py)
+[![License](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://opensource.org/licenses/MIT)
+[![PHP](https://img.shields.io/badge/PHP-8.4.6-777BB4?style=flat-square&logo=php)](https://php.net)
+[![Laravel](https://img.shields.io/badge/Laravel-v11.44.2-FF2D20?style=flat-square&logo=laravel)](https://laravel.com)
+[![MySQL](https://img.shields.io/badge/MySQL-8.0.42-4479A1?style=flat-square&logo=mysql&logoColor=white)](https://www.mysql.com)
+[![Docker](https://img.shields.io/badge/Docker-20.10.21-2496ED?style=flat-square&logo=docker&logoColor=white)](https://www.docker.com)
+[![API Platform](https://img.shields.io/badge/API%20Platform-4.1.3-38A9B4?style=flat-square&logo=api-platform)](https://api-platform.com)
+[![GraphQL](https://img.shields.io/badge/GraphQL-16.8.1-E10098?style=flat-square&logo=graphql)](https://graphql.org)
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg?style=flat-square)](https://github.com/josego85/products-covid19py/graphs/commit-activity)
+
 A web application for browsing products sold to combat COVID-19.
 
-## Table of Contents
+## Contents
 
-- [products-covid19py](#products-covid19py)
-  - [Table of Contents](#table-of-contents)
-  - [Overview](#overview)
-  - [Features](#features)
-  - [Requirements](#requirements)
-  - [Getting Started](#getting-started)
-    - [Clone the Repository](#clone-the-repository)
-    - [Configure Environment Variables](#configure-environment-variables)
-    - [Install Dependencies](#install-dependencies)
-    - [Generate Application Key](#generate-application-key)
-    - [Database Setup](#database-setup)
-  - [Docker](#docker)
-    - [Build and Run](#build-and-run)
-    - [Access Container](#access-container)
-    - [View Logs](#view-logs)
-  - [Development Commands](#development-commands)
-    - [Application Optimization](#application-optimization)
-    - [Command Descriptions](#command-descriptions)
-    - [When to Use](#when-to-use)
-  - [Additional Configuration](#additional-configuration)
-    - [Set Permissions](#set-permissions)
-  - [Developer Tools](#developer-tools)
-    - [PHPStan](#phpstan)
-    - [PHP CS Fixer](#php-cs-fixer)
-  - [API Documentation](#api-documentation)
-  - [GraphQL and GraphiQL](#graphql-and-graphiql)
-    - [GraphQL](#graphql)
-      - [GraphQL Endpoint](#graphql-endpoint)
-      - [Example Query](#example-query)
-    - [GraphiQL](#graphiql)
-      - [Accessing GraphiQL](#accessing-graphiql)
-      - [Using GraphiQL](#using-graphiql)
-    - [Notes](#notes)
-  - [Contribution Guidelines](#contribution-guidelines)
-  - [License](#license)
+- [Overview](#overview)
+- [Features](#features)
+- [Requirements](#requirements)
+- [Getting Started](#getting-started)
+- [Clone the Repository](#clone-the-repository)
+- [Configure Environment Variables](#configure-environment-variables)
+- [Install Dependencies](#install-dependencies)
+- [Generate Application Key](#generate-application-key)
+- [Database Setup](#database-setup)
+- [Docker](#docker)
+- [Build and Run](#build-and-run)
+- [Access Container](#access-container)
+- [View Logs](#view-logs)
+- [Development Commands](#development-commands)
+- [Application Optimization](#application-optimization)
+- [Command Descriptions](#command-descriptions)
+- [When to Use](#when-to-use)
+- [Additional Configuration](#additional-configuration)
+- [Set Permissions](#set-permissions)
+- [Developer Tools](#developer-tools)
+- [PHPStan](#phpstan)
+- [PHP CS Fixer](#php-cs-fixer)
+- [API Documentation](#api-documentation)
+- [GraphQL and GraphiQL](#graphql-and-graphiql)
+- [GraphQL](#graphql)
+  - [GraphQL Endpoint](#graphql-endpoint)
+  - [Example Query](#example-query)
+- [GraphiQL](#graphiql)
+  - [Accessing GraphiQL](#accessing-graphiql)
+  - [Using GraphiQL](#using-graphiql)
+- [Notes](#notes)
+- [Contribution Guidelines](#contribution-guidelines)
+- [License](#license)
 
 ## Overview
 
@@ -55,10 +63,11 @@ This project is built with PHP using the Laravel framework and is designed to di
 
 ## Requirements
 
-- PHP 8.4.5
+- PHP 8.4.6
 - Laravel v11.44.2
-- MySQL 8.0
-- Composer 2.8.6
+- API Platform v4.1.3
+- MySQL 8.0.42
+- Composer 2.8.8
 - Docker & Docker Compose
 - Node.js & npm
 - Apache
