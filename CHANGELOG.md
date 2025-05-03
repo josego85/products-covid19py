@@ -28,6 +28,12 @@ All notable changes to this project will be documented in this file.
   - Updated table of contents formatting
 
 ### Changed
+- Refactored Docker architecture:
+  - Separated development and production environments with distinct compose files
+  - Migrated from Apache to Nginx for improved performance
+  - Split application and web server into separate containers
+  - Implemented multi-stage builds for optimized images
+  - Added development-specific configurations and tools
 - Updated PHP version from 8.4.5 to 8.4.6
 - Specified MySQL version (8.0.42) in docker-compose.yml for better version control
 - Enhanced code quality with static analysis tools:
