@@ -2,7 +2,7 @@ services:
   app:
     build:
       context: .
-      dockerfile: docker/dev/Dockerfile
+      dockerfile: docker/dev/app/Dockerfile
     volumes:
       - ./:/var/www/html:cached
       - ./storage:/var/www/html/storage:delegated
@@ -29,8 +29,6 @@ services:
       - sonarqube_data:/opt/sonarqube/data
       - sonarqube_extensions:/opt/sonarqube/extensions
       - sonarqube_logs:/opt/sonarqube/logs
-    networks:
-      - app-network
 
   scanner:
     image: sonarsource/sonar-scanner-cli:5.0
@@ -40,8 +38,6 @@ services:
     environment:
       SONAR_TOKEN: ${SONAR_TOKEN}
     command: -Dsonar.host.url=http://sonarqube:9000
-    networks:
-      - app-network
 
 volumes:
   sonarqube_data:
