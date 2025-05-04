@@ -4,8 +4,8 @@ namespace App\GraphQL\Types;
 
 use App\Repositories\CityRepository;
 use GraphQL\Type\Definition\Type;
-use Rebing\GraphQL\Support\Type as GraphQLType;
 use Rebing\GraphQL\Support\Facades\GraphQL;
+use Rebing\GraphQL\Support\Type as GraphQLType;
 
 class SellerType extends GraphQLType
 {
@@ -61,15 +61,15 @@ class SellerType extends GraphQLType
                 ],
                 'resolve' => function ($seller, $args) {
                     $query = $seller->products();
-                    
+
                     if (isset($args['type'])) {
                         $query->where('type', $args['type']);
                     }
-                    
+
                     if (isset($args['name'])) {
                         $query->where('name', 'like', "%{$args['name']}%");
                     }
-                    
+
                     return $query->get();
                 },
             ],
@@ -80,7 +80,7 @@ class SellerType extends GraphQLType
                     if (!$this->hasValidCoordinates($seller)) {
                         return 'Unknown';
                     }
-                    
+
                     return $this->cityRepository->getCityFromCoordinates(
                         $seller->longitude,
                         $seller->latitude

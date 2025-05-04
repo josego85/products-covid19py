@@ -1,44 +1,34 @@
 # products-covid19py
 
+[![Version](https://img.shields.io/badge/version-1.6.0-blue.svg)](https://github.com/josego85/products-covid19py)
+[![License](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://opensource.org/licenses/MIT)
+[![PHP](https://img.shields.io/badge/PHP-8.4.6-777BB4?style=flat-square&logo=php)](https://php.net)
+[![Laravel](https://img.shields.io/badge/Laravel-v11.44.7-FF2D20?style=flat-square&logo=laravel)](https://laravel.com)
+[![API Platform](https://img.shields.io/badge/API%20Platform-4.1.7-38A9B4?style=flat-square&logo=api-platform)](https://api-platform.com)
+[![MySQL](https://img.shields.io/badge/MySQL-8.0.42-4479A1?style=flat-square&logo=mysql&logoColor=white)](https://www.mysql.com)
+[![GraphQL](https://img.shields.io/badge/GraphQL-16.8.1-E10098?style=flat-square&logo=graphql)](https://graphql.org)
+[![Docker](https://img.shields.io/badge/Docker-20.10.21-2496ED?style=flat-square&logo=docker&logoColor=white)](https://www.docker.com)
+[![Nginx](https://img.shields.io/badge/Nginx-1.28-009639?style=flat-square&logo=nginx&logoColor=white)](https://nginx.org)
+[![Node](https://img.shields.io/badge/Node-22.15.0-339933?style=flat-square&logo=node.js&logoColor=white)](https://nodejs.org)
+[![npm](https://img.shields.io/badge/npm-10.9.2-CB3837?style=flat-square&logo=npm)](https://www.npmjs.com)
+[![Vite](https://img.shields.io/badge/Vite-6.3.4-646CFF?style=flat-square&logo=vite)](https://vitejs.dev)
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg?style=flat-square)](https://github.com/josego85/products-covid19py/graphs/commit-activity)
+
 A web application for browsing products sold to combat COVID-19.
 
-## Table of Contents
+## Contents
 
-- [products-covid19py](#products-covid19py)
-  - [Table of Contents](#table-of-contents)
-  - [Overview](#overview)
-  - [Features](#features)
-  - [Requirements](#requirements)
-  - [Getting Started](#getting-started)
-    - [Clone the Repository](#clone-the-repository)
-    - [Configure Environment Variables](#configure-environment-variables)
-    - [Install Dependencies](#install-dependencies)
-    - [Generate Application Key](#generate-application-key)
-    - [Database Setup](#database-setup)
-  - [Docker](#docker)
-    - [Build and Run](#build-and-run)
-    - [Access Container](#access-container)
-    - [View Logs](#view-logs)
-  - [Development Commands](#development-commands)
-    - [Application Optimization](#application-optimization)
-    - [Command Descriptions](#command-descriptions)
-    - [When to Use](#when-to-use)
-  - [Additional Configuration](#additional-configuration)
-    - [Set Permissions](#set-permissions)
-  - [Developer Tools](#developer-tools)
-    - [PHPStan](#phpstan)
-    - [PHP CS Fixer](#php-cs-fixer)
-  - [API Documentation](#api-documentation)
-  - [GraphQL and GraphiQL](#graphql-and-graphiql)
-    - [GraphQL](#graphql)
-      - [GraphQL Endpoint](#graphql-endpoint)
-      - [Example Query](#example-query)
-    - [GraphiQL](#graphiql)
-      - [Accessing GraphiQL](#accessing-graphiql)
-      - [Using GraphiQL](#using-graphiql)
-    - [Notes](#notes)
-  - [Contribution Guidelines](#contribution-guidelines)
-  - [License](#license)
+- [Overview](#overview)
+- [Features](#features)
+- [Requirements](#requirements)
+- [Getting Started](#getting-started)
+- [Docker](#docker)
+- [Development Commands](#development-commands)
+- [Developer Tools](#developer-tools)
+- [API Documentation](#api-documentation)
+- [GraphQL and GraphiQL](#graphql-and-graphiql)
+- [Contribution Guidelines](#contribution-guidelines)
+- [License](#license)
 
 ## Overview
 
@@ -55,13 +45,16 @@ This project is built with PHP using the Laravel framework and is designed to di
 
 ## Requirements
 
-- PHP 8.4.5
-- Laravel v11.44.2
-- MySQL 8.0
-- Composer 2.8.6
+- PHP 8.4.6
+- Laravel v11.44.7
+- API Platform v4.1.7
+- MySQL 8.0.42
+- Composer 2.8.8
 - Docker & Docker Compose
-- Node.js & npm
-- Apache
+- Node.js 22.15.0
+- NPM 10.9.2
+- Vite 6.3.4
+- Nginx 1.28
 
 ## Getting Started
 
@@ -103,22 +96,80 @@ mysql -u root -p productospy < database/productospy.sql
 
 ## Docker
 
-### Build and Run
+### Development Environment
+
+The development environment uses `docker-compose.override.yml` automatically with the base configuration.
 
 ```bash
-docker compose up -d --build
+# Build containers (with no cache)
+docker compose build --no-cache
+
+# Build specific container
+docker compose build nginx
+
+# Start containers
+docker compose up -d
+
+# Stop containers
+docker compose down
 ```
 
-### Access Container
+### Production Environment
+
+Production uses only the base `docker-compose.yml` configuration.
 
 ```bash
-docker exec -it app bash
+# Build containers (with no cache)
+docker compose -f docker-compose.yml build --no-cache
+
+# Start containers
+docker compose -f docker-compose.yml up -d
+
+# Stop containers
+docker compose -f docker-compose.yml down
 ```
 
-### View Logs
+### Container Management
 
 ```bash
+# Access PHP container
+docker compose exec app bash
+
+# Access Nginx container
+docker compose exec nginx sh
+
+# View logs
 docker compose logs -f
+
+# View logs for specific container
+docker compose logs -f app
+```
+
+### Frontend Development
+
+```bash
+# Install dependencies
+npm install
+
+# Start Vite development server
+npm run dev
+
+# Build for production
+npm run build
+```
+
+### Common Issues
+
+If you encounter permission issues:
+```bash
+sudo chown -R $USER:www-data storage bootstrap/cache
+chmod -R 775 storage bootstrap/cache
+```
+
+If assets are not loading:
+```bash
+npm run build
+docker compose restart nginx
 ```
 
 ## Development Commands
@@ -166,17 +217,6 @@ composer phpstan
 - Before committing: `composer check-style && composer test`
 - After pulling changes: `composer reset`
 
-## Additional Configuration
-
-### Set Permissions
-
-```bash
-sudo chown -R $USER:www-data storage
-sudo chown -R $USER:www-data bootstrap/cache
-chmod -R 775 storage
-chmod -R 775 bootstrap/cache
-```
-
 ## Developer Tools
 
 ### PHPStan
@@ -188,9 +228,20 @@ composer phpstan
 ### PHP CS Fixer
 
 ```bash
-vendor/bin/php-cs-fixer check
-vendor/bin/php-cs-fixer fix
+PHP_CS_FIXER_IGNORE_ENV=1 vendor/bin/php-cs-fixer check
+PHP_CS_FIXER_IGNORE_ENV=1 vendor/bin/php-cs-fixer fix -vv
+PHP_CS_FIXER_IGNORE_ENV=1 vendor/bin/php-cs-fixer fix
 ```
+
+### SonarQube Analysis
+
+Access SonarQube dashboard at: [http://localhost:9000](http://localhost:9000)
+
+Default credentials:
+- **Username:** `admin`
+- **Password:** `admin`
+
+For detailed SonarQube setup and usage, see our [SonarQube Documentation](docs/development/sonarqube.md).
 
 ## API Documentation
 

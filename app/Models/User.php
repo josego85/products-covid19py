@@ -6,6 +6,7 @@ use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\GetCollection;
 use ApiPlatform\Metadata\Post;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 #[ApiResource(
@@ -17,6 +18,8 @@ use Illuminate\Database\Eloquent\Model;
 )]
 class User extends Model
 {
+    use HasFactory;
+    
     protected $fillable = [
       'full_name',
       'email',

@@ -5,6 +5,7 @@ namespace App\Models;
 use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\GetCollection;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
@@ -16,6 +17,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 )]
 class Product extends Model
 {
+    use HasFactory;
+    
     protected $fillable = ['name', 'type'];
 
     /**

@@ -1,11 +1,15 @@
+includes:
+  - vendor/nunomaduro/larastan/extension.neon
+
 parameters:
   level: 1
   paths:
     - app
+    - database
   checkUnionTypes: true
   checkExplicitMixed: true
   inferPrivatePropertyTypeFromConstructor: true
   checkDynamicProperties: true
   ignoreErrors:
-    - identifier: missingType.iterableValue
-    - identifier: missingType.generics
+    # - identifier: missingType.iterableValue
+    # - identifier: missingType.generics

@@ -6,7 +6,6 @@
 *   Add make file
 *   Add test with PHPUnit
 *   Refactor (views)
-*   Add PHP-FPM
 *   Redis (cache)
 *   CI/CD Pipeline in GitHub Actions workflow
 *   Graphql pagination

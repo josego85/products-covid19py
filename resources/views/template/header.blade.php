@@ -25,46 +25,52 @@
     <meta name="twitter:description" content="Productos y/o servicios para la venta y consumo en Paraguay de forma sencilla." />
     <meta name="twitter:image" content="{{ @url('assets/img/logo.png') }}" />
 
-	<link rel="stylesheet" href="{{ @url('assets/js/libs/leaflet/leaflet.css') }}" charset="utf-8" />
-	<link rel="stylesheet" href="{{ @url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css') }}" charset="utf-8" />
-	<link rel="stylesheet" href="{{ @url('assets/js/libs/leaflet/plugins/Leaflet.fullscreen/leaflet.fullscreen.css') }}" charset="utf-8" />
-	<link rel="stylesheet" href="{{ @url('assets/js/libs/leaflet/plugins/Leaflet.markercluster/MarkerCluster.css') }}" charset="utf-8" />
-	<link rel="stylesheet" href="{{ @url('assets/js/libs/leaflet/plugins/Leaflet.markercluster/MarkerCluster.Default.css') }}" charset="utf-8" />
-	<link rel="stylesheet" href="{{ @url('assets/js/libs/leaflet/plugins/Leaflet-control-geocoder/Control.Geocoder.min.css') }}" charset="utf-8" />
-	<link rel="stylesheet" href="{{ @url('assets/js/libs//bootstrap-4.4.1-dist/css/bootstrap.min.css') }}" media="screen" charset="utf-8" />
-	<link rel='stylesheet' href="{{ @url('https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.12/css/bootstrap-select.min.css') }}" charset="utf-8" />
-	<link rel='stylesheet' href="{{ @url('https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css') }}" charset="utf-8" />
-	<link rel="stylesheet" href="{{ @url('assets/css/styles.css')}}" charset="utf-8" />
+    <!-- CSS Assets -->
+    <link rel="stylesheet" href="{{ asset('assets/js/libs/leaflet/leaflet.css') }}" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="{{ asset('assets/js/libs/leaflet/plugins/Leaflet.fullscreen/leaflet.fullscreen.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/js/libs/leaflet/plugins/Leaflet.markercluster/MarkerCluster.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/js/libs/leaflet/plugins/Leaflet.markercluster/MarkerCluster.Default.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/js/libs/leaflet/plugins/Leaflet-control-geocoder/Control.Geocoder.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/js/libs/bootstrap-4.4.1-dist/css/bootstrap.min.css') }}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.12/css/bootstrap-select.min.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" href="{{ asset('assets/css/styles.css')}}" />
 
-	<script src="{{ @url('assets/js/libs/leaflet/leaflet.js') }}" type="text/javascript" charset="utf-8"></script>
-	<script src="{{ @url('assets/js/libs/leaflet/plugins/Leaflet.fullscreen/Leaflet.fullscreen.min.js') }}" type="text/javascript" charset="utf-8"></script>
-	<script src="{{ @url('assets/js/libs/leaflet/plugins/Leaflet.markercluster/leaflet.markercluster.js') }}" type="text/javascript" charset="utf-8"></script>
-	<script src="{{ @url('assets/js/libs/leaflet/plugins/Leaflet-control-geocoder/Control.Geocoder.js') }}" type="text/javascript" charset="utf-8"></script>
-	<script src="{{ @url('assets/js/libs/jquery/jquery-3.4.1.min.js') }}" type="text/javascript" charset="utf-8"></script>
-	<script src="{{ @url('https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js') }}" type="text/javascript" charset="utf-8"></script>
-	<script src="{{ @url('assets/js/libs/bootstrap-4.4.1-dist/js/bootstrap.min.js') }}" type="text/javascript" charset="utf-8"></script>
-	<script src="{{ @url('//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.12/js/bootstrap-select.min.js') }}" type="text/javascript" charset="utf-8"></script>
-	<script src="{{ @url('https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js') }}" type="text/javascript" charset="utf-8"></script>
-	<script src="{{ @url('assets/js/Utilities.js') }}" type="text/javascript" charset="utf-8"></script>
-	<script id="loadMap" data_load_map={{ $data_load_map }} src="{{ @url('assets/js/onLoadScripts.js') }}" type="text/javascript" charset="utf-8"></script> 
-	<script src="{{ @url('assets/js/Map.js') }}" type="text/javascript" charset="utf-8"></script>
+	<!-- Vite Assets -->
+    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 
-	<script type="text/javascript">
-		var HOSTNAME = '{{ @url('/') }}';
-		var HOSTNAME_API = HOSTNAME + '/api/';
-		var GOOGLE_ANALYTICS_CODE = '';
+	<!-- JavaScript Libraries -->
+    <script src="{{ asset('assets/js/libs/leaflet/leaflet.js') }}"></script>
+    <script src="{{ asset('assets/js/libs/leaflet/plugins/Leaflet.fullscreen/Leaflet.fullscreen.min.js') }}"></script>
+    <script src="{{ asset('assets/js/libs/leaflet/plugins/Leaflet.markercluster/leaflet.markercluster.js') }}"></script>
+    <script src="{{ asset('assets/js/libs/leaflet/plugins/Leaflet-control-geocoder/Control.Geocoder.js') }}"></script>
+    <script src="{{ asset('assets/js/libs/jquery/jquery-3.4.1.min.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+    <script src="{{ asset('assets/js/libs/bootstrap-4.4.1-dist/js/bootstrap.min.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.12/js/bootstrap-select.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
 
-		// Map.
-		var DEFAULT_ZOOM_MAP = 6;
-		var DEFAULT_ZOOM_MARKER = 16;
-		var DEFAULT_MIN_ZOOM_MAP = 6;
-		var DEFAULT_MAX_ZOOM_MAP = 20;
+	<!-- Application JavaScript -->
+    <script src="{{ asset('assets/js/Utilities.js') }}"></script>
+    <script id="loadMap" data_load_map={{ $data_load_map }} src="{{ asset('assets/js/onLoadScripts.js') }}"></script>
+    <script src="{{ asset('assets/js/Map.js') }}"></script>
 
-		// Villa Hayes - Paraguay.
-		var DEFAULT_LNG = -57.623807;
-		var DEFAULT_LAT = -23.299114;
-	</script>
+    <script type="text/javascript">
+        var HOSTNAME = '{{ url('/') }}';
+        var HOSTNAME_API = HOSTNAME + '/api/';
+        var GOOGLE_ANALYTICS_CODE = '';
 
+        // Map Configuration
+        var DEFAULT_ZOOM_MAP = 6;
+        var DEFAULT_ZOOM_MARKER = 16;
+        var DEFAULT_MIN_ZOOM_MAP = 6;
+        var DEFAULT_MAX_ZOOM_MAP = 20;
+
+        // Villa Hayes - Paraguay
+        var DEFAULT_LNG = -57.623807;
+        var DEFAULT_LAT = -23.299114;
+    </script>
 </head>
 <body>
 

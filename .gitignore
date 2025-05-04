@@ -2,6 +2,7 @@
 /public/hot
 /public/storage
 /public/vendor
+/public/build
 /storage/*.key
 /vendor
 .env
@@ -20,3 +21,4 @@ composer.lock
 **/caddy
 frankenphp
 frankenphp-worker.php
+.phpunit.cache

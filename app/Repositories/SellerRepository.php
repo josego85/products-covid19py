@@ -62,18 +62,19 @@ class SellerRepository implements SellerRepositoryInterface
     public function getSeller(int $sellerId): ?Seller
     {
         return Seller::with(['user', 'products'])
-          ->find($sellerId);
+            ->find($sellerId);
     }
 
     /**
-     * Insert a new user.
+     * Create a new user from the provided data.
      *
      * @param array $data
      * @return int
      */
     public function setUser(array $data): int
     {
-        return $this->model->create($data)->user_id;
+        // return $this->model->create($data)->user_id;
+        return $this->model->create($data)->id;
     }
 
     /**
@@ -97,7 +98,7 @@ class SellerRepository implements SellerRepositoryInterface
      * @param int $userId The ID of the user to attach the product to
      * @param int $productId The ID of the product to be attached
      * @return void
-     * 
+     *
      * @throws \Illuminate\Database\Eloquent\ModelNotFoundException If user is not found
      */
     public function attachProductToUser(int $userId, int $productId): void

@@ -26,7 +26,7 @@ class CityRepository implements CityRepositoryInterface
 
     /**
      * Get a city by its ID.
-     * 
+     *
      * @param int $id The ID of the city to retrieve
      * @return City Returns the City model instance if found, throws ModelNotFoundException otherwise
      * @throws ModelNotFoundException When no city is found with the given ID
@@ -44,8 +44,8 @@ class CityRepository implements CityRepositoryInterface
     public function getCityFromCoordinates(float $longitude, float $latitude): string
     {
         $city = $this->model->select('name')
-          ->whereRaw("ST_CONTAINS(geom, ST_GeomFromText(?, 4326))", ["POINT($longitude $latitude)"])
-          ->first();
+            ->whereRaw('ST_CONTAINS(geom, ST_GeomFromText(?, 4326))', ["POINT($longitude $latitude)"])
+            ->first();
 
         return $city ? $city->name : 'Unknown';
     }
