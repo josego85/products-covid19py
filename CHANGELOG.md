@@ -53,6 +53,8 @@ All notable changes to this project will be documented in this file.
 - Updated dependencies:
   - Upgraded packages in composer.json to latest stable versions
   - Updated npm packages in package.json for improved security and performance
+  - Performed npm audit and fixed security vulnerabilities
+  - Updated Node.js version from 20 to 22.15.0 for improved performance and security
 
 ## [1.5.0] - 2025-03-XX
 

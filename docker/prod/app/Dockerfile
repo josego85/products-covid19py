@@ -1,4 +1,4 @@
-FROM node:20-alpine AS node-builder
+FROM node:22.15.0-alpine AS node-builder
 WORKDIR /app
 COPY package*.json ./
 RUN npm install
