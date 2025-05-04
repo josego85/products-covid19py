@@ -46,10 +46,13 @@ All notable changes to this project will be documented in this file.
   - Implemented PHPStan for enhanced type checking
   - Applied PHP CS Fixer to standardize code style
 - Enhanced README documentation:
-  - Added comprehensive technology badges
+  - Added comprehensive technology badges (Node.js, npm, Vite, Nginx)
   - Updated version badges (Version 1.6.0)
   - Restructured table of contents for better organization
   - Improved navigation and readability
+  - Added detailed Docker documentation:
+    - Separated development and production environments
+    - Clear instructions for dev and prod commands
 - Updated dependencies:
   - Upgraded packages in composer.json to latest stable versions
   - Updated npm packages in package.json for improved security and performance
