@@ -11,7 +11,7 @@
 [![Nginx](https://img.shields.io/badge/Nginx-1.28-009639?style=flat-square&logo=nginx&logoColor=white)](https://nginx.org)
 [![Node](https://img.shields.io/badge/Node-22.15.0-339933?style=flat-square&logo=node.js&logoColor=white)](https://nodejs.org)
 [![npm](https://img.shields.io/badge/npm-10.9.2-CB3837?style=flat-square&logo=npm)](https://www.npmjs.com)
-[![Vite](https://img.shields.io/badge/Vite-5.0.0-646CFF?style=flat-square&logo=vite)](https://vitejs.dev)
+[![Vite](https://img.shields.io/badge/Vite-6.3.4-646CFF?style=flat-square&logo=vite)](https://vitejs.dev)
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg?style=flat-square)](https://github.com/josego85/products-covid19py/graphs/commit-activity)
 
 A web application for browsing products sold to combat COVID-19.
