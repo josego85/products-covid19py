@@ -2,26 +2,29 @@ services:
   app:
     build:
       context: .
-      dockerfile: docker/prod/Dockerfile
+      dockerfile: docker/prod/app/Dockerfile
+    restart: unless-stopped
     ports:
       - "8080:80"
     depends_on:
       - mysql
     networks:
       - app-network
-    restart: unless-stopped
-
+    
   nginx:
-    image: nginx:stable-alpine
-    depends_on:
-      - app
+    build:
+      context: .
+      dockerfile: docker/prod/nginx/Dockerfile
+    restart: unless-stopped
     ports:
       - "80:80"
     volumes:
-      - ./docker/prod/nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./public:/var/www/html/public:ro
+      - ./docker/prod/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - app
     networks:
       - app-network
-    restart: unless-stopped
 
   mysql:
     image: mysql:8.0.42
@@ -30,8 +33,6 @@ services:
       MYSQL_USER: ${DB_USERNAME}
       MYSQL_PASSWORD: ${DB_PASSWORD}
       MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
-    # ports:
-    #   - '3306:3306'
     volumes:
       - 'mysql-data:/var/lib/mysql'
     networks:

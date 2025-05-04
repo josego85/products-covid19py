@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-## [1.6.0] - 2025-05-02
+## [1.6.0] - 2025-05-04
 
 ### Added
 - Added detailed SonarQube documentation (sonarqube.md) with setup and usage instructions
@@ -29,11 +29,17 @@ All notable changes to this project will be documented in this file.
 
 ### Changed
 - Refactored Docker architecture:
-  - Separated development and production environments with distinct compose files
+  - Implemented base docker-compose.yml for production environment
+  - Added docker-compose.override.yml for development-specific settings
   - Migrated from Apache to Nginx for improved performance
   - Split application and web server into separate containers
   - Implemented multi-stage builds for optimized images
   - Added development-specific configurations and tools
+- Modernized frontend build system:
+  - Migrated from webpack to Vite for improved performance
+  - Configured Vite for production builds
+  - Updated asset compilation process
+  - Optimized static asset handling
 - Updated PHP version from 8.4.5 to 8.4.6
 - Specified MySQL version (8.0.42) in docker-compose.yml for better version control
 - Enhanced code quality with static analysis tools:
