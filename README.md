@@ -70,8 +70,9 @@ This project is built with PHP using the Laravel framework and is designed to di
 - MySQL 8.0.42
 - Composer 2.8.8
 - Docker & Docker Compose
-- Node.js & npm
-- Apache
+- Node.js 22.15.0
+- NPM 10.9.2
+- Nginx 1.28
 
 ## Getting Started
 
