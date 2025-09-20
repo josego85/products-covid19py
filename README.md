@@ -1,6 +1,6 @@
 # products-covid19py
 
-[![Version](https://img.shields.io/badge/version-1.6.0-blue.svg)](https://github.com/josego85/products-covid19py)
+[![Version](https://img.shields.io/badge/version-1.6.1-blue.svg)](https://github.com/josego85/products-covid19py)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://opensource.org/licenses/MIT)
 [![PHP](https://img.shields.io/badge/PHP-8.4.6-777BB4?style=flat-square&logo=php)](https://php.net)
 [![Laravel](https://img.shields.io/badge/Laravel-v11.44.7-FF2D20?style=flat-square&logo=laravel)](https://laravel.com)
@@ -18,17 +18,17 @@ A web application for browsing products sold to combat COVID-19.
 
 ## Contents
 
-- [Overview](#overview)
-- [Features](#features)
-- [Requirements](#requirements)
-- [Getting Started](#getting-started)
-- [Docker](#docker)
-- [Development Commands](#development-commands)
-- [Developer Tools](#developer-tools)
-- [API Documentation](#api-documentation)
-- [GraphQL and GraphiQL](#graphql-and-graphiql)
-- [Contribution Guidelines](#contribution-guidelines)
-- [License](#license)
+-   [Overview](#overview)
+-   [Features](#features)
+-   [Requirements](#requirements)
+-   [Getting Started](#getting-started)
+-   [Docker](#docker)
+-   [Development Commands](#development-commands)
+-   [Developer Tools](#developer-tools)
+-   [API Documentation](#api-documentation)
+-   [GraphQL and GraphiQL](#graphql-and-graphiql)
+-   [Contribution Guidelines](#contribution-guidelines)
+-   [License](#license)
 
 ## Overview
 
@@ -36,25 +36,25 @@ This project is built with PHP using the Laravel framework and is designed to di
 
 ## Features
 
-- Showcase COVID-19 related products
-- RESTful API support
-- Database integration with MySQL 8.0
-- Dockerized development environment
-- Code quality tools integration
-- High-performance execution with FrankenPHP and Laravel Octane
+-   Showcase COVID-19 related products
+-   RESTful API support
+-   Database integration with MySQL 8.0
+-   Dockerized development environment
+-   Code quality tools integration
+-   High-performance execution with FrankenPHP and Laravel Octane
 
 ## Requirements
 
-- PHP 8.4.6
-- Laravel v11.44.7
-- API Platform v4.1.7
-- MySQL 8.0.42
-- Composer 2.8.8
-- Docker & Docker Compose
-- Node.js 22.15.0
-- NPM 10.9.2
-- Vite 6.3.4
-- Nginx 1.28
+-   PHP 8.4.6
+-   Laravel v11.44.7
+-   API Platform v4.1.7
+-   MySQL 8.0.42
+-   Composer 2.8.8
+-   Docker & Docker Compose
+-   Node.js 22.15.0
+-   NPM 10.9.2
+-   Vite 6.3.4
+-   Nginx 1.28
 
 ## Getting Started
 
@@ -161,12 +161,14 @@ npm run build
 ### Common Issues
 
 If you encounter permission issues:
+
 ```bash
 sudo chown -R $USER:www-data storage bootstrap/cache
 chmod -R 775 storage bootstrap/cache
 ```
 
 If assets are not loading:
+
 ```bash
 npm run build
 docker compose restart nginx
@@ -201,21 +203,21 @@ composer phpstan
 
 ### Command Descriptions
 
-- `optimize`: Clears and rebuilds all caches
-- `cache-clear`: Clears all application caches
-- `reset`: Complete cache clear and autoloader reload
-- `test`: Run PHPUnit test suite
-- `test-coverage`: Generate test coverage report
-- `check-style`: Verify code formatting
-- `fix-style`: Auto-fix code style issues
-- `phpstan`: Run static analysis
+-   `optimize`: Clears and rebuilds all caches
+-   `cache-clear`: Clears all application caches
+-   `reset`: Complete cache clear and autoloader reload
+-   `test`: Run PHPUnit test suite
+-   `test-coverage`: Generate test coverage report
+-   `check-style`: Verify code formatting
+-   `fix-style`: Auto-fix code style issues
+-   `phpstan`: Run static analysis
 
 ### When to Use
 
-- Before deployment: `composer optimize`
-- During development: `composer cache-clear`
-- Before committing: `composer check-style && composer test`
-- After pulling changes: `composer reset`
+-   Before deployment: `composer optimize`
+-   During development: `composer cache-clear`
+-   Before committing: `composer check-style && composer test`
+-   After pulling changes: `composer reset`
 
 ## Developer Tools
 
@@ -238,14 +240,16 @@ PHP_CS_FIXER_IGNORE_ENV=1 vendor/bin/php-cs-fixer fix
 Access SonarQube dashboard at: [http://localhost:9000](http://localhost:9000)
 
 Default credentials:
-- **Username:** `admin`
-- **Password:** `admin`
+
+-   **Username:** `admin`
+-   **Password:** `admin`
 
 For detailed SonarQube setup and usage, see our [SonarQube Documentation](docs/development/sonarqube.md).
 
 ## API Documentation
 
 Access the API documentation at:
+
 ```
 http://localhost:8080/api-docs
 ```
@@ -272,20 +276,20 @@ Here is an example of a query to fetch sellers:
 
 ```graphql
 {
-  sellers   {
-    id
-    longitude
-    latitude
-    comment
-    user {
-      full_name
-      email
-      phone_number
+    sellers {
+        id
+        longitude
+        latitude
+        comment
+        user {
+            full_name
+            email
+            phone_number
+        }
+        products(type: "papel") {
+            name
+        }
     }
-    products(type: "papel") {
-      name
-    }
-  }
 }
 ```
 
@@ -309,8 +313,8 @@ http://localhost:8080/graphiql
 
 ### Notes
 
-- Ensure that the GraphQL endpoint is accessible and properly configured in your environment.
-- GraphiQL is intended for development use only and should not be enabled in production environments.
+-   Ensure that the GraphQL endpoint is accessible and properly configured in your environment.
+-   GraphiQL is intended for development use only and should not be enabled in production environments.
 
 For more information about GraphQL, visit the [official documentation](https://graphql.org/).
 
