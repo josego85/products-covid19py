@@ -17,6 +17,15 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
   - Created `docker-compose.frankenphp.prod.yml` for production with multiple workers and optimizations
   - Added PHP 8.4 support with required extensions: `pdo_mysql`, `zip`, `opcache`, `intl`, `pcntl`, `gd`, `curl`, `mbstring`, `xml`, `bcmath`
 - **Alternative Architecture**: Optional FrankenPHP + Octane stack alongside existing nginx + PHP-FPM setup
+- **Documentation Structure**: Complete documentation reorganization for better maintainability
+  - Added `docs/getting-started/installation.md` - Comprehensive setup guide
+  - Added `docs/deployment/docker.md` - Traditional Docker deployment guide
+  - Added `docs/deployment/frankenphp.md` - Modern FrankenPHP deployment guide (6.5KB detailed guide)
+  - Added `docs/development/commands.md` - Development workflows and commands
+  - Added `docs/development/troubleshooting.md` - Centralized troubleshooting guide
+  - Added `docs/api/README.md` - REST API and GraphQL documentation
+  - Added `docs/CONTRIBUTING.md` - Streamlined contribution guidelines
+  - Added `docs/SUPPORT.md` - Support channels and contact information
 
 ### Changed
 
@@ -24,6 +33,11 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - **Docker Structure**: Reorganized Docker configuration for better separation of concerns
   - Development and production Dockerfiles are now clearly separated
   - Better organized file structure under `docker/frankenphp/` directory
+- **README.md**: Transformed from 336 lines to concise 117-line dashboard with modular documentation links
+- **Documentation Architecture**: Applied DRY principle - single source of truth for all topics
+  - Eliminated duplicate content across documentation files
+  - Each document has single responsibility and clear purpose
+  - Cross-references and proper navigation between documents
 
 ### Removed
 
