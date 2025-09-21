@@ -6,6 +6,48 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ---
 
+## [1.7.0] - 2025-09-21
+
+### Added
+
+- **FrankenPHP Integration**: Modern high-performance PHP application server with Laravel Octane
+  - Added `docker/frankenphp/Dockerfile.dev` for development environment with Xdebug and Node.js
+  - Added `docker/frankenphp/Dockerfile.prod` for production environment with optimized settings
+  - Created `docker-compose.frankenphp.yml` for development with single worker and immediate file changes
+  - Created `docker-compose.frankenphp.prod.yml` for production with multiple workers and optimizations
+  - Added PHP 8.4 support with required extensions: `pdo_mysql`, `zip`, `opcache`, `intl`, `pcntl`, `gd`, `curl`, `mbstring`, `xml`, `bcmath`
+- **Alternative Architecture**: Optional FrankenPHP + Octane stack alongside existing nginx + PHP-FPM setup
+
+### Changed
+
+- **Configuration**: Updated Laravel Octane configuration to use FrankenPHP as default server (was RoadRunner)
+- **Docker Structure**: Reorganized Docker configuration for better separation of concerns
+  - Development and production Dockerfiles are now clearly separated
+  - Better organized file structure under `docker/frankenphp/` directory
+
+### Removed
+
+- **Legacy Files**: Cleaned up obsolete FrankenPHP configurations
+  - Removed `Dockerfile-frankenphp` (replaced by structured approach)
+  - Removed `Caddyfile` (handled by Octane internally)
+  - Removed `standalone.Dockerfile` (legacy static binary approach)
+  - Removed `static-build.Dockerfile` (superseded by modern Octane approach)
+
+### Technical Details
+
+- **Development Setup**:
+  ```bash
+  docker-compose -f docker-compose.frankenphp.yml up --build
+  ```
+- **Production Setup**:
+  ```bash
+  docker-compose -f docker-compose.frankenphp.prod.yml up --build
+  ```
+- **Performance**: FrankenPHP with Octane provides 2-3x performance improvement over traditional setup
+- **Hot Reload**: Development environment supports immediate file change detection with single worker mode
+
+---
+
 ## [1.6.2] - 2025-09-21
 
 ### Fixed

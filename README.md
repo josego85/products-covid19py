@@ -1,6 +1,6 @@
 # products-covid19py
 
-[![Version](https://img.shields.io/badge/version-1.6.1-blue.svg)](https://github.com/josego85/products-covid19py)
+[![Version](https://img.shields.io/badge/version-1.7.0-blue.svg)](https://github.com/josego85/products-covid19py)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://opensource.org/licenses/MIT)
 [![PHP](https://img.shields.io/badge/PHP-8.4.6-777BB4?style=flat-square&logo=php)](https://php.net)
 [![Laravel](https://img.shields.io/badge/Laravel-v11.44.7-FF2D20?style=flat-square&logo=laravel)](https://laravel.com)
@@ -11,7 +11,7 @@
 [![Nginx](https://img.shields.io/badge/Nginx-1.28-009639?style=flat-square&logo=nginx&logoColor=white)](https://nginx.org)
 [![Node](https://img.shields.io/badge/Node-22.15.0-339933?style=flat-square&logo=node.js&logoColor=white)](https://nodejs.org)
 [![npm](https://img.shields.io/badge/npm-10.9.2-CB3837?style=flat-square&logo=npm)](https://www.npmjs.com)
-[![Vite](https://img.shields.io/badge/Vite-6.3.4-646CFF?style=flat-square&logo=vite)](https://vitejs.dev)
+[![Vite](https://img.shields.io/badge/Vite-6.3.6-646CFF?style=flat-square&logo=vite)](https://vitejs.dev)
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg?style=flat-square)](https://github.com/josego85/products-covid19py/graphs/commit-activity)
 
 A web application for browsing products sold to combat COVID-19.
@@ -53,7 +53,7 @@ This project is built with PHP using the Laravel framework and is designed to di
 -   Docker & Docker Compose
 -   Node.js 22.15.0
 -   NPM 10.9.2
--   Vite 6.3.4
+-   Vite 6.3.6
 -   Nginx 1.28
 
 ## Getting Started
