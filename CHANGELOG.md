@@ -6,7 +6,32 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ---
 
-## [1.6.1] - 2025-09-20
+## [1.6.2] - 2025-09-21
+
+### Fixed
+
+- **Docker Development Environment**: Resolved MySQL connection issues in development mode
+  - Added MySQL service configuration to `docker-compose.override.yml` with port mapping `3306:3306`
+  - Fixed nginx container restart loop by creating `/var/run/nginx` directory and setting proper permissions
+  - Added nginx port mapping `80:80` for development environment access
+  - Implemented automatic storage permissions fix through entrypoint script
+  - Added `ENTRYPOINT` to app Dockerfile to ensure proper file permissions on container startup
+- **Dependencies**: Updated deprecated static analysis package
+  - Replaced deprecated `nunomaduro/larastan` with `larastan/larastan` 3.7.2
+  - Updated `phpstan/phpstan` from `2.1.11` to `2.1.28`
+  - Maintained PHPStan compatibility and code quality standards
+
+### Improved
+
+- **Development Workflow**: Enhanced Docker development experience
+  - Development environment now works seamlessly with `docker-compose up -d`
+  - Fixed file permissions issues for Laravel storage directories
+  - Ensured nginx serves the application correctly on `http://localhost`
+  - Maintained backward compatibility with production configuration
+
+---
+
+## [1.6.1] - 2025-09-21
 
 ### Fixed
 

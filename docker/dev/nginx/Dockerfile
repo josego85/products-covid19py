@@ -12,7 +12,8 @@ RUN mkdir -p /var/log/nginx \
       /var/cache/nginx/client_temp \
       /var/cache/nginx/proxy_temp \
       /var/cache/nginx/fastcgi_temp \
-    && chown -R nginx:nginx /var/log/nginx /var/cache/nginx
+      /var/run/nginx \
+    && chown -R nginx:nginx /var/log/nginx /var/cache/nginx /var/run/nginx
 
 HEALTHCHECK --interval=30s --timeout=3s \
     CMD curl -f http://localhost/ || exit 1
