@@ -22,10 +22,10 @@
     "require-dev": {
         "fakerphp/faker": "v1.24.1",
         "friendsofphp/php-cs-fixer": "v3.75.0",
+        "larastan/larastan": "3.7.2",
         "mockery/mockery": "1.6.12",
         "nunomaduro/collision": "^v8.6.1",
-        "nunomaduro/larastan": "3.4",
-        "phpstan/phpstan": "2.1.11",
+        "phpstan/phpstan": "2.1.28",
         "phpstan/phpstan-deprecation-rules": "2.0.1",
         "phpstan/phpstan-doctrine": "2.0.2",
         "phpstan/phpstan-nette": "2.0.3",
