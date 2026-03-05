@@ -1,23 +1,27 @@
 #!/bin/bash
 set -e
 
-# Fix ownership and permissions for the entire Laravel project
-chown -R www-data:www-data /var/www/html
+# Create Laravel writable directories and give www-data access only where needed
+mkdir -p /var/www/html/storage/app/public \
+         /var/www/html/storage/framework/cache \
+         /var/www/html/storage/framework/sessions \
+         /var/www/html/storage/framework/views \
+         /var/www/html/storage/logs \
+         /var/www/html/bootstrap/cache
 
-# Create and set proper permissions for Laravel directories
-mkdir -p /var/www/html/storage /var/www/html/bootstrap/cache
+chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
 chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
 
-# Fix git ownership if .git exists
-if [ -d "/var/www/html/.git" ]; then
-    chown -R 1000:1000 /var/www/html/.git
+# Install PHP dependencies if vendor is missing
+if [ ! -d "/var/www/html/vendor" ]; then
+    echo "vendor/ not found, running composer install..."
+    su -s /bin/sh www-data -c "composer install --no-interaction --optimize-autoloader --no-scripts"
 fi
 
-# Ensure proper permissions for user files
-chown -R 1000:1000 /var/www/html/composer.json /var/www/html/composer.lock 2>/dev/null || true
-chown -R 1000:1000 /var/www/html/package*.json 2>/dev/null || true
-chown -R 1000:1000 /var/www/html/docker-compose*.yml 2>/dev/null || true
-chown -R 1000:1000 /var/www/html/docker/ 2>/dev/null || true
-chown -R 1000:1000 /var/www/html/CHANGELOG.md 2>/dev/null || true
+# Install JS dependencies if node_modules is missing and npm is available
+if [ ! -d "/var/www/html/node_modules" ] && command -v npm > /dev/null 2>&1; then
+    echo "node_modules/ not found, running npm install..."
+    su -s /bin/sh www-data -c "npm install"
+fi
 
 exec "$@"

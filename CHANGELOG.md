@@ -23,6 +23,14 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - **immutable** `5.1.1` → `5.1.5`: Dependency update ([#58](https://github.com/josego85/products-covid19py/pull/58))
 - **lodash** `4.17.21` → `4.17.23`: Dependency update ([#53](https://github.com/josego85/products-covid19py/pull/53))
 
+### Fixed
+
+- **Docker Dockerfile**: Remapped `www-data` to UID/GID 1000 (host user) in `docker/dev/app/Dockerfile` — PHP-FPM now runs as the host user, eliminating file permission conflicts when editing from VSCode or any host editor
+- **Docker Dockerfile**: Merged multiple `RUN` layers into one to reduce image size and build time
+- **Docker entrypoint**: Refactored `docker/dev/entrypoint.sh` to follow least-privilege principle — `www-data` now only owns `storage/` and `bootstrap/cache/` instead of the entire project, eliminating permission conflicts when editing files from the host
+- **Docker entrypoint**: Auto-install `vendor/` via `composer install --no-scripts` if missing on container start, preventing `vendor/autoload.php` not found errors
+- **Docker entrypoint**: Auto-install `node_modules/` via `npm install` if missing and npm is available in the container
+
 ---
 
 ## [1.7.0] - 2025-09-21

@@ -4,12 +4,10 @@ RUN apt-get update \
   && apt-get install -y --no-install-recommends \
      libzip-dev zip unzip git libicu-dev libonig-dev \
   && docker-php-ext-install zip pdo pdo_mysql pcntl intl \
-  && rm -rf /var/lib/apt/lists/*
-
-RUN curl -sS https://getcomposer.org/installer | php \
-  -- --install-dir=/usr/local/bin --filename=composer
-
-RUN pecl install xdebug \
+  && rm -rf /var/lib/apt/lists/* \
+  && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
+  && usermod -u 1000 www-data && groupmod -g 1000 www-data \
+  && pecl install xdebug \
   && docker-php-ext-enable xdebug
 
 COPY ./docker/dev/php/php.ini /usr/local/etc/php/
@@ -17,7 +15,6 @@ COPY ./docker/dev/php/php.ini /usr/local/etc/php/
 WORKDIR /var/www/html
 
 COPY docker/dev/entrypoint.sh /usr/local/bin/entrypoint.sh
-
 RUN chmod +x /usr/local/bin/entrypoint.sh
 
 EXPOSE 9000
