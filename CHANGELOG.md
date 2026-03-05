@@ -6,6 +6,22 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ---
 
+## [1.7.1] - 2026-03-05
+
+### Security
+
+- **[HIGH] phpunit/phpunit** `11.5.39` → `11.5.50`: Fix CVE-2026-24765 — Unsafe Deserialization in PHPT Code Coverage Handling ([#54](https://github.com/josego85/products-covid19py/pull/54))
+- **[MEDIUM] psy/psysh** `0.12.12` → `0.12.19`: Fix CVE-2026-25129 — Local Privilege Escalation via CWD `.psysh.php` auto-load ([#56](https://github.com/josego85/products-covid19py/pull/56))
+- **[HIGH] symfony/http-foundation** `v7.3.3` → `v7.4.6`: Fix CVE-2025-64500 — Incorrect parsing of `PATH_INFO` can lead to limited authorization bypass
+- **[MEDIUM] symfony/process** `v7.3.3` → `v7.4.5`: Fix CVE-2026-24739 — Incorrect argument escaping under MSYS2/Git Bash can lead to destructive file operations on Windows
+
+### Changed
+
+- **immutable** `5.1.1` → `5.1.5`: Dependency update ([#58](https://github.com/josego85/products-covid19py/pull/58))
+- **lodash** `4.17.21` → `4.17.23`: Dependency update ([#53](https://github.com/josego85/products-covid19py/pull/53))
+
+---
+
 ## [1.7.0] - 2025-09-21
 
 ### Added
