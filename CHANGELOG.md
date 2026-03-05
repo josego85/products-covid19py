@@ -14,6 +14,9 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - **[MEDIUM] psy/psysh** `0.12.12` → `0.12.19`: Fix CVE-2026-25129 — Local Privilege Escalation via CWD `.psysh.php` auto-load ([#56](https://github.com/josego85/products-covid19py/pull/56))
 - **[HIGH] symfony/http-foundation** `v7.3.3` → `v7.4.6`: Fix CVE-2025-64500 — Incorrect parsing of `PATH_INFO` can lead to limited authorization bypass
 - **[MEDIUM] symfony/process** `v7.3.3` → `v7.4.5`: Fix CVE-2026-24739 — Incorrect argument escaping under MSYS2/Git Bash can lead to destructive file operations on Windows
+- **[HIGH] axios** → `1.13.6`: Fix GHSA-43fc-jf86-j433 — Denial of Service via `__proto__` key in `mergeConfig`
+- **[HIGH] rollup** → `4.59.0`: Fix GHSA-mw96-cpmx-2vgc — Arbitrary File Write via Path Traversal
+- **[MODERATE] vite** → `6.4.1`: Fix GHSA-93m4-6634-74q7 — `server.fs.deny` bypass via backslash on Windows
 
 ### Changed
 
